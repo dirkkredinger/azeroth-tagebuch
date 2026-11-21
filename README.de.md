@@ -15,7 +15,7 @@
   <a href="#häufige-fragen">Fragen</a> ·
   <a href="https://github.com/dirkkredinger/azeroth-tagebuch/issues">Fehler melden</a> ·
   <a href="https://ko-fi.com/mbmf17/">☕ Unterstützen</a> ·
-  <a href="README.en.md">🇬🇧 English</a>
+  <a href="README.md">🇬🇧 English</a>
 </p>
 
 ![Account-Übersicht](docs/bilder/1-uebersicht.png)
@@ -49,7 +49,7 @@ liest das automatisch ein und zeigt es als Tagebuch und Dashboard – während d
 
 1. **[Neueste Version herunterladen](https://github.com/dirkkredinger/azeroth-tagebuch/releases/latest)** – unter „Assets“:
    - `AzerothTagebuch-Addon-….zip` – das Addon (für alle)
-   - **Mac:** `Azeroth-Tagebuch_…_universal.dmg` (Apple-Chip und Intel)
+   - **Mac:** `Azeroth-Tagebuch_…_universal.dmg` (Apple-Chip und Intel) – oder per Homebrew: `brew install --cask dirkkredinger/tap/azeroth-tagebuch`
    - **Windows:** `Azeroth-Tagebuch_…_x64-setup.exe`
 2. **Addon:** ZIP entpacken, den Ordner `AzerothTagebuch` nach `World of Warcraft/_retail_/Interface/AddOns/` kopieren und im Spiel aktivieren.
 3. **App installieren.** Sie ist (noch) nicht signiert:
