@@ -5,120 +5,119 @@
 <h1 align="center">Azeroth-Tagebuch</h1>
 
 <p align="center">
-  <b>Das Tagebuch für deine World-of-Warcraft-Charaktere</b><br>
-  Quests, Reisewege, Kämpfe, Beute und Lager – automatisch mitgeschrieben, schön aufbereitet.
+  <b>The adventure journal for your World of Warcraft characters</b><br>
+  Quests, travels, fights, dungeons, loot and storage – recorded automatically, presented beautifully.
 </p>
 
 <p align="center">
-  <a href="https://github.com/dirkkredinger/azeroth-tagebuch/releases/latest"><b>⬇ Herunterladen</b></a> ·
+  <a href="https://github.com/dirkkredinger/azeroth-tagebuch/releases/latest"><b>⬇ Download</b></a> ·
   <a href="#installation">Installation</a> ·
-  <a href="#häufige-fragen">Fragen</a> ·
-  <a href="https://github.com/dirkkredinger/azeroth-tagebuch/issues">Fehler melden</a> ·
-  <a href="https://ko-fi.com/mbmf17/">☕ Unterstützen</a> ·
-  <a href="README.en.md">🇬🇧 English</a>
+  <a href="#faq">FAQ</a> ·
+  <a href="https://github.com/dirkkredinger/azeroth-tagebuch/issues">Report a bug</a> ·
+  <a href="https://ko-fi.com/mbmf17/">☕ Support</a> ·
+  <a href="README.md">🇩🇪 Deutsch</a>
 </p>
 
-![Account-Übersicht](docs/bilder/1-uebersicht.png)
+![Account overview](docs/bilder/en/1-uebersicht.png)
 
-## Was es kann
+## What it does
 
-Ein kleines **Addon** schreibt im Spiel mit, was deine Charaktere erleben. Die **App** auf deinem Rechner
-liest das automatisch ein und zeigt es als Tagebuch und Dashboard – während du spielst sogar live.
+A small **addon** records in the game what your characters experience. The **app** on your computer
+reads it automatically and shows it as a journal and dashboard – even live while you play.
 
-- **Account-Übersicht** mit Ruhmeshalle, Spielzeit, Gold und den letzten Ereignissen aller Charaktere
-- **Quests**, **Zeitleiste** und **Statistik** pro Charakter
-- **Karte** mit deiner Route – eingefärbt nach Fortbewegung, mit Quests, Toden und Notizen
-- **Kampf und Heilung** aus dem offiziellen Kampflog: DPS/HPS je Kampf, nach Stufe und nach Gegenstandsstufe
-- **Ausrüstung** als Charakterbogen mit Werten und Wechselverlauf
-- **Dungeons, Tiefen und Schlachtzüge**: wie oft betreten und abgeschlossen, welche Bosse gefallen sind, Tiefenstufe bzw. Schlüsselstein und die Beute je Instanz
-- **Beute mit Dropraten**: welcher Gegner was wie oft fallen lässt
-- **Lager**: Taschen, Bank, Kriegsmeutenbank und Gildenbank – und die Suche „**Wo liegt …?**“
-- **Klasse & Spezialisierung** mit Links zu Guides und deinem Talent-Build
-- Eigenes Design im Stil alter Abenteuerbücher, Item-Tooltips im WoW-Stil
-- Auf **Deutsch und Englisch** (folgt der Systemsprache, umschaltbar oben rechts)
+- **Account overview** with hall of fame, playtime, gold and the latest events of all characters
+- **Quests**, **timeline** and **statistics** per character
+- **Map** with your route – colored by travel mode, with quests, deaths and notes
+- **Combat and healing** from the official combat log: DPS/HPS per fight, by level and by item level
+- **Gear** as a character sheet with stats and change history
+- **Dungeons, delves and raids**: how often entered and completed, which bosses fell, delve tier or keystone level, and the loot per instance
+- **Loot with drop rates**: which enemy drops what and how often
+- **Storage**: bags, bank, warband bank and guild bank – plus “**Where is …?**” search
+- **Class & specialization** with links to guides and your talent build
+- Its own design in the style of old adventure books, WoW-style item tooltips
+- In **English and German** (follows your system language, switch at the top right)
 
 | | |
 |---|---|
-| ![Kampfstatistik](docs/bilder/2-kampf.png) | ![Routenkarte](docs/bilder/3-karte.png) |
-| ![Beute mit Dropraten](docs/bilder/4-beute.png) | ![Ausrüstung mit Tooltip](docs/bilder/5-ausruestung.png) |
-| ![Dungeons und Tiefen](docs/bilder/7-instanzen.png) | ![Suche „Wo liegt …?“](docs/bilder/6-suche.png) |
+| ![Combat statistics](docs/bilder/en/2-kampf.png) | ![Route map](docs/bilder/en/3-karte.png) |
+| ![Loot with drop rates](docs/bilder/en/4-beute.png) | ![Gear with tooltip](docs/bilder/en/5-ausruestung.png) |
+| ![Dungeons and delves](docs/bilder/en/7-instanzen.png) | ![“Where is …?” search](docs/bilder/en/6-suche.png) |
 
-<sub>Die Bilder zeigen Beispieldaten und selbst gezeichnete Karten. In der App siehst du die echten Zonenkarten aus deiner eigenen WoW-Installation.</sub>
+<sub>The pictures show sample data and hand-drawn maps. In the app you see the real zone maps from your own WoW installation.</sub>
 
 ## Installation
 
-1. **[Neueste Version herunterladen](https://github.com/dirkkredinger/azeroth-tagebuch/releases/latest)** – unter „Assets“:
-   - `AzerothTagebuch-Addon-….zip` – das Addon (für alle)
-   - **Mac:** `Azeroth-Tagebuch_…_universal.dmg` (Apple-Chip und Intel)
+1. **[Download the latest version](https://github.com/dirkkredinger/azeroth-tagebuch/releases/latest)** – under “Assets”:
+   - `AzerothTagebuch-Addon-….zip` – the addon (for everyone)
+   - **Mac:** `Azeroth-Tagebuch_…_universal.dmg` (Apple silicon and Intel)
    - **Windows:** `Azeroth-Tagebuch_…_x64-setup.exe`
-2. **Addon:** ZIP entpacken, den Ordner `AzerothTagebuch` nach `World of Warcraft/_retail_/Interface/AddOns/` kopieren und im Spiel aktivieren.
-3. **App installieren.** Sie ist (noch) nicht signiert:
-   - **Mac:** in „Programme“ ziehen, beim ersten Start **Rechtsklick → Öffnen**.
-   - **Windows:** bei der SmartScreen-Warnung **„Weitere Informationen“ → „Trotzdem ausführen“**.
-4. Im Spiel einmal `/reload` – fertig. Liegt WoW nicht am Standardort, wählst du in der App über das Ordner-Symbol den Ordner `_retail_`.
+2. **Addon:** unzip, copy the `AzerothTagebuch` folder to `World of Warcraft/_retail_/Interface/AddOns/` and enable it in the game.
+3. **Install the app.** It is not signed (yet):
+   - **Mac:** drag it to “Applications”, on first launch **right-click → Open**.
+   - **Windows:** at the SmartScreen warning choose **“More info” → “Run anyway”**.
+4. Type `/reload` once in the game – done. If WoW is not in its default location, pick the `_retail_` folder via the folder icon in the app.
 
-Ohne WoW lässt sich die App über „Beispieldaten anzeigen“ ausprobieren.
+Without WoW you can try the app with “Show sample data”.
 
-**Im Spiel:** `/tb` zeigt eine kurze Statistik, `/tb notiz <Text>` schreibt eine eigene Tagebuchnotiz,
-`/tb kampflog an|aus` schaltet das Kampflog für die Kampfstatistik.
+**In the game:** `/tb` shows a short summary, `/tb notiz <text>` writes your own journal note,
+`/tb kampflog an|aus` turns the combat log for the combat statistics on or off.
 
-## Häufige Fragen
+## FAQ
 
-**Kann ich dafür gebannt werden?**
-Das Addon schreibt nur mit und automatisiert nichts – wie jedes Statistik-Addon. Die App liest ausschließlich
-Dateien von deiner Festplatte (die gespeicherten Addon-Daten, das offizielle Kampflog und die Spieldaten für
-Karten und Symbole). Sie greift nie auf das laufende Spiel zu, sendet keine Eingaben und verändert nichts.
-Der Quellcode ist offen – jeder kann das nachprüfen.
+**Can I get banned for this?**
+The addon only records and automates nothing – like any statistics addon. The app only reads files on your
+disk (the saved addon data, the official combat log and the game data for maps and icons). It never touches the
+running game, sends no input and changes nothing. The source code is open – anyone can check.
 
-**Woher kommen Karten und Item-Symbole?**
-Aus deiner eigenen WoW-Installation. Die App liefert keine Blizzard-Grafiken mit, sondern liest sie bei Bedarf
-lokal aus und speichert sie nur auf deinem Rechner.
+**Where do maps and item icons come from?**
+From your own WoW installation. The app ships no Blizzard graphics; it reads them locally when needed and
+stores them only on your computer.
 
-**Werden meine Daten irgendwohin geschickt?**
-Nein. Alles bleibt auf deinem Rechner.
+**Is my data sent anywhere?**
+No. Everything stays on your computer.
 
-**Warum stehen manche Namen auf Englisch (oder Deutsch)?**
-Quests, Zonen und Gegenstände speichert WoW in der Sprache deines Spiel-Clients. Die Texte der App selbst folgen der Sprache, die du wählst.
+**Why are names in the app in German (or English)?**
+Quests, zones and items are stored in the language of your WoW client. The app’s own texts follow the language you choose.
 
-**Warum zeigt die Kampfstatistik nichts?**
-Sie entsteht aus dem Kampflog, das das Addon beim Einloggen einschaltet. Kämpfe vor der Installation fehlen daher.
+**Why are the combat statistics empty?**
+They come from the combat log, which the addon turns on when you log in. Fights before installing are therefore missing.
 
-## Unterstützen
+## Support
 
-Das Azeroth-Tagebuch ist kostenlos und quelloffen. Wenn es dir gefällt, freue ich mich über einen Kaffee:
+Azeroth-Tagebuch is free and open source. If you like it, I’d be happy about a coffee:
 
-<p align="center"><a href="https://ko-fi.com/mbmf17/"><img src="https://img.shields.io/badge/Ko--fi-Unterst%C3%BCtzen-FF5E5B?logo=ko-fi&logoColor=white&style=for-the-badge" alt="Auf Ko-fi unterstützen"></a></p>
+<p align="center"><a href="https://ko-fi.com/mbmf17/"><img src="https://img.shields.io/badge/Ko--fi-Support-FF5E5B?logo=ko-fi&logoColor=white&style=for-the-badge" alt="Support on Ko-fi"></a></p>
 
-Genauso hilft ein Stern ⭐ hier auf GitHub, eine Fehlermeldung oder eine Idee unter [Issues](https://github.com/dirkkredinger/azeroth-tagebuch/issues).
+A star ⭐ here on GitHub, a bug report or an idea under [Issues](https://github.com/dirkkredinger/azeroth-tagebuch/issues) helps just as much.
 
-## Für Entwickler
+## For developers
 
-| Ordner | Inhalt |
+| Folder | Contents |
 |---|---|
-| `Addon/AzerothTagebuch` | WoW-Addon (Lua) |
-| `app/` | App mit Tauri 2 + Svelte 5 (macOS, Windows; geplant: Android, iOS, Web) |
-| `kern/` | Rust: liest SavedVariables und Kampflog, führt alles im Archiv zusammen |
-| `wowbilder/` | Rust: Kartenbilder und Symbole aus der lokalen Installation (CascLib) |
-| `Sources/`, `Package.swift` | erste Mac-App (SwiftUI), wird abgelöst |
-| `tools/` | erzeugt Beispieldaten (`make_sample.py`, `sample_en.py`) und die selbst gezeichneten Beispielkarten (`make_demo_maps.py`) |
+| `Addon/AzerothTagebuch` | WoW addon (Lua) |
+| `app/` | App built with Tauri 2 + Svelte 5 (macOS, Windows; planned: Android, iOS, web) |
+| `kern/` | Rust: reads SavedVariables and the combat log, merges everything into the archive |
+| `wowbilder/` | Rust: map images and icons from the local installation (CascLib) |
+| `Sources/`, `Package.swift` | first Mac app (SwiftUI), being replaced |
+| `tools/` | generates sample data (`make_sample.py`, `sample_en.py`) and the hand-drawn sample maps (`make_demo_maps.py`) |
 
 ```bash
 cd app
 npm install
-npm run tauri dev      # App mit automatischem Neuladen (braucht Rust und Node.js)
-npm run tauri build    # fertige App
-npm run dev            # nur die Oberfläche im Browser, mit Beispieldaten
+npm run tauri dev      # app with hot reload (needs Rust and Node.js)
+npm run tauri build    # release build
+npm run dev            # UI only, in the browser, with sample data
 ```
 
-Tests des Kerns: `cd kern && cargo test`. GitHub Actions baut bei jedem Push Windows- und Mac-Version;
-ein Tag `v…` veröffentlicht ein Release mit App und Addon. Texte der Oberfläche: Der deutsche Text ist der Schlüssel,
-die englische Übersetzung steht in `app/src/lib/sprache/en.ts`.
+Core tests: `cd kern && cargo test`. GitHub Actions builds the Windows and Mac versions on every push;
+a `v…` tag publishes a release with app and addon. UI texts: German is the key, English lives in
+`app/src/lib/sprache/en.ts`.
 
-## Lizenz
+## License
 
-[GNU GPL v3.0](LICENSE) – Fremd-Code und Hinweise siehe [THIRD_PARTY.md](THIRD_PARTY.md).
+[GNU GPL v3.0](LICENSE) – third-party code and notices see [THIRD_PARTY.md](THIRD_PARTY.md).
 
-*World of Warcraft ist eine Marke von Blizzard Entertainment, Inc. Dies ist ein inoffizielles Fan-Projekt
-und steht in keiner Verbindung zu Blizzard Entertainment.*
+*World of Warcraft is a trademark of Blizzard Entertainment, Inc. This is an unofficial fan project
+and is not affiliated with Blizzard Entertainment.*
 
-<sub>Entwickelt von dirkkredinger – mit Unterstützung von Claude (Anthropic).</sub>
+<sub>Developed by dirkkredinger – with the help of Claude (Anthropic).</sub>
