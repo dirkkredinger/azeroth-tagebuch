@@ -76,7 +76,7 @@
 </Box>
 
 <Box title={t('Ausrüstungswechsel')}>
-  {#each changes as e (e.t + '-' + e.slot)}
+  {#each changes as e}
     {@const diff = (e.il ?? 0) - (e.altil ?? 0)}
     <div class="chg">
       <ItemIcon icon={e.ic} quality={e.quality} size={30} tip={{ name: e.n, quality: e.quality, icon: e.ic, itemLevel: e.il, slot: slotName(e.slot ?? ''), lines: e.alt ? [{ text: t('ersetzt {name}', { name: e.alt }), color: '#bfb091' }] : [] }} />

@@ -131,7 +131,7 @@
 
   <div class="panel box">
     <h3>{t('Zuletzt bei allen Charakteren')}</h3>
-    {#each recent as { c, e } (c.key + e.t + e.e + (e.q ?? '') + (e.src ?? ''))}
+    {#each recent as { c, e }}
       <div class="rrow"><span class="rname" style="color:{classColor(c.classToken)}">{c.name}</span><EventRow event={e} names={A.questNames(c)} /></div>
     {/each}
   </div>

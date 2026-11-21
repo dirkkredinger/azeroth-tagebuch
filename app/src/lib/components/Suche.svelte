@@ -62,7 +62,7 @@
 
   {#if quests.length}
     <Box title={t('Quests')}>
-      {#each quests.slice(0, 60) as { c, e, open } (c.key + e.t + e.q)}
+      {#each quests.slice(0, 60) as { c, e, open }}
         <button class="row btnrow" onclick={() => store.show(c.key)}>
           <Icon name={open ? 'circle-alert' : 'badge-check'} size={15} color={open ? '#f0a030' : '#f5d742'} />
           <div class="grow"><b>{e.n}</b><div class="dim sm">{[e.z, open ? t('offen') : questKind(e.c)].filter(Boolean).join(' · ')}</div></div>
@@ -96,7 +96,7 @@
 
   {#if notes.length}
     <Box title={t('Notizen')}>
-      {#each notes as { c, e } (c.key + e.t)}
+      {#each notes as { c, e }}
         <div class="row"><span class="who" style="color:{classColor(c.classToken)}">{c.name}</span><div class="grow"><EventRow event={e} /></div></div>
       {/each}
     </Box>

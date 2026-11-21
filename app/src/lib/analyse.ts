@@ -168,7 +168,7 @@ export function instanceRuns(c: Character): InstanceRun[] {
         && (e.did === undefined || last.did === undefined || last.did === e.did)) {
       cur = last;
     } else {
-      cur = { key: `${c.key}|${e.t}`, char: c.key, name, kind, start: e.t, end: e.t, completed: false,
+      cur = { key: `${c.key}|${e.t}|${runs.length}`, char: c.key, name, kind, start: e.t, end: e.t, completed: false,
               bosses: [], deaths: 0, loot: [], gold: 0 };
       runs.push(cur);
     }

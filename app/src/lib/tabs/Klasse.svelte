@@ -48,7 +48,7 @@
 </Box>
 
 <Box title={t('Verlauf: Talente & Ausrüstung')}>
-  {#each history as e (e.t + e.e)}<EventRow event={e} />{:else}<p class="dim">{t('Noch keine Einträge.')}</p>{/each}
+  {#each history as e}<EventRow event={e} />{:else}<p class="dim">{t('Noch keine Einträge.')}</p>{/each}
 </Box>
 
 <style>

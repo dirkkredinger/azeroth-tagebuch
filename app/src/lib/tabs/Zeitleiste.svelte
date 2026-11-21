@@ -37,7 +37,7 @@
 {#each days.slice(0, limit) as d (d.label)}
   <div class="panel box">
     <h3>{d.label}</h3>
-    {#each d.events as e (e.t + e.e + (e.q ?? '') + (e.src ?? '') + (e.slot ?? '') + (e.txt ?? ''))}<EventRow event={e} {names} />{/each}
+    {#each d.events as e}<EventRow event={e} {names} />{/each}
   </div>
 {:else}
   <p class="dim">{t('Noch keine Einträge.')}</p>

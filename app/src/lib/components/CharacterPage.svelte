@@ -83,11 +83,11 @@
     </div>
     {#if A.notes(c).length}
       <div class="panel box"><h3>{t('Deine Notizen')}</h3>
-        {#each A.notes(c).slice(-5).reverse() as e (e.t + (e.txt ?? ''))}<EventRow event={e} />{/each}
+        {#each A.notes(c).slice(-5).reverse() as e}<EventRow event={e} />{/each}
       </div>
     {/if}
     <div class="panel box"><h3>{t('Zuletzt passiert')}</h3>
-      {#each recent as e (e.t + e.e + (e.q ?? '') + (e.src ?? '') + (e.slot ?? ''))}<EventRow event={e} {names} />{/each}
+      {#each recent as e}<EventRow event={e} {names} />{/each}
     </div>
   {:else if tab === 'quests'}<Quests {c} />
   {:else if tab === 'karte'}<Karte {c} />
