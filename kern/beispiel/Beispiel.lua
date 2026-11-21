@@ -2,61 +2,61 @@
 AzerothTagebuchDB = {
 	["version"] = 4,
 	["warband"] = {
-		["t"] = 1763864471,
+		["t"] = 1763868442,
 		["tabs"] = {
 			{
 				["name"] = "Kriegsmeute 1",
 				["items"] = {
 					{
+						["id"] = 263479,
+						["n"] = "Zähes Fleisch",
+						["q"] = 1,
+						["ic"] = 133971,
+						["c"] = 20,
+					}, -- [1]
+					{
 						["id"] = 264939,
 						["n"] = "Amethyst",
 						["q"] = 3,
 						["ic"] = 134075,
-						["c"] = 12,
-					}, -- [1]
+						["c"] = 20,
+					}, -- [2]
+					{
+						["id"] = 266899,
+						["n"] = "Splitterkern",
+						["q"] = 2,
+						["ic"] = 134123,
+						["c"] = 5,
+					}, -- [3]
+					{
+						["id"] = 266412,
+						["n"] = "Leerensplitter",
+						["q"] = 1,
+						["ic"] = 134075,
+						["c"] = 5,
+					}, -- [4]
 					{
 						["id"] = 266697,
 						["n"] = "Heiltrank",
 						["q"] = 1,
 						["ic"] = 133971,
-						["c"] = 20,
-					}, -- [2]
-					{
-						["id"] = 261965,
-						["n"] = "Scharfe Kralle",
-						["q"] = 0,
-						["ic"] = 134297,
-						["c"] = 20,
-					}, -- [3]
-					{
-						["id"] = 263479,
-						["n"] = "Zähes Fleisch",
-						["q"] = 1,
-						["ic"] = 133971,
-						["c"] = 200,
-					}, -- [4]
-					{
-						["id"] = 268592,
-						["n"] = "Zerfetztes Luchsfell",
-						["q"] = 1,
-						["ic"] = 134366,
 						["c"] = 1,
 					}, -- [5]
 					{
-						["id"] = 267035,
-						["n"] = "Leinenhemd",
-						["q"] = 1,
-						["ic"] = 135030,
+						["id"] = 269309,
+						["n"] = "Amani-Gürtel",
+						["q"] = 3,
+						["ic"] = 132502,
 						["c"] = 1,
-						["il"] = -18.0,
+						["il"] = 550.0,
 					}, -- [6]
 					{
-						["id"] = 263979,
-						["n"] = "Falkenwacht-Stiefel",
+						["id"] = 261276,
+						["n"] = "Immersang-Beinschützer",
 						["q"] = 3,
-						["ic"] = 132539,
+						["ic"] = 134584,
 						["c"] = 1,
-						["il"] = 558.0,
+						["il"] = 551.0,
 					}, -- [7]
 				},
 			}, -- [1]
@@ -64,25 +64,25 @@ AzerothTagebuchDB = {
 				["name"] = "Sammlung",
 				["items"] = {
 					{
-						["id"] = 264563,
-						["n"] = "Leinenstoff",
-						["q"] = 1,
-						["ic"] = 132889,
-						["c"] = 200,
-					}, -- [1]
-					{
-						["id"] = 266697,
-						["n"] = "Heiltrank",
+						["id"] = 263479,
+						["n"] = "Zähes Fleisch",
 						["q"] = 1,
 						["ic"] = 133971,
+						["c"] = 1,
+					}, -- [1]
+					{
+						["id"] = 265861,
+						["n"] = "Trollknochen",
+						["q"] = 0,
+						["ic"] = 133726,
 						["c"] = 12,
 					}, -- [2]
 					{
-						["id"] = 261965,
-						["n"] = "Scharfe Kralle",
-						["q"] = 0,
-						["ic"] = 134297,
-						["c"] = 1,
+						["id"] = 268592,
+						["n"] = "Zerfetztes Luchsfell",
+						["q"] = 1,
+						["ic"] = 134366,
+						["c"] = 20,
 					}, -- [3]
 				},
 			}, -- [2]
@@ -91,38 +91,38 @@ AzerothTagebuchDB = {
 	},
 	["guilds"] = {
 		["Hüter des Lichts-Antonidas"] = {
-			["t"] = 1763865471,
+			["t"] = 1763869442,
 			["tabs"] = {
 				{
 					["name"] = "Allgemein",
 					["items"] = {
 						{
-							["id"] = 266697,
-							["n"] = "Heiltrank",
-							["q"] = 1,
-							["ic"] = 133971,
-							["c"] = 200,
-						}, -- [1]
-						{
 							["id"] = 264939,
 							["n"] = "Amethyst",
 							["q"] = 3,
 							["ic"] = 134075,
-							["c"] = 20,
-						}, -- [2]
-						{
-							["id"] = 268592,
-							["n"] = "Zerfetztes Luchsfell",
-							["q"] = 1,
-							["ic"] = 134366,
-							["c"] = 200,
-						}, -- [3]
+							["c"] = 87,
+						}, -- [1]
 						{
 							["id"] = 266412,
 							["n"] = "Leerensplitter",
 							["q"] = 1,
 							["ic"] = 134075,
-							["c"] = 5,
+							["c"] = 20,
+						}, -- [2]
+						{
+							["id"] = 266697,
+							["n"] = "Heiltrank",
+							["q"] = 1,
+							["ic"] = 133971,
+							["c"] = 12,
+						}, -- [3]
+						{
+							["id"] = 265861,
+							["n"] = "Trollknochen",
+							["q"] = 0,
+							["ic"] = 133726,
+							["c"] = 1,
 						}, -- [4]
 						{
 							["id"] = 264563,
@@ -132,11 +132,11 @@ AzerothTagebuchDB = {
 							["c"] = 12,
 						}, -- [5]
 						{
-							["id"] = 261965,
-							["n"] = "Scharfe Kralle",
-							["q"] = 0,
-							["ic"] = 134297,
-							["c"] = 1,
+							["id"] = 266899,
+							["n"] = "Splitterkern",
+							["q"] = 2,
+							["ic"] = 134123,
+							["c"] = 5,
 						}, -- [6]
 					},
 				}, -- [1]
@@ -149,31 +149,31 @@ AzerothTagebuchDB = {
 							["q"] = 3,
 							["ic"] = 133345,
 							["c"] = 1,
-							["il"] = 565.0,
+							["il"] = 574.0,
 						}, -- [1]
 						{
-							["id"] = 267035,
-							["n"] = "Leinenhemd",
-							["q"] = 1,
-							["ic"] = 135030,
+							["id"] = 266195,
+							["n"] = "Amani-Armschienen",
+							["q"] = 3,
+							["ic"] = 132606,
 							["c"] = 1,
-							["il"] = -24.0,
+							["il"] = 604.0,
 						}, -- [2]
 						{
-							["id"] = 264382,
-							["n"] = "Amani-Handschuhe",
+							["id"] = 269737,
+							["n"] = "Morgenruh-Brustplatte",
 							["q"] = 3,
-							["ic"] = 132938,
+							["ic"] = 132751,
 							["c"] = 1,
-							["il"] = 591.0,
+							["il"] = 598.0,
 						}, -- [3]
 						{
-							["id"] = 267613,
-							["n"] = "Immersang-Ring",
+							["id"] = 267228,
+							["n"] = "Morgenruh-Umhang",
 							["q"] = 4,
-							["ic"] = 133347,
+							["ic"] = 133754,
 							["c"] = 1,
-							["il"] = 569.0,
+							["il"] = 565.0,
 						}, -- [4]
 					},
 				}, -- [2]
@@ -185,14 +185,14 @@ AzerothTagebuchDB = {
 							["n"] = "Splitterkern",
 							["q"] = 2,
 							["ic"] = 134123,
-							["c"] = 20,
+							["c"] = 1,
 						}, -- [1]
 						{
-							["id"] = 261965,
-							["n"] = "Scharfe Kralle",
-							["q"] = 0,
-							["ic"] = 134297,
-							["c"] = 12,
+							["id"] = 263479,
+							["n"] = "Zähes Fleisch",
+							["q"] = 1,
+							["ic"] = 133971,
+							["c"] = 200,
 						}, -- [2]
 					},
 				}, -- [3]
@@ -248,29 +248,29 @@ AzerothTagebuchDB = {
 			["ilvl"] = 612.3,
 			["gear"] = {
 				[1] = {
-					["id"] = 230714,
-					["n"] = "Sonnenzorn-Helm",
+					["id"] = 230693,
+					["n"] = "Falkenwacht-Helm",
 					["q"] = 3,
-					["il"] = 614.0,
+					["il"] = 593.0,
 					["ic"] = 133071,
 					["st"] = {
-						["aus"] = 2458,
-						["str"] = 1106,
-						["viel"] = 484,
-						["krit"] = 511,
+						["aus"] = 2373,
+						["str"] = 1068,
+						["krit"] = 599,
+						["viel"] = 383,
 					},
 					["link"] = "[Helm]",
 				},
 				[2] = {
-					["id"] = 230819,
-					["n"] = "Leerengezeichnete Halskette",
-					["q"] = 3,
-					["il"] = 619.0,
+					["id"] = 230792,
+					["n"] = "Sonnenzorn-Halskette",
+					["q"] = 2,
+					["il"] = 592.0,
 					["ic"] = 133294,
 					["st"] = {
-						["aus"] = 2476,
-						["viel"] = 471,
-						["krit"] = 599,
+						["aus"] = 2371,
+						["krit"] = 484,
+						["viel"] = 376,
 					},
 					["link"] = "[Halskette]",
 				},
@@ -303,16 +303,16 @@ AzerothTagebuchDB = {
 					["link"] = "[Umhang]",
 				},
 				[5] = {
-					["id"] = 231088,
-					["n"] = "Sonnenzorn-Brustplatte",
-					["q"] = 2,
-					["il"] = 588.0,
+					["id"] = 231118,
+					["n"] = "Morgenruh-Brustplatte",
+					["q"] = 3,
+					["il"] = 618.0,
 					["ic"] = 132751,
 					["st"] = {
-						["aus"] = 2355,
-						["str"] = 1059,
-						["krit"] = 521,
-						["meist"] = 408,
+						["aus"] = 2474,
+						["str"] = 1113,
+						["tempo"] = 660,
+						["krit"] = 446,
 					},
 					["link"] = "[Brustplatte]",
 				},
@@ -327,16 +327,16 @@ AzerothTagebuchDB = {
 					["link"] = "[Leinenhemd]",
 				},
 				[9] = {
-					["id"] = 231491,
-					["n"] = "Immersang-Armschienen",
-					["q"] = 4,
-					["il"] = 591.0,
+					["id"] = 231515,
+					["n"] = "Amani-Armschienen",
+					["q"] = 3,
+					["il"] = 615.0,
 					["ic"] = 132606,
 					["st"] = {
-						["aus"] = 2365,
-						["str"] = 1064,
-						["viel"] = 443,
-						["tempo"] = 589,
+						["aus"] = 2460,
+						["str"] = 1107,
+						["viel"] = 461,
+						["meist"] = 410,
 					},
 					["link"] = "[Armschienen]",
 				},
@@ -463,7 +463,7 @@ AzerothTagebuchDB = {
 					["link"] = "[Klinge]",
 				},
 			},
-			["money"] = 6022327,
+			["money"] = 5945609,
 			["created"] = 1763690400,
 			["events"] = {
 				{
@@ -3595,17 +3595,673 @@ AzerothTagebuchDB = {
 				{
 					["t"] = 1763863205,
 					["e"] = "zone",
-					["z"] = "Zul'Aman",
+					["z"] = "Amanikammer",
+					["sz"] = "",
+					["inst"] = "Amanikammer",
+					["it"] = "party",
+					["diff"] = "Normal",
+					["m"] = 9101,
+				}, -- [329]
+				{
+					["t"] = 1763863205,
+					["e"] = "inst_an",
+					["iid"] = 9101,
+					["inst"] = "Amanikammer",
+					["it"] = "party",
+					["did"] = 1,
+					["diff"] = "Normal",
+					["lv"] = 82,
+					["il"] = 600.8,
+					["grp"] = 5,
+					["m"] = 9101,
+				}, -- [330]
+				{
+					["t"] = 1763863252,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-240004-000500001C",
+					["npc"] = 240004,
+					["art"] = "Creature",
+					["sn"] = "Schattenpirscher",
+					["items"] = {
+						{
+							["id"] = 255076,
+							["n"] = "Schattenhafte Klaue",
+							["q"] = 0,
+							["ic"] = 134297,
+							["c"] = 3,
+						}, -- [1]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [331]
+				{
+					["t"] = 1763863308,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-240004-000500001D",
+					["npc"] = 240004,
+					["art"] = "Creature",
+					["sn"] = "Schattenpirscher",
+					["items"] = {
+						{
+							["id"] = 255076,
+							["n"] = "Schattenhafte Klaue",
+							["q"] = 0,
+							["ic"] = 134297,
+							["c"] = 2,
+						}, -- [1]
+						{
+							["id"] = 254563,
+							["n"] = "Leinenstoff",
+							["q"] = 1,
+							["ic"] = 132889,
+							["c"] = 2,
+						}, -- [2]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [332]
+				{
+					["t"] = 1763863399,
+					["e"] = "boss",
+					["eid"] = 3101,
+					["n"] = "Hexer Zul'jin-Ra",
+					["did"] = 1,
+					["ok"] = 1,
+					["dauer"] = 148,
+					["iid"] = 9101,
+					["inst"] = "Amanikammer",
+					["grp"] = 5,
+					["m"] = 9101,
+				}, -- [333]
+				{
+					["t"] = 1763863405,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-263101-000600001E",
+					["npc"] = 263101,
+					["art"] = "Creature",
+					["sn"] = "Hexer Zul'jin-Ra",
+					["items"] = {
+						{
+							["id"] = 252532,
+							["n"] = "Kettenhemd des Wächters",
+							["q"] = 3,
+							["ic"] = 132624,
+							["c"] = 1,
+						}, -- [1]
+						{
+							["id"] = 256899,
+							["n"] = "Splitterkern",
+							["q"] = 2,
+							["ic"] = 134123,
+							["c"] = 1,
+						}, -- [2]
+						{
+							["n"] = "Gold",
+							["gold"] = true,
+							["c"] = 215619,
+						}, -- [3]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [334]
+				{
+					["t"] = 1763863465,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-240003-000500001F",
+					["npc"] = 240003,
+					["art"] = "Creature",
+					["sn"] = "Amani-Späher",
+					["items"] = {
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [335]
+				{
+					["t"] = 1763863526,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-240004-0005000020",
+					["npc"] = 240004,
+					["art"] = "Creature",
+					["sn"] = "Schattenpirscher",
+					["items"] = {
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [336]
+				{
+					["t"] = 1763863619,
+					["e"] = "boss",
+					["eid"] = 3102,
+					["n"] = "Akilzons Brut",
+					["did"] = 1,
+					["ok"] = 1,
+					["dauer"] = 140,
+					["iid"] = 9101,
+					["inst"] = "Amanikammer",
+					["grp"] = 5,
+					["m"] = 9101,
+				}, -- [337]
+				{
+					["t"] = 1763863625,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-263102-0006000021",
+					["npc"] = 263102,
+					["art"] = "Creature",
+					["sn"] = "Akilzons Brut",
+					["items"] = {
+						{
+							["id"] = 254644,
+							["n"] = "Ring des Abgrunds",
+							["q"] = 3,
+							["ic"] = 133347,
+							["c"] = 1,
+						}, -- [1]
+						{
+							["id"] = 256412,
+							["n"] = "Leerensplitter",
+							["q"] = 1,
+							["ic"] = 134075,
+							["c"] = 1,
+						}, -- [2]
+						{
+							["n"] = "Gold",
+							["gold"] = true,
+							["c"] = 774498,
+						}, -- [3]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [338]
+				{
+					["t"] = 1763863673,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-240003-0005000022",
+					["npc"] = 240003,
+					["art"] = "Creature",
+					["sn"] = "Amani-Späher",
+					["items"] = {
+						{
+							["id"] = 255861,
+							["n"] = "Trollknochen",
+							["q"] = 0,
+							["ic"] = 133726,
+							["c"] = 3,
+						}, -- [1]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [339]
+				{
+					["t"] = 1763863766,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-240004-0005000023",
+					["npc"] = 240004,
+					["art"] = "Creature",
+					["sn"] = "Schattenpirscher",
+					["items"] = {
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [340]
+				{
+					["t"] = 1763863841,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-240003-0005000024",
+					["npc"] = 240003,
+					["art"] = "Creature",
+					["sn"] = "Amani-Späher",
+					["items"] = {
+						{
+							["id"] = 255861,
+							["n"] = "Trollknochen",
+							["q"] = 0,
+							["ic"] = 133726,
+							["c"] = 3,
+						}, -- [1]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [341]
+				{
+					["t"] = 1763863929,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-240003-0005000025",
+					["npc"] = 240003,
+					["art"] = "Creature",
+					["sn"] = "Amani-Späher",
+					["items"] = {
+						{
+							["id"] = 254563,
+							["n"] = "Leinenstoff",
+							["q"] = 1,
+							["ic"] = 132889,
+							["c"] = 2,
+						}, -- [1]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [342]
+				{
+					["t"] = 1763864065,
+					["e"] = "boss",
+					["eid"] = 3103,
+					["n"] = "Häuptling Mok'tar",
+					["did"] = 1,
+					["ok"] = 1,
+					["dauer"] = 55,
+					["iid"] = 9101,
+					["inst"] = "Amanikammer",
+					["grp"] = 5,
+					["m"] = 9101,
+				}, -- [343]
+				{
+					["t"] = 1763864071,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-263103-0006000026",
+					["npc"] = 263103,
+					["art"] = "Creature",
+					["sn"] = "Häuptling Mok'tar",
+					["items"] = {
+						{
+							["id"] = 256899,
+							["n"] = "Splitterkern",
+							["q"] = 2,
+							["ic"] = 134123,
+							["c"] = 1,
+						}, -- [1]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [344]
+				{
+					["t"] = 1763864091,
+					["e"] = "inst_fertig",
+					["iid"] = 9101,
+					["inst"] = "Amanikammer",
+					["art"] = "dungeonbrowser",
+					["dauer"] = 886,
+					["m"] = 9101,
+				}, -- [345]
+				{
+					["t"] = 1763864121,
+					["e"] = "inst_ab",
+					["iid"] = 9101,
+					["inst"] = "Amanikammer",
+					["dauer"] = 916,
+					["m"] = 9101,
+				}, -- [346]
+				{
+					["t"] = 1763864121,
+					["e"] = "zone",
+					["z"] = "Amanikammer",
 					["sz"] = "",
 					["inst"] = "Amanikammer",
 					["it"] = "party",
 					["diff"] = "Heroisch",
-					["m"] = 2437,
-					["x"] = 0.52,
-					["y"] = 0.38,
-				}, -- [329]
+					["m"] = 9101,
+				}, -- [347]
 				{
-					["t"] = 1763865050,
+					["t"] = 1763864121,
+					["e"] = "inst_an",
+					["iid"] = 9101,
+					["inst"] = "Amanikammer",
+					["it"] = "party",
+					["did"] = 2,
+					["diff"] = "Heroisch",
+					["lv"] = 82,
+					["il"] = 600.8,
+					["grp"] = 5,
+					["m"] = 9101,
+				}, -- [348]
+				{
+					["t"] = 1763864191,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-240003-0005000027",
+					["npc"] = 240003,
+					["art"] = "Creature",
+					["sn"] = "Amani-Späher",
+					["items"] = {
+						{
+							["id"] = 254563,
+							["n"] = "Leinenstoff",
+							["q"] = 1,
+							["ic"] = 132889,
+							["c"] = 2,
+						}, -- [1]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [349]
+				{
+					["t"] = 1763864262,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-240003-0005000028",
+					["npc"] = 240003,
+					["art"] = "Creature",
+					["sn"] = "Amani-Späher",
+					["items"] = {
+						{
+							["id"] = 255861,
+							["n"] = "Trollknochen",
+							["q"] = 0,
+							["ic"] = 133726,
+							["c"] = 1,
+						}, -- [1]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [350]
+				{
+					["t"] = 1763864375,
+					["e"] = "boss",
+					["eid"] = 3101,
+					["n"] = "Hexer Zul'jin-Ra",
+					["did"] = 2,
+					["ok"] = 1,
+					["dauer"] = 108,
+					["iid"] = 9101,
+					["inst"] = "Amanikammer",
+					["grp"] = 5,
+					["m"] = 9101,
+				}, -- [351]
+				{
+					["t"] = 1763864381,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-263101-0006000029",
+					["npc"] = 263101,
+					["art"] = "Creature",
+					["sn"] = "Hexer Zul'jin-Ra",
+					["items"] = {
+						{
+							["id"] = 253070,
+							["n"] = "Klinge der Morgenröte",
+							["q"] = 4,
+							["ic"] = 135349,
+							["c"] = 1,
+						}, -- [1]
+						{
+							["id"] = 256412,
+							["n"] = "Leerensplitter",
+							["q"] = 1,
+							["ic"] = 134075,
+							["c"] = 1,
+						}, -- [2]
+						{
+							["n"] = "Gold",
+							["gold"] = true,
+							["c"] = 633313,
+						}, -- [3]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [352]
+				{
+					["t"] = 1763864468,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-240003-000500002A",
+					["npc"] = 240003,
+					["art"] = "Creature",
+					["sn"] = "Amani-Späher",
+					["items"] = {
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [353]
+				{
+					["t"] = 1763864519,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-240004-000500002B",
+					["npc"] = 240004,
+					["art"] = "Creature",
+					["sn"] = "Schattenpirscher",
+					["items"] = {
+						{
+							["id"] = 255076,
+							["n"] = "Schattenhafte Klaue",
+							["q"] = 0,
+							["ic"] = 134297,
+							["c"] = 3,
+						}, -- [1]
+						{
+							["id"] = 254563,
+							["n"] = "Leinenstoff",
+							["q"] = 1,
+							["ic"] = 132889,
+							["c"] = 2,
+						}, -- [2]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [354]
+				{
+					["t"] = 1763864610,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-240004-000500002C",
+					["npc"] = 240004,
+					["art"] = "Creature",
+					["sn"] = "Schattenpirscher",
+					["items"] = {
+						{
+							["id"] = 255076,
+							["n"] = "Schattenhafte Klaue",
+							["q"] = 0,
+							["ic"] = 134297,
+							["c"] = 1,
+						}, -- [1]
+						{
+							["id"] = 254563,
+							["n"] = "Leinenstoff",
+							["q"] = 1,
+							["ic"] = 132889,
+							["c"] = 1,
+						}, -- [2]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [355]
+				{
+					["t"] = 1763864663,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-240004-000500002D",
+					["npc"] = 240004,
+					["art"] = "Creature",
+					["sn"] = "Schattenpirscher",
+					["items"] = {
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [356]
+				{
+					["t"] = 1763864764,
+					["e"] = "boss",
+					["eid"] = 3102,
+					["n"] = "Akilzons Brut",
+					["did"] = 2,
+					["ok"] = 1,
+					["dauer"] = 53,
+					["iid"] = 9101,
+					["inst"] = "Amanikammer",
+					["grp"] = 5,
+					["m"] = 9101,
+				}, -- [357]
+				{
+					["t"] = 1763864770,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-263102-000600002E",
+					["npc"] = 263102,
+					["art"] = "Creature",
+					["sn"] = "Akilzons Brut",
+					["items"] = {
+						{
+							["id"] = 254644,
+							["n"] = "Ring des Abgrunds",
+							["q"] = 3,
+							["ic"] = 133347,
+							["c"] = 1,
+						}, -- [1]
+						{
+							["id"] = 253070,
+							["n"] = "Klinge der Morgenröte",
+							["q"] = 4,
+							["ic"] = 135349,
+							["c"] = 1,
+						}, -- [2]
+						{
+							["n"] = "Gold",
+							["gold"] = true,
+							["c"] = 392620,
+						}, -- [3]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [358]
+				{
+					["t"] = 1763864820,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-240004-000500002F",
+					["npc"] = 240004,
+					["art"] = "Creature",
+					["sn"] = "Schattenpirscher",
+					["items"] = {
+						{
+							["id"] = 254563,
+							["n"] = "Leinenstoff",
+							["q"] = 1,
+							["ic"] = 132889,
+							["c"] = 2,
+						}, -- [1]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [359]
+				{
+					["t"] = 1763864878,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-240004-0005000030",
+					["npc"] = 240004,
+					["art"] = "Creature",
+					["sn"] = "Schattenpirscher",
+					["items"] = {
+						{
+							["id"] = 254563,
+							["n"] = "Leinenstoff",
+							["q"] = 1,
+							["ic"] = 132889,
+							["c"] = 2,
+						}, -- [1]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [360]
+				{
+					["t"] = 1763864936,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-240003-0005000031",
+					["npc"] = 240003,
+					["art"] = "Creature",
+					["sn"] = "Amani-Späher",
+					["items"] = {
+						{
+							["id"] = 254563,
+							["n"] = "Leinenstoff",
+							["q"] = 1,
+							["ic"] = 132889,
+							["c"] = 3,
+						}, -- [1]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [361]
+				{
+					["t"] = 1763864984,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-240004-0005000032",
+					["npc"] = 240004,
+					["art"] = "Creature",
+					["sn"] = "Schattenpirscher",
+					["items"] = {
+						{
+							["id"] = 255076,
+							["n"] = "Schattenhafte Klaue",
+							["q"] = 0,
+							["ic"] = 134297,
+							["c"] = 1,
+						}, -- [1]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [362]
+				{
+					["t"] = 1763865044,
+					["e"] = "boss",
+					["eid"] = 3103,
+					["n"] = "Häuptling Mok'tar",
+					["did"] = 2,
+					["ok"] = 0,
+					["dauer"] = 103,
+					["iid"] = 9101,
+					["inst"] = "Amanikammer",
+					["grp"] = 5,
+					["m"] = 9101,
+				}, -- [363]
+				{
+					["t"] = 1763865089,
+					["e"] = "tod",
+					["z"] = "Amanikammer",
+					["sz"] = "",
+					["m"] = 9101,
+				}, -- [364]
+				{
+					["t"] = 1763865234,
+					["e"] = "boss",
+					["eid"] = 3103,
+					["n"] = "Häuptling Mok'tar",
+					["did"] = 2,
+					["ok"] = 1,
+					["dauer"] = 45,
+					["iid"] = 9101,
+					["inst"] = "Amanikammer",
+					["grp"] = 5,
+					["m"] = 9101,
+				}, -- [365]
+				{
+					["t"] = 1763865240,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-263103-0006000033",
+					["npc"] = 263103,
+					["art"] = "Creature",
+					["sn"] = "Häuptling Mok'tar",
+					["items"] = {
+						{
+							["id"] = 256412,
+							["n"] = "Leerensplitter",
+							["q"] = 1,
+							["ic"] = 134075,
+							["c"] = 1,
+						}, -- [1]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [366]
+				{
+					["t"] = 1763865260,
+					["e"] = "inst_fertig",
+					["iid"] = 9101,
+					["inst"] = "Amanikammer",
+					["art"] = "dungeonbrowser",
+					["dauer"] = 1139,
+					["m"] = 9101,
+				}, -- [367]
+				{
+					["t"] = 1763865290,
+					["e"] = "inst_ab",
+					["iid"] = 9101,
+					["inst"] = "Amanikammer",
+					["dauer"] = 1169,
+					["m"] = 9101,
+				}, -- [368]
+				{
+					["t"] = 1763865335,
 					["e"] = "erfolg",
 					["a"] = 61020,
 					["n"] = "Heroisch: Amanikammer",
@@ -3613,9 +4269,1355 @@ AzerothTagebuchDB = {
 					["m"] = 2437,
 					["x"] = 0.52,
 					["y"] = 0.38,
-				}, -- [330]
+				}, -- [369]
 				{
-					["t"] = 1763865053,
+					["t"] = 1763865335,
+					["e"] = "zone",
+					["z"] = "Sonnenhof-Krypta",
+					["sz"] = "",
+					["inst"] = "Sonnenhof-Krypta",
+					["it"] = "party",
+					["diff"] = "Heroisch",
+					["m"] = 9102,
+				}, -- [370]
+				{
+					["t"] = 1763865335,
+					["e"] = "inst_an",
+					["iid"] = 9102,
+					["inst"] = "Sonnenhof-Krypta",
+					["it"] = "party",
+					["did"] = 2,
+					["diff"] = "Heroisch",
+					["lv"] = 82,
+					["il"] = 600.8,
+					["grp"] = 5,
+					["m"] = 9102,
+				}, -- [371]
+				{
+					["t"] = 1763865392,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9102-1-240002-0005000034",
+					["npc"] = 240002,
+					["art"] = "Creature",
+					["sn"] = "Leerenwandler",
+					["items"] = {
+						{
+							["id"] = 256412,
+							["n"] = "Leerensplitter",
+							["q"] = 1,
+							["ic"] = 134075,
+							["c"] = 1,
+						}, -- [1]
+						{
+							["id"] = 258819,
+							["n"] = "Flimmernder Staub",
+							["q"] = 0,
+							["ic"] = 133726,
+							["c"] = 2,
+						}, -- [2]
+						{
+							["id"] = 254644,
+							["n"] = "Ring des Abgrunds",
+							["q"] = 3,
+							["ic"] = 133347,
+							["c"] = 1,
+						}, -- [3]
+					},
+					["z"] = "Sonnenhof-Krypta",
+					["m"] = 9102,
+				}, -- [372]
+				{
+					["t"] = 1763865482,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9102-1-240002-0005000035",
+					["npc"] = 240002,
+					["art"] = "Creature",
+					["sn"] = "Leerenwandler",
+					["items"] = {
+					},
+					["z"] = "Sonnenhof-Krypta",
+					["m"] = 9102,
+				}, -- [373]
+				{
+					["t"] = 1763865549,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9102-1-240002-0005000036",
+					["npc"] = 240002,
+					["art"] = "Creature",
+					["sn"] = "Leerenwandler",
+					["items"] = {
+						{
+							["id"] = 256412,
+							["n"] = "Leerensplitter",
+							["q"] = 1,
+							["ic"] = 134075,
+							["c"] = 1,
+						}, -- [1]
+						{
+							["id"] = 258819,
+							["n"] = "Flimmernder Staub",
+							["q"] = 0,
+							["ic"] = 133726,
+							["c"] = 2,
+						}, -- [2]
+					},
+					["z"] = "Sonnenhof-Krypta",
+					["m"] = 9102,
+				}, -- [374]
+				{
+					["t"] = 1763865617,
+					["e"] = "boss",
+					["eid"] = 3111,
+					["n"] = "Wächterin Aelira",
+					["did"] = 2,
+					["ok"] = 1,
+					["dauer"] = 97,
+					["iid"] = 9102,
+					["inst"] = "Sonnenhof-Krypta",
+					["grp"] = 5,
+					["m"] = 9102,
+				}, -- [375]
+				{
+					["t"] = 1763865623,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9102-1-263111-0006000037",
+					["npc"] = 263111,
+					["art"] = "Creature",
+					["sn"] = "Wächterin Aelira",
+					["items"] = {
+						{
+							["id"] = 256899,
+							["n"] = "Splitterkern",
+							["q"] = 2,
+							["ic"] = 134123,
+							["c"] = 1,
+						}, -- [1]
+					},
+					["z"] = "Sonnenhof-Krypta",
+					["m"] = 9102,
+				}, -- [376]
+				{
+					["t"] = 1763865707,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9102-1-240002-0005000038",
+					["npc"] = 240002,
+					["art"] = "Creature",
+					["sn"] = "Leerenwandler",
+					["items"] = {
+						{
+							["id"] = 256412,
+							["n"] = "Leerensplitter",
+							["q"] = 1,
+							["ic"] = 134075,
+							["c"] = 2,
+						}, -- [1]
+					},
+					["z"] = "Sonnenhof-Krypta",
+					["m"] = 9102,
+				}, -- [377]
+				{
+					["t"] = 1763865769,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9102-1-240006-0005000039",
+					["npc"] = 240006,
+					["art"] = "Creature",
+					["sn"] = "Splitterkreatur",
+					["items"] = {
+						{
+							["id"] = 256412,
+							["n"] = "Leerensplitter",
+							["q"] = 1,
+							["ic"] = 134075,
+							["c"] = 1,
+						}, -- [1]
+					},
+					["z"] = "Sonnenhof-Krypta",
+					["m"] = 9102,
+				}, -- [378]
+				{
+					["t"] = 1763865901,
+					["e"] = "boss",
+					["eid"] = 3112,
+					["n"] = "Der Bleiche Prinz",
+					["did"] = 2,
+					["ok"] = 1,
+					["dauer"] = 158,
+					["iid"] = 9102,
+					["inst"] = "Sonnenhof-Krypta",
+					["grp"] = 5,
+					["m"] = 9102,
+				}, -- [379]
+				{
+					["t"] = 1763865907,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9102-1-263112-000600003A",
+					["npc"] = 263112,
+					["art"] = "Creature",
+					["sn"] = "Der Bleiche Prinz",
+					["items"] = {
+						{
+							["id"] = 256899,
+							["n"] = "Splitterkern",
+							["q"] = 2,
+							["ic"] = 134123,
+							["c"] = 1,
+						}, -- [1]
+						{
+							["id"] = 256412,
+							["n"] = "Leerensplitter",
+							["q"] = 1,
+							["ic"] = 134075,
+							["c"] = 1,
+						}, -- [2]
+						{
+							["n"] = "Gold",
+							["gold"] = true,
+							["c"] = 531452,
+						}, -- [3]
+					},
+					["z"] = "Sonnenhof-Krypta",
+					["m"] = 9102,
+				}, -- [380]
+				{
+					["t"] = 1763865927,
+					["e"] = "inst_fertig",
+					["iid"] = 9102,
+					["inst"] = "Sonnenhof-Krypta",
+					["art"] = "dungeonbrowser",
+					["dauer"] = 592,
+					["m"] = 9102,
+				}, -- [381]
+				{
+					["t"] = 1763865957,
+					["e"] = "inst_ab",
+					["iid"] = 9102,
+					["inst"] = "Sonnenhof-Krypta",
+					["dauer"] = 622,
+					["m"] = 9102,
+				}, -- [382]
+				{
+					["t"] = 1763865957,
+					["e"] = "zone",
+					["z"] = "Schimmerhöhle",
+					["sz"] = "",
+					["inst"] = "Schimmerhöhle",
+					["it"] = "scenario",
+					["diff"] = "Tiefen",
+					["m"] = 9201,
+				}, -- [383]
+				{
+					["t"] = 1763865957,
+					["e"] = "inst_an",
+					["iid"] = 9201,
+					["inst"] = "Schimmerhöhle",
+					["it"] = "delve",
+					["did"] = 208,
+					["diff"] = "Tiefen",
+					["lv"] = 82,
+					["il"] = 600.8,
+					["grp"] = 1,
+					["tier"] = 3,
+					["m"] = 9201,
+				}, -- [384]
+				{
+					["t"] = 1763866013,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9201-1-240006-000500003B",
+					["npc"] = 240006,
+					["art"] = "Creature",
+					["sn"] = "Splitterkreatur",
+					["items"] = {
+						{
+							["id"] = 256412,
+							["n"] = "Leerensplitter",
+							["q"] = 1,
+							["ic"] = 134075,
+							["c"] = 1,
+						}, -- [1]
+					},
+					["z"] = "Schimmerhöhle",
+					["m"] = 9201,
+				}, -- [385]
+				{
+					["t"] = 1763866084,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9201-1-240006-000500003C",
+					["npc"] = 240006,
+					["art"] = "Creature",
+					["sn"] = "Splitterkreatur",
+					["items"] = {
+						{
+							["id"] = 256412,
+							["n"] = "Leerensplitter",
+							["q"] = 1,
+							["ic"] = 134075,
+							["c"] = 1,
+						}, -- [1]
+					},
+					["z"] = "Schimmerhöhle",
+					["m"] = 9201,
+				}, -- [386]
+				{
+					["t"] = 1763866151,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9201-1-240006-000500003D",
+					["npc"] = 240006,
+					["art"] = "Creature",
+					["sn"] = "Splitterkreatur",
+					["items"] = {
+						{
+							["id"] = 256412,
+							["n"] = "Leerensplitter",
+							["q"] = 1,
+							["ic"] = 134075,
+							["c"] = 1,
+						}, -- [1]
+						{
+							["id"] = 256899,
+							["n"] = "Splitterkern",
+							["q"] = 2,
+							["ic"] = 134123,
+							["c"] = 1,
+						}, -- [2]
+					},
+					["z"] = "Schimmerhöhle",
+					["m"] = 9201,
+				}, -- [387]
+				{
+					["t"] = 1763866230,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9201-1-240006-000500003E",
+					["npc"] = 240006,
+					["art"] = "Creature",
+					["sn"] = "Splitterkreatur",
+					["items"] = {
+						{
+							["id"] = 256412,
+							["n"] = "Leerensplitter",
+							["q"] = 1,
+							["ic"] = 134075,
+							["c"] = 2,
+						}, -- [1]
+						{
+							["id"] = 256899,
+							["n"] = "Splitterkern",
+							["q"] = 2,
+							["ic"] = 134123,
+							["c"] = 1,
+						}, -- [2]
+					},
+					["z"] = "Schimmerhöhle",
+					["m"] = 9201,
+				}, -- [388]
+				{
+					["t"] = 1763866369,
+					["e"] = "boss",
+					["eid"] = 3201,
+					["n"] = "Kristallfresser",
+					["did"] = 208,
+					["ok"] = 1,
+					["dauer"] = 92,
+					["iid"] = 9201,
+					["inst"] = "Schimmerhöhle",
+					["grp"] = 1,
+					["m"] = 9201,
+				}, -- [389]
+				{
+					["t"] = 1763866375,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9201-1-263201-000600003F",
+					["npc"] = 263201,
+					["art"] = "Creature",
+					["sn"] = "Kristallfresser",
+					["items"] = {
+						{
+							["id"] = 253070,
+							["n"] = "Klinge der Morgenröte",
+							["q"] = 4,
+							["ic"] = 135349,
+							["c"] = 1,
+						}, -- [1]
+						{
+							["n"] = "Gold",
+							["gold"] = true,
+							["c"] = 319675,
+						}, -- [2]
+					},
+					["z"] = "Schimmerhöhle",
+					["m"] = 9201,
+				}, -- [390]
+				{
+					["t"] = 1763866395,
+					["e"] = "inst_fertig",
+					["iid"] = 9201,
+					["inst"] = "Schimmerhöhle",
+					["art"] = "szenario",
+					["dauer"] = 438,
+					["m"] = 9201,
+				}, -- [391]
+				{
+					["t"] = 1763866425,
+					["e"] = "inst_ab",
+					["iid"] = 9201,
+					["inst"] = "Schimmerhöhle",
+					["dauer"] = 468,
+					["m"] = 9201,
+				}, -- [392]
+				{
+					["t"] = 1763866425,
+					["e"] = "zone",
+					["z"] = "Schimmerhöhle",
+					["sz"] = "",
+					["inst"] = "Schimmerhöhle",
+					["it"] = "scenario",
+					["diff"] = "Tiefen",
+					["m"] = 9201,
+				}, -- [393]
+				{
+					["t"] = 1763866425,
+					["e"] = "inst_an",
+					["iid"] = 9201,
+					["inst"] = "Schimmerhöhle",
+					["it"] = "delve",
+					["did"] = 208,
+					["diff"] = "Tiefen",
+					["lv"] = 82,
+					["il"] = 600.8,
+					["grp"] = 1,
+					["tier"] = 5,
+					["m"] = 9201,
+				}, -- [394]
+				{
+					["t"] = 1763866479,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9201-1-240006-0005000040",
+					["npc"] = 240006,
+					["art"] = "Creature",
+					["sn"] = "Splitterkreatur",
+					["items"] = {
+						{
+							["id"] = 256412,
+							["n"] = "Leerensplitter",
+							["q"] = 1,
+							["ic"] = 134075,
+							["c"] = 2,
+						}, -- [1]
+					},
+					["z"] = "Schimmerhöhle",
+					["m"] = 9201,
+				}, -- [395]
+				{
+					["t"] = 1763866573,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9201-1-240006-0005000041",
+					["npc"] = 240006,
+					["art"] = "Creature",
+					["sn"] = "Splitterkreatur",
+					["items"] = {
+						{
+							["id"] = 256412,
+							["n"] = "Leerensplitter",
+							["q"] = 1,
+							["ic"] = 134075,
+							["c"] = 1,
+						}, -- [1]
+					},
+					["z"] = "Schimmerhöhle",
+					["m"] = 9201,
+				}, -- [396]
+				{
+					["t"] = 1763866647,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9201-1-240006-0005000042",
+					["npc"] = 240006,
+					["art"] = "Creature",
+					["sn"] = "Splitterkreatur",
+					["items"] = {
+						{
+							["id"] = 256412,
+							["n"] = "Leerensplitter",
+							["q"] = 1,
+							["ic"] = 134075,
+							["c"] = 3,
+						}, -- [1]
+					},
+					["z"] = "Schimmerhöhle",
+					["m"] = 9201,
+				}, -- [397]
+				{
+					["t"] = 1763866736,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9201-1-240006-0005000043",
+					["npc"] = 240006,
+					["art"] = "Creature",
+					["sn"] = "Splitterkreatur",
+					["items"] = {
+						{
+							["id"] = 256412,
+							["n"] = "Leerensplitter",
+							["q"] = 1,
+							["ic"] = 134075,
+							["c"] = 1,
+						}, -- [1]
+					},
+					["z"] = "Schimmerhöhle",
+					["m"] = 9201,
+				}, -- [398]
+				{
+					["t"] = 1763866796,
+					["e"] = "boss",
+					["eid"] = 3201,
+					["n"] = "Kristallfresser",
+					["did"] = 208,
+					["ok"] = 0,
+					["dauer"] = 95,
+					["iid"] = 9201,
+					["inst"] = "Schimmerhöhle",
+					["grp"] = 1,
+					["m"] = 9201,
+				}, -- [399]
+				{
+					["t"] = 1763866841,
+					["e"] = "tod",
+					["z"] = "Schimmerhöhle",
+					["sz"] = "",
+					["m"] = 9201,
+				}, -- [400]
+				{
+					["t"] = 1763866961,
+					["e"] = "boss",
+					["eid"] = 3201,
+					["n"] = "Kristallfresser",
+					["did"] = 208,
+					["ok"] = 1,
+					["dauer"] = 68,
+					["iid"] = 9201,
+					["inst"] = "Schimmerhöhle",
+					["grp"] = 1,
+					["m"] = 9201,
+				}, -- [401]
+				{
+					["t"] = 1763866967,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9201-1-263201-0006000044",
+					["npc"] = 263201,
+					["art"] = "Creature",
+					["sn"] = "Kristallfresser",
+					["items"] = {
+						{
+							["id"] = 252532,
+							["n"] = "Kettenhemd des Wächters",
+							["q"] = 3,
+							["ic"] = 132624,
+							["c"] = 1,
+						}, -- [1]
+						{
+							["n"] = "Gold",
+							["gold"] = true,
+							["c"] = 693049,
+						}, -- [2]
+					},
+					["z"] = "Schimmerhöhle",
+					["m"] = 9201,
+				}, -- [402]
+				{
+					["t"] = 1763866987,
+					["e"] = "inst_fertig",
+					["iid"] = 9201,
+					["inst"] = "Schimmerhöhle",
+					["art"] = "szenario",
+					["dauer"] = 562,
+					["m"] = 9201,
+				}, -- [403]
+				{
+					["t"] = 1763867017,
+					["e"] = "inst_ab",
+					["iid"] = 9201,
+					["inst"] = "Schimmerhöhle",
+					["dauer"] = 592,
+					["m"] = 9201,
+				}, -- [404]
+				{
+					["t"] = 1763867017,
+					["e"] = "zone",
+					["z"] = "Pilzgrotte",
+					["sz"] = "",
+					["inst"] = "Pilzgrotte",
+					["it"] = "scenario",
+					["diff"] = "Tiefen",
+					["m"] = 9202,
+				}, -- [405]
+				{
+					["t"] = 1763867017,
+					["e"] = "inst_an",
+					["iid"] = 9202,
+					["inst"] = "Pilzgrotte",
+					["it"] = "delve",
+					["did"] = 208,
+					["diff"] = "Tiefen",
+					["lv"] = 82,
+					["il"] = 600.8,
+					["grp"] = 1,
+					["tier"] = 5,
+					["m"] = 9202,
+				}, -- [406]
+				{
+					["t"] = 1763867085,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9202-1-240001-0005000045",
+					["npc"] = 240001,
+					["art"] = "Creature",
+					["sn"] = "Verdorbener Luchs",
+					["items"] = {
+						{
+							["id"] = 258592,
+							["n"] = "Zerfetztes Luchsfell",
+							["q"] = 1,
+							["ic"] = 134366,
+							["c"] = 1,
+						}, -- [1]
+					},
+					["z"] = "Pilzgrotte",
+					["m"] = 9202,
+				}, -- [407]
+				{
+					["t"] = 1763867141,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9202-1-240001-0005000046",
+					["npc"] = 240001,
+					["art"] = "Creature",
+					["sn"] = "Verdorbener Luchs",
+					["items"] = {
+					},
+					["z"] = "Pilzgrotte",
+					["m"] = 9202,
+				}, -- [408]
+				{
+					["t"] = 1763867286,
+					["e"] = "boss",
+					["eid"] = 3211,
+					["n"] = "Morchelmutter",
+					["did"] = 208,
+					["ok"] = 1,
+					["dauer"] = 152,
+					["iid"] = 9202,
+					["inst"] = "Pilzgrotte",
+					["grp"] = 1,
+					["m"] = 9202,
+				}, -- [409]
+				{
+					["t"] = 1763867292,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9202-1-263211-0006000047",
+					["npc"] = 263211,
+					["art"] = "Creature",
+					["sn"] = "Morchelmutter",
+					["items"] = {
+						{
+							["id"] = 252532,
+							["n"] = "Kettenhemd des Wächters",
+							["q"] = 3,
+							["ic"] = 132624,
+							["c"] = 1,
+						}, -- [1]
+						{
+							["id"] = 256899,
+							["n"] = "Splitterkern",
+							["q"] = 2,
+							["ic"] = 134123,
+							["c"] = 1,
+						}, -- [2]
+						{
+							["n"] = "Gold",
+							["gold"] = true,
+							["c"] = 726771,
+						}, -- [3]
+					},
+					["z"] = "Pilzgrotte",
+					["m"] = 9202,
+				}, -- [410]
+				{
+					["t"] = 1763867312,
+					["e"] = "inst_fertig",
+					["iid"] = 9202,
+					["inst"] = "Pilzgrotte",
+					["art"] = "szenario",
+					["dauer"] = 295,
+					["m"] = 9202,
+				}, -- [411]
+				{
+					["t"] = 1763867342,
+					["e"] = "inst_ab",
+					["iid"] = 9202,
+					["inst"] = "Pilzgrotte",
+					["dauer"] = 325,
+					["m"] = 9202,
+				}, -- [412]
+				{
+					["t"] = 1763867342,
+					["e"] = "zone",
+					["z"] = "Amanikammer",
+					["sz"] = "",
+					["inst"] = "Amanikammer",
+					["it"] = "party",
+					["diff"] = "Mythisch+",
+					["m"] = 9101,
+				}, -- [413]
+				{
+					["t"] = 1763867342,
+					["e"] = "inst_an",
+					["iid"] = 9101,
+					["inst"] = "Amanikammer",
+					["it"] = "party",
+					["did"] = 8,
+					["diff"] = "Mythisch+",
+					["lv"] = 82,
+					["il"] = 600.8,
+					["grp"] = 5,
+					["ml"] = 4,
+					["m"] = 9101,
+				}, -- [414]
+				{
+					["t"] = 1763867435,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-240004-0005000048",
+					["npc"] = 240004,
+					["art"] = "Creature",
+					["sn"] = "Schattenpirscher",
+					["items"] = {
+						{
+							["id"] = 254563,
+							["n"] = "Leinenstoff",
+							["q"] = 1,
+							["ic"] = 132889,
+							["c"] = 1,
+						}, -- [1]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [415]
+				{
+					["t"] = 1763867506,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-240004-0005000049",
+					["npc"] = 240004,
+					["art"] = "Creature",
+					["sn"] = "Schattenpirscher",
+					["items"] = {
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [416]
+				{
+					["t"] = 1763867578,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-240003-000500004A",
+					["npc"] = 240003,
+					["art"] = "Creature",
+					["sn"] = "Amani-Späher",
+					["items"] = {
+						{
+							["id"] = 254563,
+							["n"] = "Leinenstoff",
+							["q"] = 1,
+							["ic"] = 132889,
+							["c"] = 3,
+						}, -- [1]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [417]
+				{
+					["t"] = 1763867650,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-240004-000500004B",
+					["npc"] = 240004,
+					["art"] = "Creature",
+					["sn"] = "Schattenpirscher",
+					["items"] = {
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [418]
+				{
+					["t"] = 1763867761,
+					["e"] = "boss",
+					["eid"] = 3101,
+					["n"] = "Hexer Zul'jin-Ra",
+					["did"] = 8,
+					["ok"] = 1,
+					["dauer"] = 58,
+					["iid"] = 9101,
+					["inst"] = "Amanikammer",
+					["grp"] = 5,
+					["m"] = 9101,
+				}, -- [419]
+				{
+					["t"] = 1763867767,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-263101-000600004C",
+					["npc"] = 263101,
+					["art"] = "Creature",
+					["sn"] = "Hexer Zul'jin-Ra",
+					["items"] = {
+						{
+							["id"] = 253070,
+							["n"] = "Klinge der Morgenröte",
+							["q"] = 4,
+							["ic"] = 135349,
+							["c"] = 1,
+						}, -- [1]
+						{
+							["n"] = "Gold",
+							["gold"] = true,
+							["c"] = 533078,
+						}, -- [2]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [420]
+				{
+					["t"] = 1763867839,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-240003-000500004D",
+					["npc"] = 240003,
+					["art"] = "Creature",
+					["sn"] = "Amani-Späher",
+					["items"] = {
+						{
+							["id"] = 254563,
+							["n"] = "Leinenstoff",
+							["q"] = 1,
+							["ic"] = 132889,
+							["c"] = 1,
+						}, -- [1]
+						{
+							["id"] = 255861,
+							["n"] = "Trollknochen",
+							["q"] = 0,
+							["ic"] = 133726,
+							["c"] = 3,
+						}, -- [2]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [421]
+				{
+					["t"] = 1763867929,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-240003-000500004E",
+					["npc"] = 240003,
+					["art"] = "Creature",
+					["sn"] = "Amani-Späher",
+					["items"] = {
+						{
+							["id"] = 254563,
+							["n"] = "Leinenstoff",
+							["q"] = 1,
+							["ic"] = 132889,
+							["c"] = 3,
+						}, -- [1]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [422]
+				{
+					["t"] = 1763868006,
+					["e"] = "boss",
+					["eid"] = 3102,
+					["n"] = "Akilzons Brut",
+					["did"] = 8,
+					["ok"] = 1,
+					["dauer"] = 48,
+					["iid"] = 9101,
+					["inst"] = "Amanikammer",
+					["grp"] = 5,
+					["m"] = 9101,
+				}, -- [423]
+				{
+					["t"] = 1763868012,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-263102-000600004F",
+					["npc"] = 263102,
+					["art"] = "Creature",
+					["sn"] = "Akilzons Brut",
+					["items"] = {
+						{
+							["id"] = 256412,
+							["n"] = "Leerensplitter",
+							["q"] = 1,
+							["ic"] = 134075,
+							["c"] = 1,
+						}, -- [1]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [424]
+				{
+					["t"] = 1763868068,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-240003-0005000050",
+					["npc"] = 240003,
+					["art"] = "Creature",
+					["sn"] = "Amani-Späher",
+					["items"] = {
+						{
+							["id"] = 255861,
+							["n"] = "Trollknochen",
+							["q"] = 0,
+							["ic"] = 133726,
+							["c"] = 1,
+						}, -- [1]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [425]
+				{
+					["t"] = 1763868158,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-240003-0005000051",
+					["npc"] = 240003,
+					["art"] = "Creature",
+					["sn"] = "Amani-Späher",
+					["items"] = {
+						{
+							["id"] = 254563,
+							["n"] = "Leinenstoff",
+							["q"] = 1,
+							["ic"] = 132889,
+							["c"] = 2,
+						}, -- [1]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [426]
+				{
+					["t"] = 1763868259,
+					["e"] = "boss",
+					["eid"] = 3103,
+					["n"] = "Häuptling Mok'tar",
+					["did"] = 8,
+					["ok"] = 1,
+					["dauer"] = 159,
+					["iid"] = 9101,
+					["inst"] = "Amanikammer",
+					["grp"] = 5,
+					["m"] = 9101,
+				}, -- [427]
+				{
+					["t"] = 1763868265,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9101-1-263103-0006000052",
+					["npc"] = 263103,
+					["art"] = "Creature",
+					["sn"] = "Häuptling Mok'tar",
+					["items"] = {
+						{
+							["id"] = 256899,
+							["n"] = "Splitterkern",
+							["q"] = 2,
+							["ic"] = 134123,
+							["c"] = 1,
+						}, -- [1]
+						{
+							["id"] = 253070,
+							["n"] = "Klinge der Morgenröte",
+							["q"] = 4,
+							["ic"] = 135349,
+							["c"] = 1,
+						}, -- [2]
+						{
+							["n"] = "Gold",
+							["gold"] = true,
+							["c"] = 653429,
+						}, -- [3]
+					},
+					["z"] = "Amanikammer",
+					["m"] = 9101,
+				}, -- [428]
+				{
+					["t"] = 1763868285,
+					["e"] = "inst_fertig",
+					["iid"] = 9101,
+					["inst"] = "Amanikammer",
+					["art"] = "mythisch_plus",
+					["dauer"] = 943,
+					["ml"] = 4,
+					["zeit"] = 943,
+					["imzeit"] = 1,
+					["m"] = 9101,
+				}, -- [429]
+				{
+					["t"] = 1763868315,
+					["e"] = "inst_ab",
+					["iid"] = 9101,
+					["inst"] = "Amanikammer",
+					["dauer"] = 973,
+					["m"] = 9101,
+				}, -- [430]
+				{
+					["t"] = 1763868315,
+					["e"] = "zone",
+					["z"] = "Sonnenhof-Krypta",
+					["sz"] = "",
+					["inst"] = "Sonnenhof-Krypta",
+					["it"] = "party",
+					["diff"] = "Mythisch+",
+					["m"] = 9102,
+				}, -- [431]
+				{
+					["t"] = 1763868315,
+					["e"] = "inst_an",
+					["iid"] = 9102,
+					["inst"] = "Sonnenhof-Krypta",
+					["it"] = "party",
+					["did"] = 8,
+					["diff"] = "Mythisch+",
+					["lv"] = 82,
+					["il"] = 600.8,
+					["grp"] = 5,
+					["ml"] = 5,
+					["m"] = 9102,
+				}, -- [432]
+				{
+					["t"] = 1763868396,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9102-1-240006-0005000053",
+					["npc"] = 240006,
+					["art"] = "Creature",
+					["sn"] = "Splitterkreatur",
+					["items"] = {
+						{
+							["id"] = 256412,
+							["n"] = "Leerensplitter",
+							["q"] = 1,
+							["ic"] = 134075,
+							["c"] = 1,
+						}, -- [1]
+					},
+					["z"] = "Sonnenhof-Krypta",
+					["m"] = 9102,
+				}, -- [433]
+				{
+					["t"] = 1763868442,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9102-1-240002-0005000054",
+					["npc"] = 240002,
+					["art"] = "Creature",
+					["sn"] = "Leerenwandler",
+					["items"] = {
+						{
+							["id"] = 256412,
+							["n"] = "Leerensplitter",
+							["q"] = 1,
+							["ic"] = 134075,
+							["c"] = 1,
+						}, -- [1]
+					},
+					["z"] = "Sonnenhof-Krypta",
+					["m"] = 9102,
+				}, -- [434]
+				{
+					["t"] = 1763868543,
+					["e"] = "boss",
+					["eid"] = 3111,
+					["n"] = "Wächterin Aelira",
+					["did"] = 8,
+					["ok"] = 1,
+					["dauer"] = 159,
+					["iid"] = 9102,
+					["inst"] = "Sonnenhof-Krypta",
+					["grp"] = 5,
+					["m"] = 9102,
+				}, -- [435]
+				{
+					["t"] = 1763868549,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9102-1-263111-0006000055",
+					["npc"] = 263111,
+					["art"] = "Creature",
+					["sn"] = "Wächterin Aelira",
+					["items"] = {
+						{
+							["id"] = 253070,
+							["n"] = "Klinge der Morgenröte",
+							["q"] = 4,
+							["ic"] = 135349,
+							["c"] = 1,
+						}, -- [1]
+						{
+							["id"] = 254644,
+							["n"] = "Ring des Abgrunds",
+							["q"] = 3,
+							["ic"] = 133347,
+							["c"] = 1,
+						}, -- [2]
+						{
+							["n"] = "Gold",
+							["gold"] = true,
+							["c"] = 706501,
+						}, -- [3]
+					},
+					["z"] = "Sonnenhof-Krypta",
+					["m"] = 9102,
+				}, -- [436]
+				{
+					["t"] = 1763868633,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9102-1-240006-0005000056",
+					["npc"] = 240006,
+					["art"] = "Creature",
+					["sn"] = "Splitterkreatur",
+					["items"] = {
+					},
+					["z"] = "Sonnenhof-Krypta",
+					["m"] = 9102,
+				}, -- [437]
+				{
+					["t"] = 1763868710,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9102-1-240002-0005000057",
+					["npc"] = 240002,
+					["art"] = "Creature",
+					["sn"] = "Leerenwandler",
+					["items"] = {
+						{
+							["id"] = 256412,
+							["n"] = "Leerensplitter",
+							["q"] = 1,
+							["ic"] = 134075,
+							["c"] = 3,
+						}, -- [1]
+					},
+					["z"] = "Sonnenhof-Krypta",
+					["m"] = 9102,
+				}, -- [438]
+				{
+					["t"] = 1763868770,
+					["e"] = "boss",
+					["eid"] = 3112,
+					["n"] = "Der Bleiche Prinz",
+					["did"] = 8,
+					["ok"] = 0,
+					["dauer"] = 117,
+					["iid"] = 9102,
+					["inst"] = "Sonnenhof-Krypta",
+					["grp"] = 5,
+					["m"] = 9102,
+				}, -- [439]
+				{
+					["t"] = 1763868815,
+					["e"] = "tod",
+					["z"] = "Sonnenhof-Krypta",
+					["sz"] = "",
+					["m"] = 9102,
+				}, -- [440]
+				{
+					["t"] = 1763868908,
+					["e"] = "boss",
+					["eid"] = 3112,
+					["n"] = "Der Bleiche Prinz",
+					["did"] = 8,
+					["ok"] = 1,
+					["dauer"] = 93,
+					["iid"] = 9102,
+					["inst"] = "Sonnenhof-Krypta",
+					["grp"] = 5,
+					["m"] = 9102,
+				}, -- [441]
+				{
+					["t"] = 1763868914,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9102-1-263112-0006000058",
+					["npc"] = 263112,
+					["art"] = "Creature",
+					["sn"] = "Der Bleiche Prinz",
+					["items"] = {
+						{
+							["id"] = 256412,
+							["n"] = "Leerensplitter",
+							["q"] = 1,
+							["ic"] = 134075,
+							["c"] = 1,
+						}, -- [1]
+						{
+							["id"] = 253070,
+							["n"] = "Klinge der Morgenröte",
+							["q"] = 4,
+							["ic"] = 135349,
+							["c"] = 1,
+						}, -- [2]
+						{
+							["n"] = "Gold",
+							["gold"] = true,
+							["c"] = 235338,
+						}, -- [3]
+					},
+					["z"] = "Sonnenhof-Krypta",
+					["m"] = 9102,
+				}, -- [442]
+				{
+					["t"] = 1763868934,
+					["e"] = "inst_fertig",
+					["iid"] = 9102,
+					["inst"] = "Sonnenhof-Krypta",
+					["art"] = "mythisch_plus",
+					["dauer"] = 619,
+					["ml"] = 5,
+					["zeit"] = 619,
+					["imzeit"] = 1,
+					["m"] = 9102,
+				}, -- [443]
+				{
+					["t"] = 1763868964,
+					["e"] = "inst_ab",
+					["iid"] = 9102,
+					["inst"] = "Sonnenhof-Krypta",
+					["dauer"] = 649,
+					["m"] = 9102,
+				}, -- [444]
+				{
+					["t"] = 1763868964,
+					["e"] = "zone",
+					["z"] = "Pilzgrotte",
+					["sz"] = "",
+					["inst"] = "Pilzgrotte",
+					["it"] = "scenario",
+					["diff"] = "Tiefen",
+					["m"] = 9202,
+				}, -- [445]
+				{
+					["t"] = 1763868964,
+					["e"] = "inst_an",
+					["iid"] = 9202,
+					["inst"] = "Pilzgrotte",
+					["it"] = "delve",
+					["did"] = 208,
+					["diff"] = "Tiefen",
+					["lv"] = 82,
+					["il"] = 600.8,
+					["grp"] = 1,
+					["tier"] = 8,
+					["m"] = 9202,
+				}, -- [446]
+				{
+					["t"] = 1763869022,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9202-1-240001-0005000059",
+					["npc"] = 240001,
+					["art"] = "Creature",
+					["sn"] = "Verdorbener Luchs",
+					["items"] = {
+						{
+							["id"] = 258592,
+							["n"] = "Zerfetztes Luchsfell",
+							["q"] = 1,
+							["ic"] = 134366,
+							["c"] = 1,
+						}, -- [1]
+						{
+							["id"] = 251965,
+							["n"] = "Scharfe Kralle",
+							["q"] = 0,
+							["ic"] = 134297,
+							["c"] = 3,
+						}, -- [2]
+					},
+					["z"] = "Pilzgrotte",
+					["m"] = 9202,
+				}, -- [447]
+				{
+					["t"] = 1763869106,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9202-1-240001-000500005A",
+					["npc"] = 240001,
+					["art"] = "Creature",
+					["sn"] = "Verdorbener Luchs",
+					["items"] = {
+						{
+							["id"] = 258592,
+							["n"] = "Zerfetztes Luchsfell",
+							["q"] = 1,
+							["ic"] = 134366,
+							["c"] = 3,
+						}, -- [1]
+						{
+							["id"] = 251965,
+							["n"] = "Scharfe Kralle",
+							["q"] = 0,
+							["ic"] = 134297,
+							["c"] = 1,
+						}, -- [2]
+					},
+					["z"] = "Pilzgrotte",
+					["m"] = 9202,
+				}, -- [448]
+				{
+					["t"] = 1763869190,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9202-1-240001-000500005B",
+					["npc"] = 240001,
+					["art"] = "Creature",
+					["sn"] = "Verdorbener Luchs",
+					["items"] = {
+						{
+							["id"] = 258592,
+							["n"] = "Zerfetztes Luchsfell",
+							["q"] = 1,
+							["ic"] = 134366,
+							["c"] = 2,
+						}, -- [1]
+					},
+					["z"] = "Pilzgrotte",
+					["m"] = 9202,
+				}, -- [449]
+				{
+					["t"] = 1763869279,
+					["e"] = "boss",
+					["eid"] = 3211,
+					["n"] = "Morchelmutter",
+					["did"] = 208,
+					["ok"] = 1,
+					["dauer"] = 123,
+					["iid"] = 9202,
+					["inst"] = "Pilzgrotte",
+					["grp"] = 1,
+					["m"] = 9202,
+				}, -- [450]
+				{
+					["t"] = 1763869285,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9202-1-263211-000600005C",
+					["npc"] = 263211,
+					["art"] = "Creature",
+					["sn"] = "Morchelmutter",
+					["items"] = {
+						{
+							["id"] = 252532,
+							["n"] = "Kettenhemd des Wächters",
+							["q"] = 3,
+							["ic"] = 132624,
+							["c"] = 1,
+						}, -- [1]
+						{
+							["n"] = "Gold",
+							["gold"] = true,
+							["c"] = 744669,
+						}, -- [2]
+					},
+					["z"] = "Pilzgrotte",
+					["m"] = 9202,
+				}, -- [451]
+				{
+					["t"] = 1763869315,
+					["e"] = "inst_ab",
+					["iid"] = 9202,
+					["inst"] = "Pilzgrotte",
+					["dauer"] = 351,
+					["m"] = 9202,
+				}, -- [452]
+				{
+					["t"] = 1763869318,
 					["e"] = "ausr",
 					["il"] = 612.3,
 					["ilg"] = 615.8,
@@ -3623,48 +5625,48 @@ AzerothTagebuchDB = {
 					["m"] = 2437,
 					["x"] = 0.52,
 					["y"] = 0.38,
-				}, -- [331]
+				}, -- [453]
 				{
-					["t"] = 1763865055,
+					["t"] = 1763869320,
 					["e"] = "gegenstand",
-					["slot"] = 2,
-					["id"] = 230819,
-					["n"] = "Leerengezeichnete Halskette",
+					["slot"] = 9,
+					["id"] = 231515,
+					["n"] = "Amani-Armschienen",
 					["q"] = 3,
-					["il"] = 619.0,
-					["ic"] = 133294,
-					["alt"] = "Sonnenzorn-Halskette",
-					["altil"] = 592.0,
+					["il"] = 615.0,
+					["ic"] = 132606,
+					["alt"] = "Immersang-Armschienen",
+					["altil"] = 591.0,
 					["m"] = 2437,
 					["x"] = 0.52,
 					["y"] = 0.38,
-				}, -- [332]
+				}, -- [454]
 				{
-					["t"] = 1763865057,
+					["t"] = 1763869322,
 					["e"] = "gegenstand",
-					["slot"] = 1,
-					["id"] = 230714,
-					["n"] = "Sonnenzorn-Helm",
+					["slot"] = 5,
+					["id"] = 231118,
+					["n"] = "Morgenruh-Brustplatte",
 					["q"] = 3,
-					["il"] = 614.0,
-					["ic"] = 133071,
-					["alt"] = "Falkenwacht-Helm",
-					["altil"] = 593.0,
+					["il"] = 618.0,
+					["ic"] = 132751,
+					["alt"] = "Sonnenzorn-Brustplatte",
+					["altil"] = 588.0,
 					["m"] = 2437,
 					["x"] = 0.52,
 					["y"] = 0.38,
-				}, -- [333]
+				}, -- [455]
 				{
-					["t"] = 1763865057,
+					["t"] = 1763869322,
 					["e"] = "zone",
 					["z"] = "Zul'Aman",
 					["sz"] = "Amani-Pass",
 					["m"] = 2437,
 					["x"] = 0.52,
 					["y"] = 0.38,
-				}, -- [334]
+				}, -- [456]
 				{
-					["t"] = 1763865062,
+					["t"] = 1763869327,
 					["e"] = "quest_an",
 					["q"] = 90010,
 					["n"] = "Opfergaben für Akil'zon",
@@ -3673,878 +5675,376 @@ AzerothTagebuchDB = {
 					["m"] = 2437,
 					["x"] = 0.52,
 					["y"] = 0.38,
-				}, -- [335]
+				}, -- [457]
 				{
-					["t"] = 1763865072,
+					["t"] = 1763869337,
 					["e"] = "pos",
-					["mo"] = "flug",
+					["mo"] = "zu_fuss",
 					["m"] = 2437,
-					["x"] = 0.5199,
-					["y"] = 0.3872,
-				}, -- [336]
+					["x"] = 0.5299,
+					["y"] = 0.3761,
+				}, -- [458]
 				{
-					["t"] = 1763865082,
+					["t"] = 1763869347,
 					["e"] = "pos",
-					["mo"] = "flug",
+					["mo"] = "zu_fuss",
 					["m"] = 2437,
-					["x"] = 0.5261,
-					["y"] = 0.399,
-				}, -- [337]
+					["x"] = 0.533,
+					["y"] = 0.3658,
+				}, -- [459]
 				{
-					["t"] = 1763865092,
+					["t"] = 1763869357,
 					["e"] = "pos",
-					["mo"] = "flug",
+					["mo"] = "zu_fuss",
 					["m"] = 2437,
-					["x"] = 0.5217,
-					["y"] = 0.4088,
-				}, -- [338]
+					["x"] = 0.5368,
+					["y"] = 0.3628,
+				}, -- [460]
 				{
-					["t"] = 1763865102,
+					["t"] = 1763869367,
 					["e"] = "pos",
-					["mo"] = "flug",
+					["mo"] = "zu_fuss",
 					["m"] = 2437,
-					["x"] = 0.5234,
-					["y"] = 0.4143,
-				}, -- [339]
+					["x"] = 0.5481,
+					["y"] = 0.3543,
+				}, -- [461]
 				{
-					["t"] = 1763865112,
+					["t"] = 1763869377,
 					["e"] = "pos",
-					["mo"] = "flug",
+					["mo"] = "zu_fuss",
 					["m"] = 2437,
-					["x"] = 0.5221,
-					["y"] = 0.4272,
-				}, -- [340]
+					["x"] = 0.5556,
+					["y"] = 0.3489,
+				}, -- [462]
 				{
-					["t"] = 1763865122,
+					["t"] = 1763869387,
 					["e"] = "pos",
-					["mo"] = "flug",
+					["mo"] = "zu_fuss",
 					["m"] = 2437,
-					["x"] = 0.5306,
-					["y"] = 0.4352,
-				}, -- [341]
+					["x"] = 0.5649,
+					["y"] = 0.3451,
+				}, -- [463]
 				{
-					["t"] = 1763865132,
+					["t"] = 1763869397,
 					["e"] = "pos",
-					["mo"] = "flug",
+					["mo"] = "zu_fuss",
 					["m"] = 2437,
-					["x"] = 0.5321,
-					["y"] = 0.4394,
-				}, -- [342]
+					["x"] = 0.5663,
+					["y"] = 0.3403,
+				}, -- [464]
 				{
-					["t"] = 1763865142,
+					["t"] = 1763869407,
 					["e"] = "pos",
-					["mo"] = "flug",
+					["mo"] = "zu_fuss",
 					["m"] = 2437,
-					["x"] = 0.5276,
-					["y"] = 0.452,
-				}, -- [343]
+					["x"] = 0.5715,
+					["y"] = 0.3312,
+				}, -- [465]
 				{
-					["t"] = 1763865152,
+					["t"] = 1763869417,
 					["e"] = "pos",
-					["mo"] = "flug",
+					["mo"] = "zu_fuss",
 					["m"] = 2437,
-					["x"] = 0.5346,
-					["y"] = 0.4648,
-				}, -- [344]
+					["x"] = 0.5813,
+					["y"] = 0.3227,
+				}, -- [466]
 				{
-					["t"] = 1763865162,
+					["t"] = 1763869427,
 					["e"] = "pos",
-					["mo"] = "flug",
+					["mo"] = "zu_fuss",
 					["m"] = 2437,
-					["x"] = 0.5312,
-					["y"] = 0.4682,
-				}, -- [345]
+					["x"] = 0.5854,
+					["y"] = 0.3209,
+				}, -- [467]
 				{
-					["t"] = 1763865172,
+					["t"] = 1763869437,
 					["e"] = "pos",
-					["mo"] = "flug",
+					["mo"] = "zu_fuss",
 					["m"] = 2437,
-					["x"] = 0.5328,
-					["y"] = 0.4792,
-				}, -- [346]
+					["x"] = 0.592,
+					["y"] = 0.3129,
+				}, -- [468]
 				{
-					["t"] = 1763865182,
+					["t"] = 1763869447,
 					["e"] = "pos",
-					["mo"] = "flug",
+					["mo"] = "zu_fuss",
 					["m"] = 2437,
-					["x"] = 0.538,
-					["y"] = 0.4857,
-				}, -- [347]
+					["x"] = 0.6063,
+					["y"] = 0.3035,
+				}, -- [469]
 				{
-					["t"] = 1763865192,
+					["t"] = 1763869457,
 					["e"] = "pos",
-					["mo"] = "flug",
+					["mo"] = "zu_fuss",
 					["m"] = 2437,
-					["x"] = 0.5382,
-					["y"] = 0.4992,
-				}, -- [348]
+					["x"] = 0.6072,
+					["y"] = 0.3011,
+				}, -- [470]
 				{
-					["t"] = 1763865202,
+					["t"] = 1763869467,
 					["e"] = "pos",
-					["mo"] = "flug",
+					["mo"] = "zu_fuss",
 					["m"] = 2437,
-					["x"] = 0.5396,
-					["y"] = 0.5085,
-				}, -- [349]
+					["x"] = 0.6166,
+					["y"] = 0.2952,
+				}, -- [471]
 				{
-					["t"] = 1763865212,
+					["t"] = 1763869477,
 					["e"] = "pos",
-					["mo"] = "flug",
+					["mo"] = "zu_fuss",
 					["m"] = 2437,
-					["x"] = 0.5391,
-					["y"] = 0.514,
-				}, -- [350]
+					["x"] = 0.626,
+					["y"] = 0.2854,
+				}, -- [472]
 				{
-					["t"] = 1763865222,
+					["t"] = 1763869487,
 					["e"] = "pos",
-					["mo"] = "flug",
+					["mo"] = "zu_fuss",
 					["m"] = 2437,
-					["x"] = 0.538,
-					["y"] = 0.5233,
-				}, -- [351]
+					["x"] = 0.6288,
+					["y"] = 0.2802,
+				}, -- [473]
 				{
-					["t"] = 1763865232,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2437,
-					["x"] = 0.5429,
-					["y"] = 0.53,
-				}, -- [352]
-				{
-					["t"] = 1763865242,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2437,
-					["x"] = 0.5394,
-					["y"] = 0.5445,
-				}, -- [353]
-				{
-					["t"] = 1763865252,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2437,
-					["x"] = 0.5411,
-					["y"] = 0.548,
-				}, -- [354]
-				{
-					["t"] = 1763865262,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2437,
-					["x"] = 0.5406,
-					["y"] = 0.5609,
-				}, -- [355]
-				{
-					["t"] = 1763865272,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2437,
-					["x"] = 0.5441,
-					["y"] = 0.5733,
-				}, -- [356]
-				{
-					["t"] = 1763865282,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2437,
-					["x"] = 0.5498,
-					["y"] = 0.5824,
-				}, -- [357]
-				{
-					["t"] = 1763865292,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2437,
-					["x"] = 0.5461,
-					["y"] = 0.5842,
-				}, -- [358]
-				{
-					["t"] = 1763865302,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2437,
-					["x"] = 0.5459,
-					["y"] = 0.5966,
-				}, -- [359]
-				{
-					["t"] = 1763865312,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2437,
-					["x"] = 0.5521,
-					["y"] = 0.6052,
-				}, -- [360]
-				{
-					["t"] = 1763865322,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2437,
-					["x"] = 0.5495,
-					["y"] = 0.614,
-				}, -- [361]
-				{
-					["t"] = 1763865332,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2437,
-					["x"] = 0.5538,
-					["y"] = 0.625,
-				}, -- [362]
-				{
-					["t"] = 1763865376,
+					["t"] = 1763869531,
 					["e"] = "beute",
-					["src"] = "Creature-0-1-2437-1-240005-000500001C",
-					["npc"] = 240005,
+					["src"] = "Creature-0-1-2437-1-240003-000500005D",
+					["npc"] = 240003,
 					["art"] = "Creature",
-					["sn"] = "Wilder Falke",
+					["sn"] = "Amani-Späher",
+					["items"] = {
+						{
+							["id"] = 256195,
+							["n"] = "Amani-Armschienen",
+							["q"] = 2,
+							["ic"] = 132606,
+							["c"] = 1,
+						}, -- [1]
+					},
+					["z"] = "Zul'Aman",
+					["m"] = 2437,
+					["x"] = 0.6288,
+					["y"] = 0.2802,
+				}, -- [474]
+				{
+					["t"] = 1763869575,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-2437-1-240003-000500005E",
+					["npc"] = 240003,
+					["art"] = "Creature",
+					["sn"] = "Amani-Späher",
 					["items"] = {
 					},
 					["z"] = "Zul'Aman",
 					["m"] = 2437,
-					["x"] = 0.5538,
-					["y"] = 0.625,
-				}, -- [363]
+					["x"] = 0.6288,
+					["y"] = 0.2802,
+				}, -- [475]
 				{
-					["t"] = 1763865420,
+					["t"] = 1763869619,
 					["e"] = "beute",
-					["src"] = "Creature-0-1-2437-1-240005-000500001D",
-					["npc"] = 240005,
+					["src"] = "Creature-0-1-2437-1-240003-000500005F",
+					["npc"] = 240003,
 					["art"] = "Creature",
-					["sn"] = "Wilder Falke",
+					["sn"] = "Amani-Späher",
 					["items"] = {
 						{
-							["id"] = 253479,
-							["n"] = "Zähes Fleisch",
-							["q"] = 1,
-							["ic"] = 133971,
-							["c"] = 2,
-						}, -- [1]
-						{
-							["id"] = 253830,
-							["n"] = "Glänzende Feder",
-							["q"] = 1,
+							["id"] = 255861,
+							["n"] = "Trollknochen",
+							["q"] = 0,
 							["ic"] = 133726,
+							["c"] = 1,
+						}, -- [1]
+					},
+					["z"] = "Zul'Aman",
+					["m"] = 2437,
+					["x"] = 0.6288,
+					["y"] = 0.2802,
+				}, -- [476]
+				{
+					["t"] = 1763869663,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-2437-1-240003-0005000060",
+					["npc"] = 240003,
+					["art"] = "Creature",
+					["sn"] = "Amani-Späher",
+					["items"] = {
+						{
+							["id"] = 254563,
+							["n"] = "Leinenstoff",
+							["q"] = 1,
+							["ic"] = 132889,
 							["c"] = 3,
-						}, -- [2]
-					},
-					["z"] = "Zul'Aman",
-					["m"] = 2437,
-					["x"] = 0.5538,
-					["y"] = 0.625,
-				}, -- [364]
-				{
-					["t"] = 1763865464,
-					["e"] = "beute",
-					["src"] = "Creature-0-1-2437-1-240005-000500001E",
-					["npc"] = 240005,
-					["art"] = "Creature",
-					["sn"] = "Wilder Falke",
-					["items"] = {
-						{
-							["id"] = 253479,
-							["n"] = "Zähes Fleisch",
-							["q"] = 1,
-							["ic"] = 133971,
-							["c"] = 2,
-						}, -- [1]
-					},
-					["z"] = "Zul'Aman",
-					["m"] = 2437,
-					["x"] = 0.5538,
-					["y"] = 0.625,
-				}, -- [365]
-				{
-					["t"] = 1763865508,
-					["e"] = "beute",
-					["src"] = "Creature-0-1-2437-1-240005-000500001F",
-					["npc"] = 240005,
-					["art"] = "Creature",
-					["sn"] = "Wilder Falke",
-					["items"] = {
-						{
-							["id"] = 253479,
-							["n"] = "Zähes Fleisch",
-							["q"] = 1,
-							["ic"] = 133971,
-							["c"] = 1,
 						}, -- [1]
 						{
-							["id"] = 253830,
-							["n"] = "Glänzende Feder",
-							["q"] = 1,
+							["id"] = 255861,
+							["n"] = "Trollknochen",
+							["q"] = 0,
 							["ic"] = 133726,
-							["c"] = 1,
+							["c"] = 2,
 						}, -- [2]
 					},
 					["z"] = "Zul'Aman",
 					["m"] = 2437,
-					["x"] = 0.5538,
-					["y"] = 0.625,
-				}, -- [366]
+					["x"] = 0.6288,
+					["y"] = 0.2802,
+				}, -- [477]
 				{
-					["t"] = 1763865513,
+					["t"] = 1763869668,
 					["e"] = "quest_ab",
 					["q"] = 90010,
 					["n"] = "Opfergaben für Akil'zon",
 					["c"] = "Normal",
-					["xp"] = 10512,
-					["g"] = 103755,
+					["xp"] = 19388,
+					["g"] = 99022,
 					["z"] = "Zul'Aman",
 					["lv"] = 82,
 					["m"] = 2437,
-					["x"] = 0.5538,
-					["y"] = 0.625,
-				}, -- [367]
+					["x"] = 0.6288,
+					["y"] = 0.2802,
+				}, -- [478]
 				{
-					["t"] = 1763865518,
+					["t"] = 1763869673,
 					["e"] = "quest_an",
 					["q"] = 90011,
 					["n"] = "Federn des Adlers",
 					["c"] = "Normal",
 					["z"] = "Zul'Aman",
 					["m"] = 2437,
-					["x"] = 0.5538,
-					["y"] = 0.625,
-				}, -- [368]
+					["x"] = 0.6288,
+					["y"] = 0.2802,
+				}, -- [479]
 				{
-					["t"] = 1763865528,
+					["t"] = 1763869683,
 					["e"] = "pos",
-					["mo"] = "reittier",
+					["mo"] = "flug",
 					["m"] = 2437,
-					["x"] = 0.5589,
-					["y"] = 0.6201,
-				}, -- [369]
+					["x"] = 0.6369,
+					["y"] = 0.2881,
+				}, -- [480]
 				{
-					["t"] = 1763865538,
+					["t"] = 1763869693,
 					["e"] = "pos",
-					["mo"] = "reittier",
+					["mo"] = "flug",
 					["m"] = 2437,
-					["x"] = 0.569,
-					["y"] = 0.6193,
-				}, -- [370]
+					["x"] = 0.6454,
+					["y"] = 0.2969,
+				}, -- [481]
 				{
-					["t"] = 1763865548,
+					["t"] = 1763869703,
 					["e"] = "pos",
-					["mo"] = "reittier",
+					["mo"] = "flug",
 					["m"] = 2437,
-					["x"] = 0.5808,
-					["y"] = 0.613,
-				}, -- [371]
+					["x"] = 0.647,
+					["y"] = 0.3029,
+				}, -- [482]
 				{
-					["t"] = 1763865558,
+					["t"] = 1763869713,
 					["e"] = "pos",
-					["mo"] = "reittier",
+					["mo"] = "flug",
 					["m"] = 2437,
-					["x"] = 0.5879,
-					["y"] = 0.6095,
-				}, -- [372]
+					["x"] = 0.6584,
+					["y"] = 0.3026,
+				}, -- [483]
 				{
-					["t"] = 1763865568,
+					["t"] = 1763869723,
 					["e"] = "pos",
-					["mo"] = "reittier",
+					["mo"] = "flug",
 					["m"] = 2437,
-					["x"] = 0.5929,
-					["y"] = 0.6133,
-				}, -- [373]
+					["x"] = 0.662,
+					["y"] = 0.3097,
+				}, -- [484]
 				{
-					["t"] = 1763865578,
+					["t"] = 1763869733,
 					["e"] = "pos",
-					["mo"] = "reittier",
+					["mo"] = "flug",
 					["m"] = 2437,
-					["x"] = 0.6033,
-					["y"] = 0.6069,
-				}, -- [374]
+					["x"] = 0.6718,
+					["y"] = 0.3215,
+				}, -- [485]
 				{
-					["t"] = 1763865588,
+					["t"] = 1763869743,
 					["e"] = "pos",
-					["mo"] = "reittier",
+					["mo"] = "flug",
 					["m"] = 2437,
-					["x"] = 0.6131,
-					["y"] = 0.6073,
-				}, -- [375]
+					["x"] = 0.6728,
+					["y"] = 0.3225,
+				}, -- [486]
 				{
-					["t"] = 1763865598,
+					["t"] = 1763869753,
 					["e"] = "pos",
-					["mo"] = "reittier",
+					["mo"] = "flug",
 					["m"] = 2437,
-					["x"] = 0.6206,
-					["y"] = 0.5977,
-				}, -- [376]
+					["x"] = 0.6851,
+					["y"] = 0.3292,
+				}, -- [487]
 				{
-					["t"] = 1763865608,
+					["t"] = 1763869763,
 					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.6321,
-					["y"] = 0.601,
-				}, -- [377]
-				{
-					["t"] = 1763865618,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.6375,
-					["y"] = 0.592,
-				}, -- [378]
-				{
-					["t"] = 1763865628,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.6487,
-					["y"] = 0.5899,
-				}, -- [379]
-				{
-					["t"] = 1763865638,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.658,
-					["y"] = 0.5917,
-				}, -- [380]
-				{
-					["t"] = 1763865648,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.6671,
-					["y"] = 0.5826,
-				}, -- [381]
-				{
-					["t"] = 1763865658,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.6755,
-					["y"] = 0.5852,
-				}, -- [382]
-				{
-					["t"] = 1763865668,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.6818,
-					["y"] = 0.5769,
-				}, -- [383]
-				{
-					["t"] = 1763865678,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.6904,
-					["y"] = 0.574,
-				}, -- [384]
-				{
-					["t"] = 1763865688,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.7043,
-					["y"] = 0.571,
-				}, -- [385]
-				{
-					["t"] = 1763865698,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.7107,
-					["y"] = 0.575,
-				}, -- [386]
-				{
-					["t"] = 1763865708,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.72,
-					["y"] = 0.5713,
-				}, -- [387]
-				{
-					["t"] = 1763865718,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.7254,
-					["y"] = 0.5648,
-				}, -- [388]
-				{
-					["t"] = 1763865728,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.7357,
-					["y"] = 0.5595,
-				}, -- [389]
-				{
-					["t"] = 1763865738,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.7396,
-					["y"] = 0.5598,
-				}, -- [390]
-				{
-					["t"] = 1763865748,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.7518,
-					["y"] = 0.5562,
-				}, -- [391]
-				{
-					["t"] = 1763865758,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.7629,
-					["y"] = 0.5553,
-				}, -- [392]
-				{
-					["t"] = 1763865768,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.7664,
-					["y"] = 0.5513,
-				}, -- [393]
-				{
-					["t"] = 1763865778,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.779,
-					["y"] = 0.5472,
-				}, -- [394]
-				{
-					["t"] = 1763865788,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.7846,
-					["y"] = 0.549,
-				}, -- [395]
-				{
-					["t"] = 1763865798,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.7964,
-					["y"] = 0.5414,
-				}, -- [396]
-				{
-					["t"] = 1763865808,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.8001,
-					["y"] = 0.5411,
-				}, -- [397]
-				{
-					["t"] = 1763865852,
-					["e"] = "beute",
-					["src"] = "Creature-0-1-2437-1-240004-0005000020",
-					["npc"] = 240004,
-					["art"] = "Creature",
-					["sn"] = "Schattenpirscher",
-					["items"] = {
-						{
-							["id"] = 255076,
-							["n"] = "Schattenhafte Klaue",
-							["q"] = 0,
-							["ic"] = 134297,
-							["c"] = 2,
-						}, -- [1]
-					},
-					["z"] = "Zul'Aman",
-					["m"] = 2437,
-					["x"] = 0.8001,
-					["y"] = 0.5411,
-				}, -- [398]
-				{
-					["t"] = 1763865896,
-					["e"] = "beute",
-					["src"] = "Creature-0-1-2437-1-240004-0005000021",
-					["npc"] = 240004,
-					["art"] = "Creature",
-					["sn"] = "Schattenpirscher",
-					["items"] = {
-						{
-							["id"] = 255076,
-							["n"] = "Schattenhafte Klaue",
-							["q"] = 0,
-							["ic"] = 134297,
-							["c"] = 2,
-						}, -- [1]
-						{
-							["id"] = 254563,
-							["n"] = "Leinenstoff",
-							["q"] = 1,
-							["ic"] = 132889,
-							["c"] = 1,
-						}, -- [2]
-					},
-					["z"] = "Zul'Aman",
-					["m"] = 2437,
-					["x"] = 0.8001,
-					["y"] = 0.5411,
-				}, -- [399]
-				{
-					["t"] = 1763865940,
-					["e"] = "beute",
-					["src"] = "Creature-0-1-2437-1-240004-0005000022",
-					["npc"] = 240004,
-					["art"] = "Creature",
-					["sn"] = "Schattenpirscher",
-					["items"] = {
-						{
-							["id"] = 255076,
-							["n"] = "Schattenhafte Klaue",
-							["q"] = 0,
-							["ic"] = 134297,
-							["c"] = 1,
-						}, -- [1]
-					},
-					["z"] = "Zul'Aman",
-					["m"] = 2437,
-					["x"] = 0.8001,
-					["y"] = 0.5411,
-				}, -- [400]
-				{
-					["t"] = 1763865945,
-					["e"] = "quest_ab",
-					["q"] = 90011,
-					["n"] = "Federn des Adlers",
-					["c"] = "Normal",
-					["xp"] = 21440,
-					["g"] = 53720,
-					["z"] = "Zul'Aman",
-					["lv"] = 82,
-					["m"] = 2437,
-					["x"] = 0.8001,
-					["y"] = 0.5411,
-				}, -- [401]
-				{
-					["t"] = 1763865950,
-					["e"] = "quest_an",
-					["q"] = 90012,
-					["n"] = "Der Pfad des Luchses",
-					["c"] = "Normal",
-					["z"] = "Zul'Aman",
-					["m"] = 2437,
-					["x"] = 0.8001,
-					["y"] = 0.5411,
-				}, -- [402]
-				{
-					["t"] = 1763865960,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.795,
-					["y"] = 0.5439,
-				}, -- [403]
-				{
-					["t"] = 1763865970,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.7821,
-					["y"] = 0.5498,
-				}, -- [404]
-				{
-					["t"] = 1763865980,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.7809,
-					["y"] = 0.5576,
-				}, -- [405]
-				{
-					["t"] = 1763865990,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.7718,
-					["y"] = 0.5676,
-				}, -- [406]
-				{
-					["t"] = 1763866000,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.7659,
-					["y"] = 0.5674,
-				}, -- [407]
-				{
-					["t"] = 1763866010,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.7556,
-					["y"] = 0.5731,
-				}, -- [408]
-				{
-					["t"] = 1763866020,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.7469,
-					["y"] = 0.5781,
-				}, -- [409]
-				{
-					["t"] = 1763866030,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.7414,
-					["y"] = 0.5894,
-				}, -- [410]
-				{
-					["t"] = 1763866040,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.7375,
-					["y"] = 0.5956,
-				}, -- [411]
-				{
-					["t"] = 1763866050,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.7263,
-					["y"] = 0.6016,
-				}, -- [412]
-				{
-					["t"] = 1763866060,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.7171,
-					["y"] = 0.608,
-				}, -- [413]
-				{
-					["t"] = 1763866070,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.712,
-					["y"] = 0.6113,
-				}, -- [414]
-				{
-					["t"] = 1763866080,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.7074,
-					["y"] = 0.613,
-				}, -- [415]
-				{
-					["t"] = 1763866090,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.7008,
-					["y"] = 0.6235,
-				}, -- [416]
-				{
-					["t"] = 1763866100,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.695,
-					["y"] = 0.6289,
-				}, -- [417]
-				{
-					["t"] = 1763866110,
-					["e"] = "pos",
-					["mo"] = "reittier",
+					["mo"] = "flug",
 					["m"] = 2437,
 					["x"] = 0.6875,
-					["y"] = 0.6346,
-				}, -- [418]
+					["y"] = 0.3388,
+				}, -- [488]
 				{
-					["t"] = 1763866120,
+					["t"] = 1763869773,
 					["e"] = "pos",
-					["mo"] = "reittier",
+					["mo"] = "flug",
 					["m"] = 2437,
-					["x"] = 0.6783,
-					["y"] = 0.637,
-				}, -- [419]
+					["x"] = 0.694,
+					["y"] = 0.3473,
+				}, -- [489]
 				{
-					["t"] = 1763866130,
+					["t"] = 1763869783,
 					["e"] = "pos",
-					["mo"] = "reittier",
+					["mo"] = "flug",
 					["m"] = 2437,
-					["x"] = 0.67,
-					["y"] = 0.6457,
-				}, -- [420]
+					["x"] = 0.705,
+					["y"] = 0.3547,
+				}, -- [490]
 				{
-					["t"] = 1763866140,
+					["t"] = 1763869793,
 					["e"] = "pos",
-					["mo"] = "reittier",
+					["mo"] = "flug",
 					["m"] = 2437,
-					["x"] = 0.6593,
-					["y"] = 0.6545,
-				}, -- [421]
+					["x"] = 0.7109,
+					["y"] = 0.3576,
+				}, -- [491]
 				{
-					["t"] = 1763866150,
+					["t"] = 1763869803,
 					["e"] = "pos",
-					["mo"] = "reittier",
+					["mo"] = "flug",
 					["m"] = 2437,
-					["x"] = 0.653,
-					["y"] = 0.6556,
-				}, -- [422]
+					["x"] = 0.7146,
+					["y"] = 0.364,
+				}, -- [492]
 				{
-					["t"] = 1763866160,
+					["t"] = 1763869813,
 					["e"] = "pos",
-					["mo"] = "reittier",
+					["mo"] = "flug",
 					["m"] = 2437,
-					["x"] = 0.6458,
-					["y"] = 0.6663,
-				}, -- [423]
+					["x"] = 0.7175,
+					["y"] = 0.3664,
+				}, -- [493]
 				{
-					["t"] = 1763866170,
+					["t"] = 1763869823,
 					["e"] = "pos",
-					["mo"] = "reittier",
+					["mo"] = "flug",
 					["m"] = 2437,
-					["x"] = 0.6439,
-					["y"] = 0.6658,
-				}, -- [424]
+					["x"] = 0.7317,
+					["y"] = 0.3744,
+				}, -- [494]
 				{
-					["t"] = 1763866180,
+					["t"] = 1763869833,
 					["e"] = "pos",
-					["mo"] = "reittier",
+					["mo"] = "flug",
 					["m"] = 2437,
-					["x"] = 0.6372,
-					["y"] = 0.6768,
-				}, -- [425]
+					["x"] = 0.7378,
+					["y"] = 0.3853,
+				}, -- [495]
 				{
-					["t"] = 1763866190,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.6283,
-					["y"] = 0.6812,
-				}, -- [426]
-				{
-					["t"] = 1763866200,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.6183,
-					["y"] = 0.6848,
-				}, -- [427]
-				{
-					["t"] = 1763866210,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2437,
-					["x"] = 0.6121,
-					["y"] = 0.6942,
-				}, -- [428]
-				{
-					["t"] = 1763866254,
+					["t"] = 1763869877,
 					["e"] = "beute",
-					["src"] = "Creature-0-1-2437-1-240004-0005000023",
+					["src"] = "Creature-0-1-2437-1-240004-0005000061",
 					["npc"] = 240004,
 					["art"] = "Creature",
 					["sn"] = "Schattenpirscher",
@@ -4556,37 +6056,16 @@ AzerothTagebuchDB = {
 							["ic"] = 134297,
 							["c"] = 3,
 						}, -- [1]
-						{
-							["id"] = 254563,
-							["n"] = "Leinenstoff",
-							["q"] = 1,
-							["ic"] = 132889,
-							["c"] = 2,
-						}, -- [2]
 					},
 					["z"] = "Zul'Aman",
 					["m"] = 2437,
-					["x"] = 0.6121,
-					["y"] = 0.6942,
-				}, -- [429]
+					["x"] = 0.7378,
+					["y"] = 0.3853,
+				}, -- [496]
 				{
-					["t"] = 1763866298,
+					["t"] = 1763869921,
 					["e"] = "beute",
-					["src"] = "Creature-0-1-2437-1-240004-0005000024",
-					["npc"] = 240004,
-					["art"] = "Creature",
-					["sn"] = "Schattenpirscher",
-					["items"] = {
-					},
-					["z"] = "Zul'Aman",
-					["m"] = 2437,
-					["x"] = 0.6121,
-					["y"] = 0.6942,
-				}, -- [430]
-				{
-					["t"] = 1763866342,
-					["e"] = "beute",
-					["src"] = "Creature-0-1-2437-1-240004-0005000025",
+					["src"] = "Creature-0-1-2437-1-240004-0005000062",
 					["npc"] = 240004,
 					["art"] = "Creature",
 					["sn"] = "Schattenpirscher",
@@ -4603,161 +6082,463 @@ AzerothTagebuchDB = {
 							["n"] = "Leinenstoff",
 							["q"] = 1,
 							["ic"] = 132889,
-							["c"] = 2,
+							["c"] = 3,
 						}, -- [2]
 					},
 					["z"] = "Zul'Aman",
 					["m"] = 2437,
-					["x"] = 0.6121,
-					["y"] = 0.6942,
-				}, -- [431]
+					["x"] = 0.7378,
+					["y"] = 0.3853,
+				}, -- [497]
 				{
-					["t"] = 1763866386,
+					["t"] = 1763869965,
 					["e"] = "beute",
-					["src"] = "Creature-0-1-2437-1-240004-0005000026",
+					["src"] = "Creature-0-1-2437-1-240004-0005000063",
 					["npc"] = 240004,
 					["art"] = "Creature",
 					["sn"] = "Schattenpirscher",
 					["items"] = {
 						{
-							["id"] = 255076,
-							["n"] = "Schattenhafte Klaue",
-							["q"] = 0,
-							["ic"] = 134297,
-							["c"] = 2,
+							["id"] = 254563,
+							["n"] = "Leinenstoff",
+							["q"] = 1,
+							["ic"] = 132889,
+							["c"] = 1,
 						}, -- [1]
 					},
 					["z"] = "Zul'Aman",
 					["m"] = 2437,
-					["x"] = 0.6121,
-					["y"] = 0.6942,
-				}, -- [432]
+					["x"] = 0.7378,
+					["y"] = 0.3853,
+				}, -- [498]
 				{
-					["t"] = 1763866391,
+					["t"] = 1763870009,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-2437-1-240004-0005000064",
+					["npc"] = 240004,
+					["art"] = "Creature",
+					["sn"] = "Schattenpirscher",
+					["items"] = {
+						{
+							["id"] = 254563,
+							["n"] = "Leinenstoff",
+							["q"] = 1,
+							["ic"] = 132889,
+							["c"] = 1,
+						}, -- [1]
+					},
+					["z"] = "Zul'Aman",
+					["m"] = 2437,
+					["x"] = 0.7378,
+					["y"] = 0.3853,
+				}, -- [499]
+				{
+					["t"] = 1763870014,
+					["e"] = "quest_ab",
+					["q"] = 90011,
+					["n"] = "Federn des Adlers",
+					["c"] = "Normal",
+					["xp"] = 19347,
+					["g"] = 41179,
+					["z"] = "Zul'Aman",
+					["lv"] = 82,
+					["m"] = 2437,
+					["x"] = 0.7378,
+					["y"] = 0.3853,
+				}, -- [500]
+				{
+					["t"] = 1763870019,
+					["e"] = "quest_an",
+					["q"] = 90012,
+					["n"] = "Der Pfad des Luchses",
+					["c"] = "Normal",
+					["z"] = "Zul'Aman",
+					["m"] = 2437,
+					["x"] = 0.7378,
+					["y"] = 0.3853,
+				}, -- [501]
+				{
+					["t"] = 1763870029,
+					["e"] = "pos",
+					["mo"] = "zu_fuss",
+					["m"] = 2437,
+					["x"] = 0.7402,
+					["y"] = 0.3967,
+				}, -- [502]
+				{
+					["t"] = 1763870039,
+					["e"] = "pos",
+					["mo"] = "zu_fuss",
+					["m"] = 2437,
+					["x"] = 0.7346,
+					["y"] = 0.4076,
+				}, -- [503]
+				{
+					["t"] = 1763870049,
+					["e"] = "pos",
+					["mo"] = "zu_fuss",
+					["m"] = 2437,
+					["x"] = 0.7369,
+					["y"] = 0.4146,
+				}, -- [504]
+				{
+					["t"] = 1763870059,
+					["e"] = "pos",
+					["mo"] = "zu_fuss",
+					["m"] = 2437,
+					["x"] = 0.7394,
+					["y"] = 0.4246,
+				}, -- [505]
+				{
+					["t"] = 1763870069,
+					["e"] = "pos",
+					["mo"] = "zu_fuss",
+					["m"] = 2437,
+					["x"] = 0.7377,
+					["y"] = 0.431,
+				}, -- [506]
+				{
+					["t"] = 1763870079,
+					["e"] = "pos",
+					["mo"] = "zu_fuss",
+					["m"] = 2437,
+					["x"] = 0.7336,
+					["y"] = 0.4389,
+				}, -- [507]
+				{
+					["t"] = 1763870089,
+					["e"] = "pos",
+					["mo"] = "zu_fuss",
+					["m"] = 2437,
+					["x"] = 0.7315,
+					["y"] = 0.4542,
+				}, -- [508]
+				{
+					["t"] = 1763870099,
+					["e"] = "pos",
+					["mo"] = "zu_fuss",
+					["m"] = 2437,
+					["x"] = 0.7382,
+					["y"] = 0.4619,
+				}, -- [509]
+				{
+					["t"] = 1763870109,
+					["e"] = "pos",
+					["mo"] = "zu_fuss",
+					["m"] = 2437,
+					["x"] = 0.7312,
+					["y"] = 0.4712,
+				}, -- [510]
+				{
+					["t"] = 1763870119,
+					["e"] = "pos",
+					["mo"] = "zu_fuss",
+					["m"] = 2437,
+					["x"] = 0.7352,
+					["y"] = 0.4784,
+				}, -- [511]
+				{
+					["t"] = 1763870129,
+					["e"] = "pos",
+					["mo"] = "zu_fuss",
+					["m"] = 2437,
+					["x"] = 0.7309,
+					["y"] = 0.4902,
+				}, -- [512]
+				{
+					["t"] = 1763870139,
+					["e"] = "pos",
+					["mo"] = "zu_fuss",
+					["m"] = 2437,
+					["x"] = 0.7346,
+					["y"] = 0.4955,
+				}, -- [513]
+				{
+					["t"] = 1763870149,
+					["e"] = "pos",
+					["mo"] = "zu_fuss",
+					["m"] = 2437,
+					["x"] = 0.7318,
+					["y"] = 0.5046,
+				}, -- [514]
+				{
+					["t"] = 1763870159,
+					["e"] = "pos",
+					["mo"] = "zu_fuss",
+					["m"] = 2437,
+					["x"] = 0.7315,
+					["y"] = 0.5193,
+				}, -- [515]
+				{
+					["t"] = 1763870169,
+					["e"] = "pos",
+					["mo"] = "zu_fuss",
+					["m"] = 2437,
+					["x"] = 0.7288,
+					["y"] = 0.5272,
+				}, -- [516]
+				{
+					["t"] = 1763870179,
+					["e"] = "pos",
+					["mo"] = "zu_fuss",
+					["m"] = 2437,
+					["x"] = 0.7353,
+					["y"] = 0.5366,
+				}, -- [517]
+				{
+					["t"] = 1763870189,
+					["e"] = "pos",
+					["mo"] = "zu_fuss",
+					["m"] = 2437,
+					["x"] = 0.7325,
+					["y"] = 0.5436,
+				}, -- [518]
+				{
+					["t"] = 1763870199,
+					["e"] = "pos",
+					["mo"] = "zu_fuss",
+					["m"] = 2437,
+					["x"] = 0.7296,
+					["y"] = 0.5551,
+				}, -- [519]
+				{
+					["t"] = 1763870209,
+					["e"] = "pos",
+					["mo"] = "zu_fuss",
+					["m"] = 2437,
+					["x"] = 0.7333,
+					["y"] = 0.5587,
+				}, -- [520]
+				{
+					["t"] = 1763870219,
+					["e"] = "pos",
+					["mo"] = "zu_fuss",
+					["m"] = 2437,
+					["x"] = 0.7307,
+					["y"] = 0.5686,
+				}, -- [521]
+				{
+					["t"] = 1763870229,
+					["e"] = "pos",
+					["mo"] = "zu_fuss",
+					["m"] = 2437,
+					["x"] = 0.73,
+					["y"] = 0.5775,
+				}, -- [522]
+				{
+					["t"] = 1763870239,
+					["e"] = "pos",
+					["mo"] = "zu_fuss",
+					["m"] = 2437,
+					["x"] = 0.7304,
+					["y"] = 0.5921,
+				}, -- [523]
+				{
+					["t"] = 1763870249,
+					["e"] = "pos",
+					["mo"] = "zu_fuss",
+					["m"] = 2437,
+					["x"] = 0.7321,
+					["y"] = 0.6003,
+				}, -- [524]
+				{
+					["t"] = 1763870259,
+					["e"] = "pos",
+					["mo"] = "zu_fuss",
+					["m"] = 2437,
+					["x"] = 0.7275,
+					["y"] = 0.6086,
+				}, -- [525]
+				{
+					["t"] = 1763870269,
+					["e"] = "pos",
+					["mo"] = "zu_fuss",
+					["m"] = 2437,
+					["x"] = 0.729,
+					["y"] = 0.6167,
+				}, -- [526]
+				{
+					["t"] = 1763870313,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-2437-1-240003-0005000065",
+					["npc"] = 240003,
+					["art"] = "Creature",
+					["sn"] = "Amani-Späher",
+					["items"] = {
+						{
+							["id"] = 254563,
+							["n"] = "Leinenstoff",
+							["q"] = 1,
+							["ic"] = 132889,
+							["c"] = 1,
+						}, -- [1]
+						{
+							["id"] = 255861,
+							["n"] = "Trollknochen",
+							["q"] = 0,
+							["ic"] = 133726,
+							["c"] = 1,
+						}, -- [2]
+					},
+					["z"] = "Zul'Aman",
+					["m"] = 2437,
+					["x"] = 0.729,
+					["y"] = 0.6167,
+				}, -- [527]
+				{
+					["t"] = 1763870357,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-2437-1-240003-0005000066",
+					["npc"] = 240003,
+					["art"] = "Creature",
+					["sn"] = "Amani-Späher",
+					["items"] = {
+						{
+							["id"] = 254563,
+							["n"] = "Leinenstoff",
+							["q"] = 1,
+							["ic"] = 132889,
+							["c"] = 3,
+						}, -- [1]
+						{
+							["id"] = 255861,
+							["n"] = "Trollknochen",
+							["q"] = 0,
+							["ic"] = 133726,
+							["c"] = 1,
+						}, -- [2]
+					},
+					["z"] = "Zul'Aman",
+					["m"] = 2437,
+					["x"] = 0.729,
+					["y"] = 0.6167,
+				}, -- [528]
+				{
+					["t"] = 1763870362,
 					["e"] = "quest_ab",
 					["q"] = 90012,
 					["n"] = "Der Pfad des Luchses",
 					["c"] = "Normal",
-					["xp"] = 20779,
-					["g"] = 150137,
+					["xp"] = 11517,
+					["g"] = 90693,
 					["z"] = "Zul'Aman",
 					["lv"] = 82,
 					["m"] = 2437,
-					["x"] = 0.6121,
-					["y"] = 0.6942,
-				}, -- [433]
+					["x"] = 0.729,
+					["y"] = 0.6167,
+				}, -- [529]
 				{
-					["t"] = 1763866396,
+					["t"] = 1763870367,
 					["e"] = "quest_an",
 					["q"] = 90013,
 					["n"] = "Ein Ruf aus Harandar",
 					["c"] = "Campaign",
 					["z"] = "Zul'Aman",
 					["m"] = 2437,
-					["x"] = 0.6121,
-					["y"] = 0.6942,
-				}, -- [434]
+					["x"] = 0.729,
+					["y"] = 0.6167,
+				}, -- [530]
 				{
-					["t"] = 1763866441,
+					["t"] = 1763870412,
 					["e"] = "notiz",
 					["txt"] = "Morgen geht es nach Harandar.",
 					["z"] = "Zul'Aman",
 					["m"] = 2437,
-					["x"] = 0.6121,
-					["y"] = 0.6942,
-				}, -- [435]
+					["x"] = 0.729,
+					["y"] = 0.6167,
+				}, -- [531]
 				{
-					["t"] = 1763866471,
+					["t"] = 1763870442,
 					["e"] = "logout",
-					["dauer"] = 3266,
-					["g"] = 6022327,
-					["dg"] = 307612,
+					["dauer"] = 7237,
+					["g"] = 5945609,
+					["dg"] = 230894,
 					["m"] = 2437,
-					["x"] = 0.6121,
-					["y"] = 0.6942,
-				}, -- [436]
+					["x"] = 0.729,
+					["y"] = 0.6167,
+				}, -- [532]
 			},
 			["guild"] = "Hüter des Lichts-Antonidas",
 			["bags"] = {
-				["t"] = 1763866471,
+				["t"] = 1763870442,
 				["tabs"] = {
 					{
 						["name"] = "Taschen",
 						["items"] = {
 							{
-								["id"] = 265861,
-								["n"] = "Trollknochen",
-								["q"] = 0,
-								["ic"] = 133726,
-								["c"] = 20,
-							}, -- [1]
-							{
 								["id"] = 266412,
 								["n"] = "Leerensplitter",
 								["q"] = 1,
 								["ic"] = 134075,
-								["c"] = 12,
-							}, -- [2]
-							{
-								["id"] = 266697,
-								["n"] = "Heiltrank",
-								["q"] = 1,
-								["ic"] = 133971,
-								["c"] = 5,
-							}, -- [3]
+								["c"] = 1,
+							}, -- [1]
 							{
 								["id"] = 264939,
 								["n"] = "Amethyst",
 								["q"] = 3,
 								["ic"] = 134075,
-								["c"] = 5,
+								["c"] = 12,
+							}, -- [2]
+							{
+								["id"] = 263479,
+								["n"] = "Zähes Fleisch",
+								["q"] = 1,
+								["ic"] = 133971,
+								["c"] = 20,
+							}, -- [3]
+							{
+								["id"] = 266899,
+								["n"] = "Splitterkern",
+								["q"] = 2,
+								["ic"] = 134123,
+								["c"] = 20,
 							}, -- [4]
 							{
 								["id"] = 261965,
 								["n"] = "Scharfe Kralle",
 								["q"] = 0,
 								["ic"] = 134297,
-								["c"] = 20,
+								["c"] = 5,
 							}, -- [5]
 							{
-								["id"] = 266899,
-								["n"] = "Splitterkern",
-								["q"] = 2,
-								["ic"] = 134123,
-								["c"] = 87,
+								["id"] = 268592,
+								["n"] = "Zerfetztes Luchsfell",
+								["q"] = 1,
+								["ic"] = 134366,
+								["c"] = 20,
 							}, -- [6]
 							{
-								["id"] = 267035,
-								["n"] = "Leinenhemd",
-								["q"] = 1,
-								["ic"] = 135030,
+								["id"] = 264382,
+								["n"] = "Amani-Handschuhe",
+								["q"] = 3,
+								["ic"] = 132938,
 								["c"] = 1,
-								["il"] = -9.0,
+								["il"] = 593.0,
 							}, -- [7]
 							{
-								["id"] = 267588,
-								["n"] = "Leerengezeichnete Beinschützer",
+								["id"] = 267613,
+								["n"] = "Immersang-Ring",
 								["q"] = 4,
-								["ic"] = 134584,
+								["ic"] = 133347,
 								["c"] = 1,
-								["il"] = 576.0,
+								["il"] = 578.0,
 							}, -- [8]
 						},
 					}, -- [1]
 				},
 			},
 			["bank"] = {
-				["t"] = 1763863471,
+				["t"] = 1763867442,
 				["tabs"] = {
 					{
 						["name"] = "Fach 1",
 						["items"] = {
 							{
-								["id"] = 265861,
-								["n"] = "Trollknochen",
-								["q"] = 0,
-								["ic"] = 133726,
-								["c"] = 87,
+								["id"] = 264939,
+								["n"] = "Amethyst",
+								["q"] = 3,
+								["ic"] = 134075,
+								["c"] = 5,
 							}, -- [1]
 							{
 								["id"] = 268592,
@@ -4767,18 +6548,18 @@ AzerothTagebuchDB = {
 								["c"] = 1,
 							}, -- [2]
 							{
-								["id"] = 264939,
-								["n"] = "Amethyst",
-								["q"] = 3,
-								["ic"] = 134075,
-								["c"] = 200,
+								["id"] = 266899,
+								["n"] = "Splitterkern",
+								["q"] = 2,
+								["ic"] = 134123,
+								["c"] = 87,
 							}, -- [3]
 							{
-								["id"] = 261965,
-								["n"] = "Scharfe Kralle",
-								["q"] = 0,
-								["ic"] = 134297,
-								["c"] = 20,
+								["id"] = 264563,
+								["n"] = "Leinenstoff",
+								["q"] = 1,
+								["ic"] = 132889,
+								["c"] = 12,
 							}, -- [4]
 							{
 								["id"] = 266412,
@@ -4788,28 +6569,28 @@ AzerothTagebuchDB = {
 								["c"] = 200,
 							}, -- [5]
 							{
-								["id"] = 267228,
-								["n"] = "Morgenruh-Umhang",
-								["q"] = 4,
-								["ic"] = 133754,
+								["id"] = 269737,
+								["n"] = "Morgenruh-Brustplatte",
+								["q"] = 3,
+								["ic"] = 132751,
 								["c"] = 1,
-								["il"] = 566.0,
+								["il"] = 607.0,
 							}, -- [6]
 							{
-								["id"] = 267133,
-								["n"] = "Immersang-Gürtel",
-								["q"] = 2,
-								["ic"] = 132502,
+								["id"] = 267613,
+								["n"] = "Immersang-Ring",
+								["q"] = 4,
+								["ic"] = 133347,
 								["c"] = 1,
-								["il"] = 567.0,
+								["il"] = 566.0,
 							}, -- [7]
 							{
-								["id"] = 265852,
-								["n"] = "Leerengezeichnete Halskette",
+								["id"] = 264382,
+								["n"] = "Amani-Handschuhe",
 								["q"] = 3,
-								["ic"] = 133294,
+								["ic"] = 132938,
 								["c"] = 1,
-								["il"] = 604.0,
+								["il"] = 597.0,
 							}, -- [8]
 						},
 					}, -- [1]
@@ -4817,11 +6598,11 @@ AzerothTagebuchDB = {
 						["name"] = "Handwerk",
 						["items"] = {
 							{
-								["id"] = 263479,
-								["n"] = "Zähes Fleisch",
+								["id"] = 266412,
+								["n"] = "Leerensplitter",
 								["q"] = 1,
-								["ic"] = 133971,
-								["c"] = 1,
+								["ic"] = 134075,
+								["c"] = 5,
 							}, -- [1]
 							{
 								["id"] = 264939,
@@ -4831,18 +6612,18 @@ AzerothTagebuchDB = {
 								["c"] = 20,
 							}, -- [2]
 							{
-								["id"] = 268592,
-								["n"] = "Zerfetztes Luchsfell",
+								["id"] = 263479,
+								["n"] = "Zähes Fleisch",
 								["q"] = 1,
-								["ic"] = 134366,
-								["c"] = 20,
+								["ic"] = 133971,
+								["c"] = 1,
 							}, -- [3]
 							{
-								["id"] = 265861,
-								["n"] = "Trollknochen",
-								["q"] = 0,
-								["ic"] = 133726,
-								["c"] = 5,
+								["id"] = 266899,
+								["n"] = "Splitterkern",
+								["q"] = 2,
+								["ic"] = 134123,
+								["c"] = 200,
 							}, -- [4]
 						},
 					}, -- [2]
@@ -4865,74 +6646,74 @@ AzerothTagebuchDB = {
 			["specDesc"] = "Beispieltext: Ein wütender Berserker, der mit zwei Waffen gleichzeitig zuschlägt.",
 			["primaryStat"] = 1,
 			["talentCode"] = "DEMO-Talentcode-nur-Beispiel-72",
-			["ilvl"] = 575.8,
+			["ilvl"] = 579.5,
 			["gear"] = {
 				[1] = {
-					["id"] = 230674,
+					["id"] = 230687,
 					["n"] = "Morgenruh-Helm",
-					["q"] = 3,
-					["il"] = 574.0,
+					["q"] = 4,
+					["il"] = 587.0,
 					["ic"] = 133071,
 					["st"] = {
-						["aus"] = 2296,
-						["str"] = 1033,
-						["meist"] = 371,
-						["tempo"] = 544,
+						["aus"] = 2350,
+						["str"] = 1057,
+						["viel"] = 525,
+						["meist"] = 408,
 					},
 					["link"] = "[Helm]",
 				},
 				[2] = {
-					["id"] = 230765,
-					["n"] = "Amani-Halskette",
-					["q"] = 4,
-					["il"] = 565.0,
+					["id"] = 230760,
+					["n"] = "Morgenruh-Halskette",
+					["q"] = 3,
+					["il"] = 560.0,
 					["ic"] = 133294,
 					["st"] = {
-						["aus"] = 2260,
-						["krit"] = 375,
-						["meist"] = 599,
+						["aus"] = 2240,
+						["krit"] = 584,
+						["tempo"] = 343,
 					},
 					["link"] = "[Halskette]",
 				},
 				[3] = {
-					["id"] = 230859,
-					["n"] = "Immersang-Schulterstücke",
-					["q"] = 2,
-					["il"] = 559.0,
+					["id"] = 230862,
+					["n"] = "Falkenwacht-Schulterstücke",
+					["q"] = 3,
+					["il"] = 562.0,
 					["ic"] = 135033,
 					["st"] = {
-						["aus"] = 2238,
-						["str"] = 1007,
-						["tempo"] = 575,
-						["krit"] = 614,
+						["aus"] = 2248,
+						["str"] = 1011,
+						["viel"] = 402,
+						["meist"] = 466,
 					},
 					["link"] = "[Schulterstücke]",
 				},
 				[15] = {
-					["id"] = 232061,
-					["n"] = "Morgenruh-Umhang",
-					["q"] = 2,
-					["il"] = 561.0,
+					["id"] = 232076,
+					["n"] = "Sonnenzorn-Umhang",
+					["q"] = 3,
+					["il"] = 576.0,
 					["ic"] = 133754,
 					["st"] = {
-						["aus"] = 2245,
-						["str"] = 1010,
-						["meist"] = 529,
-						["krit"] = 539,
+						["aus"] = 2304,
+						["str"] = 1037,
+						["viel"] = 511,
+						["meist"] = 460,
 					},
 					["link"] = "[Umhang]",
 				},
 				[5] = {
-					["id"] = 231068,
-					["n"] = "Leerengezeichnete Brustplatte",
-					["q"] = 2,
-					["il"] = 568.0,
+					["id"] = 231064,
+					["n"] = "Immersang-Brustplatte",
+					["q"] = 4,
+					["il"] = 564.0,
 					["ic"] = 132751,
 					["st"] = {
-						["aus"] = 2275,
-						["str"] = 1024,
-						["tempo"] = 596,
-						["viel"] = 419,
+						["aus"] = 2257,
+						["str"] = 1015,
+						["tempo"] = 432,
+						["krit"] = 519,
 					},
 					["link"] = "[Brustplatte]",
 				},
@@ -4947,143 +6728,143 @@ AzerothTagebuchDB = {
 					["link"] = "[Leinenhemd]",
 				},
 				[9] = {
-					["id"] = 231466,
-					["n"] = "Morgenruh-Armschienen",
+					["id"] = 231480,
+					["n"] = "Immersang-Armschienen",
 					["q"] = 3,
-					["il"] = 566.0,
+					["il"] = 580.0,
 					["ic"] = 132606,
 					["st"] = {
-						["aus"] = 2265,
-						["str"] = 1019,
-						["meist"] = 350,
-						["tempo"] = 391,
+						["aus"] = 2320,
+						["str"] = 1044,
+						["tempo"] = 554,
+						["viel"] = 385,
 					},
 					["link"] = "[Armschienen]",
 				},
 				[10] = {
-					["id"] = 231582,
-					["n"] = "Falkenwacht-Handschuhe",
-					["q"] = 4,
-					["il"] = 582.0,
+					["id"] = 231562,
+					["n"] = "Morgenruh-Handschuhe",
+					["q"] = 3,
+					["il"] = 562.0,
 					["ic"] = 132938,
 					["st"] = {
-						["aus"] = 2328,
-						["str"] = 1047,
-						["meist"] = 414,
-						["krit"] = 565,
+						["aus"] = 2248,
+						["str"] = 1011,
+						["tempo"] = 365,
+						["meist"] = 445,
 					},
 					["link"] = "[Handschuhe]",
 				},
 				[6] = {
-					["id"] = 231170,
-					["n"] = "Leerengezeichnete Gürtel",
+					["id"] = 231167,
+					["n"] = "Amani-Gürtel",
 					["q"] = 3,
-					["il"] = 570.0,
+					["il"] = 567.0,
 					["ic"] = 132502,
 					["st"] = {
-						["aus"] = 2282,
-						["str"] = 1027,
-						["krit"] = 625,
-						["tempo"] = 522,
+						["aus"] = 2271,
+						["str"] = 1022,
+						["meist"] = 371,
+						["krit"] = 599,
 					},
 					["link"] = "[Gürtel]",
 				},
 				[7] = {
-					["id"] = 231279,
-					["n"] = "Morgenruh-Beinschützer",
-					["q"] = 4,
-					["il"] = 579.0,
+					["id"] = 231269,
+					["n"] = "Immersang-Beinschützer",
+					["q"] = 3,
+					["il"] = 569.0,
 					["ic"] = 134584,
 					["st"] = {
-						["aus"] = 2317,
-						["str"] = 1043,
-						["meist"] = 621,
-						["viel"] = 429,
+						["aus"] = 2278,
+						["str"] = 1025,
+						["krit"] = 455,
+						["viel"] = 567,
 					},
 					["link"] = "[Beinschützer]",
 				},
 				[8] = {
-					["id"] = 231366,
-					["n"] = "Falkenwacht-Stiefel",
+					["id"] = 231365,
+					["n"] = "Leerengezeichnete Stiefel",
 					["q"] = 3,
-					["il"] = 566.0,
+					["il"] = 565.0,
 					["ic"] = 132539,
 					["st"] = {
-						["aus"] = 2265,
-						["str"] = 1019,
-						["meist"] = 411,
-						["viel"] = 520,
+						["aus"] = 2260,
+						["str"] = 1017,
+						["viel"] = 379,
+						["krit"] = 509,
 					},
 					["link"] = "[Stiefel]",
 				},
 				[11] = {
 					["id"] = 231667,
-					["n"] = "Leerengezeichnete Siegelring",
-					["q"] = 3,
+					["n"] = "Immersang-Siegelring",
+					["q"] = 2,
 					["il"] = 567.0,
 					["ic"] = 133345,
 					["st"] = {
 						["aus"] = 2271,
-						["tempo"] = 423,
-						["krit"] = 518,
+						["viel"] = 530,
+						["krit"] = 526,
 					},
 					["link"] = "[Siegelring]",
 				},
 				[12] = {
-					["id"] = 231769,
+					["id"] = 231767,
 					["n"] = "Sonnenzorn-Ring",
 					["q"] = 3,
-					["il"] = 569.0,
+					["il"] = 567.0,
 					["ic"] = 133347,
 					["st"] = {
-						["aus"] = 2278,
-						["viel"] = 516,
-						["krit"] = 354,
+						["aus"] = 2268,
+						["viel"] = 429,
+						["tempo"] = 518,
 					},
 					["link"] = "[Ring]",
 				},
 				[13] = {
-					["id"] = 231865,
-					["n"] = "Falkenwacht-Talisman",
-					["q"] = 2,
-					["il"] = 565.0,
+					["id"] = 231887,
+					["n"] = "Amani-Talisman",
+					["q"] = 3,
+					["il"] = 587.0,
 					["ic"] = 133440,
 					["st"] = {
-						["aus"] = 2263,
-						["krit"] = 440,
-						["meist"] = 402,
+						["aus"] = 2348,
+						["meist"] = 420,
+						["krit"] = 522,
 					},
 					["link"] = "[Talisman]",
 				},
 				[14] = {
-					["id"] = 231966,
+					["id"] = 231965,
 					["n"] = "Sonnenzorn-Perle",
-					["q"] = 3,
-					["il"] = 566.0,
+					["q"] = 4,
+					["il"] = 565.0,
 					["ic"] = 134123,
 					["st"] = {
-						["aus"] = 2264,
-						["meist"] = 574,
-						["viel"] = 384,
+						["aus"] = 2260,
+						["meist"] = 448,
+						["krit"] = 477,
 					},
 					["link"] = "[Perle]",
 				},
 				[16] = {
-					["id"] = 232184,
-					["n"] = "Immersang-Streitaxt",
-					["q"] = 3,
-					["il"] = 584.0,
+					["id"] = 232159,
+					["n"] = "Falkenwacht-Streitaxt",
+					["q"] = 4,
+					["il"] = 559.0,
 					["ic"] = 132400,
 					["st"] = {
-						["aus"] = 2338,
-						["str"] = 1052,
-						["tempo"] = 388,
-						["krit"] = 577,
+						["aus"] = 2237,
+						["str"] = 1007,
+						["tempo"] = 554,
+						["meist"] = 598,
 					},
 					["link"] = "[Streitaxt]",
 				},
 			},
-			["money"] = 2181646,
+			["money"] = 2077368,
 			["created"] = 1763690400,
 			["events"] = {
 				{
@@ -5143,101 +6924,204 @@ AzerothTagebuchDB = {
 					["e"] = "pos",
 					["mo"] = "reittier",
 					["m"] = 2395,
-					["x"] = 0.4619,
-					["y"] = 0.2987,
+					["x"] = 0.4466,
+					["y"] = 0.3091,
 				}, -- [6]
 				{
 					["t"] = 1763704833,
 					["e"] = "pos",
 					["mo"] = "reittier",
 					["m"] = 2395,
-					["x"] = 0.469,
-					["y"] = 0.3077,
+					["x"] = 0.4427,
+					["y"] = 0.3158,
 				}, -- [7]
 				{
 					["t"] = 1763704843,
 					["e"] = "pos",
 					["mo"] = "reittier",
 					["m"] = 2395,
-					["x"] = 0.4753,
-					["y"] = 0.3075,
+					["x"] = 0.4415,
+					["y"] = 0.3222,
 				}, -- [8]
 				{
 					["t"] = 1763704853,
 					["e"] = "pos",
 					["mo"] = "reittier",
 					["m"] = 2395,
-					["x"] = 0.4836,
-					["y"] = 0.3093,
+					["x"] = 0.4344,
+					["y"] = 0.3329,
 				}, -- [9]
 				{
 					["t"] = 1763704863,
 					["e"] = "pos",
 					["mo"] = "reittier",
 					["m"] = 2395,
-					["x"] = 0.4909,
-					["y"] = 0.3088,
+					["x"] = 0.4291,
+					["y"] = 0.3382,
 				}, -- [10]
 				{
 					["t"] = 1763704873,
 					["e"] = "pos",
 					["mo"] = "reittier",
 					["m"] = 2395,
-					["x"] = 0.4952,
-					["y"] = 0.3102,
+					["x"] = 0.4268,
+					["y"] = 0.3461,
 				}, -- [11]
 				{
 					["t"] = 1763704883,
 					["e"] = "pos",
 					["mo"] = "reittier",
 					["m"] = 2395,
-					["x"] = 0.5036,
-					["y"] = 0.3135,
+					["x"] = 0.4209,
+					["y"] = 0.3553,
 				}, -- [12]
 				{
 					["t"] = 1763704893,
 					["e"] = "pos",
 					["mo"] = "reittier",
 					["m"] = 2395,
-					["x"] = 0.5128,
-					["y"] = 0.3216,
+					["x"] = 0.4191,
+					["y"] = 0.3552,
 				}, -- [13]
 				{
 					["t"] = 1763704903,
 					["e"] = "pos",
 					["mo"] = "reittier",
 					["m"] = 2395,
-					["x"] = 0.5206,
-					["y"] = 0.3215,
+					["x"] = 0.4147,
+					["y"] = 0.3653,
 				}, -- [14]
 				{
-					["t"] = 1763704947,
+					["t"] = 1763704913,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.4089,
+					["y"] = 0.3728,
+				}, -- [15]
+				{
+					["t"] = 1763704923,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.4084,
+					["y"] = 0.3823,
+				}, -- [16]
+				{
+					["t"] = 1763704933,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.4042,
+					["y"] = 0.3862,
+				}, -- [17]
+				{
+					["t"] = 1763704943,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.3994,
+					["y"] = 0.3974,
+				}, -- [18]
+				{
+					["t"] = 1763704953,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.4014,
+					["y"] = 0.403,
+				}, -- [19]
+				{
+					["t"] = 1763704963,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.3919,
+					["y"] = 0.4125,
+				}, -- [20]
+				{
+					["t"] = 1763704973,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.3896,
+					["y"] = 0.4151,
+				}, -- [21]
+				{
+					["t"] = 1763704983,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.3838,
+					["y"] = 0.427,
+				}, -- [22]
+				{
+					["t"] = 1763704993,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.3855,
+					["y"] = 0.4332,
+				}, -- [23]
+				{
+					["t"] = 1763705003,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.3791,
+					["y"] = 0.44,
+				}, -- [24]
+				{
+					["t"] = 1763705013,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.3734,
+					["y"] = 0.4505,
+				}, -- [25]
+				{
+					["t"] = 1763705023,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.3707,
+					["y"] = 0.4553,
+				}, -- [26]
+				{
+					["t"] = 1763705067,
 					["e"] = "beute",
-					["src"] = "Creature-0-1-2395-1-240006-0005000027",
-					["npc"] = 240006,
+					["src"] = "Creature-0-1-2395-1-240002-0005000067",
+					["npc"] = 240002,
 					["art"] = "Creature",
-					["sn"] = "Splitterkreatur",
+					["sn"] = "Leerenwandler",
 					["items"] = {
-						{
-							["id"] = 256412,
-							["n"] = "Leerensplitter",
-							["q"] = 1,
-							["ic"] = 134075,
-							["c"] = 1,
-						}, -- [1]
 					},
 					["z"] = "Immersangwald",
 					["m"] = 2395,
-					["x"] = 0.5206,
-					["y"] = 0.3215,
-				}, -- [15]
+					["x"] = 0.3707,
+					["y"] = 0.4553,
+				}, -- [27]
 				{
-					["t"] = 1763704991,
+					["t"] = 1763705111,
 					["e"] = "beute",
-					["src"] = "Creature-0-1-2395-1-240006-0005000028",
-					["npc"] = 240006,
+					["src"] = "Creature-0-1-2395-1-240002-0005000068",
+					["npc"] = 240002,
 					["art"] = "Creature",
-					["sn"] = "Splitterkreatur",
+					["sn"] = "Leerenwandler",
+					["items"] = {
+					},
+					["z"] = "Immersangwald",
+					["m"] = 2395,
+					["x"] = 0.3707,
+					["y"] = 0.4553,
+				}, -- [28]
+				{
+					["t"] = 1763705155,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-2395-1-240002-0005000069",
+					["npc"] = 240002,
+					["art"] = "Creature",
+					["sn"] = "Leerenwandler",
 					["items"] = {
 						{
 							["id"] = 256412,
@@ -5246,469 +7130,96 @@ AzerothTagebuchDB = {
 							["ic"] = 134075,
 							["c"] = 3,
 						}, -- [1]
+						{
+							["id"] = 258819,
+							["n"] = "Flimmernder Staub",
+							["q"] = 0,
+							["ic"] = 133726,
+							["c"] = 2,
+						}, -- [2]
 					},
 					["z"] = "Immersangwald",
 					["m"] = 2395,
-					["x"] = 0.5206,
-					["y"] = 0.3215,
-				}, -- [16]
+					["x"] = 0.3707,
+					["y"] = 0.4553,
+				}, -- [29]
 				{
-					["t"] = 1763704996,
+					["t"] = 1763705160,
 					["e"] = "quest_ab",
 					["q"] = 90014,
 					["n"] = "Ärger an der Grenze",
 					["c"] = "Normal",
-					["xp"] = 21326,
-					["g"] = 75780,
+					["xp"] = 19121,
+					["g"] = 78729,
 					["z"] = "Immersangwald",
 					["lv"] = 78,
 					["m"] = 2395,
-					["x"] = 0.5206,
-					["y"] = 0.3215,
-				}, -- [17]
+					["x"] = 0.3707,
+					["y"] = 0.4553,
+				}, -- [30]
 				{
-					["t"] = 1763705001,
+					["t"] = 1763705165,
 					["e"] = "quest_an",
 					["q"] = 90015,
 					["n"] = "Wildes Blutdistelkraut",
 					["c"] = "Normal",
 					["z"] = "Immersangwald",
 					["m"] = 2395,
-					["x"] = 0.5206,
-					["y"] = 0.3215,
-				}, -- [18]
-				{
-					["t"] = 1763705011,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.5191,
-					["y"] = 0.3173,
-				}, -- [19]
-				{
-					["t"] = 1763705021,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.5095,
-					["y"] = 0.3098,
-				}, -- [20]
-				{
-					["t"] = 1763705031,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.5033,
-					["y"] = 0.3029,
-				}, -- [21]
-				{
-					["t"] = 1763705041,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.5021,
-					["y"] = 0.294,
-				}, -- [22]
-				{
-					["t"] = 1763705051,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4946,
-					["y"] = 0.2888,
-				}, -- [23]
-				{
-					["t"] = 1763705061,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4919,
-					["y"] = 0.2835,
-				}, -- [24]
-				{
-					["t"] = 1763705071,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4836,
-					["y"] = 0.2763,
-				}, -- [25]
-				{
-					["t"] = 1763705081,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4802,
-					["y"] = 0.2767,
-				}, -- [26]
-				{
-					["t"] = 1763705091,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4751,
-					["y"] = 0.2654,
-				}, -- [27]
-				{
-					["t"] = 1763705101,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4625,
-					["y"] = 0.2624,
-				}, -- [28]
-				{
-					["t"] = 1763705111,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4621,
-					["y"] = 0.2567,
-				}, -- [29]
-				{
-					["t"] = 1763705121,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4586,
-					["y"] = 0.253,
-				}, -- [30]
-				{
-					["t"] = 1763705131,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4482,
-					["y"] = 0.2466,
+					["x"] = 0.3707,
+					["y"] = 0.4553,
 				}, -- [31]
 				{
-					["t"] = 1763705141,
+					["t"] = 1763705175,
 					["e"] = "pos",
-					["mo"] = "zu_fuss",
+					["mo"] = "reittier",
 					["m"] = 2395,
-					["x"] = 0.4475,
-					["y"] = 0.2339,
+					["x"] = 0.3775,
+					["y"] = 0.4542,
 				}, -- [32]
 				{
-					["t"] = 1763705151,
+					["t"] = 1763705185,
 					["e"] = "pos",
-					["mo"] = "zu_fuss",
+					["mo"] = "reittier",
 					["m"] = 2395,
-					["x"] = 0.439,
-					["y"] = 0.2285,
+					["x"] = 0.3852,
+					["y"] = 0.4506,
 				}, -- [33]
 				{
-					["t"] = 1763705161,
+					["t"] = 1763705195,
 					["e"] = "pos",
-					["mo"] = "zu_fuss",
+					["mo"] = "reittier",
 					["m"] = 2395,
-					["x"] = 0.4367,
-					["y"] = 0.2279,
+					["x"] = 0.3956,
+					["y"] = 0.4451,
 				}, -- [34]
 				{
-					["t"] = 1763705171,
+					["t"] = 1763705205,
 					["e"] = "pos",
-					["mo"] = "zu_fuss",
+					["mo"] = "reittier",
 					["m"] = 2395,
-					["x"] = 0.4256,
-					["y"] = 0.2164,
+					["x"] = 0.4058,
+					["y"] = 0.4434,
 				}, -- [35]
 				{
 					["t"] = 1763705215,
-					["e"] = "beute",
-					["src"] = "Creature-0-1-2395-1-240002-0005000029",
-					["npc"] = 240002,
-					["art"] = "Creature",
-					["sn"] = "Leerenwandler",
-					["items"] = {
-						{
-							["id"] = 258819,
-							["n"] = "Flimmernder Staub",
-							["q"] = 0,
-							["ic"] = 133726,
-							["c"] = 1,
-						}, -- [1]
-					},
-					["z"] = "Immersangwald",
+					["e"] = "pos",
+					["mo"] = "reittier",
 					["m"] = 2395,
-					["x"] = 0.4256,
-					["y"] = 0.2164,
+					["x"] = 0.409,
+					["y"] = 0.443,
 				}, -- [36]
 				{
-					["t"] = 1763705259,
-					["e"] = "beute",
-					["src"] = "Creature-0-1-2395-1-240002-000500002A",
-					["npc"] = 240002,
-					["art"] = "Creature",
-					["sn"] = "Leerenwandler",
-					["items"] = {
-					},
-					["z"] = "Immersangwald",
+					["t"] = 1763705225,
+					["e"] = "pos",
+					["mo"] = "reittier",
 					["m"] = 2395,
-					["x"] = 0.4256,
-					["y"] = 0.2164,
+					["x"] = 0.4152,
+					["y"] = 0.4421,
 				}, -- [37]
 				{
-					["t"] = 1763705264,
-					["e"] = "quest_ab",
-					["q"] = 90015,
-					["n"] = "Wildes Blutdistelkraut",
-					["c"] = "Normal",
-					["xp"] = 21787,
-					["g"] = 170602,
-					["z"] = "Immersangwald",
-					["lv"] = 78,
-					["m"] = 2395,
-					["x"] = 0.4256,
-					["y"] = 0.2164,
-				}, -- [38]
-				{
 					["t"] = 1763705269,
-					["e"] = "quest_an",
-					["q"] = 90016,
-					["n"] = "Ein Brief für Falkenwacht",
-					["c"] = "Normal",
-					["z"] = "Immersangwald",
-					["m"] = 2395,
-					["x"] = 0.4256,
-					["y"] = 0.2164,
-				}, -- [39]
-				{
-					["t"] = 1763705279,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4281,
-					["y"] = 0.224,
-				}, -- [40]
-				{
-					["t"] = 1763705289,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4266,
-					["y"] = 0.2332,
-				}, -- [41]
-				{
-					["t"] = 1763705299,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4229,
-					["y"] = 0.2385,
-				}, -- [42]
-				{
-					["t"] = 1763705309,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.425,
-					["y"] = 0.2455,
-				}, -- [43]
-				{
-					["t"] = 1763705319,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.427,
-					["y"] = 0.2542,
-				}, -- [44]
-				{
-					["t"] = 1763705329,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4195,
-					["y"] = 0.262,
-				}, -- [45]
-				{
-					["t"] = 1763705339,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4263,
-					["y"] = 0.272,
-				}, -- [46]
-				{
-					["t"] = 1763705349,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4196,
-					["y"] = 0.2776,
-				}, -- [47]
-				{
-					["t"] = 1763705359,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4184,
-					["y"] = 0.291,
-				}, -- [48]
-				{
-					["t"] = 1763705369,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4228,
-					["y"] = 0.2992,
-				}, -- [49]
-				{
-					["t"] = 1763705379,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4232,
-					["y"] = 0.3023,
-				}, -- [50]
-				{
-					["t"] = 1763705389,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4217,
-					["y"] = 0.3128,
-				}, -- [51]
-				{
-					["t"] = 1763705399,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4231,
-					["y"] = 0.3245,
-				}, -- [52]
-				{
-					["t"] = 1763705409,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4233,
-					["y"] = 0.3266,
-				}, -- [53]
-				{
-					["t"] = 1763705419,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4227,
-					["y"] = 0.3415,
-				}, -- [54]
-				{
-					["t"] = 1763705429,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4229,
-					["y"] = 0.3432,
-				}, -- [55]
-				{
-					["t"] = 1763705439,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4166,
-					["y"] = 0.3514,
-				}, -- [56]
-				{
-					["t"] = 1763705449,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4149,
-					["y"] = 0.3654,
-				}, -- [57]
-				{
-					["t"] = 1763705459,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4207,
-					["y"] = 0.3718,
-				}, -- [58]
-				{
-					["t"] = 1763705469,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4204,
-					["y"] = 0.3799,
-				}, -- [59]
-				{
-					["t"] = 1763705479,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4157,
-					["y"] = 0.3837,
-				}, -- [60]
-				{
-					["t"] = 1763705489,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4138,
-					["y"] = 0.3971,
-				}, -- [61]
-				{
-					["t"] = 1763705499,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4143,
-					["y"] = 0.4017,
-				}, -- [62]
-				{
-					["t"] = 1763705509,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4157,
-					["y"] = 0.4075,
-				}, -- [63]
-				{
-					["t"] = 1763705519,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4139,
-					["y"] = 0.4177,
-				}, -- [64]
-				{
-					["t"] = 1763705529,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4172,
-					["y"] = 0.4265,
-				}, -- [65]
-				{
-					["t"] = 1763705539,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4137,
-					["y"] = 0.4394,
-				}, -- [66]
-				{
-					["t"] = 1763705549,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4147,
-					["y"] = 0.4466,
-				}, -- [67]
-				{
-					["t"] = 1763705559,
-					["e"] = "pos",
-					["mo"] = "zu_fuss",
-					["m"] = 2395,
-					["x"] = 0.4153,
-					["y"] = 0.4482,
-				}, -- [68]
-				{
-					["t"] = 1763705603,
 					["e"] = "beute",
-					["src"] = "Creature-0-1-2395-1-240002-000500002B",
+					["src"] = "Creature-0-1-2395-1-240002-000500006A",
 					["npc"] = 240002,
 					["art"] = "Creature",
 					["sn"] = "Leerenwandler",
@@ -5718,32 +7229,295 @@ AzerothTagebuchDB = {
 							["n"] = "Leerensplitter",
 							["q"] = 1,
 							["ic"] = 134075,
-							["c"] = 1,
+							["c"] = 2,
 						}, -- [1]
-						{
-							["id"] = 258819,
-							["n"] = "Flimmernder Staub",
-							["q"] = 0,
-							["ic"] = 133726,
-							["c"] = 3,
-						}, -- [2]
 						{
 							["id"] = 254644,
 							["n"] = "Ring des Abgrunds",
 							["q"] = 3,
 							["ic"] = 133347,
 							["c"] = 1,
-						}, -- [3]
+						}, -- [2]
 					},
 					["z"] = "Immersangwald",
 					["m"] = 2395,
-					["x"] = 0.4153,
-					["y"] = 0.4482,
+					["x"] = 0.4152,
+					["y"] = 0.4421,
+				}, -- [38]
+				{
+					["t"] = 1763705313,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-2395-1-240002-000500006B",
+					["npc"] = 240002,
+					["art"] = "Creature",
+					["sn"] = "Leerenwandler",
+					["items"] = {
+						{
+							["id"] = 256412,
+							["n"] = "Leerensplitter",
+							["q"] = 1,
+							["ic"] = 134075,
+							["c"] = 1,
+						}, -- [1]
+					},
+					["z"] = "Immersangwald",
+					["m"] = 2395,
+					["x"] = 0.4152,
+					["y"] = 0.4421,
+				}, -- [39]
+				{
+					["t"] = 1763705318,
+					["e"] = "quest_ab",
+					["q"] = 90015,
+					["n"] = "Wildes Blutdistelkraut",
+					["c"] = "Normal",
+					["xp"] = 9663,
+					["g"] = 67416,
+					["z"] = "Immersangwald",
+					["lv"] = 78,
+					["m"] = 2395,
+					["x"] = 0.4152,
+					["y"] = 0.4421,
+				}, -- [40]
+				{
+					["t"] = 1763705323,
+					["e"] = "quest_an",
+					["q"] = 90016,
+					["n"] = "Ein Brief für Falkenwacht",
+					["c"] = "Normal",
+					["z"] = "Immersangwald",
+					["m"] = 2395,
+					["x"] = 0.4152,
+					["y"] = 0.4421,
+				}, -- [41]
+				{
+					["t"] = 1763705333,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.4188,
+					["y"] = 0.4327,
+				}, -- [42]
+				{
+					["t"] = 1763705343,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.428,
+					["y"] = 0.4312,
+				}, -- [43]
+				{
+					["t"] = 1763705353,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.4269,
+					["y"] = 0.4253,
+				}, -- [44]
+				{
+					["t"] = 1763705363,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.4352,
+					["y"] = 0.4178,
+				}, -- [45]
+				{
+					["t"] = 1763705373,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.4405,
+					["y"] = 0.412,
+				}, -- [46]
+				{
+					["t"] = 1763705383,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.4462,
+					["y"] = 0.4049,
+				}, -- [47]
+				{
+					["t"] = 1763705393,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.4462,
+					["y"] = 0.3971,
+				}, -- [48]
+				{
+					["t"] = 1763705403,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.4537,
+					["y"] = 0.3908,
+				}, -- [49]
+				{
+					["t"] = 1763705413,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.4577,
+					["y"] = 0.3853,
+				}, -- [50]
+				{
+					["t"] = 1763705423,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.4634,
+					["y"] = 0.3737,
+				}, -- [51]
+				{
+					["t"] = 1763705433,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.4656,
+					["y"] = 0.366,
+				}, -- [52]
+				{
+					["t"] = 1763705443,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.4725,
+					["y"] = 0.3587,
+				}, -- [53]
+				{
+					["t"] = 1763705453,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.4771,
+					["y"] = 0.3527,
+				}, -- [54]
+				{
+					["t"] = 1763705463,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.482,
+					["y"] = 0.3489,
+				}, -- [55]
+				{
+					["t"] = 1763705473,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.4872,
+					["y"] = 0.3452,
+				}, -- [56]
+				{
+					["t"] = 1763705483,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.4877,
+					["y"] = 0.3383,
+				}, -- [57]
+				{
+					["t"] = 1763705493,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.4962,
+					["y"] = 0.3294,
+				}, -- [58]
+				{
+					["t"] = 1763705503,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.5025,
+					["y"] = 0.325,
+				}, -- [59]
+				{
+					["t"] = 1763705513,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.505,
+					["y"] = 0.315,
+				}, -- [60]
+				{
+					["t"] = 1763705523,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.5144,
+					["y"] = 0.3056,
+				}, -- [61]
+				{
+					["t"] = 1763705533,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.5166,
+					["y"] = 0.3034,
+				}, -- [62]
+				{
+					["t"] = 1763705543,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.5165,
+					["y"] = 0.2965,
+				}, -- [63]
+				{
+					["t"] = 1763705553,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.5265,
+					["y"] = 0.2924,
+				}, -- [64]
+				{
+					["t"] = 1763705563,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.5285,
+					["y"] = 0.2862,
+				}, -- [65]
+				{
+					["t"] = 1763705573,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.5347,
+					["y"] = 0.2756,
+				}, -- [66]
+				{
+					["t"] = 1763705583,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.5426,
+					["y"] = 0.2653,
+				}, -- [67]
+				{
+					["t"] = 1763705593,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.5459,
+					["y"] = 0.2634,
+				}, -- [68]
+				{
+					["t"] = 1763705603,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.5477,
+					["y"] = 0.2586,
 				}, -- [69]
 				{
 					["t"] = 1763705647,
 					["e"] = "beute",
-					["src"] = "Creature-0-1-2395-1-240002-000500002C",
+					["src"] = "Creature-0-1-2395-1-240002-000500006C",
 					["npc"] = 240002,
 					["art"] = "Creature",
 					["sn"] = "Leerenwandler",
@@ -5758,501 +7532,547 @@ AzerothTagebuchDB = {
 					},
 					["z"] = "Immersangwald",
 					["m"] = 2395,
-					["x"] = 0.4153,
-					["y"] = 0.4482,
+					["x"] = 0.5477,
+					["y"] = 0.2586,
 				}, -- [70]
 				{
-					["t"] = 1763705652,
-					["e"] = "quest_ab",
-					["q"] = 90016,
-					["n"] = "Ein Brief für Falkenwacht",
-					["c"] = "Normal",
-					["xp"] = 21431,
-					["g"] = 105264,
-					["z"] = "Immersangwald",
-					["lv"] = 78,
-					["m"] = 2395,
-					["x"] = 0.4153,
-					["y"] = 0.4482,
-				}, -- [71]
-				{
-					["t"] = 1763705654,
-					["e"] = "level",
-					["lv"] = 79,
-					["m"] = 2395,
-					["x"] = 0.4153,
-					["y"] = 0.4482,
-				}, -- [72]
-				{
-					["t"] = 1763705657,
-					["e"] = "ausr",
-					["il"] = 570.7,
-					["ilg"] = 574.2,
-					["lv"] = 79,
-					["m"] = 2395,
-					["x"] = 0.4153,
-					["y"] = 0.4482,
-				}, -- [73]
-				{
-					["t"] = 1763705659,
-					["e"] = "gegenstand",
-					["slot"] = 1,
-					["id"] = 230674,
-					["n"] = "Morgenruh-Helm",
-					["q"] = 3,
-					["il"] = 574.0,
-					["ic"] = 133071,
-					["alt"] = "Sonnenzorn-Helm",
-					["altil"] = 568.0,
-					["m"] = 2395,
-					["x"] = 0.4153,
-					["y"] = 0.4482,
-				}, -- [74]
-				{
-					["t"] = 1763705661,
-					["e"] = "gegenstand",
-					["slot"] = 7,
-					["id"] = 231279,
-					["n"] = "Morgenruh-Beinschützer",
-					["q"] = 4,
-					["il"] = 579.0,
-					["ic"] = 134584,
-					["alt"] = "Morgenruh-Beinschützer",
-					["altil"] = 562.0,
-					["m"] = 2395,
-					["x"] = 0.4153,
-					["y"] = 0.4482,
-				}, -- [75]
-				{
-					["t"] = 1763705706,
-					["e"] = "tod",
-					["z"] = "Immersangwald",
-					["sz"] = "Ruinen von Morgenstern",
-					["m"] = 2395,
-					["x"] = 0.4153,
-					["y"] = 0.4482,
-				}, -- [76]
-				{
-					["t"] = 1763705751,
-					["e"] = "tod",
-					["z"] = "Immersangwald",
-					["sz"] = "Ruinen von Morgenstern",
-					["m"] = 2395,
-					["x"] = 0.4153,
-					["y"] = 0.4482,
-				}, -- [77]
-				{
-					["t"] = 1763705796,
-					["e"] = "notiz",
-					["txt"] = "Zwei Tode hintereinander. Ich brauche bessere Ausrüstung.",
-					["z"] = "Immersangwald",
-					["m"] = 2395,
-					["x"] = 0.4153,
-					["y"] = 0.4482,
-				}, -- [78]
-				{
-					["t"] = 1763705806,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.4162,
-					["y"] = 0.4416,
-				}, -- [79]
-				{
-					["t"] = 1763705816,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.4075,
-					["y"] = 0.4429,
-				}, -- [80]
-				{
-					["t"] = 1763705826,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.4097,
-					["y"] = 0.4349,
-				}, -- [81]
-				{
-					["t"] = 1763705836,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.409,
-					["y"] = 0.431,
-				}, -- [82]
-				{
-					["t"] = 1763705846,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3993,
-					["y"] = 0.4248,
-				}, -- [83]
-				{
-					["t"] = 1763705856,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3967,
-					["y"] = 0.4252,
-				}, -- [84]
-				{
-					["t"] = 1763705866,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.4005,
-					["y"] = 0.4193,
-				}, -- [85]
-				{
-					["t"] = 1763705876,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3942,
-					["y"] = 0.4141,
-				}, -- [86]
-				{
-					["t"] = 1763705886,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3912,
-					["y"] = 0.407,
-				}, -- [87]
-				{
-					["t"] = 1763705896,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3891,
-					["y"] = 0.4045,
-				}, -- [88]
-				{
-					["t"] = 1763705906,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3845,
-					["y"] = 0.4036,
-				}, -- [89]
-				{
-					["t"] = 1763705916,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3856,
-					["y"] = 0.3989,
-				}, -- [90]
-				{
-					["t"] = 1763705926,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.379,
-					["y"] = 0.3917,
-				}, -- [91]
-				{
-					["t"] = 1763705936,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3809,
-					["y"] = 0.3874,
-				}, -- [92]
-				{
-					["t"] = 1763705946,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3731,
-					["y"] = 0.3828,
-				}, -- [93]
-				{
-					["t"] = 1763705956,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3745,
-					["y"] = 0.3806,
-				}, -- [94]
-				{
-					["t"] = 1763705966,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3713,
-					["y"] = 0.3737,
-				}, -- [95]
-				{
-					["t"] = 1763705976,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3677,
-					["y"] = 0.3686,
-				}, -- [96]
-				{
-					["t"] = 1763705986,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3681,
-					["y"] = 0.3626,
-				}, -- [97]
-				{
-					["t"] = 1763705996,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3619,
-					["y"] = 0.3588,
-				}, -- [98]
-				{
-					["t"] = 1763706006,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3626,
-					["y"] = 0.3573,
-				}, -- [99]
-				{
-					["t"] = 1763706016,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.359,
-					["y"] = 0.3494,
-				}, -- [100]
-				{
-					["t"] = 1763706026,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3584,
-					["y"] = 0.3495,
-				}, -- [101]
-				{
-					["t"] = 1763706036,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3547,
-					["y"] = 0.3443,
-				}, -- [102]
-				{
-					["t"] = 1763706046,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.355,
-					["y"] = 0.3399,
-				}, -- [103]
-				{
-					["t"] = 1763706056,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3495,
-					["y"] = 0.3325,
-				}, -- [104]
-				{
-					["t"] = 1763706066,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.344,
-					["y"] = 0.3329,
-				}, -- [105]
-				{
-					["t"] = 1763706076,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3416,
-					["y"] = 0.3285,
-				}, -- [106]
-				{
-					["t"] = 1763706086,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3449,
-					["y"] = 0.3178,
-				}, -- [107]
-				{
-					["t"] = 1763706096,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3397,
-					["y"] = 0.3136,
-				}, -- [108]
-				{
-					["t"] = 1763706106,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3331,
-					["y"] = 0.3088,
-				}, -- [109]
-				{
-					["t"] = 1763706116,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3317,
-					["y"] = 0.3056,
-				}, -- [110]
-				{
-					["t"] = 1763706126,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3289,
-					["y"] = 0.2997,
-				}, -- [111]
-				{
-					["t"] = 1763706136,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3315,
-					["y"] = 0.2967,
-				}, -- [112]
-				{
-					["t"] = 1763706146,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3287,
-					["y"] = 0.2937,
-				}, -- [113]
-				{
-					["t"] = 1763706156,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3192,
-					["y"] = 0.2925,
-				}, -- [114]
-				{
-					["t"] = 1763706166,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.32,
-					["y"] = 0.283,
-				}, -- [115]
-				{
-					["t"] = 1763706176,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3218,
-					["y"] = 0.2792,
-				}, -- [116]
-				{
-					["t"] = 1763706186,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3115,
-					["y"] = 0.2745,
-				}, -- [117]
-				{
-					["t"] = 1763706196,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3147,
-					["y"] = 0.2681,
-				}, -- [118]
-				{
-					["t"] = 1763706206,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3082,
-					["y"] = 0.2704,
-				}, -- [119]
-				{
-					["t"] = 1763706216,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3093,
-					["y"] = 0.2639,
-				}, -- [120]
-				{
-					["t"] = 1763706226,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3063,
-					["y"] = 0.2616,
-				}, -- [121]
-				{
-					["t"] = 1763706236,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.3039,
-					["y"] = 0.2556,
-				}, -- [122]
-				{
-					["t"] = 1763706246,
-					["e"] = "pos",
-					["mo"] = "schwimmen",
-					["m"] = 2395,
-					["x"] = 0.303,
-					["y"] = 0.2511,
-				}, -- [123]
-				{
-					["t"] = 1763706251,
-					["e"] = "quest_an",
-					["q"] = 90017,
-					["n"] = "Die Schatzkiste am See",
-					["c"] = "Normal",
-					["z"] = "Immersangwald",
-					["m"] = 2395,
-					["x"] = 0.303,
-					["y"] = 0.2511,
-				}, -- [124]
-				{
-					["t"] = 1763706295,
+					["t"] = 1763705691,
 					["e"] = "beute",
-					["src"] = "Creature-0-1-2395-1-240006-000500002D",
-					["npc"] = 240006,
+					["src"] = "Creature-0-1-2395-1-240002-000500006D",
+					["npc"] = 240002,
 					["art"] = "Creature",
-					["sn"] = "Splitterkreatur",
+					["sn"] = "Leerenwandler",
 					["items"] = {
 						{
 							["id"] = 256412,
 							["n"] = "Leerensplitter",
 							["q"] = 1,
 							["ic"] = 134075,
-							["c"] = 3,
+							["c"] = 2,
 						}, -- [1]
-						{
-							["id"] = 256899,
-							["n"] = "Splitterkern",
-							["q"] = 2,
-							["ic"] = 134123,
-							["c"] = 1,
-						}, -- [2]
 					},
 					["z"] = "Immersangwald",
 					["m"] = 2395,
-					["x"] = 0.303,
-					["y"] = 0.2511,
+					["x"] = 0.5477,
+					["y"] = 0.2586,
+				}, -- [71]
+				{
+					["t"] = 1763705735,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-2395-1-240002-000500006E",
+					["npc"] = 240002,
+					["art"] = "Creature",
+					["sn"] = "Leerenwandler",
+					["items"] = {
+						{
+							["id"] = 258819,
+							["n"] = "Flimmernder Staub",
+							["q"] = 0,
+							["ic"] = 133726,
+							["c"] = 2,
+						}, -- [1]
+					},
+					["z"] = "Immersangwald",
+					["m"] = 2395,
+					["x"] = 0.5477,
+					["y"] = 0.2586,
+				}, -- [72]
+				{
+					["t"] = 1763705740,
+					["e"] = "quest_ab",
+					["q"] = 90016,
+					["n"] = "Ein Brief für Falkenwacht",
+					["c"] = "Normal",
+					["xp"] = 16253,
+					["g"] = 101223,
+					["z"] = "Immersangwald",
+					["lv"] = 78,
+					["m"] = 2395,
+					["x"] = 0.5477,
+					["y"] = 0.2586,
+				}, -- [73]
+				{
+					["t"] = 1763705742,
+					["e"] = "level",
+					["lv"] = 79,
+					["m"] = 2395,
+					["x"] = 0.5477,
+					["y"] = 0.2586,
+				}, -- [74]
+				{
+					["t"] = 1763705745,
+					["e"] = "ausr",
+					["il"] = 573.5,
+					["ilg"] = 577.0,
+					["lv"] = 79,
+					["m"] = 2395,
+					["x"] = 0.5477,
+					["y"] = 0.2586,
+				}, -- [75]
+				{
+					["t"] = 1763705747,
+					["e"] = "gegenstand",
+					["slot"] = 9,
+					["id"] = 231480,
+					["n"] = "Immersang-Armschienen",
+					["q"] = 3,
+					["il"] = 580.0,
+					["ic"] = 132606,
+					["alt"] = "Amani-Armschienen",
+					["altil"] = 567.0,
+					["m"] = 2395,
+					["x"] = 0.5477,
+					["y"] = 0.2586,
+				}, -- [76]
+				{
+					["t"] = 1763705749,
+					["e"] = "gegenstand",
+					["slot"] = 15,
+					["id"] = 232076,
+					["n"] = "Sonnenzorn-Umhang",
+					["q"] = 3,
+					["il"] = 576.0,
+					["ic"] = 133754,
+					["alt"] = "Morgenruh-Umhang",
+					["altil"] = 563.0,
+					["m"] = 2395,
+					["x"] = 0.5477,
+					["y"] = 0.2586,
+				}, -- [77]
+				{
+					["t"] = 1763705794,
+					["e"] = "tod",
+					["z"] = "Immersangwald",
+					["sz"] = "Ruinen von Morgenstern",
+					["m"] = 2395,
+					["x"] = 0.5477,
+					["y"] = 0.2586,
+				}, -- [78]
+				{
+					["t"] = 1763705839,
+					["e"] = "tod",
+					["z"] = "Immersangwald",
+					["sz"] = "Ruinen von Morgenstern",
+					["m"] = 2395,
+					["x"] = 0.5477,
+					["y"] = 0.2586,
+				}, -- [79]
+				{
+					["t"] = 1763705884,
+					["e"] = "notiz",
+					["txt"] = "Zwei Tode hintereinander. Ich brauche bessere Ausrüstung.",
+					["z"] = "Immersangwald",
+					["m"] = 2395,
+					["x"] = 0.5477,
+					["y"] = 0.2586,
+				}, -- [80]
+				{
+					["t"] = 1763705894,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.5387,
+					["y"] = 0.2559,
+				}, -- [81]
+				{
+					["t"] = 1763705904,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.5409,
+					["y"] = 0.2591,
+				}, -- [82]
+				{
+					["t"] = 1763705914,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.5338,
+					["y"] = 0.2604,
+				}, -- [83]
+				{
+					["t"] = 1763705924,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.5307,
+					["y"] = 0.2588,
+				}, -- [84]
+				{
+					["t"] = 1763705934,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.5233,
+					["y"] = 0.2587,
+				}, -- [85]
+				{
+					["t"] = 1763705944,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.5189,
+					["y"] = 0.2583,
+				}, -- [86]
+				{
+					["t"] = 1763705954,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.5137,
+					["y"] = 0.2551,
+				}, -- [87]
+				{
+					["t"] = 1763705964,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.5086,
+					["y"] = 0.2569,
+				}, -- [88]
+				{
+					["t"] = 1763705974,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.5043,
+					["y"] = 0.2538,
+				}, -- [89]
+				{
+					["t"] = 1763705984,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.4946,
+					["y"] = 0.2531,
+				}, -- [90]
+				{
+					["t"] = 1763705994,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.4943,
+					["y"] = 0.26,
+				}, -- [91]
+				{
+					["t"] = 1763706004,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.4883,
+					["y"] = 0.2554,
+				}, -- [92]
+				{
+					["t"] = 1763706014,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.4845,
+					["y"] = 0.2586,
+				}, -- [93]
+				{
+					["t"] = 1763706024,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.4774,
+					["y"] = 0.2542,
+				}, -- [94]
+				{
+					["t"] = 1763706034,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.4703,
+					["y"] = 0.2553,
+				}, -- [95]
+				{
+					["t"] = 1763706044,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.4653,
+					["y"] = 0.2552,
+				}, -- [96]
+				{
+					["t"] = 1763706054,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.4629,
+					["y"] = 0.2591,
+				}, -- [97]
+				{
+					["t"] = 1763706064,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.4531,
+					["y"] = 0.256,
+				}, -- [98]
+				{
+					["t"] = 1763706074,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.4479,
+					["y"] = 0.2522,
+				}, -- [99]
+				{
+					["t"] = 1763706084,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.4491,
+					["y"] = 0.2557,
+				}, -- [100]
+				{
+					["t"] = 1763706094,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.4449,
+					["y"] = 0.2545,
+				}, -- [101]
+				{
+					["t"] = 1763706104,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.4326,
+					["y"] = 0.2538,
+				}, -- [102]
+				{
+					["t"] = 1763706114,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.4322,
+					["y"] = 0.2581,
+				}, -- [103]
+				{
+					["t"] = 1763706124,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.4302,
+					["y"] = 0.2542,
+				}, -- [104]
+				{
+					["t"] = 1763706134,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.4206,
+					["y"] = 0.251,
+				}, -- [105]
+				{
+					["t"] = 1763706144,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.4174,
+					["y"] = 0.2517,
+				}, -- [106]
+				{
+					["t"] = 1763706154,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.4084,
+					["y"] = 0.25,
+				}, -- [107]
+				{
+					["t"] = 1763706164,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.4022,
+					["y"] = 0.2552,
+				}, -- [108]
+				{
+					["t"] = 1763706174,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.3981,
+					["y"] = 0.2572,
+				}, -- [109]
+				{
+					["t"] = 1763706184,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.3927,
+					["y"] = 0.2563,
+				}, -- [110]
+				{
+					["t"] = 1763706194,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.388,
+					["y"] = 0.2493,
+				}, -- [111]
+				{
+					["t"] = 1763706204,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.3877,
+					["y"] = 0.2509,
+				}, -- [112]
+				{
+					["t"] = 1763706214,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.3827,
+					["y"] = 0.2503,
+				}, -- [113]
+				{
+					["t"] = 1763706224,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.3722,
+					["y"] = 0.2548,
+				}, -- [114]
+				{
+					["t"] = 1763706234,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.3725,
+					["y"] = 0.2553,
+				}, -- [115]
+				{
+					["t"] = 1763706244,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.3675,
+					["y"] = 0.249,
+				}, -- [116]
+				{
+					["t"] = 1763706254,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.3617,
+					["y"] = 0.2538,
+				}, -- [117]
+				{
+					["t"] = 1763706264,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.3553,
+					["y"] = 0.2554,
+				}, -- [118]
+				{
+					["t"] = 1763706274,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.3486,
+					["y"] = 0.2555,
+				}, -- [119]
+				{
+					["t"] = 1763706284,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.3472,
+					["y"] = 0.2477,
+				}, -- [120]
+				{
+					["t"] = 1763706294,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.3366,
+					["y"] = 0.2526,
+				}, -- [121]
+				{
+					["t"] = 1763706304,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.3379,
+					["y"] = 0.2479,
+				}, -- [122]
+				{
+					["t"] = 1763706314,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.3288,
+					["y"] = 0.2529,
+				}, -- [123]
+				{
+					["t"] = 1763706324,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.3226,
+					["y"] = 0.2538,
+				}, -- [124]
+				{
+					["t"] = 1763706334,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.3201,
+					["y"] = 0.2472,
 				}, -- [125]
 				{
-					["t"] = 1763706339,
+					["t"] = 1763706344,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.3141,
+					["y"] = 0.2511,
+				}, -- [126]
+				{
+					["t"] = 1763706354,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.3096,
+					["y"] = 0.2518,
+				}, -- [127]
+				{
+					["t"] = 1763706364,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.3022,
+					["y"] = 0.2526,
+				}, -- [128]
+				{
+					["t"] = 1763706374,
+					["e"] = "pos",
+					["mo"] = "schwimmen",
+					["m"] = 2395,
+					["x"] = 0.2989,
+					["y"] = 0.2512,
+				}, -- [129]
+				{
+					["t"] = 1763706379,
+					["e"] = "quest_an",
+					["q"] = 90017,
+					["n"] = "Die Schatzkiste am See",
+					["c"] = "Normal",
+					["z"] = "Immersangwald",
+					["m"] = 2395,
+					["x"] = 0.2989,
+					["y"] = 0.2512,
+				}, -- [130]
+				{
+					["t"] = 1763706423,
 					["e"] = "beute",
-					["src"] = "Creature-0-1-2395-1-240006-000500002E",
+					["src"] = "Creature-0-1-2395-1-240006-000500006F",
 					["npc"] = 240006,
 					["art"] = "Creature",
 					["sn"] = "Splitterkreatur",
@@ -6267,467 +8087,13 @@ AzerothTagebuchDB = {
 					},
 					["z"] = "Immersangwald",
 					["m"] = 2395,
-					["x"] = 0.303,
-					["y"] = 0.2511,
-				}, -- [126]
-				{
-					["t"] = 1763706344,
-					["e"] = "quest_ab",
-					["q"] = 90017,
-					["n"] = "Die Schatzkiste am See",
-					["c"] = "Normal",
-					["xp"] = 9000,
-					["g"] = 600000,
-					["z"] = "Immersangwald",
-					["lv"] = 79,
-					["m"] = 2395,
-					["x"] = 0.303,
-					["y"] = 0.2511,
-				}, -- [127]
-				{
-					["t"] = 1763706374,
-					["e"] = "logout",
-					["dauer"] = 1569,
-					["g"] = 1931646,
-					["dg"] = 951646,
-					["m"] = 2395,
-					["x"] = 0.303,
-					["y"] = 0.2511,
-				}, -- [128]
-				{
-					["t"] = 1763787600,
-					["e"] = "login",
-					["lv"] = 79,
-					["g"] = 1931646,
-					["m"] = 2395,
-					["x"] = 0.303,
-					["y"] = 0.2511,
-				}, -- [129]
-				{
-					["t"] = 1763787605,
-					["e"] = "ausr",
-					["il"] = 570.7,
-					["ilg"] = 574.2,
-					["lv"] = 79,
-					["m"] = 2395,
-					["x"] = 0.303,
-					["y"] = 0.2511,
-				}, -- [130]
-				{
-					["t"] = 1763787605,
-					["e"] = "zone",
-					["z"] = "Immersangwald",
-					["sz"] = "Falkenwacht",
-					["m"] = 2395,
-					["x"] = 0.3,
-					["y"] = 0.25,
+					["x"] = 0.2989,
+					["y"] = 0.2512,
 				}, -- [131]
 				{
-					["t"] = 1763787615,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2395,
-					["x"] = 0.3081,
-					["y"] = 0.2539,
-				}, -- [132]
-				{
-					["t"] = 1763787625,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2395,
-					["x"] = 0.325,
-					["y"] = 0.2608,
-				}, -- [133]
-				{
-					["t"] = 1763787635,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2395,
-					["x"] = 0.3351,
-					["y"] = 0.2616,
-				}, -- [134]
-				{
-					["t"] = 1763787645,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2395,
-					["x"] = 0.3448,
-					["y"] = 0.2678,
-				}, -- [135]
-				{
-					["t"] = 1763787655,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2395,
-					["x"] = 0.3578,
-					["y"] = 0.272,
-				}, -- [136]
-				{
-					["t"] = 1763787665,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2395,
-					["x"] = 0.3696,
-					["y"] = 0.2807,
-				}, -- [137]
-				{
-					["t"] = 1763787675,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2395,
-					["x"] = 0.377,
-					["y"] = 0.2831,
-				}, -- [138]
-				{
-					["t"] = 1763787685,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2395,
-					["x"] = 0.3931,
-					["y"] = 0.2855,
-				}, -- [139]
-				{
-					["t"] = 1763787695,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2395,
-					["x"] = 0.4022,
-					["y"] = 0.2947,
-				}, -- [140]
-				{
-					["t"] = 1763787705,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2395,
-					["x"] = 0.4099,
-					["y"] = 0.2958,
-				}, -- [141]
-				{
-					["t"] = 1763787715,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2395,
-					["x"] = 0.4223,
-					["y"] = 0.3023,
-				}, -- [142]
-				{
-					["t"] = 1763787725,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2395,
-					["x"] = 0.4399,
-					["y"] = 0.3047,
-				}, -- [143]
-				{
-					["t"] = 1763787735,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2395,
-					["x"] = 0.4445,
-					["y"] = 0.3097,
-				}, -- [144]
-				{
-					["t"] = 1763787745,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2395,
-					["x"] = 0.4594,
-					["y"] = 0.3154,
-				}, -- [145]
-				{
-					["t"] = 1763787755,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2395,
-					["x"] = 0.4706,
-					["y"] = 0.3193,
-				}, -- [146]
-				{
-					["t"] = 1763787765,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2395,
-					["x"] = 0.4845,
-					["y"] = 0.3229,
-				}, -- [147]
-				{
-					["t"] = 1763787775,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2395,
-					["x"] = 0.4925,
-					["y"] = 0.3309,
-				}, -- [148]
-				{
-					["t"] = 1763787785,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2395,
-					["x"] = 0.5022,
-					["y"] = 0.3333,
-				}, -- [149]
-				{
-					["t"] = 1763787795,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2395,
-					["x"] = 0.515,
-					["y"] = 0.3385,
-				}, -- [150]
-				{
-					["t"] = 1763787805,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2395,
-					["x"] = 0.5243,
-					["y"] = 0.3448,
-				}, -- [151]
-				{
-					["t"] = 1763787815,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2395,
-					["x"] = 0.5375,
-					["y"] = 0.3419,
-				}, -- [152]
-				{
-					["t"] = 1763787825,
-					["e"] = "pos",
-					["mo"] = "reittier",
-					["m"] = 2395,
-					["x"] = 0.5482,
-					["y"] = 0.3492,
-				}, -- [153]
-				{
-					["t"] = 1763787827,
-					["e"] = "level",
-					["lv"] = 80,
-					["m"] = 2395,
-					["x"] = 0.5482,
-					["y"] = 0.3492,
-				}, -- [154]
-				{
-					["t"] = 1763787830,
-					["e"] = "ausr",
-					["il"] = 575.8,
-					["ilg"] = 579.3,
-					["lv"] = 80,
-					["m"] = 2395,
-					["x"] = 0.5482,
-					["y"] = 0.3492,
-				}, -- [155]
-				{
-					["t"] = 1763787832,
-					["e"] = "gegenstand",
-					["slot"] = 10,
-					["id"] = 231582,
-					["n"] = "Falkenwacht-Handschuhe",
-					["q"] = 4,
-					["il"] = 582.0,
-					["ic"] = 132938,
-					["alt"] = "Immersang-Handschuhe",
-					["altil"] = 567.0,
-					["m"] = 2395,
-					["x"] = 0.5482,
-					["y"] = 0.3492,
-				}, -- [156]
-				{
-					["t"] = 1763787834,
-					["e"] = "gegenstand",
-					["slot"] = 16,
-					["id"] = 232184,
-					["n"] = "Immersang-Streitaxt",
-					["q"] = 3,
-					["il"] = 584.0,
-					["ic"] = 132400,
-					["alt"] = "Immersang-Streitaxt",
-					["altil"] = 570.0,
-					["m"] = 2395,
-					["x"] = 0.5482,
-					["y"] = 0.3492,
-				}, -- [157]
-				{
-					["t"] = 1763787879,
-					["e"] = "erfolg",
-					["a"] = 61005,
-					["n"] = "Stufe 80",
-					["p"] = 10,
-					["m"] = 2395,
-					["x"] = 0.5482,
-					["y"] = 0.3492,
-				}, -- [158]
-				{
-					["t"] = 1763787884,
-					["e"] = "quest_an",
-					["q"] = 90018,
-					["n"] = "Brücke nach Zul'Aman",
-					["c"] = "Campaign",
-					["z"] = "Immersangwald",
-					["m"] = 2395,
-					["x"] = 0.5482,
-					["y"] = 0.3492,
-				}, -- [159]
-				{
-					["t"] = 1763787894,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2395,
-					["x"] = 0.5653,
-					["y"] = 0.3563,
-				}, -- [160]
-				{
-					["t"] = 1763787904,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2395,
-					["x"] = 0.589,
-					["y"] = 0.3636,
-				}, -- [161]
-				{
-					["t"] = 1763787914,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2395,
-					["x"] = 0.6039,
-					["y"] = 0.3683,
-				}, -- [162]
-				{
-					["t"] = 1763787924,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2395,
-					["x"] = 0.6289,
-					["y"] = 0.3753,
-				}, -- [163]
-				{
-					["t"] = 1763787934,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2395,
-					["x"] = 0.6451,
-					["y"] = 0.3828,
-				}, -- [164]
-				{
-					["t"] = 1763787944,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2395,
-					["x"] = 0.6674,
-					["y"] = 0.386,
-				}, -- [165]
-				{
-					["t"] = 1763787954,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2395,
-					["x"] = 0.6871,
-					["y"] = 0.3905,
-				}, -- [166]
-				{
-					["t"] = 1763787964,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2395,
-					["x"] = 0.7066,
-					["y"] = 0.3945,
-				}, -- [167]
-				{
-					["t"] = 1763787974,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2395,
-					["x"] = 0.7255,
-					["y"] = 0.4041,
-				}, -- [168]
-				{
-					["t"] = 1763787984,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2395,
-					["x"] = 0.7472,
-					["y"] = 0.4099,
-				}, -- [169]
-				{
-					["t"] = 1763787994,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2395,
-					["x"] = 0.7627,
-					["y"] = 0.4169,
-				}, -- [170]
-				{
-					["t"] = 1763788004,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2395,
-					["x"] = 0.7848,
-					["y"] = 0.4192,
-				}, -- [171]
-				{
-					["t"] = 1763788014,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2395,
-					["x"] = 0.8032,
-					["y"] = 0.4248,
-				}, -- [172]
-				{
-					["t"] = 1763788024,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2395,
-					["x"] = 0.8213,
-					["y"] = 0.4332,
-				}, -- [173]
-				{
-					["t"] = 1763788034,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2395,
-					["x"] = 0.8376,
-					["y"] = 0.4413,
-				}, -- [174]
-				{
-					["t"] = 1763788044,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2395,
-					["x"] = 0.8577,
-					["y"] = 0.4425,
-				}, -- [175]
-				{
-					["t"] = 1763788054,
-					["e"] = "pos",
-					["mo"] = "flug",
-					["m"] = 2395,
-					["x"] = 0.8791,
-					["y"] = 0.4467,
-				}, -- [176]
-				{
-					["t"] = 1763788098,
+					["t"] = 1763706467,
 					["e"] = "beute",
-					["src"] = "Creature-0-1-2395-1-240006-000500002F",
-					["npc"] = 240006,
-					["art"] = "Creature",
-					["sn"] = "Splitterkreatur",
-					["items"] = {
-						{
-							["id"] = 256412,
-							["n"] = "Leerensplitter",
-							["q"] = 1,
-							["ic"] = 134075,
-							["c"] = 1,
-						}, -- [1]
-					},
-					["z"] = "Immersangwald",
-					["m"] = 2395,
-					["x"] = 0.8791,
-					["y"] = 0.4467,
-				}, -- [177]
-				{
-					["t"] = 1763788142,
-					["e"] = "beute",
-					["src"] = "Creature-0-1-2395-1-240006-0005000030",
+					["src"] = "Creature-0-1-2395-1-240006-0005000070",
 					["npc"] = 240006,
 					["art"] = "Creature",
 					["sn"] = "Splitterkreatur",
@@ -6739,23 +8105,694 @@ AzerothTagebuchDB = {
 							["ic"] = 134075,
 							["c"] = 3,
 						}, -- [1]
+					},
+					["z"] = "Immersangwald",
+					["m"] = 2395,
+					["x"] = 0.2989,
+					["y"] = 0.2512,
+				}, -- [132]
+				{
+					["t"] = 1763706511,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-2395-1-240006-0005000071",
+					["npc"] = 240006,
+					["art"] = "Creature",
+					["sn"] = "Splitterkreatur",
+					["items"] = {
+						{
+							["id"] = 256412,
+							["n"] = "Leerensplitter",
+							["q"] = 1,
+							["ic"] = 134075,
+							["c"] = 3,
+						}, -- [1]
+					},
+					["z"] = "Immersangwald",
+					["m"] = 2395,
+					["x"] = 0.2989,
+					["y"] = 0.2512,
+				}, -- [133]
+				{
+					["t"] = 1763706516,
+					["e"] = "quest_ab",
+					["q"] = 90017,
+					["n"] = "Die Schatzkiste am See",
+					["c"] = "Normal",
+					["xp"] = 9000,
+					["g"] = 600000,
+					["z"] = "Immersangwald",
+					["lv"] = 79,
+					["m"] = 2395,
+					["x"] = 0.2989,
+					["y"] = 0.2512,
+				}, -- [134]
+				{
+					["t"] = 1763706546,
+					["e"] = "logout",
+					["dauer"] = 1741,
+					["g"] = 1827368,
+					["dg"] = 847368,
+					["m"] = 2395,
+					["x"] = 0.2989,
+					["y"] = 0.2512,
+				}, -- [135]
+				{
+					["t"] = 1763787600,
+					["e"] = "login",
+					["lv"] = 79,
+					["g"] = 1827368,
+					["m"] = 2395,
+					["x"] = 0.2989,
+					["y"] = 0.2512,
+				}, -- [136]
+				{
+					["t"] = 1763787605,
+					["e"] = "ausr",
+					["il"] = 573.5,
+					["ilg"] = 577.0,
+					["lv"] = 79,
+					["m"] = 2395,
+					["x"] = 0.2989,
+					["y"] = 0.2512,
+				}, -- [137]
+				{
+					["t"] = 1763787605,
+					["e"] = "zone",
+					["z"] = "Immersangwald",
+					["sz"] = "Falkenwacht",
+					["m"] = 2395,
+					["x"] = 0.3,
+					["y"] = 0.25,
+				}, -- [138]
+				{
+					["t"] = 1763787615,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.313,
+					["y"] = 0.2572,
+				}, -- [139]
+				{
+					["t"] = 1763787625,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.3214,
+					["y"] = 0.2599,
+				}, -- [140]
+				{
+					["t"] = 1763787635,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.3379,
+					["y"] = 0.2663,
+				}, -- [141]
+				{
+					["t"] = 1763787645,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.3463,
+					["y"] = 0.2667,
+				}, -- [142]
+				{
+					["t"] = 1763787655,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.3562,
+					["y"] = 0.2758,
+				}, -- [143]
+				{
+					["t"] = 1763787665,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.3672,
+					["y"] = 0.2788,
+				}, -- [144]
+				{
+					["t"] = 1763787675,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.3804,
+					["y"] = 0.285,
+				}, -- [145]
+				{
+					["t"] = 1763787685,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.3934,
+					["y"] = 0.2846,
+				}, -- [146]
+				{
+					["t"] = 1763787695,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.3983,
+					["y"] = 0.289,
+				}, -- [147]
+				{
+					["t"] = 1763787705,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.413,
+					["y"] = 0.2961,
+				}, -- [148]
+				{
+					["t"] = 1763787715,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.4275,
+					["y"] = 0.3031,
+				}, -- [149]
+				{
+					["t"] = 1763787725,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.4327,
+					["y"] = 0.3072,
+				}, -- [150]
+				{
+					["t"] = 1763787735,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.4502,
+					["y"] = 0.312,
+				}, -- [151]
+				{
+					["t"] = 1763787745,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.4597,
+					["y"] = 0.3118,
+				}, -- [152]
+				{
+					["t"] = 1763787755,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.4733,
+					["y"] = 0.3206,
+				}, -- [153]
+				{
+					["t"] = 1763787765,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.4833,
+					["y"] = 0.326,
+				}, -- [154]
+				{
+					["t"] = 1763787775,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.492,
+					["y"] = 0.324,
+				}, -- [155]
+				{
+					["t"] = 1763787785,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.505,
+					["y"] = 0.3342,
+				}, -- [156]
+				{
+					["t"] = 1763787795,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.5135,
+					["y"] = 0.3384,
+				}, -- [157]
+				{
+					["t"] = 1763787805,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.5307,
+					["y"] = 0.3388,
+				}, -- [158]
+				{
+					["t"] = 1763787815,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.5395,
+					["y"] = 0.3469,
+				}, -- [159]
+				{
+					["t"] = 1763787825,
+					["e"] = "pos",
+					["mo"] = "reittier",
+					["m"] = 2395,
+					["x"] = 0.5497,
+					["y"] = 0.3477,
+				}, -- [160]
+				{
+					["t"] = 1763787827,
+					["e"] = "level",
+					["lv"] = 80,
+					["m"] = 2395,
+					["x"] = 0.5497,
+					["y"] = 0.3477,
+				}, -- [161]
+				{
+					["t"] = 1763787830,
+					["e"] = "ausr",
+					["il"] = 579.5,
+					["ilg"] = 583.0,
+					["lv"] = 80,
+					["m"] = 2395,
+					["x"] = 0.5497,
+					["y"] = 0.3477,
+				}, -- [162]
+				{
+					["t"] = 1763787832,
+					["e"] = "gegenstand",
+					["slot"] = 13,
+					["id"] = 231887,
+					["n"] = "Amani-Talisman",
+					["q"] = 3,
+					["il"] = 587.0,
+					["ic"] = 133440,
+					["alt"] = "Sonnenzorn-Talisman",
+					["altil"] = 561.0,
+					["m"] = 2395,
+					["x"] = 0.5497,
+					["y"] = 0.3477,
+				}, -- [163]
+				{
+					["t"] = 1763787834,
+					["e"] = "gegenstand",
+					["slot"] = 1,
+					["id"] = 230687,
+					["n"] = "Morgenruh-Helm",
+					["q"] = 4,
+					["il"] = 587.0,
+					["ic"] = 133071,
+					["alt"] = "Amani-Helm",
+					["altil"] = 560.0,
+					["m"] = 2395,
+					["x"] = 0.5497,
+					["y"] = 0.3477,
+				}, -- [164]
+				{
+					["t"] = 1763787879,
+					["e"] = "erfolg",
+					["a"] = 61005,
+					["n"] = "Stufe 80",
+					["p"] = 10,
+					["m"] = 2395,
+					["x"] = 0.5497,
+					["y"] = 0.3477,
+				}, -- [165]
+				{
+					["t"] = 1763787884,
+					["e"] = "quest_an",
+					["q"] = 90018,
+					["n"] = "Brücke nach Zul'Aman",
+					["c"] = "Campaign",
+					["z"] = "Immersangwald",
+					["m"] = 2395,
+					["x"] = 0.5497,
+					["y"] = 0.3477,
+				}, -- [166]
+				{
+					["t"] = 1763787894,
+					["e"] = "pos",
+					["mo"] = "flug",
+					["m"] = 2395,
+					["x"] = 0.5659,
+					["y"] = 0.3561,
+				}, -- [167]
+				{
+					["t"] = 1763787904,
+					["e"] = "pos",
+					["mo"] = "flug",
+					["m"] = 2395,
+					["x"] = 0.5869,
+					["y"] = 0.3603,
+				}, -- [168]
+				{
+					["t"] = 1763787914,
+					["e"] = "pos",
+					["mo"] = "flug",
+					["m"] = 2395,
+					["x"] = 0.6069,
+					["y"] = 0.368,
+				}, -- [169]
+				{
+					["t"] = 1763787924,
+					["e"] = "pos",
+					["mo"] = "flug",
+					["m"] = 2395,
+					["x"] = 0.6303,
+					["y"] = 0.3697,
+				}, -- [170]
+				{
+					["t"] = 1763787934,
+					["e"] = "pos",
+					["mo"] = "flug",
+					["m"] = 2395,
+					["x"] = 0.6502,
+					["y"] = 0.3777,
+				}, -- [171]
+				{
+					["t"] = 1763787944,
+					["e"] = "pos",
+					["mo"] = "flug",
+					["m"] = 2395,
+					["x"] = 0.6692,
+					["y"] = 0.3827,
+				}, -- [172]
+				{
+					["t"] = 1763787954,
+					["e"] = "pos",
+					["mo"] = "flug",
+					["m"] = 2395,
+					["x"] = 0.6854,
+					["y"] = 0.3864,
+				}, -- [173]
+				{
+					["t"] = 1763787964,
+					["e"] = "pos",
+					["mo"] = "flug",
+					["m"] = 2395,
+					["x"] = 0.7037,
+					["y"] = 0.3921,
+				}, -- [174]
+				{
+					["t"] = 1763787974,
+					["e"] = "pos",
+					["mo"] = "flug",
+					["m"] = 2395,
+					["x"] = 0.7228,
+					["y"] = 0.4027,
+				}, -- [175]
+				{
+					["t"] = 1763787984,
+					["e"] = "pos",
+					["mo"] = "flug",
+					["m"] = 2395,
+					["x"] = 0.7408,
+					["y"] = 0.4055,
+				}, -- [176]
+				{
+					["t"] = 1763787994,
+					["e"] = "pos",
+					["mo"] = "flug",
+					["m"] = 2395,
+					["x"] = 0.7664,
+					["y"] = 0.4144,
+				}, -- [177]
+				{
+					["t"] = 1763788004,
+					["e"] = "pos",
+					["mo"] = "flug",
+					["m"] = 2395,
+					["x"] = 0.7836,
+					["y"] = 0.4176,
+				}, -- [178]
+				{
+					["t"] = 1763788014,
+					["e"] = "pos",
+					["mo"] = "flug",
+					["m"] = 2395,
+					["x"] = 0.8057,
+					["y"] = 0.4242,
+				}, -- [179]
+				{
+					["t"] = 1763788024,
+					["e"] = "pos",
+					["mo"] = "flug",
+					["m"] = 2395,
+					["x"] = 0.8185,
+					["y"] = 0.4315,
+				}, -- [180]
+				{
+					["t"] = 1763788034,
+					["e"] = "pos",
+					["mo"] = "flug",
+					["m"] = 2395,
+					["x"] = 0.8419,
+					["y"] = 0.4388,
+				}, -- [181]
+				{
+					["t"] = 1763788044,
+					["e"] = "pos",
+					["mo"] = "flug",
+					["m"] = 2395,
+					["x"] = 0.8576,
+					["y"] = 0.4467,
+				}, -- [182]
+				{
+					["t"] = 1763788054,
+					["e"] = "pos",
+					["mo"] = "flug",
+					["m"] = 2395,
+					["x"] = 0.8787,
+					["y"] = 0.454,
+				}, -- [183]
+				{
+					["t"] = 1763788098,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-2395-1-240002-0005000072",
+					["npc"] = 240002,
+					["art"] = "Creature",
+					["sn"] = "Leerenwandler",
+					["items"] = {
+						{
+							["id"] = 256412,
+							["n"] = "Leerensplitter",
+							["q"] = 1,
+							["ic"] = 134075,
+							["c"] = 1,
+						}, -- [1]
+					},
+					["z"] = "Immersangwald",
+					["m"] = 2395,
+					["x"] = 0.8787,
+					["y"] = 0.454,
+				}, -- [184]
+				{
+					["t"] = 1763788142,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-2395-1-240002-0005000073",
+					["npc"] = 240002,
+					["art"] = "Creature",
+					["sn"] = "Leerenwandler",
+					["items"] = {
+						{
+							["id"] = 256412,
+							["n"] = "Leerensplitter",
+							["q"] = 1,
+							["ic"] = 134075,
+							["c"] = 1,
+						}, -- [1]
+					},
+					["z"] = "Immersangwald",
+					["m"] = 2395,
+					["x"] = 0.8787,
+					["y"] = 0.454,
+				}, -- [185]
+				{
+					["t"] = 1763788147,
+					["e"] = "quest_ab",
+					["q"] = 90018,
+					["n"] = "Brücke nach Zul'Aman",
+					["c"] = "Campaign",
+					["xp"] = 0,
+					["g"] = 250000,
+					["z"] = "Immersangwald",
+					["lv"] = 80,
+					["m"] = 2395,
+					["x"] = 0.8787,
+					["y"] = 0.454,
+				}, -- [186]
+				{
+					["t"] = 1763788147,
+					["e"] = "zone",
+					["z"] = "Pilzgrotte",
+					["sz"] = "",
+					["inst"] = "Pilzgrotte",
+					["it"] = "scenario",
+					["diff"] = "Tiefen",
+					["m"] = 9202,
+				}, -- [187]
+				{
+					["t"] = 1763788147,
+					["e"] = "inst_an",
+					["iid"] = 9202,
+					["inst"] = "Pilzgrotte",
+					["it"] = "delve",
+					["did"] = 208,
+					["diff"] = "Tiefen",
+					["lv"] = 80,
+					["il"] = 579.5,
+					["grp"] = 1,
+					["tier"] = 2,
+					["m"] = 9202,
+				}, -- [188]
+				{
+					["t"] = 1763788236,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9202-1-240001-0005000074",
+					["npc"] = 240001,
+					["art"] = "Creature",
+					["sn"] = "Verdorbener Luchs",
+					["items"] = {
+						{
+							["id"] = 258592,
+							["n"] = "Zerfetztes Luchsfell",
+							["q"] = 1,
+							["ic"] = 134366,
+							["c"] = 3,
+						}, -- [1]
+						{
+							["id"] = 251965,
+							["n"] = "Scharfe Kralle",
+							["q"] = 0,
+							["ic"] = 134297,
+							["c"] = 1,
+						}, -- [2]
+					},
+					["z"] = "Pilzgrotte",
+					["m"] = 9202,
+				}, -- [189]
+				{
+					["t"] = 1763788322,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9202-1-240001-0005000075",
+					["npc"] = 240001,
+					["art"] = "Creature",
+					["sn"] = "Verdorbener Luchs",
+					["items"] = {
+						{
+							["id"] = 258592,
+							["n"] = "Zerfetztes Luchsfell",
+							["q"] = 1,
+							["ic"] = 134366,
+							["c"] = 1,
+						}, -- [1]
+						{
+							["id"] = 251965,
+							["n"] = "Scharfe Kralle",
+							["q"] = 0,
+							["ic"] = 134297,
+							["c"] = 1,
+						}, -- [2]
+					},
+					["z"] = "Pilzgrotte",
+					["m"] = 9202,
+				}, -- [190]
+				{
+					["t"] = 1763788410,
+					["e"] = "boss",
+					["eid"] = 3211,
+					["n"] = "Morchelmutter",
+					["did"] = 208,
+					["ok"] = 1,
+					["dauer"] = 67,
+					["iid"] = 9202,
+					["inst"] = "Pilzgrotte",
+					["grp"] = 1,
+					["m"] = 9202,
+				}, -- [191]
+				{
+					["t"] = 1763788416,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9202-1-263211-0006000076",
+					["npc"] = 263211,
+					["art"] = "Creature",
+					["sn"] = "Morchelmutter",
+					["items"] = {
+						{
+							["id"] = 254644,
+							["n"] = "Ring des Abgrunds",
+							["q"] = 3,
+							["ic"] = 133347,
+							["c"] = 1,
+						}, -- [1]
+					},
+					["z"] = "Pilzgrotte",
+					["m"] = 9202,
+				}, -- [192]
+				{
+					["t"] = 1763788436,
+					["e"] = "inst_fertig",
+					["iid"] = 9202,
+					["inst"] = "Pilzgrotte",
+					["art"] = "szenario",
+					["dauer"] = 289,
+					["m"] = 9202,
+				}, -- [193]
+				{
+					["t"] = 1763788466,
+					["e"] = "inst_ab",
+					["iid"] = 9202,
+					["inst"] = "Pilzgrotte",
+					["dauer"] = 319,
+					["m"] = 9202,
+				}, -- [194]
+				{
+					["t"] = 1763788466,
+					["e"] = "zone",
+					["z"] = "Schimmerhöhle",
+					["sz"] = "",
+					["inst"] = "Schimmerhöhle",
+					["it"] = "scenario",
+					["diff"] = "Tiefen",
+					["m"] = 9201,
+				}, -- [195]
+				{
+					["t"] = 1763788466,
+					["e"] = "inst_an",
+					["iid"] = 9201,
+					["inst"] = "Schimmerhöhle",
+					["it"] = "delve",
+					["did"] = 208,
+					["diff"] = "Tiefen",
+					["lv"] = 80,
+					["il"] = 579.5,
+					["grp"] = 1,
+					["tier"] = 3,
+					["m"] = 9201,
+				}, -- [196]
+				{
+					["t"] = 1763788545,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9201-1-240006-0005000077",
+					["npc"] = 240006,
+					["art"] = "Creature",
+					["sn"] = "Splitterkreatur",
+					["items"] = {
 						{
 							["id"] = 256899,
 							["n"] = "Splitterkern",
 							["q"] = 2,
 							["ic"] = 134123,
 							["c"] = 1,
-						}, -- [2]
+						}, -- [1]
 					},
-					["z"] = "Immersangwald",
-					["m"] = 2395,
-					["x"] = 0.8791,
-					["y"] = 0.4467,
-				}, -- [178]
+					["z"] = "Schimmerhöhle",
+					["m"] = 9201,
+				}, -- [197]
 				{
-					["t"] = 1763788186,
+					["t"] = 1763788639,
 					["e"] = "beute",
-					["src"] = "Creature-0-1-2395-1-240006-0005000031",
+					["src"] = "Creature-0-1-9201-1-240006-0005000078",
 					["npc"] = 240006,
 					["art"] = "Creature",
 					["sn"] = "Splitterkreatur",
@@ -6768,78 +8805,118 @@ AzerothTagebuchDB = {
 							["c"] = 1,
 						}, -- [1]
 					},
-					["z"] = "Immersangwald",
-					["m"] = 2395,
-					["x"] = 0.8791,
-					["y"] = 0.4467,
-				}, -- [179]
+					["z"] = "Schimmerhöhle",
+					["m"] = 9201,
+				}, -- [198]
 				{
-					["t"] = 1763788191,
-					["e"] = "quest_ab",
-					["q"] = 90018,
-					["n"] = "Brücke nach Zul'Aman",
-					["c"] = "Campaign",
-					["xp"] = 0,
-					["g"] = 250000,
-					["z"] = "Immersangwald",
-					["lv"] = 80,
-					["m"] = 2395,
-					["x"] = 0.8791,
-					["y"] = 0.4467,
-				}, -- [180]
+					["t"] = 1763788699,
+					["e"] = "boss",
+					["eid"] = 3201,
+					["n"] = "Kristallfresser",
+					["did"] = 208,
+					["ok"] = 1,
+					["dauer"] = 70,
+					["iid"] = 9201,
+					["inst"] = "Schimmerhöhle",
+					["grp"] = 1,
+					["m"] = 9201,
+				}, -- [199]
 				{
-					["t"] = 1763788221,
+					["t"] = 1763788705,
+					["e"] = "beute",
+					["src"] = "Creature-0-1-9201-1-263201-0006000079",
+					["npc"] = 263201,
+					["art"] = "Creature",
+					["sn"] = "Kristallfresser",
+					["items"] = {
+						{
+							["id"] = 256412,
+							["n"] = "Leerensplitter",
+							["q"] = 1,
+							["ic"] = 134075,
+							["c"] = 1,
+						}, -- [1]
+						{
+							["id"] = 256899,
+							["n"] = "Splitterkern",
+							["q"] = 2,
+							["ic"] = 134123,
+							["c"] = 1,
+						}, -- [2]
+					},
+					["z"] = "Schimmerhöhle",
+					["m"] = 9201,
+				}, -- [200]
+				{
+					["t"] = 1763788725,
+					["e"] = "inst_fertig",
+					["iid"] = 9201,
+					["inst"] = "Schimmerhöhle",
+					["art"] = "szenario",
+					["dauer"] = 259,
+					["m"] = 9201,
+				}, -- [201]
+				{
+					["t"] = 1763788755,
+					["e"] = "inst_ab",
+					["iid"] = 9201,
+					["inst"] = "Schimmerhöhle",
+					["dauer"] = 289,
+					["m"] = 9201,
+				}, -- [202]
+				{
+					["t"] = 1763788785,
 					["e"] = "logout",
-					["dauer"] = 616,
-					["g"] = 2181646,
+					["dauer"] = 1180,
+					["g"] = 2077368,
 					["dg"] = 250000,
 					["m"] = 2395,
-					["x"] = 0.8791,
-					["y"] = 0.4467,
-				}, -- [181]
+					["x"] = 0.8787,
+					["y"] = 0.454,
+				}, -- [203]
 			},
 			["guild"] = "Hüter des Lichts-Antonidas",
 			["bags"] = {
-				["t"] = 1763788221,
+				["t"] = 1763788785,
 				["tabs"] = {
 					{
 						["name"] = "Taschen",
 						["items"] = {
 							{
+								["id"] = 261965,
+								["n"] = "Scharfe Kralle",
+								["q"] = 0,
+								["ic"] = 134297,
+								["c"] = 200,
+							}, -- [1]
+							{
+								["id"] = 263479,
+								["n"] = "Zähes Fleisch",
+								["q"] = 1,
+								["ic"] = 133971,
+								["c"] = 1,
+							}, -- [2]
+							{
 								["id"] = 264939,
 								["n"] = "Amethyst",
 								["q"] = 3,
 								["ic"] = 134075,
-								["c"] = 87,
-							}, -- [1]
-							{
-								["id"] = 268592,
-								["n"] = "Zerfetztes Luchsfell",
-								["q"] = 1,
-								["ic"] = 134366,
-								["c"] = 87,
-							}, -- [2]
-							{
-								["id"] = 266697,
-								["n"] = "Heiltrank",
-								["q"] = 1,
-								["ic"] = 133971,
-								["c"] = 200,
+								["c"] = 5,
 							}, -- [3]
 							{
 								["id"] = 266412,
 								["n"] = "Leerensplitter",
 								["q"] = 1,
 								["ic"] = 134075,
-								["c"] = 1,
+								["c"] = 200,
 							}, -- [4]
 							{
-								["id"] = 267035,
-								["n"] = "Leinenhemd",
-								["q"] = 1,
-								["ic"] = 135030,
+								["id"] = 269346,
+								["n"] = "Sonnenzorn-Perle",
+								["q"] = 4,
+								["ic"] = 134123,
 								["c"] = 1,
-								["il"] = -17.0,
+								["il"] = 540.0,
 							}, -- [5]
 						},
 					}, -- [1]

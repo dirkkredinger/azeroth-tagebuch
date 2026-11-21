@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t, tn } from '$lib/i18n.svelte';
   // Punkte und Linien in einem Koordinatensystem (Streudiagramm, Verlauf, Stufenlinie, Trend)
   export type Pt = { x: number; y: number; color?: string; r?: number; title?: string };
   export type Line = { points: { x: number; y: number }[]; color: string; dash?: boolean; step?: boolean; width?: number };
@@ -45,13 +46,13 @@
 
 {#if allX.length}
   <svg viewBox="0 0 {W} {H}" class="chart">
-    {#each yTicks as t}
-      <line x1={pad.l} x2={W - pad.r} y1={sy(t)} y2={sy(t)} class="grid" />
-      <text x={W - pad.r + 6} y={sy(t) + 3} class="axis">{yFormat(t)}</text>
+    {#each yTicks as tk}
+      <line x1={pad.l} x2={W - pad.r} y1={sy(tk)} y2={sy(tk)} class="grid" />
+      <text x={W - pad.r + 6} y={sy(tk) + 3} class="axis">{yFormat(tk)}</text>
     {/each}
-    {#each xTicks as t}
-      <line x1={sx(t)} x2={sx(t)} y1={pad.t} y2={H - pad.b} class="grid v" />
-      <text x={sx(t)} y={H - 8} class="axis" text-anchor="middle">{xFormat(t)}</text>
+    {#each xTicks as tk}
+      <line x1={sx(tk)} x2={sx(tk)} y1={pad.t} y2={H - pad.b} class="grid v" />
+      <text x={sx(tk)} y={H - 8} class="axis" text-anchor="middle">{xFormat(tk)}</text>
     {/each}
     {#each lines as l}
       <path d={path(l)} fill="none" stroke={l.color} stroke-width={l.width ?? 2} stroke-dasharray={l.dash ? '5 3' : undefined} stroke-linejoin="round" />
@@ -62,7 +63,7 @@
   </svg>
   {#if xLabel}<div class="xl">{xLabel}</div>{/if}
 {:else}
-  <div class="none">Noch keine Daten</div>
+  <div class="none">{t('Noch keine Daten')}</div>
 {/if}
 
 <style>

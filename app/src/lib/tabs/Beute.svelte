@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t, tn } from '$lib/i18n.svelte';
   import StatTile from '$lib/components/StatTile.svelte';
   import Segmented from '$lib/components/Segmented.svelte';
   import ItemIcon from '$lib/components/ItemIcon.svelte';
@@ -20,11 +21,11 @@
   const tip = (s: A.LootSource, i: A.ItemDrop) => ({
     name: i.name, quality: i.quality, icon: i.icon,
     lines: [
-      { text: `Droprate: ${Math.round(A.dropRate(s, i) * 100)} % (${i.times} von ${s.looted})` },
-      { text: `von ${s.name}`, color: '#bfb091' },
-      ...(i.total > i.times ? [{ text: `insgesamt ${i.total} Stück erbeutet`, color: '#bfb091' }] : []),
+      { text: t('Droprate: {p} % ({a} von {b})', { p: Math.round(A.dropRate(s, i) * 100), a: i.times, b: s.looted }) },
+      { text: t('von {name}', { name: s.name }), color: '#bfb091' },
+      ...(i.total > i.times ? [{ text: t('insgesamt {n} Stück erbeutet', { n: i.total }), color: '#bfb091' }] : []),
     ],
-    hint: i.itemId ? 'Klicken auf den Namen: auf Wowhead ansehen' : undefined,
+    hint: i.itemId ? t('Klicken auf den Namen: auf Wowhead ansehen') : undefined,
   });
 
   const stats = $derived(A.lootStats(all ? store.characters : [c], store.fights));
@@ -48,19 +49,19 @@
 </script>
 
 <div class="grid-tiles">
-  <StatTile title="Gegner besiegt" value={num(tiles.kills)} icon="flame" tint="var(--damage)" />
-  <StatTile title="Verschiedene Gegner" value={num(tiles.kinds)} icon="paw-print" tint="#f0a030" />
-  <StatTile title="Geplündert" value={num(tiles.looted)} icon="backpack" />
-  <StatTile title="Gegenstände erbeutet" value={num(tiles.items)} icon="archive" tint="var(--parchment)" />
-  <StatTile title="Seltene Funde (grün+)" value={num(tiles.rare)} icon="sparkles" tint="#0070dd" />
+  <StatTile title={t('Gegner besiegt')} value={num(tiles.kills)} icon="flame" tint="var(--damage)" />
+  <StatTile title={t('Verschiedene Gegner')} value={num(tiles.kinds)} icon="paw-print" tint="#f0a030" />
+  <StatTile title={t('Geplündert')} value={num(tiles.looted)} icon="backpack" />
+  <StatTile title={t('Gegenstände erbeutet')} value={num(tiles.items)} icon="archive" tint="var(--parchment)" />
+  <StatTile title={t('Seltene Funde (grün+)')} value={num(tiles.rare)} icon="sparkles" tint="#0070dd" />
 </div>
 
 <div class="bar">
-  <Segmented bind:value={kind} options={[{ id: 'mobs', label: 'Gegner' }, { id: 'objects', label: 'Vorkommen & Truhen' }]} />
-  <Segmented bind:value={sort} options={[{ id: 'kills', label: 'Kills' }, { id: 'recent', label: 'Zuletzt' }, { id: 'name', label: 'Name' }]} />
-  <label class="tog"><input type="checkbox" bind:checked={all} /> Alle Charaktere</label>
+  <Segmented bind:value={kind} options={[{ id: 'mobs', label: t('Gegner') }, { id: 'objects', label: t('Vorkommen & Truhen') }]} />
+  <Segmented bind:value={sort} options={[{ id: 'kills', label: t('Kills') }, { id: 'recent', label: t('Zuletzt') }, { id: 'name', label: t('Name') }]} />
+  <label class="tog"><input type="checkbox" bind:checked={all} /> {t('Alle Charaktere')}</label>
   <span class="sp"></span>
-  <input type="search" placeholder="Gegner oder Gegenstand suchen" bind:value={search} />
+  <input type="search" placeholder={t('Gegner oder Gegenstand suchen')} bind:value={search} />
 </div>
 
 {#each list as s (s.key)}
@@ -69,7 +70,7 @@
       <Icon name={s.isObject ? 'sparkles' : 'paw-print'} size={16} color={s.isObject ? 'var(--healing)' : 'var(--damage)'} />
       <div class="nm"><div class="serif b">{s.name}</div><div class="dim sm">{[...s.zones].sort().join(', ')}</div></div>
       <div class="icons">{#each items(s).slice(0, 5) as i}<ItemIcon icon={i.icon} quality={i.quality} size={24} tip={tip(s, i)} />{/each}</div>
-      <div class="cnt">{#if !s.isObject}<div class="b">{A.effectiveKills(s)}× besiegt</div>{/if}<div class="dim sm">{s.looted}× geplündert</div></div>
+      <div class="cnt">{#if !s.isObject}<div class="b">{t('{n}× besiegt', { n: A.effectiveKills(s) })}</div>{/if}<div class="dim sm">{t('{n}× geplündert', { n: s.looted })}</div></div>
     </button>
     {#if open === s.key}
       <div class="drops">
@@ -80,22 +81,22 @@
             <ExtLink href={wowheadItem(i.itemId)}><span class="iname" style="color:{qualityColor(i.quality)}">{i.name}</span></ExtLink>
             <span class="track"><i style="width:{Math.max(1, r * 100)}%; background:{qualityColor(i.quality)}"></i></span>
             <b class="gold pct">{Math.round(r * 100)} %</b>
-            <span class="dim sm of">{i.times} von {s.looted}{i.total > i.times ? ` · ${i.total} Stück` : ''}</span>
+            <span class="dim sm of">{t('{a} von {b}', { a: i.times, b: s.looted })}{i.total > i.times ? ' · ' + t('{n} Stück', { n: i.total }) : ''}</span>
           </div>
-        {:else}<div class="dim sm">{s.looted ? 'Keine Gegenstände.' : 'Nie geplündert – kein Beutefenster erfasst.'}</div>{/each}
+        {:else}<div class="dim sm">{s.looted ? t('Keine Gegenstände.') : t('Nie geplündert – kein Beutefenster erfasst.')}</div>{/each}
       </div>
     {/if}
   </div>
 {:else}
-  <div class="panel box"><h3>{kind === 'objects' ? 'Noch keine Vorkommen geplündert' : 'Noch keine Beute erfasst'}</h3>
-    <p class="dim">Besiegte Gegner kommen aus dem Kampflog, die Beute schreibt das Addon (ab Version 1.2) mit, sobald ein Beutefenster aufgeht – auch mit automatischem Plündern. Droprate = wie oft ein Gegenstand dabei war ÷ geplünderte Leichen dieses Gegners.</p></div>
+  <div class="panel box"><h3>{kind === 'objects' ? t('Noch keine Vorkommen geplündert') : t('Noch keine Beute erfasst')}</h3>
+    <p class="dim">{t('Besiegte Gegner kommen aus dem Kampflog, die Beute schreibt das Addon (ab Version 1.2) mit, sobald ein Beutefenster aufgeht – auch mit automatischem Plündern. Droprate = wie oft ein Gegenstand dabei war ÷ geplünderte Leichen dieses Gegners.')}</p></div>
 {/each}
 
 {#if finds.length}
-  <Box title="Seltene Funde">
+  <Box title={t('Seltene Funde')}>
     <div class="finds">
       {#each finds as { s, i } (s.key + i.key)}
-        <div class="find"><ItemIcon icon={i.icon} quality={i.quality} size={30} tip={tip(s, i)} /><div><div class="b" style="color:{qualityColor(i.quality)}">{i.name}</div><div class="dim sm">von {s.name} · {Math.round(A.dropRate(s, i) * 100)} %</div></div></div>
+        <div class="find"><ItemIcon icon={i.icon} quality={i.quality} size={30} tip={tip(s, i)} /><div><div class="b" style="color:{qualityColor(i.quality)}">{i.name}</div><div class="dim sm">{t('von {name}', { name: s.name })} · {Math.round(A.dropRate(s, i) * 100)} %</div></div></div>
       {/each}
     </div>
   </Box>

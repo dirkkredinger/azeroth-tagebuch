@@ -1,6 +1,7 @@
 // Auswertungen über das Archiv (laufen in der Oberfläche, damit Handy und Web sie genauso nutzen)
 
 import type { Character, Fight, WowEvent } from './types';
+import { t } from './i18n.svelte';
 
 export const turnIns = (c: Character) => c.events.filter((e) => e.e === 'quest_ab');
 export const deaths = (c: Character) => c.events.filter((e) => e.e === 'tod').length;
@@ -26,7 +27,7 @@ export function openQuests(c: Character): WowEvent[] {
 
 export const dps = (f: Fight) => f.damage / Math.max(f.end - f.start, 1);
 export const hps = (f: Fight) => f.healing / Math.max(f.end - f.start, 1);
-export const fightTitle = (f: Fight) => f.encounter ?? f.target ?? 'Kampf';
+export const fightTitle = (f: Fight) => f.encounter ?? f.target ?? t('Kampf');
 
 // ---------- Beute & Dropraten ----------
 
@@ -73,7 +74,7 @@ export function lootStats(chars: Character[], fights: Record<string, Fight[]>): 
     for (const ev of lootEvents(c)) {
       const isObject = ev.art === 'GameObject';
       const name: string = ev.sn ?? (ev.src ? nameForGuid.get(ev.src) : undefined) ?? (ev.npc ? nameForNpc.get(ev.npc) : undefined)
-        ?? (ev.npc ? (isObject ? `Vorkommen #${ev.npc}` : `Gegner #${ev.npc}`) : 'Unbekannte Quelle');
+        ?? (ev.npc ? (isObject ? t('Vorkommen #{n}', { n: ev.npc }) : t('Gegner #{n}', { n: ev.npc })) : t('Unbekannte Quelle'));
       const key = ev.npc ? `${isObject ? 'obj' : 'npc'}${ev.npc}` : `name${name}`;
       const s = source(key, () => ({ key, npcId: ev.npc, name, isObject, kills: 0, looted: 0, lastSeen: 0, zones: new Set(), items: new Map() }));
       if (/^(Gegner|Vorkommen) #/.test(s.name)) s.name = name;
@@ -119,4 +120,147 @@ export function playPerDay(chars: Character[], days = 14): DayPlay[] {
     }
   }
   return out;
+}
+
+// ---------- Instanzen & Tiefen ----------
+
+export type RunKind = 'dungeon' | 'delve' | 'raid' | 'scenario' | 'pvp' | 'other';
+export interface RunBoss { eid?: number; name: string; t: number; ok: boolean; secs?: number }
+export interface RunLoot { itemId?: number; name: string; quality?: number; icon?: number; count: number; gold?: boolean; from?: string }
+export interface InstanceRun {
+  key: string; char: string; iid?: number; name: string; kind: RunKind;
+  difficulty?: string; did?: number; tier?: number; keyLevel?: number;
+  start: number; end: number; completed: boolean; timed?: boolean; timer?: number;
+  level?: number; itemLevel?: number; group?: number;
+  bosses: RunBoss[]; deaths: number; loot: RunLoot[]; gold: number;
+}
+export interface InstanceSummary {
+  key: string; name: string; kind: RunKind; runs: InstanceRun[];
+  completed: number; bossKills: number; wipes: number;
+  bosses: Map<string, { name: string; kills: number; wipes: number; fastest?: number }>;
+  loot: Map<string, RunLoot & { times: number }>;
+  difficulties: Map<string, number>; bestTier?: number; bestKey?: number; fastest?: number; last: number;
+}
+
+const DELVE_DIFFICULTY = 208;
+/** Neu betreten derselben Instanz (z. B. nach einem Tod) gilt bis zu dieser Pause als derselbe Lauf */
+const REENTER_SECONDS = 20 * 60;
+
+export function runKind(it?: string, did?: number, diff?: string): RunKind {
+  if (it === 'delve' || did === DELVE_DIFFICULTY || /tiefe|delve/i.test(diff ?? '')) return 'delve';
+  if (it === 'party') return 'dungeon';
+  if (it === 'raid') return 'raid';
+  if (it === 'scenario') return 'scenario';
+  if (it === 'pvp' || it === 'arena') return 'pvp';
+  return 'other';
+}
+
+export function instanceRuns(c: Character): InstanceRun[] {
+  const runs: InstanceRun[] = [];
+  let cur = null as InstanceRun | null;
+  const close = (t: number) => { if (cur) { cur.end = Math.max(cur.end, t); cur = null; } };
+  const open = (e: WowEvent) => {
+    const name = e.inst ?? '?';
+    const kind = runKind(e.it, e.did, e.diff);
+    // Wiedereinstieg in einen unfertigen Lauf?
+    const last = runs[runs.length - 1];
+    if (last && last.name === name && !last.completed && e.t - last.end < REENTER_SECONDS
+        && (e.did === undefined || last.did === undefined || last.did === e.did)) {
+      cur = last;
+    } else {
+      cur = { key: `${c.key}|${e.t}`, char: c.key, name, kind, start: e.t, end: e.t, completed: false,
+              bosses: [], deaths: 0, loot: [], gold: 0 };
+      runs.push(cur);
+    }
+  };
+  for (const e of c.events) {
+    if (e.e === 'zone') {
+      if (e.inst) { if (!cur || cur.name !== e.inst) { close(e.t); open(e); } }
+      else close(e.t);
+    } else if (e.e === 'inst_an') {
+      if (!cur || cur.name !== e.inst) { close(e.t); open(e); }
+      const r = cur!;
+      r.iid = e.iid ?? r.iid; r.did = e.did ?? r.did; r.difficulty = e.diff ?? r.difficulty;
+      r.kind = runKind(e.it, e.did, e.diff);
+      r.tier = e.tier ?? r.tier; r.keyLevel = e.ml ?? r.keyLevel;
+      r.level ??= e.lv; r.itemLevel ??= e.il; r.group ??= e.grp;
+    } else if (e.e === 'inst_ab' || e.e === 'logout' || e.e === 'login') {
+      close(e.t);
+    } else if (cur) {
+      const r: InstanceRun = cur;
+      r.end = Math.max(r.end, e.t);
+      if (e.e === 'boss') r.bosses.push({ eid: e.eid, name: e.n ?? '?', t: e.t, ok: e.ok === 1, secs: e.dauer });
+      else if (e.e === 'tod') r.deaths++;
+      else if (e.e === 'inst_fertig') {
+        r.completed = true;
+        if (e.ml) r.keyLevel = e.ml;
+        if (e.zeit) r.timer = e.zeit;
+        if (e.imzeit !== undefined) r.timed = e.imzeit === 1;
+      } else if (e.e === 'beute') {
+        for (const it of e.items ?? []) {
+          if (it.gold) { r.gold += it.count ?? 0; continue; }
+          r.loot.push({ itemId: it.itemId, name: it.name ?? '?', quality: it.quality, icon: it.icon, count: it.count ?? 1, from: e.sn });
+        }
+      }
+    }
+  }
+  // Läufe ohne Abschluss-Ereignis (ältere Addon-Versionen): Dungeon gilt als geschafft, wenn alle Bosse fielen,
+  // die dort je besiegt wurden
+  const bossesPer = new Map<string, Set<string>>();
+  for (const r of runs) for (const b of r.bosses) if (b.ok) {
+    const s = bossesPer.get(r.name) ?? new Set(); s.add(b.name); bossesPer.set(r.name, s);
+  }
+  for (const r of runs) {
+    if (r.completed || r.kind !== 'dungeon') continue;
+    const all = bossesPer.get(r.name);
+    const killed = new Set(r.bosses.filter((b) => b.ok).map((b) => b.name));
+    if (all && all.size > 1 && killed.size === all.size) r.completed = true;
+  }
+  return runs;
+}
+
+export function instanceSummaries(runs: InstanceRun[]): InstanceSummary[] {
+  const by = new Map<string, InstanceSummary>();
+  for (const r of runs) {
+    const key = `${r.kind}|${r.name}`;
+    let s = by.get(key);
+    if (!s) {
+      s = { key, name: r.name, kind: r.kind, runs: [], completed: 0, bossKills: 0, wipes: 0, bosses: new Map(),
+            loot: new Map(), difficulties: new Map(), last: 0 };
+      by.set(key, s);
+    }
+    s.runs.push(r);
+    if (r.completed) {
+      s.completed++;
+      const secs = r.timer ?? r.end - r.start;
+      if (secs > 0 && (s.fastest === undefined || secs < s.fastest)) s.fastest = secs;
+    }
+    s.last = Math.max(s.last, r.end);
+    const d = runLabel(r);
+    if (d) s.difficulties.set(d, (s.difficulties.get(d) ?? 0) + 1);
+    if (r.tier && r.completed) s.bestTier = Math.max(s.bestTier ?? 0, r.tier);
+    if (r.keyLevel && r.completed) s.bestKey = Math.max(s.bestKey ?? 0, r.keyLevel);
+    for (const b of r.bosses) {
+      const e = s.bosses.get(b.name) ?? { name: b.name, kills: 0, wipes: 0 };
+      if (b.ok) {
+        e.kills++; s.bossKills++;
+        if (b.secs && (e.fastest === undefined || b.secs < e.fastest)) e.fastest = b.secs;
+      } else { e.wipes++; s.wipes++; }
+      s.bosses.set(b.name, e);
+    }
+    for (const l of r.loot) {
+      const k = l.itemId ? `i${l.itemId}` : `n${l.name}`;
+      const e = s.loot.get(k) ?? { ...l, count: 0, times: 0 };
+      e.count += l.count; e.times++;
+      s.loot.set(k, e);
+    }
+  }
+  return [...by.values()].sort((a, b) => b.last - a.last);
+}
+
+/** Kurzbezeichnung eines Laufs: Schwierigkeit, Tiefenstufe oder Schlüsselstein */
+export function runLabel(r: InstanceRun): string {
+  if (r.kind === 'delve' && r.tier) return `T${r.tier}`;
+  if (r.keyLevel) return `+${r.keyLevel}`;
+  return r.difficulty ?? '';
 }

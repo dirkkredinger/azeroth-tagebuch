@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t, tn } from '$lib/i18n.svelte';
   // Senkrechte Säulen mit Beschriftung darunter und Wert darüber
   let { rows, height = 220, format = (v: number) => String(Math.round(v)), xLabel = '' }:
     { rows: { label: string; value: number; color: string; title?: string }[]; height?: number; format?: (v: number) => string; xLabel?: string } = $props();
@@ -21,7 +22,7 @@
   </svg>
   {#if xLabel}<div class="xl">{xLabel}</div>{/if}
 {:else}
-  <div class="none">Noch keine Daten</div>
+  <div class="none">{t('Noch keine Daten')}</div>
 {/if}
 
 <style>

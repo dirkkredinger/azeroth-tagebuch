@@ -2,6 +2,7 @@
 
 import type { Character, WowEvent } from './types';
 import { duration, gold, num, num1 } from './format';
+import { i18n, t, tn } from './i18n.svelte';
 
 export const classColors: Record<string, string> = {
   WARRIOR: '#c79c6e', PALADIN: '#f58cba', HUNTER: '#abd473', ROGUE: '#fff569', PRIEST: '#e6e6e6',
@@ -24,7 +25,7 @@ export function qualityColor(q?: number): string {
 }
 
 export function subtitle(c: Character): string {
-  return [c.level ? `Stufe ${c.level}` : null, c.race, c.className].filter(Boolean).join(' · ');
+  return [c.level ? t('Stufe {n}', { n: c.level }) : null, c.race, c.className].filter(Boolean).join(' · ');
 }
 
 export function questKind(c?: string): string {
@@ -33,33 +34,39 @@ export function questKind(c?: string): string {
     Meta: 'Meta', Recurring: 'Wiederholbar', Questline: 'Questreihe', BonusObjective: 'Bonusziel', Threat: 'Bedrohung',
     Normal: 'Normal',
   };
-  return map[c ?? 'Normal'] ?? c ?? 'Normal';
+  const de = map[c ?? 'Normal'];
+  return de ? t(de) : c ?? t('Normal');
 }
 
 /** Titel eines Tagebucheintrags */
 export function eventTitle(ev: WowEvent, questNames: Map<number, string> = new Map()): string {
+  const sub = (z?: string, sz?: string) => (z || '?') + (sz ? ` – ${sz}` : '');
   switch (ev.e) {
-    case 'login': return 'Eingeloggt' + (ev.lv ? ` (Stufe ${ev.lv})` : '');
-    case 'logout': return `Ausgeloggt nach ${duration(ev.dauer ?? 0)}`;
+    case 'login': return ev.lv ? t('Eingeloggt (Stufe {lv})', { lv: ev.lv }) : t('Eingeloggt');
+    case 'logout': return t('Ausgeloggt nach {d}', { d: duration(ev.dauer ?? 0) });
     case 'zone':
-      if (ev.inst) return `Instanz betreten: ${ev.inst}` + (ev.diff ? ` (${ev.diff})` : '');
-      return `Unterwegs in ${ev.z || '?'}` + (ev.sz ? ` – ${ev.sz}` : '');
-    case 'quest_an': return `Quest angenommen: ${ev.n ?? '?'}`;
-    case 'quest_ab': return `Quest abgeschlossen: ${ev.n ?? '?'}`;
-    case 'quest_weg': return `Quest abgebrochen: ${(ev.q && questNames.get(ev.q)) || '#' + (ev.q ?? 0)}`;
-    case 'level': return `Stufe ${ev.lv ?? 0} erreicht!`;
-    case 'erfolg': return `Erfolg errungen: ${ev.n ?? '?'}` + (ev.p ? ` (${ev.p} Punkte)` : '');
-    case 'tod': return `Gestorben in ${ev.z || '?'}` + (ev.sz ? ` – ${ev.sz}` : '');
-    case 'taxi_start': return 'Flug mit dem Flugmeister gestartet';
-    case 'taxi_ende': return 'Mit dem Flugmeister gelandet';
-    case 'notiz': return `„${ev.txt ?? ''}“`;
-    case 'ausr': return `Gegenstandsstufe ${num1(ev.il ?? 0)}`;
-    case 'talente': return `Talente: ${ev.spec ?? '?'}` + (ev.lo ? ` – ${ev.lo}` : '');
-    case 'gegenstand': return `Neu angelegt: ${ev.n ?? '?'}` + (ev.il ? ` (${Math.round(ev.il)})` : '');
+      if (ev.inst) return t('Instanz betreten: {name}', { name: ev.inst }) + (ev.diff ? ` (${ev.diff})` : '');
+      return t('Unterwegs in {ort}', { ort: sub(ev.z, ev.sz) });
+    case 'quest_an': return t('Quest angenommen: {name}', { name: ev.n ?? '?' });
+    case 'quest_ab': return t('Quest abgeschlossen: {name}', { name: ev.n ?? '?' });
+    case 'quest_weg': return t('Quest abgebrochen: {name}', { name: (ev.q && questNames.get(ev.q)) || '#' + (ev.q ?? 0) });
+    case 'level': return t('Stufe {n} erreicht!', { n: ev.lv ?? 0 });
+    case 'erfolg': return t('Erfolg errungen: {name}', { name: ev.n ?? '?' }) + (ev.p ? ' ' + t('({n} Punkte)', { n: ev.p }) : '');
+    case 'tod': return t('Gestorben in {ort}', { ort: sub(ev.z, ev.sz) });
+    case 'taxi_start': return t('Flug mit dem Flugmeister gestartet');
+    case 'taxi_ende': return t('Mit dem Flugmeister gelandet');
+    case 'notiz': return i18n.lang === 'de' ? `„${ev.txt ?? ''}“` : `“${ev.txt ?? ''}”`;
+    case 'ausr': return t('Gegenstandsstufe {n}', { n: num1(ev.il ?? 0) });
+    case 'talente': return t('Talente: {spec}', { spec: ev.spec ?? '?' }) + (ev.lo ? ` – ${ev.lo}` : '');
+    case 'gegenstand': return t('Neu angelegt: {name}', { name: ev.n ?? '?' }) + (ev.il ? ` (${Math.round(ev.il)})` : '');
     case 'beute': {
       const n = ev.items?.length ?? 0;
-      return `Beute von ${ev.sn ?? 'Gegner'} (${n} ${n === 1 ? 'Gegenstand' : 'Gegenstände'})`;
+      return t('Beute von {von}', { von: ev.sn ?? t('Gegner') }) + ' (' + tn(n, '{n} Gegenstand', '{n} Gegenstände') + ')';
     }
+    case 'inst_an': return t('Instanz betreten: {name}', { name: ev.inst ?? '?' }) + (ev.tier ? ' ' + t('(Stufe {n})', { n: ev.tier }) : ev.ml ? ` (+${ev.ml})` : ev.diff ? ` (${ev.diff})` : '');
+    case 'inst_ab': return t('Instanz verlassen: {name}', { name: ev.inst ?? '?' });
+    case 'inst_fertig': return t('Abgeschlossen: {name}', { name: ev.inst ?? '?' }) + (ev.ml ? ` (+${ev.ml})` : '');
+    case 'boss': return ev.ok ? t('Boss besiegt: {name}', { name: ev.n ?? '?' }) : t('Gescheitert an: {name}', { name: ev.n ?? '?' });
     default: return ev.e;
   }
 }
@@ -69,13 +76,14 @@ export function eventDetail(ev: WowEvent): string | null {
     case 'quest_ab': {
       const parts: string[] = [];
       if (ev.z) parts.push(ev.z);
-      if (ev.xp) parts.push(`${num(ev.xp)} EP`);
+      if (ev.xp) parts.push(t('{n} EP', { n: num(ev.xp) }));
       if (ev.g) parts.push(gold(ev.g));
       if (ev.c && ev.c !== 'Normal') parts.push(questKind(ev.c));
       return parts.length ? parts.join(' · ') : null;
     }
     case 'logout': return ev.dg ? (ev.dg > 0 ? '+' : '−') + gold(Math.abs(ev.dg)) : null;
     case 'notiz': return ev.z ?? null;
+    case 'inst_fertig': case 'inst_ab': case 'boss': return ev.dauer ? duration(ev.dauer) : null;
     default: return null;
   }
 }
@@ -98,26 +106,34 @@ export function eventStyle(ev: WowEvent): { icon: string; color: string } {
     case 'talente': return { icon: 'sparkles', color: '#5ee6b5' };
     case 'gegenstand': return { icon: 'shirt', color: qualityColor(ev.quality) };
     case 'beute': return { icon: 'backpack', color: '#fbcc5c' };
+    case 'inst_an': case 'inst_ab': return { icon: ev.it === 'delve' ? 'pickaxe' : 'castle', color: '#4f9dff' };
+    case 'inst_fertig': return { icon: 'badge-check', color: '#4cd964' };
+    case 'boss': return { icon: 'skull', color: ev.ok ? '#ff6a4d' : '#888' };
     default: return { icon: 'circle', color: '#a89878' };
   }
 }
 
 // ---------- Ausrüstung ----------
 
-export const SLOT_NAMES: Record<string, string> = {
+const SLOT_DE: Record<string, string> = {
   '1': 'Kopf', '2': 'Hals', '3': 'Schultern', '4': 'Hemd', '5': 'Brust', '6': 'Taille', '7': 'Beine', '8': 'Füße',
   '9': 'Handgelenke', '10': 'Hände', '11': 'Finger 1', '12': 'Finger 2', '13': 'Schmuck 1', '14': 'Schmuck 2',
   '15': 'Rücken', '16': 'Waffenhand', '17': 'Schildhand', '19': 'Wappenrock',
 };
-export const STAT_NAMES: Record<string, string> = {
+const STAT_DE: Record<string, string> = {
   str: 'Stärke', bew: 'Beweglichkeit', int: 'Intellekt', aus: 'Ausdauer',
   krit: 'Krit', tempo: 'Tempo', meist: 'Meisterschaft', viel: 'Vielseitigkeit',
 };
+export const slotName = (slot: string | number) => { const d = SLOT_DE[String(slot)]; return d ? t(d) : String(slot); };
+export const statLabel = (k: string) => { const d = STAT_DE[k]; return d ? t(d) : k; };
 export const STAT_ORDER = ['str', 'bew', 'int', 'aus', 'krit', 'tempo', 'meist', 'viel'];
 export function qualityName(q?: number): string {
-  return ['Schlecht', 'Gewöhnlich', 'Selten', 'Rar', 'Episch', 'Legendär', 'Artefakt', 'Erbstück'][q ?? 1] ?? '–';
+  const d = ['Schlecht', 'Gewöhnlich', 'Selten', 'Rar', 'Episch', 'Legendär', 'Artefakt', 'Erbstück'][q ?? 1];
+  return d ? t(d) : '–';
 }
-export const wowheadItem = (id?: number) => (id ? `https://www.wowhead.com/de/item=${id}` : null);
+/** Wowhead in der Sprache der Oberfläche */
+export const wowheadBase = () => (i18n.lang === 'de' ? 'https://www.wowhead.com/de' : 'https://www.wowhead.com');
+export const wowheadItem = (id?: number) => (id ? `${wowheadBase()}/item=${id}` : null);
 
 // ---------- Klassen & Spezialisierungen (eigene Kurztexte, Links zu Wowhead) ----------
 
@@ -153,27 +169,27 @@ export const CLASSES: Record<string, { slug: string; armor: string; resource: st
   WARRIOR: { slug: 'warrior', armor: 'Platte', resource: 'Wut', text: 'Waffenmeister in Rüstung, im Angriff wie in der Verteidigung.' },
 };
 
-export const roleName = (r?: string) => ({ TANK: 'Tank', HEALER: 'Heiler', DAMAGER: 'Schaden' } as Record<string, string>)[r ?? ''] ?? '–';
-export const statName = (s?: number) => ({ 1: 'Stärke', 2: 'Beweglichkeit', 4: 'Intellekt' } as Record<number, string>)[s ?? 0];
+export const roleName = (r?: string) => { const d = ({ TANK: 'Tank', HEALER: 'Heiler', DAMAGER: 'Schaden' } as Record<string, string>)[r ?? '']; return d ? t(d) : '–'; };
+export const statName = (s?: number) => { const d = ({ 1: 'Stärke', 2: 'Beweglichkeit', 4: 'Intellekt' } as Record<number, string>)[s ?? 0]; return d ? t(d) : undefined; };
 
 /** Links zu den Wowhead-Guides (nur verlinkt, nicht übernommen) */
 export function guideLinks(specId?: number, role?: string, classToken?: string, talentCode?: string) {
-  const base = 'https://www.wowhead.com/de';
+  const base = wowheadBase();
   const out: { title: string; icon: string; url: string }[] = [];
   const spec = specId ? SPECS[specId] : undefined;
   if (spec) {
     const r = ({ TANK: 'tank', HEALER: 'healer' } as Record<string, string>)[role ?? spec.role] ?? 'dps';
     const g = `${base}/guide/classes/${spec.cls}/${spec.slug}`;
-    out.push({ title: 'Talent-Builds', icon: 'sparkles', url: `${g}/talent-builds-pve-${r}` });
-    out.push({ title: 'Überblick', icon: 'book-open', url: `${g}/overview-pve-${r}` });
-    out.push({ title: 'Rotation & Abklingzeiten', icon: 'refresh-cw', url: `${g}/rotation-cooldowns-pve-${r}` });
-    out.push({ title: 'Werte-Prioritäten', icon: 'chart', url: `${g}/stat-priority-pve-${r}` });
-    out.push({ title: 'Ausrüstung (Best in Slot)', icon: 'shield-check', url: `${g}/bis-gear` });
+    out.push({ title: t('Talent-Builds'), icon: 'sparkles', url: `${g}/talent-builds-pve-${r}` });
+    out.push({ title: t('Überblick'), icon: 'book-open', url: `${g}/overview-pve-${r}` });
+    out.push({ title: t('Rotation & Abklingzeiten'), icon: 'refresh-cw', url: `${g}/rotation-cooldowns-pve-${r}` });
+    out.push({ title: t('Werte-Prioritäten'), icon: 'chart', url: `${g}/stat-priority-pve-${r}` });
+    out.push({ title: t('Ausrüstung (Best in Slot)'), icon: 'shield-check', url: `${g}/bis-gear` });
   } else if (classToken && CLASSES[classToken]) {
-    out.push({ title: 'Klassen-Guides', icon: 'book-open', url: `${base}/guide/classes/${CLASSES[classToken].slug}` });
+    out.push({ title: t('Klassen-Guides'), icon: 'book-open', url: `${base}/guide/classes/${CLASSES[classToken].slug}` });
   }
   if (talentCode && !talentCode.startsWith('DEMO')) {
-    out.push({ title: 'Meine Talente im Talentrechner', icon: 'wand-sparkles', url: `${base}/talent-calc/blizzard/${encodeURIComponent(talentCode)}` });
+    out.push({ title: t('Meine Talente im Talentrechner'), icon: 'wand-sparkles', url: `${base}/talent-calc/blizzard/${encodeURIComponent(talentCode)}` });
   }
   return out;
 }

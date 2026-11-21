@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { statusText, t, tn } from '$lib/i18n.svelte';
   import Icon from './Icon.svelte';
   import Avatar from './Avatar.svelte';
   import { store } from '$lib/store.svelte';
@@ -18,12 +19,12 @@
   <button class="entry" class:active={store.selection === null} onclick={() => store.show(null)}>
     <div class="all"><Icon name="users" size={13} color="var(--gold)" /></div>
     <div>
-      <div class="name serif">Alle Charaktere</div>
-      <div class="sub">{store.characters.length} {store.characters.length === 1 ? 'Charakter' : 'Charaktere'} im Überblick</div>
+      <div class="name serif">{t('Alle Charaktere')}</div>
+      <div class="sub">{tn(store.characters.length, '{n} Charakter im Überblick', '{n} Charaktere im Überblick')}</div>
     </div>
   </button>
   <div class="sep"></div>
-  <div class="section">Charaktere</div>
+  <div class="section">{t('Charaktere')}</div>
   <div class="list">
     {#each store.characters as c (c.key)}
       <button class="entry" class:active={store.selection === c.key} onclick={() => store.show(c.key)}>
@@ -38,19 +39,19 @@
   </div>
 
   <div class="support">
-    {#if KOFI_URL}<ExtLink href={KOFI_URL}><span class="kofi"><Icon name="coins" size={13} /> Unterstützen</span></ExtLink>{/if}
-    <button class="about" onclick={() => (about = true)}><Icon name="book-open" size={13} /> Über</button>
+    {#if KOFI_URL}<ExtLink href={KOFI_URL}><span class="kofi"><Icon name="coins" size={13} /> {t('Unterstützen')}</span></ExtLink>{/if}
+    <button class="about" onclick={() => (about = true)}><Icon name="book-open" size={13} /> {t('Über')}</button>
   </div>
   <footer>
     {#if store.live}
-      <div class="live"><span class="dot"></span> Im Kampf</div>
+      <div class="live"><span class="dot"></span> {t('Im Kampf')}</div>
     {/if}
     <div class="status">
       <Icon name={store.snapshot?.demo ? 'sparkles' : 'radio'} size={12} color={store.snapshot?.demo ? '#f0a030' : '#4cd964'} />
-      <span>{store.snapshot?.status ?? 'Lade …'}</span>
+      <span>{store.snapshot?.status ? statusText(store.snapshot.status) : t('Lade …')}</span>
     </div>
     {#if store.snapshot?.lastCheck && !store.snapshot.demo}
-      <div class="checked">Geprüft {relative(store.snapshot.lastCheck)}</div>
+      <div class="checked">{t('Geprüft {when}', { when: relative(store.snapshot.lastCheck) })}</div>
     {/if}
   </footer>
 </aside>

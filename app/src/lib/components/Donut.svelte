@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t, tn } from '$lib/i18n.svelte';
   // Ringdiagramm mit Legende
   let { rows }: { rows: { label: string; value: number; color: string }[] } = $props();
   const total = $derived(rows.reduce((s, r) => s + r.value, 0));
@@ -28,7 +29,7 @@
     </div>
   </div>
 {:else}
-  <div class="none">Noch keine Daten</div>
+  <div class="none">{t('Noch keine Daten')}</div>
 {/if}
 
 <style>

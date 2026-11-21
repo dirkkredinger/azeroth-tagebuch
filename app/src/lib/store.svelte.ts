@@ -2,6 +2,7 @@
 // und aktualisiert sich bei Änderungen (Ereignisse "tagebuch-aktualisiert" und "live-kampf").
 
 import { invoke } from '@tauri-apps/api/core';
+import { i18n, t } from './i18n.svelte';
 import { listen } from '@tauri-apps/api/event';
 import { open } from '@tauri-apps/plugin-dialog';
 import type { Character, Fight, Snapshot, WowEvent } from './types';
@@ -45,7 +46,7 @@ class TagebuchStore {
 
   private async loadBrowserDemo() {
     try {
-      const a = await (await fetch('/demo.json')).json();
+      const a = await (await fetch(i18n.lang === 'en' ? '/demo-en.json' : '/demo.json')).json();
       const characters = Object.values(a.characters as Record<string, Character>).map((c) => {
         const pos = c.events.filter((e) => e.e === 'pos');
         this.demoPositions.set(c.key, pos);
@@ -78,11 +79,14 @@ class TagebuchStore {
   }
 
   async rescan() { if (this.inApp) this.apply(await invoke<Snapshot>('neu_einlesen')); }
-  async demo() { this.selection = null; if (this.inApp) this.apply(await invoke<Snapshot>('beispieldaten')); }
+  async demo() {
+    if (this.inApp) this.apply(await invoke<Snapshot>('beispieldaten', { sprache: i18n.lang }));
+    else await this.loadBrowserDemo();
+  }
 
   async chooseFolder() {
     if (!this.inApp) return;
-    const dir = await open({ directory: true, title: 'Ordner „_retail_“ deiner WoW-Installation wählen', defaultPath: this.snapshot?.wowFolder });
+    const dir = await open({ directory: true, title: t('Ordner „_retail_“ deiner WoW-Installation wählen'), defaultPath: this.snapshot?.wowFolder });
     if (typeof dir === 'string') this.apply(await invoke<Snapshot>('setze_wow_ordner', { pfad: dir }));
   }
 

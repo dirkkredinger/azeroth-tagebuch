@@ -1,4 +1,16 @@
-Erste Testversion des Azeroth-Tagebuchs: **App 0.2.0** und **Addon 1.3.0**.
+**App 0.3.0** und **Addon 1.4.0** · 🇬🇧 English below
+
+## Neu in 0.3.0
+- **Dungeons, Tiefen & Schlachtzüge:** neuer Reiter „Instanzen“ – wie oft betreten und abgeschlossen, welche Bosse besiegt (und woran gescheitert), Tiefenstufe bzw. Mythisch+-Schlüssel mit Zeit, Beute je Instanz. Braucht Addon 1.4.0.
+- **Englische Oberfläche:** die App folgt der Systemsprache, umschaltbar oben rechts (DE/EN) oder im „Über“-Fenster.
+- **Ko-fi-Knopf** in der Seitenleiste und im „Über“-Fenster.
+- Beispieldaten mit selbst gezeichneten Karten, auch auf Englisch.
+
+### New in 0.3.0 (English)
+- **Dungeons, delves & raids:** new “Dungeons” tab – runs entered and completed, bosses defeated (and wipes), delve tier or Mythic+ key level with timer, loot per instance. Requires addon 1.4.0.
+- **English UI:** the app follows your system language; switch at the top right (DE/EN) or in the About window.
+- **Ko-fi button** in the sidebar and the About window.
+- Sample data with hand-drawn maps, in English too.
 
 ## Was du brauchst
 

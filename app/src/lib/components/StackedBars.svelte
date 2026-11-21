@@ -1,8 +1,9 @@
 <script lang="ts">
+  import { t, tn } from '$lib/i18n.svelte';
   // Gestapelte Säulen (selbst gezeichnet in SVG)
   import { dayShort } from '$lib/format';
   type Series = { key: string; label: string; color: string };
-  let { days, series, unit = 'Min.' }: { days: { day: number; minutes: Record<string, number> }[]; series: Series[]; unit?: string } = $props();
+  let { days, series, unit = t('Min.') }: { days: { day: number; minutes: Record<string, number> }[]; series: Series[]; unit?: string } = $props();
   const W = 520, H = 200, pad = { l: 34, r: 8, t: 10, b: 24 };
   const max = $derived(Math.max(10, ...days.map((d) => Object.values(d.minutes).reduce((a, b) => a + b, 0))));
   const nice = $derived(Math.ceil(max / 10) * 10);

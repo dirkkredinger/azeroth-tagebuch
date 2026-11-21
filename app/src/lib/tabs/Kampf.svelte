@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t, tn } from '$lib/i18n.svelte';
   // Kampf- bzw. Heilstatistik aus dem Kampflog
   import Box from '$lib/components/Box.svelte';
   import StatTile from '$lib/components/StatTile.svelte';
@@ -82,44 +83,44 @@
 
 {#if !fights.length}
   <div class="panel box">
-    <h3><Icon name="scroll-text" size={16} /> {dmg ? 'Noch keine Kämpfe' : 'Noch keine Heilung'}</h3>
-    <p class="dim">Die Statistik entsteht aus dem offiziellen Kampflog von WoW. Das Addon schaltet es beim Einloggen automatisch ein (abschaltbar mit /tb kampflog aus). Die App liest „Logs/WoWCombatLog….txt“ live mit – laufende Kämpfe siehst du hier, während du spielst.</p>
+    <h3><Icon name="scroll-text" size={16} /> {dmg ? t('Noch keine Kämpfe') : t('Noch keine Heilung')}</h3>
+    <p class="dim">{t('Die Statistik entsteht aus dem offiziellen Kampflog von WoW. Das Addon schaltet es beim Einloggen automatisch ein (abschaltbar mit /tb kampflog aus). Die App liest „Logs/WoWCombatLog….txt“ live mit – laufende Kämpfe siehst du hier, während du spielst.')}</p>
   </div>
 {:else}
   <div class="grid-tiles">
-    <StatTile title="Kämpfe" value={num(fights.length)} icon="flame" tint={accent} />
-    <StatTile title={dmg ? 'Schaden gesamt' : 'Heilung gesamt'} value={big(totals.total)} icon={dmg ? 'swords' : 'heart-pulse'} tint={accent} />
-    <StatTile title="Ø {unit} gesamt" value={big(totals.avg)} icon="chart" tint={accent} />
-    <StatTile title="Ø {unit} letzte 10" value={big(totals.recent)} icon="chart" tint={accent} />
-    <StatTile title="Bester Kampf" value={big(totals.best)} icon="crown" />
+    <StatTile title={t('Kämpfe')} value={num(fights.length)} icon="flame" tint={accent} />
+    <StatTile title={dmg ? t('Schaden gesamt') : t('Heilung gesamt')} value={big(totals.total)} icon={dmg ? 'swords' : 'heart-pulse'} tint={accent} />
+    <StatTile title={t('Ø {unit} gesamt', { unit })} value={big(totals.avg)} icon="chart" tint={accent} />
+    <StatTile title={t('Ø {unit} letzte 10', { unit })} value={big(totals.recent)} icon="chart" tint={accent} />
+    <StatTile title={t('Bester Kampf')} value={big(totals.best)} icon="crown" />
     {#if dmg}
-      <StatTile title="Erlittener Schaden" value={big(totals.taken)} icon="shield" tint="var(--taken)" />
-      <StatTile title="Bosskämpfe" value={num(totals.bosses)} icon="crown" />
+      <StatTile title={t('Erlittener Schaden')} value={big(totals.taken)} icon="shield" tint="var(--taken)" />
+      <StatTile title={t('Bosskämpfe')} value={num(totals.bosses)} icon="crown" />
     {:else}
-      <StatTile title="Überheilung" value="{totals.overPct} %" icon="circle-alert" tint="#f0a030" />
-      <StatTile title="Davon Schilde" value={big(totals.absorb)} icon="shield" tint="#8ccbfa" />
+      <StatTile title={t('Überheilung')} value="{totals.overPct} %" icon="circle-alert" tint="#f0a030" />
+      <StatTile title={t('Davon Schilde')} value={big(totals.absorb)} icon="shield" tint="#8ccbfa" />
     {/if}
   </div>
   <div class="grid-2">
-    <Box title="{unit} je Kampf">
-      <XYChart points={perFight} lines={avgLine.length ? [{ points: avgLine, color: 'rgba(240,224,189,0.8)' }] : []} yFormat={big} xLabel="Kampf Nr. (Linie: Schnitt der letzten 5, gold: Bosse)" />
+    <Box title={t('{unit} je Kampf', { unit })}>
+      <XYChart points={perFight} lines={avgLine.length ? [{ points: avgLine, color: 'rgba(240,224,189,0.8)' }] : []} yFormat={big} xLabel={t('Kampf Nr. (Linie: Schnitt der letzten 5, gold: Bosse)')} />
     </Box>
-    <Box title="{unit} nach Stufe"><Columns rows={byLevel} format={big} xLabel="Stufe" /></Box>
-    <Box title="{unit} nach Gegenstandsstufe">
-      <XYChart zeroY={true} points={byIlvl.map((p) => ({ ...p, color: accentHex }))} lines={trend.length ? [{ points: trend, color: '#fbcc5c', dash: true }] : []} yFormat={big} xLabel="Gegenstandsstufe (gestrichelt: Trend)" />
+    <Box title={t('{unit} nach Stufe', { unit })}><Columns rows={byLevel} format={big} xLabel={t('Stufe')} /></Box>
+    <Box title={t('{unit} nach Gegenstandsstufe', { unit })}>
+      <XYChart zeroY={true} points={byIlvl.map((p) => ({ ...p, color: accentHex }))} lines={trend.length ? [{ points: trend, color: '#fbcc5c', dash: true }] : []} yFormat={big} xLabel={t('Gegenstandsstufe (gestrichelt: Trend)')} />
     </Box>
-    <Box title={dmg ? 'Stärkste Fähigkeiten' : 'Stärkste Heilzauber'}>{#if spells.length}<HBars rows={spells} />{:else}<p class="dim">Noch keine Daten</p>{/if}</Box>
+    <Box title={dmg ? t('Stärkste Fähigkeiten') : t('Stärkste Heilzauber')}>{#if spells.length}<HBars rows={spells} />{:else}<p class="dim">{t('Noch keine Daten')}</p>{/if}</Box>
   </div>
 
-  <Box title="Letzte Kämpfe">
+  <Box title={t('Letzte Kämpfe')}>
     {#each fights.slice(-25).reverse() as f (fid(f))}
       {@const lv = levelAt(f.start)}
       <button class="fight" onclick={() => (open = open === fid(f) ? null : fid(f))}>
         <Icon name={f.encounter ? 'crown' : f.deaths ? 'heart-crack' : 'flame'} size={15} color={f.encounter ? 'var(--gold)' : f.deaths ? '#f44' : 'var(--parchment-dim)'} />
         <div class="ft">
           <div><b>{A.fightTitle(f)}</b>
-            {#if f.success === true}<span class="ok">besiegt</span>{/if}{#if f.success === false}<span class="bad">gescheitert</span>{/if}</div>
-          <div class="dim small">{[f.zone, lv ? `Stufe ${lv}` : null, f.itemLevel ? `GS ${Math.round(f.itemLevel)}` : null, `${Math.round(f.end - f.start)} s`].filter(Boolean).join(' · ')}</div>
+            {#if f.success === true}<span class="ok">{t('besiegt')}</span>{/if}{#if f.success === false}<span class="bad">{t('gescheitert')}</span>{/if}</div>
+          <div class="dim small">{[f.zone, lv ? t('Stufe {n}', { n: lv }) : null, f.itemLevel ? t('GS {n}', { n: Math.round(f.itemLevel) }) : null, `${Math.round(f.end - f.start)} s`].filter(Boolean).join(' · ')}</div>
         </div>
         <div class="fv">
           <div class="serif big" style="color:{accent}">{big(value(f))} {unit}</div>
@@ -131,16 +132,16 @@
         {@const tot = list.reduce((a, s) => a + (dmg ? s.damage : s.healing), 0) || 1}
         <div class="detail">
           <div class="small facts">
-            <span style="color:var(--damage)">Schaden {big(f.damage)}</span><span style="color:var(--healing)">Heilung {big(f.healing)}</span>
-            <span style="color:var(--taken)">Erlitten {big(f.taken)}</span>{#if f.deaths}<span style="color:#f44">{f.deaths}× gestorben</span>{/if}
-            {#if f.kills?.length}<span class="dim">{f.kills.length} Gegner besiegt</span>{/if}
+            <span style="color:var(--damage)">{t('Schaden')} {big(f.damage)}</span><span style="color:var(--healing)">{t('Heilung')} {big(f.healing)}</span>
+            <span style="color:var(--taken)">{t('Erlitten')} {big(f.taken)}</span>{#if f.deaths}<span style="color:#f44">{t('{n}× gestorben', { n: f.deaths })}</span>{/if}
+            {#if f.kills?.length}<span class="dim">{t('{n} Gegner besiegt', { n: f.kills.length })}</span>{/if}
           </div>
           {#each list as s}
             {@const v = dmg ? s.damage : s.healing}
             <div class="sp-row">
               <span class="sn">{s.name}</span>
               <span class="track"><i style="width:{(v / tot) * 100}%; background:{accentHex}"></i></span>
-              <span class="dim small sv">{big(v)} · {s.hits}× · {s.hits ? Math.round((s.crits / s.hits) * 100) : 0} % krit.</span>
+              <span class="dim small sv">{big(v)} · {s.hits}× · {s.hits ? Math.round((s.crits / s.hits) * 100) : 0} % {t('krit.')}</span>
             </div>
           {/each}
         </div>

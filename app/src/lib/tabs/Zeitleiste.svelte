@@ -1,17 +1,20 @@
 <script lang="ts">
   import EventRow from '$lib/components/EventRow.svelte';
   import * as A from '$lib/analyse';
+  import { i18n, locale, t } from '$lib/i18n.svelte';
   import type { Character, WowEvent } from '$lib/types';
 
   let { c }: { c: Character } = $props();
   const names = $derived(A.questNames(c));
-  const fmt = new Intl.DateTimeFormat('de-DE', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+  const fmt = $derived((i18n.lang, new Intl.DateTimeFormat(locale(), { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })));
 
   // Zonenwechsel nur zeigen, wenn sich der Ort wirklich geändert hat; neueste Tage zuerst
   const days = $derived.by(() => {
     let last = '';
     const kept: WowEvent[] = [];
+    const instStarts = new Set(c.events.filter((e) => e.e === 'inst_an').map((e) => e.t));
     for (const e of c.events) {
+      if (e.e === 'zone' && e.inst && instStarts.has(e.t)) continue;   // doppelt mit „Instanz betreten“
       if (e.e === 'zone') {
         const place = [e.z, e.sz, e.inst].join('|');
         if (place === last) continue;
@@ -37,9 +40,9 @@
     {#each d.events as e (e.t + e.e + (e.q ?? '') + (e.src ?? '') + (e.slot ?? '') + (e.txt ?? ''))}<EventRow event={e} {names} />{/each}
   </div>
 {:else}
-  <p class="dim">Noch keine Einträge.</p>
+  <p class="dim">{t('Noch keine Einträge.')}</p>
 {/each}
-{#if days.length > limit}<button class="btn more" onclick={() => (limit += 10)}>Ältere Tage anzeigen ({days.length - limit})</button>{/if}
+{#if days.length > limit}<button class="btn more" onclick={() => (limit += 10)}>{t('Ältere Tage anzeigen ({n})', { n: days.length - limit })}</button>{/if}
 
 <style>
   .more { align-self: center; }

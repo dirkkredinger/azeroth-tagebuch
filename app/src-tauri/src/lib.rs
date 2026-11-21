@@ -217,11 +217,11 @@ fn neu_einlesen(state: State<Shared>, app: AppHandle) -> serde_json::Value {
 }
 
 #[tauri::command]
-fn beispieldaten(state: State<Shared>) -> serde_json::Value {
+fn beispieldaten(state: State<Shared>, sprache: Option<String>) -> serde_json::Value {
     let mut inner = state.lock().unwrap();
     if !inner.demo && inner.dirty { inner.save(); }
     inner.demo = true;
-    inner.archive = kern::demo_archive();
+    inner.archive = kern::demo_archive_lang(sprache.as_deref().unwrap_or("de"));
     inner.live = None;
     inner.status = "Beispieldaten – echte Daten mit „Neu einlesen“".into();
     snapshot_json(&inner)

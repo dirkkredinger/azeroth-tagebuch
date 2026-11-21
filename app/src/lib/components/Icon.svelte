@@ -4,7 +4,7 @@
     LogIn, LogOut, Map, Shield, CircleAlert, BadgeCheck, CircleX, CircleArrowUp, Trophy, HeartCrack, Plane,
     NotebookPen, ShieldCheck, Sparkles, Shirt, Backpack, Circle, Users, Clock, Coins, Flame, BookOpen,
     RefreshCw, FolderOpen, Search, ChevronLeft, Crown, Hourglass, PawPrint, HeartPulse, Swords, ScrollText,
-    Radio, WandSparkles, House, ChartColumn, Archive, UserRound,
+    Radio, WandSparkles, House, ChartColumn, Archive, UserRound, Castle, Skull, Pickaxe, Timer,
   } from '@lucide/svelte';
 
   const icons: Record<string, any> = {
@@ -16,6 +16,7 @@
     'chevron-left': ChevronLeft, crown: Crown, hourglass: Hourglass, 'paw-print': PawPrint,
     'heart-pulse': HeartPulse, swords: Swords, 'scroll-text': ScrollText, radio: Radio,
     'wand-sparkles': WandSparkles, house: House, chart: ChartColumn, archive: Archive, user: UserRound,
+    castle: Castle, skull: Skull, pickaxe: Pickaxe, timer: Timer,
   };
 
   let { name, size = 16, color = 'currentColor', strokeWidth = 2 }: { name: string; size?: number; color?: string; strokeWidth?: number } = $props();

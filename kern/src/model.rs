@@ -51,6 +51,16 @@ pub struct WowEvent {
     #[serde(skip_serializing_if = "Option::is_none")] pub art: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")] pub sn: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")] pub items: Option<Vec<LootItem>>,
+    // Instanzen, Tiefen, Bosse
+    #[serde(skip_serializing_if = "Option::is_none")] pub iid: Option<i64>,
+    #[serde(skip_serializing_if = "Option::is_none")] pub did: Option<i64>,
+    #[serde(skip_serializing_if = "Option::is_none")] pub eid: Option<i64>,
+    #[serde(skip_serializing_if = "Option::is_none")] pub ok: Option<i64>,
+    #[serde(skip_serializing_if = "Option::is_none")] pub ml: Option<i64>,
+    #[serde(skip_serializing_if = "Option::is_none")] pub tier: Option<i64>,
+    #[serde(skip_serializing_if = "Option::is_none")] pub grp: Option<i64>,
+    #[serde(skip_serializing_if = "Option::is_none")] pub zeit: Option<i64>,
+    #[serde(skip_serializing_if = "Option::is_none")] pub imzeit: Option<i64>,
 }
 
 impl WowEvent {
@@ -97,6 +107,15 @@ impl WowEvent {
             npc: lua::i(v, "npc"),
             art: lua::s(v, "art"),
             sn: lua::s(v, "sn"),
+            iid: lua::i(v, "iid"),
+            did: lua::i(v, "did"),
+            eid: lua::i(v, "eid"),
+            ok: lua::i(v, "ok"),
+            ml: lua::i(v, "ml"),
+            tier: lua::i(v, "tier"),
+            grp: lua::i(v, "grp"),
+            zeit: lua::i(v, "zeit"),
+            imzeit: lua::i(v, "imzeit"),
             items: v.get("items").and_then(Lua::table).map(|t| t.items().into_iter().filter_map(LootItem::from_lua).collect()),
         };
         if ev.e == "gegenstand" {
@@ -112,9 +131,9 @@ impl WowEvent {
             v.as_ref().map(|x| x.to_string()).unwrap_or_else(|| d.to_string())
         }
         format!(
-            "{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}",
+            "{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}",
             self.t, self.e, o(&self.q, "0"), o(&self.a, "0"), o(&self.m, "0"), o(&self.x, "-1"), o(&self.y, "-1"),
-            o(&self.txt, ""), o(&self.code, ""), o(&self.il, "0"), o(&self.src, ""), o(&self.slot, "0"), o(&self.item_id, "0")
+            o(&self.txt, ""), o(&self.code, ""), o(&self.il, "0"), o(&self.src, ""), o(&self.slot, "0"), o(&self.item_id, "0"), o(&self.eid, "0")
         )
     }
 }

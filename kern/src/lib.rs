@@ -154,9 +154,19 @@ impl LogReader {
 
 /// Archiv mit zwei erfundenen Charakteren, zum Ausprobieren ohne WoW
 pub fn demo_archive() -> Archive {
+    demo_archive_lang("de")
+}
+
+/// Beispieldaten in der Sprache der Oberfläche ("de" oder "en") – so, wie sie ein entsprechender WoW-Client schreiben würde
+pub fn demo_archive_lang(lang: &str) -> Archive {
+    let (lua, log): (&[u8], &str) = if lang == "en" {
+        (include_bytes!("../beispiel/Beispiel_en.lua"), include_str!("../beispiel/BeispielKampflog_en.txt"))
+    } else {
+        (include_bytes!("../beispiel/Beispiel.lua"), include_str!("../beispiel/BeispielKampflog.txt"))
+    };
     let mut a = Archive { format: ARCHIVE_FORMAT, combat_parser_version: combatlog::PARSER_VERSION, ..Default::default() };
-    let _ = ingest::ingest_saved_variables(include_bytes!("../beispiel/Beispiel.lua"), Some("DEMO"), &mut a);
-    let fights = combatlog::parse_all(include_str!("../beispiel/BeispielKampflog.txt"));
+    let _ = ingest::ingest_saved_variables(lua, Some("DEMO"), &mut a);
+    let fights = combatlog::parse_all(log);
     ingest::merge_fights(fights, &mut a);
     a
 }

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t, tn } from '$lib/i18n.svelte';
   import Box from '$lib/components/Box.svelte';
   import Columns from '$lib/components/Columns.svelte';
   import HBars from '$lib/components/HBars.svelte';
@@ -20,7 +21,7 @@
   const play = $derived(perDay((e) => e.e === 'logout', (e) => (e.dauer ?? 0) / 60).map(([d, v]) => ({ label: dayShort(new Date(d * 1000)), value: v, color: '#4f9dff' })));
   const zones = $derived.by(() => {
     const m = new Map<string, number>();
-    for (const e of A.turnIns(c)) m.set(e.z ?? 'Unbekannt', (m.get(e.z ?? 'Unbekannt') ?? 0) + 1);
+    for (const e of A.turnIns(c)) m.set(e.z ?? t('Unbekannt'), (m.get(e.z ?? t('Unbekannt')) ?? 0) + 1);
     return [...m.entries()].sort((a, b) => b[1] - a[1]).slice(0, 10).map(([label, value]) => ({ label, value, text: String(value), color: '#3cc8d8' }));
   });
   const kinds = $derived.by(() => {
@@ -34,13 +35,13 @@
 </script>
 
 <div class="grid-2">
-  <Box title="Quests pro Tag"><Columns rows={quests} /></Box>
-  <Box title="Spielzeit pro Tag"><Columns rows={play} format={(v) => duration(v * 60)} /></Box>
-  <Box title="Top-Zonen nach Quests">{#if zones.length}<HBars rows={zones} />{:else}<p class="dim">Noch keine Daten</p>{/if}</Box>
-  <Box title="Arten der Quests"><Donut rows={kinds} /></Box>
-  <Box title="Stufenverlauf">
+  <Box title={t('Quests pro Tag')}><Columns rows={quests} /></Box>
+  <Box title={t('Spielzeit pro Tag')}><Columns rows={play} format={(v) => duration(v * 60)} /></Box>
+  <Box title={t('Top-Zonen nach Quests')}>{#if zones.length}<HBars rows={zones} />{:else}<p class="dim">{t('Noch keine Daten')}</p>{/if}</Box>
+  <Box title={t('Arten der Quests')}><Donut rows={kinds} /></Box>
+  <Box title={t('Stufenverlauf')}>
     {#if levels.length >= 2}
       <XYChart zeroY={false} xFormat={fmtDate} lines={[{ points: levels, color: classColor(c.classToken), step: true }]} points={levels.map((p) => ({ ...p, color: classColor(c.classToken), r: 3 }))} />
-    {:else}<p class="dim">Noch zu wenig Stufendaten</p>{/if}
+    {:else}<p class="dim">{t('Noch zu wenig Stufendaten')}</p>{/if}
   </Box>
 </div>

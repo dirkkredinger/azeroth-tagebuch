@@ -37,12 +37,14 @@ class Sim:
         self.ev, self.t, self.level, self.money = [], T0, level, money
         self.ilvl = ilvl
         self.m, self.x, self.y = 2393, 0.55, 0.6
+        self.cur_inst = None
     def add(self, e, **kw):
         if e in ("tod", "notiz", "erfolg"): self.t += 45
         d = {"t": self.t, "e": e}
         d.update(kw)
         if "m" not in d:
-            d.update(m=self.m, x=round(self.x, 4), y=round(self.y, 4))
+            d.update(m=self.m)
+            if self.x is not None: d.update(x=round(self.x, 4), y=round(self.y, 4))
         self.ev.append(d)
     def walk(self, tx, ty, mode="zu_fuss", speed=0.006):
         steps = max(2, int(math.hypot(tx - self.x, ty - self.y) / speed))
@@ -105,7 +107,7 @@ def loot(sim, mob):
             items.append({"id": 250000 + zlib.crc32(item_name.encode()) % 9999, "n": item_name, "q": q, "ic": icon,
                           "c": random.randint(1, 3) if q <= 1 else 1})
     sim.t += 4
-    sim.add("beute", src=mob_guid(sim, npc), npc=npc, art="Creature", sn=mob, items=items, z=ZONE_NAMES.get(sim.m, ""))
+    sim.add("beute", src=mob_guid(sim, npc), npc=npc, art="Creature", sn=mob, items=items, z=ZONE_NAMES.get(sim.m, sim.cur_inst or ""))
 
 ZONE_NAMES = {2393: "Silbermond", 2395: "Immersangwald", 2437: "Zul'Aman", 2413: "Harandar"}
 MOB_FOR_ZONE = {2393: ["Wilder Falke"], 2395: ["Verdorbener Luchs", "Leerenwandler", "Splitterkreatur"],
@@ -177,6 +179,64 @@ def talents(sim, sid, spec, role, loadout):
 p = Sim(80, 4_350_000, 588.0)
 init_gear(p)
 
+
+# ---------------- Instanzen und Tiefen (erfunden) ----------------
+INSTANCES = {
+    "Amanikammer":       dict(iid=9101, it="party", bosses=[(3101, "Hexer Zul'jin-Ra"), (3102, "Akilzons Brut"), (3103, "Häuptling Mok'tar")],
+                              mobs=["Amani-Späher", "Schattenpirscher"]),
+    "Sonnenhof-Krypta":  dict(iid=9102, it="party", bosses=[(3111, "Wächterin Aelira"), (3112, "Der Bleiche Prinz")],
+                              mobs=["Leerenwandler", "Splitterkreatur"]),
+    "Schimmerhöhle":     dict(iid=9201, it="delve", bosses=[(3201, "Kristallfresser")], mobs=["Splitterkreatur"]),
+    "Pilzgrotte":        dict(iid=9202, it="delve", bosses=[(3211, "Morchelmutter")], mobs=["Verdorbener Luchs"]),
+}
+BOSS_LOOT = [("Kettenhemd des Wächters", 3, 132624), ("Klinge der Morgenröte", 4, 135349), ("Ring des Abgrunds", 3, 133347),
+             ("Splitterkern", 2, 134123), ("Leerensplitter", 1, 134075)]
+
+def boss_loot(sim, eid, name):
+    items = [{"id": 250000 + zlib.crc32(n.encode()) % 9999, "n": n, "q": q, "ic": ic, "c": 1}
+             for n, q, ic in random.sample(BOSS_LOOT, random.randint(1, 2))]
+    if random.random() < 0.6:
+        items.append({"n": "Gold", "gold": True, "c": random.randint(150000, 900000)})
+    sim.t += 6
+    GUIDN[0] += 1
+    sim.add("beute", src="Creature-0-1-%d-1-%d-%010X" % (sim.m, 260000 + eid, 0x6000000 + GUIDN[0]),
+            npc=260000 + eid, art="Creature", sn=name, items=items, z=sim.cur_inst)
+
+def run_instance(sim, name, did, diff, tier=None, ml=None, wipe=False, finish=True, extra=None):
+    inf = INSTANCES[name]
+    sim.cur_inst = name
+    outside = (sim.m, sim.x, sim.y)
+    sim.m, sim.x, sim.y = inf["iid"], None, None   # in der Instanz: eigene Karte, hier ohne Position
+    t0 = sim.t
+    d = dict(iid=inf["iid"], inst=name, it=inf["it"], did=did, diff=diff, lv=sim.level, il=sim.ilvl,
+             grp=1 if inf["it"] == "delve" else 5)
+    if tier: d["tier"] = tier
+    if ml: d["ml"] = ml
+    sim.add("zone", z=name, sz="", inst=name, it="scenario" if inf["it"] == "delve" else "party", diff=diff)
+    sim.add("inst_an", **d)
+    for i, (eid, boss) in enumerate(inf["bosses"]):
+        for _ in range(random.randint(2, 4)):
+            sim.t += random.randint(40, 90)
+            loot(sim, random.choice(inf["mobs"]))
+        if wipe and i == len(inf["bosses"]) - 1:
+            sim.t += 60
+            sim.add("boss", eid=eid, n=boss, did=did, ok=0, dauer=random.randint(70, 140), iid=inf["iid"], inst=name, grp=d["grp"])
+            sim.add("tod", z=name, sz="")
+        sim.t += random.randint(60, 150)
+        sim.add("boss", eid=eid, n=boss, did=did, ok=1, dauer=random.randint(45, 160), iid=inf["iid"], inst=name, grp=d["grp"])
+        boss_loot(sim, eid, boss)
+    if finish:
+        sim.t += 20
+        f = dict(iid=inf["iid"], inst=name, art="szenario" if inf["it"] == "delve" else ("mythisch_plus" if ml else "dungeonbrowser"),
+                 dauer=sim.t - t0)
+        if ml:
+            f.update(ml=ml, zeit=sim.t - t0, imzeit=1 if sim.t - t0 < 1900 else 0)
+        sim.add("inst_fertig", **f)
+    sim.t += 30
+    sim.add("inst_ab", iid=inf["iid"], inst=name, dauer=sim.t - t0)
+    sim.cur_inst = None
+    sim.m, sim.x, sim.y = outside
+
 def p_day1(s):
     s.zone(2393, "Silbermond", "Sonnenzornturm", 0.52, 0.58)
     talents(s, 70, "Vergeltung", "DAMAGER", "Questen")
@@ -225,9 +285,16 @@ def p_day2(s):
 
 def p_day3(s):
     s.zone(2437, "Zul'Aman", "Amani-Pass", 0.52, 0.38)
-    s.zone(2437, "Zul'Aman", "", inst="Amanikammer", it="party", diff="Heroisch")
-    s.t += 1800
+    run_instance(s, "Amanikammer", 1, "Normal")
+    run_instance(s, "Amanikammer", 2, "Heroisch", wipe=True)
     s.add("erfolg", a=61020, n="Heroisch: Amanikammer", p=10)
+    run_instance(s, "Sonnenhof-Krypta", 2, "Heroisch")
+    run_instance(s, "Schimmerhöhle", 208, "Tiefen", tier=3)
+    run_instance(s, "Schimmerhöhle", 208, "Tiefen", tier=5, wipe=True)
+    run_instance(s, "Pilzgrotte", 208, "Tiefen", tier=5)
+    run_instance(s, "Amanikammer", 8, "Mythisch+", ml=4)
+    run_instance(s, "Sonnenhof-Krypta", 8, "Mythisch+", ml=5, wipe=True)
+    run_instance(s, "Pilzgrotte", 208, "Tiefen", tier=8, finish=False)
     gear(s, 11.5)
     s.zone(2437, "Zul'Aman", "Amani-Pass", 0.52, 0.38)
     for name in ["Opfergaben für Akil'zon", "Federn des Adlers", "Der Pfad des Luchses"]:
@@ -269,6 +336,8 @@ def k_day2(s):
     q = quest(s, "Brücke nach Zul'Aman", "Immersangwald", "Campaign")
     s.walk(0.88, 0.45, "flug", 0.02)
     turnin(s, q, "Brücke nach Zul'Aman", "Immersangwald", "Campaign", 0, 250000)
+    run_instance(s, "Pilzgrotte", 208, "Tiefen", tier=2)
+    run_instance(s, "Schimmerhöhle", 208, "Tiefen", tier=3)
 
 session(k, T0 + 3600 * 4, k_day1)
 session(k, T0 + 86400 + 3600 * 3, k_day2)

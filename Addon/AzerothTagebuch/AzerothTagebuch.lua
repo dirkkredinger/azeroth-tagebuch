@@ -11,6 +11,7 @@ local f = CreateFrame("Frame")
 local char, charKey, session
 local lastPos = { map = nil, x = nil, y = nil, mode = nil }
 local wasOnTaxi = false
+local checkInstance   -- weiter unten definiert
 
 ------------------------------------------------------------
 -- Hilfsfunktionen
@@ -443,6 +444,61 @@ local function samplePosition()
 end
 
 ------------------------------------------------------------
+-- Instanzen und Tiefen: Betreten, Bosse, Abschluss, Verlassen
+------------------------------------------------------------
+local DELVE_DIFFICULTY = 208
+local encounterStart = {}
+
+local function delveTier()
+  -- Stufe der Tiefe, soweit der Client sie verrät (sonst nil)
+  local tier = tonumber(safe(GetCVar, "lastSelectedDelvesTier") or "")
+  return tier
+end
+
+local function instanceData()
+  local iname, instType, difficultyID, difficultyName, _, _, _, instanceID = GetInstanceInfo()
+  local d = { inst = iname, it = instType, did = difficultyID, diff = difficultyName, iid = instanceID,
+              lv = UnitLevel("player"), grp = safe(GetNumGroupMembers) or 0 }
+  local _, avg = safe(GetAverageItemLevel)
+  d.il = round(avg, 1)
+  if difficultyID == DELVE_DIFFICULTY then
+    d.it = "delve"
+    d.tier = delveTier()
+  end
+  if C_ChallengeMode and C_ChallengeMode.GetActiveKeystoneInfo then
+    local level = safe(C_ChallengeMode.GetActiveKeystoneInfo)
+    if level and level > 0 then d.ml = level end
+  end
+  return d
+end
+
+checkInstance = function()
+  if not char then return end
+  local inInstance = IsInInstance()
+  local cur = char.curInst
+  if inInstance then
+    local _, _, difficultyID, _, _, _, _, instanceID = GetInstanceInfo()
+    if cur and cur.iid == instanceID and cur.did == difficultyID then return end   -- /reload oder Unterzone
+    if cur then log("inst_ab", { iid = cur.iid, inst = cur.inst, dauer = time() - (cur.t or time()) }) end
+    local d = instanceData()
+    log("inst_an", d)
+    char.curInst = { iid = d.iid, did = d.did, inst = d.inst, t = time() }
+  elseif cur then
+    log("inst_ab", { iid = cur.iid, inst = cur.inst, dauer = time() - (cur.t or time()) })
+    char.curInst = nil
+  end
+end
+
+local function instanceDone(kind, extra)
+  if not char or not char.curInst or char.curInst.fertig then return end
+  local d = { iid = char.curInst.iid, inst = char.curInst.inst, art = kind,
+              dauer = time() - (char.curInst.t or time()) }
+  for k, v in pairs(extra or {}) do d[k] = v end
+  log("inst_fertig", d)
+  char.curInst.fertig = true
+end
+
+------------------------------------------------------------
 -- Ereignisse
 ------------------------------------------------------------
 local handlers = {}
@@ -492,6 +548,7 @@ function handlers.ZONE_CHANGED_NEW_AREA()
     data.diff = difficultyName
   end
   log("zone", data)
+  pcall(checkInstance)
 end
 
 function handlers.QUEST_ACCEPTED(questID)
@@ -578,6 +635,41 @@ end
 
 function handlers.TRAIT_CONFIG_UPDATED()
   later("talente", 2, checkTalents)
+end
+
+function handlers.ENCOUNTER_START(encounterID)
+  encounterStart[encounterID] = time()
+end
+
+function handlers.ENCOUNTER_END(encounterID, encounterName, difficultyID, groupSize, success)
+  local started = encounterStart[encounterID]
+  encounterStart[encounterID] = nil
+  log("boss", { eid = encounterID, n = encounterName, did = difficultyID, grp = groupSize,
+                ok = (success == 1 or success == true) and 1 or 0,
+                dauer = started and (time() - started) or nil,
+                iid = char and char.curInst and char.curInst.iid, inst = char and char.curInst and char.curInst.inst })
+end
+
+function handlers.SCENARIO_COMPLETED()
+  -- Tiefen und Szenarien
+  instanceDone("szenario")
+end
+
+function handlers.CHALLENGE_MODE_COMPLETED()
+  local extra = {}
+  if C_ChallengeMode and C_ChallengeMode.GetChallengeCompletionInfo then
+    local info = safe(C_ChallengeMode.GetChallengeCompletionInfo)
+    if type(info) == "table" then
+      extra.ml = info.level
+      extra.zeit = info.time and math.floor(info.time / 1000)
+      extra.imzeit = info.onTime and 1 or 0
+    end
+  end
+  instanceDone("mythisch_plus", extra)
+end
+
+function handlers.LFG_COMPLETION_REWARD()
+  instanceDone("dungeonbrowser")
 end
 
 function handlers.ACHIEVEMENT_EARNED(achID)

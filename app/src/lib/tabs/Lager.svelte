@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t, tn } from '$lib/i18n.svelte';
   import Segmented from '$lib/components/Segmented.svelte';
   import ItemIcon from '$lib/components/ItemIcon.svelte';
   import Box from '$lib/components/Box.svelte';
@@ -19,46 +20,46 @@
       : kind === 'warband' ? (warbands[c.account ?? ''] ?? Object.values(warbands).sort((a, b) => b.t - a.t)[0])
       : c.guild ? guilds[c.guild] : undefined,
   );
-  const count = $derived(storage ? storage.tabs.reduce((s, t) => s + t.items.reduce((x, i) => x + i.count, 0), 0) : 0);
-  const hint = $derived(({
+  const count = $derived(storage ? storage.tabs.reduce((s, tb) => s + tb.items.reduce((x, i) => x + i.count, 0), 0) : 0);
+  const hint = $derived(t(({
     bags: 'Die Taschen speichert das Addon (ab Version 1.3) beim Ausloggen und beim Schließen der Bank.',
     bank: 'Öffne im Spiel einmal deine Bank – das Addon (ab Version 1.3) merkt sich dann den Inhalt.',
     warband: 'Öffne im Spiel einmal die Bank mit dem Kriegsmeuten-Reiter. Der Inhalt gilt für alle Charaktere des Accounts.',
     guild: c.guild ? 'Öffne im Spiel einmal die Gildenbank – erfasst werden alle Fächer, die du sehen darfst.' : 'Dieser Charakter ist (laut Addon) in keiner Gilde.',
-  } as Record<string, string>)[kind]);
+  } as Record<string, string>)[kind]));
 </script>
 
 <div class="bar">
-  <Segmented bind:value={kind} options={[{ id: 'bags', label: 'Taschen' }, { id: 'bank', label: 'Bank' }, { id: 'warband', label: 'Kriegsmeute' }, { id: 'guild', label: 'Gildenbank' }]} />
-  <Segmented bind:value={view} options={[{ id: 'grid', label: 'Raster' }, { id: 'list', label: 'Liste' }]} />
+  <Segmented bind:value={kind} options={[{ id: 'bags', label: t('Taschen') }, { id: 'bank', label: t('Bank') }, { id: 'warband', label: t('Kriegsmeute') }, { id: 'guild', label: t('Gildenbank') }]} />
+  <Segmented bind:value={view} options={[{ id: 'grid', label: t('Raster') }, { id: 'list', label: t('Liste') }]} />
   <span class="sp"></span>
-  <input type="search" placeholder="Gegenstand suchen" bind:value={search} />
+  <input type="search" placeholder={t('Gegenstand suchen')} bind:value={search} />
 </div>
 
 {#if storage}
   <div class="sum">
-    <span>Stand: {dateTime(storage.t)}</span><span>{num(count)} Gegenstände</span>
+    <span>{t('Stand: {d}', { d: dateTime(storage.t) })}</span><span>{tn(count, '{n} Gegenstand', '{n} Gegenstände', { n: num(count) })}</span>
     {#if storage.gold}<span class="gold">{gold(storage.gold)}</span>{/if}
-    {#if kind === 'guild' && storage.seenBy}<span class="dim">zuletzt gesehen von {storage.seenBy.split('-')[0]}</span>{/if}
-    {#if kind === 'warband'}<span class="dim">gemeinsam für alle Charaktere des Accounts</span>{/if}
+    {#if kind === 'guild' && storage.seenBy}<span class="dim">{t('zuletzt gesehen von {name}', { name: storage.seenBy.split('-')[0] })}</span>{/if}
+    {#if kind === 'warband'}<span class="dim">{t('gemeinsam für alle Charaktere des Accounts')}</span>{/if}
   </div>
   {#each storage.tabs as tab, ti (ti)}
     {@const items = tab.items.filter((i) => !search || (i.name ?? '').toLowerCase().includes(search.toLowerCase()))}
     {#if items.length || !search}
-      <Box title="{tab.name} · {items.length} Plätze belegt">
-        {#if !items.length}<span class="dim">leer</span>
+      <Box title={t('{name} · {n} Plätze belegt', { name: tab.name, n: items.length })}>
+        {#if !items.length}<span class="dim">{t('leer')}</span>
         {:else if view === 'grid'}
           <div class="grid">{#each items as i, k (k)}<ItemIcon icon={i.icon} quality={i.quality} size={44} count={i.count} tip={{ name: i.name, quality: i.quality, icon: i.icon, itemLevel: i.itemLevel, count: i.count, lines: [{ text: tab.name, color: '#bfb091' }] }} />{/each}</div>
         {:else}
           {#each [...items].sort((a, b) => (b.quality ?? 0) - (a.quality ?? 0) || b.count - a.count) as i, k (k)}
-            <div class="li"><ItemIcon icon={i.icon} quality={i.quality} size={26} tip={{ name: i.name, quality: i.quality, icon: i.icon, itemLevel: i.itemLevel, count: i.count }} /><span style="color:{qualityColor(i.quality)}">{i.name ?? '?'}</span>{#if i.itemLevel}<span class="gold sm">GS {Math.round(i.itemLevel)}</span>{/if}<span class="sp"></span><span>{i.count}×</span></div>
+            <div class="li"><ItemIcon icon={i.icon} quality={i.quality} size={26} tip={{ name: i.name, quality: i.quality, icon: i.icon, itemLevel: i.itemLevel, count: i.count }} /><span style="color:{qualityColor(i.quality)}">{i.name ?? '?'}</span>{#if i.itemLevel}<span class="gold sm">{t('GS {n}', { n: Math.round(i.itemLevel) })}</span>{/if}<span class="sp"></span><span>{i.count}×</span></div>
           {/each}
         {/if}
       </Box>
     {/if}
   {/each}
 {:else}
-  <div class="panel box"><h3>Noch kein Inhalt erfasst</h3><p class="dim">{hint}</p></div>
+  <div class="panel box"><h3>{t('Noch kein Inhalt erfasst')}</h3><p class="dim">{hint}</p></div>
 {/if}
 
 <style>

@@ -7,6 +7,7 @@
   import { store } from '$lib/store.svelte';
   import { kartenBild } from '$lib/bild';
   import { dateTime, duration } from '$lib/format';
+  import { locale, t } from '$lib/i18n.svelte';
   import { eventTitle } from '$lib/wow';
   import type { Character, WowEvent } from '$lib/types';
 
@@ -33,7 +34,7 @@
   });
   let mapId = $state<number | null>(null);
   $effect(() => { if (mapId === null || !mapIds.includes(mapId)) mapId = mapIds[0] ?? null; });
-  const mapName = (id: number) => store.snapshot?.archive.maps[String(id)]?.name ?? `Karte ${id}`;
+  const mapName = (id: number) => store.snapshot?.archive.maps[String(id)]?.name ?? t('Karte {n}', { n: id });
 
   const dayKey = (t: number) => new Date(t * 1000).toDateString();
   const days = $derived([...new Set(located.filter((e) => e.m === mapId).map((e) => dayKey(e.t)))].reverse());
@@ -60,7 +61,7 @@
   let imgState = $state<'none' | 'loading' | 'ready' | 'failed'>('none');
   let aspect = $state(1.5);
   $effect(() => {
-    const src = kartenBild(mapId);
+    const src = kartenBild(mapId, !!store.snapshot?.demo);
     img = null;
     if (!src) { imgState = 'none'; return; }
     imgState = 'loading';
@@ -156,29 +157,29 @@
       if (dt > 0 && dt <= 30) secs[positions[k - 1].mo ?? 'zu_fuss'] = (secs[positions[k - 1].mo ?? 'zu_fuss'] ?? 0) + dt;
     }
     return Object.entries(secs).sort((a, b) => b[1] - a[1])
-      .map(([m, s]) => ({ label: MODES[m]?.label ?? m, value: s, text: duration(s), color: MODES[m]?.color ?? '#888' }));
+      .map(([m, s]) => ({ label: MODES[m] ? t(MODES[m].label) : m, value: s, text: duration(s), color: MODES[m]?.color ?? '#888' }));
   });
   const span = $derived(route.length > 1 ? route[route.length - 1].t - route[0].t : 0);
 </script>
 
 {#if !mapIds.length}
-  <div class="panel box"><h3>Noch keine Reisewege</h3><p class="dim">Sobald du mit dem Addon unterwegs warst, erscheint hier deine Route.</p></div>
+  <div class="panel box"><h3>{t('Noch keine Reisewege')}</h3><p class="dim">{t('Sobald du mit dem Addon unterwegs warst, erscheint hier deine Route.')}</p></div>
 {:else}
   <div class="bar">
-    <label>Zone <select bind:value={mapId}>{#each mapIds as id}<option value={id}>{mapName(id)}</option>{/each}</select></label>
-    <label>Tag <select bind:value={day}><option value="">Alle Tage</option>{#each days as d}<option value={d}>{new Date(d).toLocaleDateString('de-DE', { weekday: 'short', day: 'numeric', month: 'short' })}</option>{/each}</select></label>
-    <Segmented bind:value={zoom} options={[{ id: 'route', label: 'Meine Route' }, { id: 'zone', label: 'Ganze Zone' }]} />
+    <label>{t('Zone')} <select bind:value={mapId}>{#each mapIds as id}<option value={id}>{mapName(id)}</option>{/each}</select></label>
+    <label>{t('Tag')} <select bind:value={day}><option value="">{t('Alle Tage')}</option>{#each days as d}<option value={d}>{new Date(d).toLocaleDateString(locale(), { weekday: 'short', day: 'numeric', month: 'short' })}</option>{/each}</select></label>
+    <Segmented bind:value={zoom} options={[{ id: 'route', label: t('Meine Route') }, { id: 'zone', label: t('Ganze Zone') }]} />
   </div>
   <div class="legend">
-    {#each Object.values(MODES) as m}<span><i style="background:{m.color}"></i>{m.label}</span>{/each}
-    <span><b style="color:#f5d742">●</b> Quest</span><span><b style="color:#f22">✕</b> Tod</span><span><b style="color:#b04ce0">●</b> Notiz</span>
+    {#each Object.values(MODES) as m}<span><i style="background:{m.color}"></i>{t(m.label)}</span>{/each}
+    <span><b style="color:#f5d742">●</b> {t('Quest')}</span><span><b style="color:#f22">✕</b> {t('Tod')}</span><span><b style="color:#b04ce0">●</b> {t('Notiz')}</span>
   </div>
 
   <div class="map" bind:clientWidth={wrapW} style="height:{H}px">
     <canvas bind:this={canvas} style="width:{wrapW}px;height:{H}px" onmousemove={onMove} onmouseleave={() => (hover = null)}></canvas>
     <div class="title serif">{mapId ? mapName(mapId) : ''}</div>
-    {#if imgState === 'loading'}<div class="note">Kartenbild wird aus deiner WoW-Installation geladen …</div>{/if}
-    {#if imgState === 'failed'}<div class="note">Kein Kartenbild für diese Zone</div>{/if}
+    {#if imgState === 'loading'}<div class="note">{t('Kartenbild wird aus deiner WoW-Installation geladen …')}</div>{/if}
+    {#if imgState === 'failed'}<div class="note">{t('Kein Kartenbild für diese Zone')}</div>{/if}
     {#if hover}
       <div class="tip" style="left:{Math.min(hover.x + 12, wrapW - 230)}px; top:{Math.max(hover.y - 46, 0)}px">
         <b>{eventTitle(hover.e)}</b><br /><span class="dim">{dateTime(hover.e.t)}</span>
@@ -187,14 +188,14 @@
   </div>
 
   <div class="summary dim">
-    <span>{visible.filter((e) => e.e === 'quest_ab').length} Quests abgeschlossen</span>
-    <span>{visible.filter((e) => e.e === 'tod').length} Tode</span>
-    <span>{route.length} Wegpunkte</span>
-    {#if span > 60}<span>Zeitraum {duration(span)}</span>{/if}
-    <span class="sp"></span><span class="hint">Fahre mit der Maus über eine Markierung für Details</span>
+    <span>{t('{n} Quests abgeschlossen', { n: visible.filter((e) => e.e === 'quest_ab').length })}</span>
+    <span>{t('{n} Tode', { n: visible.filter((e) => e.e === 'tod').length })}</span>
+    <span>{t('{n} Wegpunkte', { n: route.length })}</span>
+    {#if span > 60}<span>{t('Zeitraum {d}', { d: duration(span) })}</span>{/if}
+    <span class="sp"></span><span class="hint">{t('Fahre mit der Maus über eine Markierung für Details')}</span>
   </div>
 
-  {#if travel.length}<Box title="Reisezeit nach Fortbewegung (alle Zonen)"><HBars rows={travel} /></Box>{/if}
+  {#if travel.length}<Box title={t('Reisezeit nach Fortbewegung (alle Zonen)')}><HBars rows={travel} /></Box>{/if}
 {/if}
 
 <style>

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t, tn } from '$lib/i18n.svelte';
   import Box from '$lib/components/Box.svelte';
   import Icon from '$lib/components/Icon.svelte';
   import ExtLink from '$lib/components/ExtLink.svelte';
@@ -18,36 +19,36 @@
 
 <div class="two">
   <div class="panel box">
-    <h2 class="serif" style="color:{classColor(c.classToken)}">{c.className ?? 'Klasse'}</h2>
-    {#if info}<p>{info.text}</p>
-      <div class="line"><span class="dim">Rüstung</span><b>{info.armor}</b></div>
-      <div class="line"><span class="dim">Ressource</span><b>{info.resource}</b></div>{/if}
-    {#if c.itemLevel}<div class="line"><span class="dim">Gegenstandsstufe</span><b>{num1(c.itemLevel)}</b></div>{/if}
+    <h2 class="serif" style="color:{classColor(c.classToken)}">{c.className ?? t('Klasse')}</h2>
+    {#if info}<p>{t(info.text)}</p>
+      <div class="line"><span class="dim">{t('Rüstung')}</span><b>{t(info.armor)}</b></div>
+      <div class="line"><span class="dim">{t('Ressource')}</span><b>{t(info.resource)}</b></div>{/if}
+    {#if c.itemLevel}<div class="line"><span class="dim">{t('Gegenstandsstufe')}</span><b>{num1(c.itemLevel)}</b></div>{/if}
   </div>
   <div class="panel box">
-    <div class="sh"><h2 class="serif gold">{c.spec ?? 'Spezialisierung'}</h2><span class="role">{roleName(role)}</span></div>
-    <p class:dim={!c.specDesc}>{c.specDesc ?? 'Die Beschreibung erscheint, sobald das Addon (ab Version 1.1) die Spezialisierung mitgeschrieben hat.'}</p>
-    {#if statName(c.primaryStat)}<div class="line"><span class="dim">Primärwert</span><b>{statName(c.primaryStat)}</b></div>{/if}
+    <div class="sh"><h2 class="serif gold">{c.spec ?? t('Spezialisierung')}</h2><span class="role">{roleName(role)}</span></div>
+    <p class:dim={!c.specDesc}>{c.specDesc ?? t('Die Beschreibung erscheint, sobald das Addon (ab Version 1.1) die Spezialisierung mitgeschrieben hat.')}</p>
+    {#if statName(c.primaryStat)}<div class="line"><span class="dim">{t('Primärwert')}</span><b>{statName(c.primaryStat)}</b></div>{/if}
   </div>
 </div>
 
-<Box title="Guides & Talent-Builds (Wowhead)">
+<Box title={t('Guides & Talent-Builds (Wowhead)')}>
   {#if links.length}
     <div class="links">
       {#each links as l}<ExtLink href={l.url}><div class="lk"><Icon name={l.icon} size={15} /> {l.title} <span class="sp"></span>↗</div></ExtLink>{/each}
     </div>
-    <p class="dim sm">Die empfohlenen Builds stammen von Wowhead und öffnen sich im Browser. Den Build übernimmst du im Spiel über „Laden/Teilen → Importieren“.</p>
-  {:else}<p class="dim">Noch keine Spezialisierung bekannt.</p>{/if}
+    <p class="dim sm">{t('Die empfohlenen Builds stammen von Wowhead und öffnen sich im Browser. Den Build übernimmst du im Spiel über „Laden/Teilen → Importieren“.')}</p>
+  {:else}<p class="dim">{t('Noch keine Spezialisierung bekannt.')}</p>{/if}
 </Box>
 
-<Box title="Dein Talent-Build">
+<Box title={t('Dein Talent-Build')}>
   {#if c.talentCode}
-    <div class="code"><code>{c.talentCode}</code><button class="btn" onclick={copy}>{copied ? 'Kopiert' : 'Code kopieren'}</button></div>
-  {:else}<p class="dim">Noch kein Talentcode – er wird vom Addon beim nächsten Einloggen gespeichert.</p>{/if}
+    <div class="code"><code>{c.talentCode}</code><button class="btn" onclick={copy}>{copied ? t('Kopiert') : t('Code kopieren')}</button></div>
+  {:else}<p class="dim">{t('Noch kein Talentcode – er wird vom Addon beim nächsten Einloggen gespeichert.')}</p>{/if}
 </Box>
 
-<Box title="Verlauf: Talente & Ausrüstung">
-  {#each history as e (e.t + e.e)}<EventRow event={e} />{:else}<p class="dim">Noch keine Einträge.</p>{/each}
+<Box title={t('Verlauf: Talente & Ausrüstung')}>
+  {#each history as e (e.t + e.e)}<EventRow event={e} />{:else}<p class="dim">{t('Noch keine Einträge.')}</p>{/each}
 </Box>
 
 <style>

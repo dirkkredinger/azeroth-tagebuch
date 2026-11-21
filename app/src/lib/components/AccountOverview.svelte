@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t, tn } from '$lib/i18n.svelte';
   import Icon from './Icon.svelte';
   import Avatar from './Avatar.svelte';
   import StatTile from './StatTile.svelte';
@@ -16,6 +17,7 @@
   const loot = $derived(A.lootStats(chars, fights));
   const mobs = $derived(loot.filter((s) => !s.isObject));
 
+  const runs = $derived(chars.flatMap((c) => A.instanceRuns(c)));
   const totals = $derived({
     play: chars.reduce((s, c) => s + A.playSeconds(c), 0),
     gold: chars.reduce((s, c) => s + (c.money ?? 0), 0),
@@ -24,6 +26,8 @@
     levels: chars.reduce((s, c) => s + A.levelUps(c), 0),
     achievements: chars.reduce((s, c) => s + A.achievements(c).length, 0),
     deaths: chars.reduce((s, c) => s + A.deaths(c), 0),
+    runs: runs.length,
+    bosses: runs.reduce((s, r) => s + r.bosses.filter((b) => b.ok).length, 0),
   });
 
   const byKey = $derived(new Map(chars.map((c) => [c.key, c])));
@@ -33,19 +37,19 @@
   const records = $derived.by(() => {
     const out: { icon: string; tint: string; title: string; value: string; detail: string }[] = [];
     const bestDps = allFights.filter((f) => f.damage > 0).sort((a, b) => A.dps(b) - A.dps(a))[0];
-    if (bestDps) out.push({ icon: 'flame', tint: 'var(--damage)', title: 'Höchste DPS', value: `${big(A.dps(bestDps))} DPS`, detail: `${byKey.get(bestDps.char)?.name ?? bestDps.char} gegen ${A.fightTitle(bestDps)}` });
+    if (bestDps) out.push({ icon: 'flame', tint: 'var(--damage)', title: t('Höchste DPS'), value: `${big(A.dps(bestDps))} DPS`, detail: t('{name} gegen {gegner}', { name: byKey.get(bestDps.char)?.name ?? bestDps.char, gegner: A.fightTitle(bestDps) }) });
     const bestHps = allFights.filter((f) => f.healing > 0).sort((a, b) => A.hps(b) - A.hps(a))[0];
-    if (bestHps) out.push({ icon: 'heart-pulse', tint: 'var(--healing)', title: 'Höchste HPS', value: `${big(A.hps(bestHps))} HPS`, detail: `${byKey.get(bestHps.char)?.name ?? bestHps.char} · ${A.fightTitle(bestHps)}` });
+    if (bestHps) out.push({ icon: 'heart-pulse', tint: 'var(--healing)', title: t('Höchste HPS'), value: `${big(A.hps(bestHps))} HPS`, detail: `${byKey.get(bestHps.char)?.name ?? bestHps.char} · ${A.fightTitle(bestHps)}` });
     const top = [...mobs].sort((a, b) => A.effectiveKills(b) - A.effectiveKills(a))[0];
-    if (top) out.push({ icon: 'paw-print', tint: '#f0a030', title: 'Liebster Gegner', value: `${A.effectiveKills(top)}× ${top.name}`, detail: [...top.zones].sort().join(', ') });
+    if (top) out.push({ icon: 'paw-print', tint: '#f0a030', title: t('Liebster Gegner'), value: `${A.effectiveKills(top)}× ${top.name}`, detail: [...top.zones].sort().join(', ') });
     const finds = loot.flatMap((s) => [...s.items.values()].filter((i) => (i.quality ?? 0) >= 2).map((i) => ({ s, i })));
     finds.sort((a, b) => (b.i.quality ?? 0) - (a.i.quality ?? 0) || A.dropRate(a.s, a.i) - A.dropRate(b.s, b.i));
-    if (finds[0]) out.push({ icon: 'sparkles', tint: qualityColor(finds[0].i.quality), title: 'Bester Fund', value: finds[0].i.name, detail: `von ${finds[0].s.name} · ${Math.round(A.dropRate(finds[0].s, finds[0].i) * 100)} % Droprate` });
+    if (finds[0]) out.push({ icon: 'sparkles', tint: qualityColor(finds[0].i.quality), title: t('Bester Fund'), value: finds[0].i.name, detail: t('von {name} · {p} % Droprate', { name: finds[0].s.name, p: Math.round(A.dropRate(finds[0].s, finds[0].i) * 100) }) });
     const sessions = chars.flatMap((c) => c.events.filter((e) => e.e === 'logout').map((e) => ({ c, e })));
     const longest = sessions.sort((a, b) => (b.e.dauer ?? 0) - (a.e.dauer ?? 0))[0];
-    if (longest?.e.dauer) out.push({ icon: 'hourglass', tint: '#4f9dff', title: 'Längste Sitzung', value: duration(longest.e.dauer), detail: `${longest.c.name} · ${date(longest.e.t)}` });
+    if (longest?.e.dauer) out.push({ icon: 'hourglass', tint: '#4f9dff', title: t('Längste Sitzung'), value: duration(longest.e.dauer), detail: `${longest.c.name} · ${date(longest.e.t)}` });
     const richest = [...chars].sort((a, b) => (b.money ?? 0) - (a.money ?? 0))[0];
-    if (richest?.money) out.push({ icon: 'coins', tint: '#f5d742', title: 'Reichster Charakter', value: gold(richest.money), detail: richest.name });
+    if (richest?.money) out.push({ icon: 'coins', tint: '#f5d742', title: t('Reichster Charakter'), value: gold(richest.money), detail: richest.name });
     return out;
   });
 
@@ -61,20 +65,22 @@
 </script>
 
 <div class="page">
-  <OrnamentHeader text="Alle Charaktere" />
+  <OrnamentHeader text={t('Alle Charaktere')} />
 
   <div class="grid-tiles">
-    <StatTile title="Charaktere" value={String(chars.length)} icon="users" />
-    <StatTile title="Spielzeit gesamt" value={duration(totals.play)} icon="clock" tint="#4f9dff" />
-    <StatTile title="Gold gesamt" value={gold(totals.gold)} icon="coins" tint="#f5d742" />
-    <StatTile title="Quests gesamt" value={num(totals.quests)} icon="badge-check" tint="#f5d742" />
-    <StatTile title="Gegner besiegt" value={num(totals.kills)} icon="flame" tint="var(--damage)" />
-    <StatTile title="Stufenaufstiege" value={num(totals.levels)} icon="circle-arrow-up" tint="#4cd964" />
-    <StatTile title="Erfolge" value={num(totals.achievements)} icon="trophy" tint="#f0a030" />
-    <StatTile title="Tode" value={num(totals.deaths)} icon="heart-crack" tint="#ff4d4d" />
+    <StatTile title={t('Charaktere')} value={String(chars.length)} icon="users" />
+    <StatTile title={t('Spielzeit gesamt')} value={duration(totals.play)} icon="clock" tint="#4f9dff" />
+    <StatTile title={t('Gold gesamt')} value={gold(totals.gold)} icon="coins" tint="#f5d742" />
+    <StatTile title={t('Quests gesamt')} value={num(totals.quests)} icon="badge-check" tint="#f5d742" />
+    <StatTile title={t('Gegner besiegt')} value={num(totals.kills)} icon="flame" tint="var(--damage)" />
+    <StatTile title={t('Stufenaufstiege')} value={num(totals.levels)} icon="circle-arrow-up" tint="#4cd964" />
+    <StatTile title={t('Erfolge')} value={num(totals.achievements)} icon="trophy" tint="#f0a030" />
+    <StatTile title={t('Instanzläufe')} value={num(totals.runs)} icon="castle" tint="#4f9dff" />
+    <StatTile title={t('Bosse besiegt')} value={num(totals.bosses)} icon="skull" tint="var(--damage)" />
+    <StatTile title={t('Tode')} value={num(totals.deaths)} icon="heart-crack" tint="#ff4d4d" />
   </div>
 
-  <h2 class="serif">Deine Helden</h2>
+  <h2 class="serif">{t('Deine Helden')}</h2>
   <div class="heroes">
     {#each chars as c (c.key)}
       <button class="panel hero" onclick={() => store.show(c.key)}>
@@ -85,22 +91,22 @@
             <div class="small">{[c.spec, c.className].filter(Boolean).join(' ')}</div>
             <div class="tiny dim">{c.realm}</div>
           </div>
-          <div class="lvl"><span class="serif">{c.level ?? '–'}</span><small>Stufe</small></div>
+          <div class="lvl"><span class="serif">{c.level ?? '–'}</span><small>{t('Stufe')}</small></div>
         </div>
         <div class="stats">
           <span><Icon name="clock" size={12} /> {duration(A.playSeconds(c))}</span>
-          <span><Icon name="badge-check" size={12} /> {A.turnIns(c).length} Quests</span>
-          {#if c.itemLevel}<span><Icon name="shield-check" size={12} /> GS {Math.round(c.itemLevel)}</span>
-          {:else}<span><Icon name="flame" size={12} /> {(fights[c.key] ?? []).length} Kämpfe</span>{/if}
+          <span><Icon name="badge-check" size={12} /> {t('{n} Quests', { n: A.turnIns(c).length })}</span>
+          {#if c.itemLevel}<span><Icon name="shield-check" size={12} /> {t('GS {n}', { n: Math.round(c.itemLevel) })}</span>
+          {:else}<span><Icon name="flame" size={12} /> {t('{n} Kämpfe', { n: (fights[c.key] ?? []).length })}</span>{/if}
         </div>
-        {#if A.lastSeen(c)}<div class="tiny dim seen">zuletzt gespielt {relative(A.lastSeen(c)!)}</div>{/if}
+        {#if A.lastSeen(c)}<div class="tiny dim seen">{t('zuletzt gespielt {when}', { when: relative(A.lastSeen(c)!) })}</div>{/if}
       </button>
     {/each}
   </div>
 
   {#if records.length}
     <div class="panel box">
-      <h3>Ruhmeshalle</h3>
+      <h3>{t('Ruhmeshalle')}</h3>
       <div class="records">
         {#each records as r}
           <div class="rec">
@@ -117,14 +123,14 @@
   {/if}
 
   <div class="grid-2">
-    <div class="panel box"><h3>Spielzeit der letzten 14 Tage</h3><StackedBars {days} {series} /></div>
-    <div class="panel box"><h3>Gold je Charakter</h3>
-      {#if goldRows.length}<HBars rows={goldRows} />{:else}<p class="dim">Noch keine Daten</p>{/if}
+    <div class="panel box"><h3>{t('Spielzeit der letzten 14 Tage')}</h3><StackedBars {days} {series} /></div>
+    <div class="panel box"><h3>{t('Gold je Charakter')}</h3>
+      {#if goldRows.length}<HBars rows={goldRows} />{:else}<p class="dim">{t('Noch keine Daten')}</p>{/if}
     </div>
   </div>
 
   <div class="panel box">
-    <h3>Zuletzt bei allen Charakteren</h3>
+    <h3>{t('Zuletzt bei allen Charakteren')}</h3>
     {#each recent as { c, e } (c.key + e.t + e.e + (e.q ?? '') + (e.src ?? ''))}
       <div class="rrow"><span class="rname" style="color:{classColor(c.classToken)}">{c.name}</span><EventRow event={e} names={A.questNames(c)} /></div>
     {/each}

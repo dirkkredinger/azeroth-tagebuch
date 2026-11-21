@@ -11,6 +11,7 @@ export interface WowEvent {
   il?: number; ilg?: number; sid?: number; spec?: string; rolle?: string; code?: string; lo?: string;
   slot?: number; itemId?: number; quality?: number; ic?: number; alt?: string; altil?: number;
   src?: string; npc?: number; art?: string; sn?: string; items?: LootItem[];
+  iid?: number; did?: number; eid?: number; ok?: number; ml?: number; tier?: number; grp?: number; zeit?: number; imzeit?: number;
 }
 
 export interface LootItem {

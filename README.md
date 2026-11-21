@@ -14,7 +14,8 @@
   <a href="#installation">Installation</a> ·
   <a href="#häufige-fragen">Fragen</a> ·
   <a href="https://github.com/dirkkredinger/azeroth-tagebuch/issues">Fehler melden</a> ·
-  <a href="https://ko-fi.com/mbmf17/">☕ Unterstützen</a>
+  <a href="https://ko-fi.com/mbmf17/">☕ Unterstützen</a> ·
+  <a href="README.en.md">🇬🇧 English</a>
 </p>
 
 ![Account-Übersicht](docs/bilder/1-uebersicht.png)
@@ -29,15 +30,20 @@ liest das automatisch ein und zeigt es als Tagebuch und Dashboard – während d
 - **Karte** mit deiner Route – eingefärbt nach Fortbewegung, mit Quests, Toden und Notizen
 - **Kampf und Heilung** aus dem offiziellen Kampflog: DPS/HPS je Kampf, nach Stufe und nach Gegenstandsstufe
 - **Ausrüstung** als Charakterbogen mit Werten und Wechselverlauf
+- **Dungeons, Tiefen und Schlachtzüge**: wie oft betreten und abgeschlossen, welche Bosse gefallen sind, Tiefenstufe bzw. Schlüsselstein und die Beute je Instanz
 - **Beute mit Dropraten**: welcher Gegner was wie oft fallen lässt
 - **Lager**: Taschen, Bank, Kriegsmeutenbank und Gildenbank – und die Suche „**Wo liegt …?**“
 - **Klasse & Spezialisierung** mit Links zu Guides und deinem Talent-Build
 - Eigenes Design im Stil alter Abenteuerbücher, Item-Tooltips im WoW-Stil
+- Auf **Deutsch und Englisch** (folgt der Systemsprache, umschaltbar oben rechts)
 
 | | |
 |---|---|
 | ![Kampfstatistik](docs/bilder/2-kampf.png) | ![Routenkarte](docs/bilder/3-karte.png) |
 | ![Beute mit Dropraten](docs/bilder/4-beute.png) | ![Ausrüstung mit Tooltip](docs/bilder/5-ausruestung.png) |
+| ![Dungeons und Tiefen](docs/bilder/7-instanzen.png) | ![Suche „Wo liegt …?“](docs/bilder/6-suche.png) |
+
+<sub>Die Bilder zeigen Beispieldaten und selbst gezeichnete Karten. In der App siehst du die echten Zonenkarten aus deiner eigenen WoW-Installation.</sub>
 
 ## Installation
 
@@ -71,6 +77,9 @@ lokal aus und speichert sie nur auf deinem Rechner.
 **Werden meine Daten irgendwohin geschickt?**
 Nein. Alles bleibt auf deinem Rechner.
 
+**Warum stehen manche Namen auf Englisch (oder Deutsch)?**
+Quests, Zonen und Gegenstände speichert WoW in der Sprache deines Spiel-Clients. Die Texte der App selbst folgen der Sprache, die du wählst.
+
 **Warum zeigt die Kampfstatistik nichts?**
 Sie entsteht aus dem Kampflog, das das Addon beim Einloggen einschaltet. Kämpfe vor der Installation fehlen daher.
 
@@ -91,7 +100,7 @@ Genauso hilft ein Stern ⭐ hier auf GitHub, eine Fehlermeldung oder eine Idee u
 | `kern/` | Rust: liest SavedVariables und Kampflog, führt alles im Archiv zusammen |
 | `wowbilder/` | Rust: Kartenbilder und Symbole aus der lokalen Installation (CascLib) |
 | `Sources/`, `Package.swift` | erste Mac-App (SwiftUI), wird abgelöst |
-| `tools/` | erzeugt Beispieldaten |
+| `tools/` | erzeugt Beispieldaten (`make_sample.py`, `sample_en.py`) und die selbst gezeichneten Beispielkarten (`make_demo_maps.py`) |
 
 ```bash
 cd app
@@ -102,7 +111,8 @@ npm run dev            # nur die Oberfläche im Browser, mit Beispieldaten
 ```
 
 Tests des Kerns: `cd kern && cargo test`. GitHub Actions baut bei jedem Push Windows- und Mac-Version;
-ein Tag `v…` veröffentlicht ein Release mit App und Addon.
+ein Tag `v…` veröffentlicht ein Release mit App und Addon. Texte der Oberfläche: Der deutsche Text ist der Schlüssel,
+die englische Übersetzung steht in `app/src/lib/sprache/en.ts`.
 
 ## Lizenz
 

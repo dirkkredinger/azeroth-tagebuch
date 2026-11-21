@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t, tn } from '$lib/i18n.svelte';
   // Suche über alle Charaktere: Lager („Wo liegt …?“), Quests, Beute, Gegner und Notizen
   import Box from './Box.svelte';
   import ItemIcon from './ItemIcon.svelte';
@@ -12,7 +13,7 @@
   import type { Storage, StoredItem } from '$lib/types';
 
   const q = $derived(store.search.trim().toLowerCase());
-  const has = (t?: string) => !!t && t.toLowerCase().includes(q);
+  const has = (s?: string) => !!s && s.toLowerCase().includes(q);
   const chars = $derived(store.characters);
   const loot = $derived(A.lootStats(chars, store.fights));
 
@@ -22,9 +23,9 @@
       for (const tab of s?.tabs ?? []) for (const item of tab.items) if (has(item.name))
         out.push({ place: (s!.tabs.length > 1 ? `${place} · ${tab.name}` : place), who, color, item });
     };
-    for (const c of chars) { scan(c.bags, 'Taschen', c.name, classColor(c.classToken)); scan(c.bank, 'Bank', c.name, classColor(c.classToken)); }
-    for (const [acc, w] of Object.entries(store.snapshot?.archive.warbands ?? {})) scan(w, 'Kriegsmeutenbank', acc, 'var(--gold)');
-    for (const [g, s] of Object.entries(store.snapshot?.archive.guilds ?? {})) scan(s, 'Gildenbank', g.split('-')[0], 'var(--healing)');
+    for (const c of chars) { scan(c.bags, t('Taschen'), c.name, classColor(c.classToken)); scan(c.bank, t('Bank'), c.name, classColor(c.classToken)); }
+    for (const [acc, w] of Object.entries(store.snapshot?.archive.warbands ?? {})) scan(w, t('Kriegsmeutenbank'), acc, 'var(--gold)');
+    for (const [g, s] of Object.entries(store.snapshot?.archive.guilds ?? {})) scan(s, t('Gildenbank'), g.split('-')[0], 'var(--healing)');
     return out;
   });
   const quests = $derived(chars.flatMap((c) => [
@@ -38,20 +39,20 @@
 </script>
 
 <div class="page">
-  <OrnamentHeader text="Suche: „{store.search.trim()}“" />
-  <div class="dim">{stored.length} im Lager · {quests.length} Quests · {items.length} Gegenstände · {mobs.length} Gegner · {notes.length} Notizen</div>
+  <OrnamentHeader text={t('Suche: „{q}“', { q: store.search.trim() })} />
+  <div class="dim">{t('{a} im Lager · {b} Quests · {c} Gegenstände · {d} Gegner · {e} Notizen', { a: stored.length, b: quests.length, c: items.length, d: mobs.length, e: notes.length })}</div>
 
   {#if nothing}
-    <div class="panel box dim">Nichts gefunden. Gesucht wird in Questnamen, Zonen, Beute, Gegnern, Notizen sowie Taschen und Banken aller Charaktere.</div>
+    <div class="panel box dim">{t('Nichts gefunden. Gesucht wird in Questnamen, Zonen, Beute, Gegnern, Notizen sowie Taschen und Banken aller Charaktere.')}</div>
   {/if}
 
   {#if stored.length}
-    <Box title="Wo liegt …?">
+    <Box title={t('Wo liegt …?')}>
       {#each stored.slice(0, 80) as h, k (k)}
         <div class="row">
           <ItemIcon icon={h.item.icon} quality={h.item.quality} size={28} tip={{ name: h.item.name, quality: h.item.quality, icon: h.item.icon, itemLevel: h.item.itemLevel, count: h.item.count, lines: [{ text: `${h.who} · ${h.place}`, color: '#bfb091' }] }} />
           <b style="color:{qualityColor(h.item.quality)}">{h.item.name}</b>
-          {#if h.item.itemLevel}<span class="gold sm">GS {Math.round(h.item.itemLevel)}</span>{/if}
+          {#if h.item.itemLevel}<span class="gold sm">{t('GS {n}', { n: Math.round(h.item.itemLevel) })}</span>{/if}
           <span class="sp"></span><span>{h.item.count}×</span>
           <span class="who" style="color:{h.color}">{h.who}</span><span class="dim sm place">{h.place}</span>
         </div>
@@ -60,11 +61,11 @@
   {/if}
 
   {#if quests.length}
-    <Box title="Quests">
+    <Box title={t('Quests')}>
       {#each quests.slice(0, 60) as { c, e, open } (c.key + e.t + e.q)}
         <button class="row btnrow" onclick={() => store.show(c.key)}>
           <Icon name={open ? 'circle-alert' : 'badge-check'} size={15} color={open ? '#f0a030' : '#f5d742'} />
-          <div class="grow"><b>{e.n}</b><div class="dim sm">{[e.z, open ? 'offen' : questKind(e.c)].filter(Boolean).join(' · ')}</div></div>
+          <div class="grow"><b>{e.n}</b><div class="dim sm">{[e.z, open ? t('offen') : questKind(e.c)].filter(Boolean).join(' · ')}</div></div>
           <span class="who" style="color:{classColor(c.classToken)}">{c.name}</span><span class="dim sm place">{date(e.t)}</span>
         </button>
       {/each}
@@ -72,29 +73,29 @@
   {/if}
 
   {#if items.length}
-    <Box title="Beute">
+    <Box title={t('Beute')}>
       {#each items.slice(0, 60) as { s, i } (s.key + i.key)}
         <div class="row">
-          <ItemIcon icon={i.icon} quality={i.quality} size={28} tip={{ name: i.name, quality: i.quality, icon: i.icon, lines: [{ text: `Droprate: ${Math.round(A.dropRate(s, i) * 100)} % (${i.times} von ${s.looted})` }, { text: `von ${s.name}`, color: '#bfb091' }] }} />
-          <div class="grow"><b style="color:{qualityColor(i.quality)}">{i.name}</b><div class="dim sm">von {s.name}{s.zones.size ? ' · ' + [...s.zones].sort().join(', ') : ''}</div></div>
-          <b class="gold">{Math.round(A.dropRate(s, i) * 100)} %</b><span class="dim sm place">{i.times} von {s.looted}</span>
+          <ItemIcon icon={i.icon} quality={i.quality} size={28} tip={{ name: i.name, quality: i.quality, icon: i.icon, lines: [{ text: t('Droprate: {p} % ({a} von {b})', { p: Math.round(A.dropRate(s, i) * 100), a: i.times, b: s.looted }) }, { text: t('von {name}', { name: s.name }), color: '#bfb091' }] }} />
+          <div class="grow"><b style="color:{qualityColor(i.quality)}">{i.name}</b><div class="dim sm">{t('von {name}', { name: s.name })}{s.zones.size ? ' · ' + [...s.zones].sort().join(', ') : ''}</div></div>
+          <b class="gold">{Math.round(A.dropRate(s, i) * 100)} %</b><span class="dim sm place">{t('{a} von {b}', { a: i.times, b: s.looted })}</span>
         </div>
       {/each}
     </Box>
   {/if}
 
   {#if mobs.length}
-    <Box title="Gegner & Vorkommen">
+    <Box title={t('Gegner & Vorkommen')}>
       {#each mobs.slice(0, 30) as s (s.key)}
         <div class="row"><Icon name={s.isObject ? 'sparkles' : 'paw-print'} size={15} color="var(--damage)" />
           <div class="grow"><b>{s.name}</b><div class="dim sm">{[...s.zones].sort().join(', ')}</div></div>
-          <span>{A.effectiveKills(s)}× besiegt</span><span class="dim sm place">{s.looted}× geplündert</span></div>
+          <span>{t('{n}× besiegt', { n: A.effectiveKills(s) })}</span><span class="dim sm place">{t('{n}× geplündert', { n: s.looted })}</span></div>
       {/each}
     </Box>
   {/if}
 
   {#if notes.length}
-    <Box title="Notizen">
+    <Box title={t('Notizen')}>
       {#each notes as { c, e } (c.key + e.t)}
         <div class="row"><span class="who" style="color:{classColor(c.classToken)}">{c.name}</span><div class="grow"><EventRow event={e} /></div></div>
       {/each}

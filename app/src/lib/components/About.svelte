@@ -3,6 +3,7 @@
   import Icon from './Icon.svelte';
   import ExtLink from './ExtLink.svelte';
   import { GITHUB_URL, ISSUES_URL, KOFI_URL, RELEASES_URL } from '$lib/links';
+  import { i18n, setLang, t } from '$lib/i18n.svelte';
   import pkg from '../../../package.json';
   let { onclose }: { onclose: () => void } = $props();
 </script>
@@ -12,28 +13,33 @@
   <div class="panel card" onclick={(e) => e.stopPropagation()}>
     <img src="/favicon.png" alt="" class="logo" />
     <h2 class="serif">Azeroth-Tagebuch</h2>
-    <div class="dim">Version {pkg.version}</div>
-    <p>Ein Tagebuch für deine World-of-Warcraft-Charaktere: Quests, Reisen, Kämpfe, Beute und Lager – automatisch aus dem Addon und dem Kampflog.</p>
+    <div class="dim">{t('Version {v}', { v: pkg.version })}</div>
+    <p>{t('Ein Tagebuch für deine World-of-Warcraft-Charaktere: Quests, Reisen, Kämpfe, Instanzen, Beute und Lager – automatisch aus dem Addon und dem Kampflog.')}</p>
 
     {#if KOFI_URL}
-      <ExtLink href={KOFI_URL}><div class="kofi"><Icon name="coins" size={16} /> Unterstütze das Projekt auf Ko-fi</div></ExtLink>
-      <p class="dim small">Das Tagebuch ist kostenlos und quelloffen. Wenn es dir gefällt, freue ich mich über einen Kaffee.</p>
+      <ExtLink href={KOFI_URL}><div class="kofi"><Icon name="coins" size={16} /> {t('Unterstütze das Projekt auf Ko-fi')}</div></ExtLink>
+      <p class="dim small">{t('Das Tagebuch ist kostenlos und quelloffen. Wenn es dir gefällt, freue ich mich über einen Kaffee.')}</p>
     {/if}
 
     <div class="links">
-      <ExtLink href={GITHUB_URL}><span class="lk"><Icon name="book-open" size={14} /> Quellcode auf GitHub</span></ExtLink>
-      <ExtLink href={RELEASES_URL}><span class="lk"><Icon name="refresh-cw" size={14} /> Neue Versionen</span></ExtLink>
-      <ExtLink href={ISSUES_URL}><span class="lk"><Icon name="circle-alert" size={14} /> Fehler melden</span></ExtLink>
+      <ExtLink href={GITHUB_URL}><span class="lk"><Icon name="book-open" size={14} /> {t('Quellcode auf GitHub')}</span></ExtLink>
+      <ExtLink href={RELEASES_URL}><span class="lk"><Icon name="refresh-cw" size={14} /> {t('Neue Versionen')}</span></ExtLink>
+      <ExtLink href={ISSUES_URL}><span class="lk"><Icon name="circle-alert" size={14} /> {t('Fehler melden')}</span></ExtLink>
     </div>
 
-    <p class="dim small">Von dirkkredinger, entwickelt mit Unterstützung von Claude (Anthropic).</p>
-    <p class="dim small">Lizenz: GNU GPL v3.0. Inoffizielles Fan-Projekt, nicht mit Blizzard Entertainment verbunden.
-      World of Warcraft ist eine Marke von Blizzard Entertainment, Inc. Karten und Symbole stammen aus deiner eigenen Spielinstallation und werden nicht mitgeliefert.</p>
-    <button class="btn" onclick={onclose}>Schließen</button>
+    <div class="lang"><span class="dim small">{t('Sprache')}</span>
+      <button class="btn" class:primary={i18n.lang === 'de'} onclick={() => setLang('de')}>Deutsch</button>
+      <button class="btn" class:primary={i18n.lang === 'en'} onclick={() => setLang('en')}>English</button>
+    </div>
+
+    <p class="dim small">{t('Von dirkkredinger, entwickelt mit Unterstützung von Claude (Anthropic).')}</p>
+    <p class="dim small">{t('Lizenz: GNU GPL v3.0. Inoffizielles Fan-Projekt, nicht mit Blizzard Entertainment verbunden. World of Warcraft ist eine Marke von Blizzard Entertainment, Inc. Karten und Symbole stammen aus deiner eigenen Spielinstallation und werden nicht mitgeliefert.')}</p>
+    <button class="btn" onclick={onclose}>{t('Schließen')}</button>
   </div>
 </div>
 
 <style>
+  .lang { display: flex; gap: 8px; align-items: center; justify-content: center; margin: 4px 0 2px; }
   .backdrop { position: fixed; inset: 0; z-index: 900; background: rgba(0, 0, 0, 0.6); display: grid; place-items: center; }
   .card { width: 460px; padding: 24px; text-align: center; }
   .logo { width: 72px; height: 72px; }

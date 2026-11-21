@@ -2,6 +2,7 @@
   import '$lib/theme.css';
   import { onMount } from 'svelte';
   import { store } from '$lib/store.svelte';
+  import { i18n, setLang, t } from '$lib/i18n.svelte';
   import Sidebar from '$lib/components/Sidebar.svelte';
   import AccountOverview from '$lib/components/AccountOverview.svelte';
   import CharacterPage from '$lib/components/CharacterPage.svelte';
@@ -11,6 +12,15 @@
   import Tooltip from '$lib/components/Tooltip.svelte';
 
   onMount(() => store.start());
+
+  // Sprache gewechselt: Beispieldaten in der neuen Sprache laden
+  let lastLang = i18n.lang;
+  $effect(() => {
+    const l = i18n.lang;
+    if (l === lastLang) return;
+    lastLang = l;
+    if (store.snapshot?.demo) store.demo();
+  });
 
   // Beim Wechsel der Ansicht wieder oben anfangen
   let content: HTMLDivElement | undefined = $state();
@@ -27,17 +37,18 @@
   <main>
     <div class="toolbar">
       <div class="spacer"></div>
-      <div class="search"><Icon name="search" size={14} color="var(--parchment-dim)" /><input type="search" placeholder="Quests, Beute, Gegner, Lager suchen" bind:value={store.search} /></div>
-      <button class="tb" title="Zur Übersicht aller Charaktere" onclick={() => store.show(null)}><Icon name="users" size={15} /></button>
-      <button class="tb" title="SavedVariables und Kampflog neu einlesen" onclick={() => store.rescan()}><Icon name="refresh-cw" size={15} /></button>
-      <button class="tb" title="WoW-Ordner wählen" onclick={() => store.chooseFolder()}><Icon name="folder-open" size={15} /></button>
-      <button class="tb" title="Beispieldaten anzeigen" onclick={() => store.demo()}><Icon name="sparkles" size={15} /></button>
+      <div class="search"><Icon name="search" size={14} color="var(--parchment-dim)" /><input type="search" placeholder={t('Quests, Beute, Gegner, Lager suchen')} bind:value={store.search} /></div>
+      <button class="tb" title={t('Zur Übersicht aller Charaktere')} onclick={() => store.show(null)}><Icon name="users" size={15} /></button>
+      <button class="tb" title={t('SavedVariables und Kampflog neu einlesen')} onclick={() => store.rescan()}><Icon name="refresh-cw" size={15} /></button>
+      <button class="tb" title={t('WoW-Ordner wählen')} onclick={() => store.chooseFolder()}><Icon name="folder-open" size={15} /></button>
+      <button class="tb" title={t('Beispieldaten anzeigen')} onclick={() => store.demo()}><Icon name="sparkles" size={15} /></button>
+      <button class="tb lang" title={i18n.lang === 'de' ? 'Switch to English' : 'Auf Deutsch umschalten'} onclick={() => setLang(i18n.lang === 'de' ? 'en' : 'de')}>{i18n.lang === 'de' ? 'EN' : 'DE'}</button>
     </div>
     <div class="content" bind:this={content}>
       {#if store.error}
         <div class="err panel box">{store.error}</div>
       {:else if !store.snapshot}
-        <div class="loading dim">Lade Tagebuch …</div>
+        <div class="loading dim">{t('Lade Tagebuch …')}</div>
       {:else if store.characters.length === 0}
         <EmptyState />
       {:else if store.search.trim()}
@@ -52,6 +63,7 @@
 </div>
 
 <style>
+  .tb.lang { font-size: 11px; font-weight: 800; letter-spacing: 0.5px; }
   .app { display: flex; height: 100vh; }
   main {
     flex: 1; min-width: 0; display: flex; flex-direction: column;

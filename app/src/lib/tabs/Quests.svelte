@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t, tn } from '$lib/i18n.svelte';
   import Segmented from '$lib/components/Segmented.svelte';
   import * as A from '$lib/analyse';
   import { dateTime, gold, num } from '$lib/format';
@@ -18,7 +19,7 @@
     const src: WowEvent[] = mode === 'done' ? done : open;
     const q = search.toLowerCase();
     const r: Row[] = src
-      .map((e) => ({ id: `${e.t}-${e.q}`, name: e.n ?? `Quest ${e.q}`, zone: e.z ?? '–', kind: questKind(e.c), level: e.lv ?? 0, xp: e.xp ?? 0, gold: e.g ?? 0, date: e.t }))
+      .map((e) => ({ id: `${e.t}-${e.q}`, name: e.n ?? t('Quest {n}', { n: e.q }), zone: e.z ?? '–', kind: questKind(e.c), level: e.lv ?? 0, xp: e.xp ?? 0, gold: e.g ?? 0, date: e.t }))
       .filter((x) => !q || x.name.toLowerCase().includes(q) || x.zone.toLowerCase().includes(q));
     const dir = asc ? 1 : -1;
     return r.sort((a, b) => {
@@ -27,13 +28,13 @@
     });
   });
   function sortBy(k: typeof sortKey) { if (sortKey === k) asc = !asc; else { sortKey = k; asc = k === 'name' || k === 'zone'; } }
-  const cols: [typeof sortKey, string][] = [['name', 'Quest'], ['zone', 'Zone'], ['kind', 'Art'], ['level', 'Stufe'], ['xp', 'EP'], ['gold', 'Gold'], ['date', 'Datum']];
+  const cols = $derived<[typeof sortKey, string][]>([['name', t('Quest')], ['zone', t('Zone')], ['kind', t('Art')], ['level', t('Stufe')], ['xp', t('EP')], ['gold', t('Gold')], ['date', t('Datum')]]);
 </script>
 
 <div class="bar">
-  <Segmented bind:value={mode} options={[{ id: 'done', label: `Abgeschlossen (${done.length})` }, { id: 'open', label: `Offen (${open.length})` }]} />
+  <Segmented bind:value={mode} options={[{ id: 'done', label: t('Abgeschlossen ({n})', { n: done.length }) }, { id: 'open', label: t('Offen ({n})', { n: open.length }) }]} />
   <div class="sp"></div>
-  <input type="search" placeholder="Quest oder Zone suchen" bind:value={search} />
+  <input type="search" placeholder={t('Quest oder Zone suchen')} bind:value={search} />
 </div>
 
 <div class="panel tbl">
@@ -44,12 +45,12 @@
     <tbody>
       {#each rows as r (r.id)}
         <tr>
-          <td class="name">{r.name}</td><td>{r.zone}</td><td class:dim={r.kind === 'Normal'}>{r.kind}</td>
+          <td class="name">{r.name}</td><td>{r.zone}</td><td class:dim={r.kind === t('Normal')}>{r.kind}</td>
           <td class="num">{r.level || '–'}</td><td class="num">{r.xp ? num(r.xp) : '–'}</td><td class="num">{r.gold ? gold(r.gold) : '–'}</td>
           <td class="dim">{dateTime(r.date)}</td>
         </tr>
       {:else}
-        <tr><td colspan="7" class="dim empty">Keine Quests gefunden</td></tr>
+        <tr><td colspan="7" class="dim empty">{t('Keine Quests gefunden')}</td></tr>
       {/each}
     </tbody>
   </table>

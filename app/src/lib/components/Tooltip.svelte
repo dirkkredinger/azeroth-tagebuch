@@ -1,13 +1,14 @@
 <script lang="ts">
+  import { t, tn } from '$lib/i18n.svelte';
   // Schwebender Item-Tooltip (eigene Gestaltung im Stil der Spiel-Tooltips)
   import { tipState } from '$lib/tooltip.svelte';
-  import { qualityColor, qualityName, STAT_NAMES, STAT_ORDER } from '$lib/wow';
+  import { qualityColor, qualityName, statLabel, STAT_ORDER } from '$lib/wow';
   import { num } from '$lib/format';
   import ItemIcon from './ItemIcon.svelte';
 
   let box = $state<HTMLDivElement | null>(null);
   let w = $state(0), h = $state(0);
-  const t = $derived(tipState.tip);
+  const tip = $derived(tipState.tip);
   // rechts unten neben dem Mauszeiger, am Fensterrand umklappen
   const left = $derived(tipState.x + 18 + w > window.innerWidth ? tipState.x - w - 14 : tipState.x + 18);
   const top = $derived(Math.max(6, tipState.y + 14 + h > window.innerHeight ? tipState.y - h - 10 : tipState.y + 14));
@@ -15,24 +16,24 @@
   const secondary = ['krit', 'tempo', 'meist', 'viel'];
 </script>
 
-{#if t}
+{#if tip}
   <div class="tt" bind:this={box} bind:clientWidth={w} bind:clientHeight={h} style="left:{left}px; top:{top}px">
     <div class="headrow">
-      {#if t.icon}<ItemIcon icon={t.icon} quality={t.quality} size={34} />{/if}
+      {#if tip.icon}<ItemIcon icon={tip.icon} quality={tip.quality} size={34} />{/if}
       <div>
-        <div class="name" style="color:{qualityColor(t.quality)}">{t.name}</div>
-        {#if t.quality !== undefined}<div class="q">{qualityName(t.quality)}</div>{/if}
+        <div class="name" style="color:{qualityColor(tip.quality)}">{tip.name}</div>
+        {#if tip.quality !== undefined}<div class="q">{qualityName(tip.quality)}</div>{/if}
       </div>
     </div>
-    {#if t.itemLevel}<div class="ilvl">Gegenstandsstufe {Math.round(t.itemLevel)}</div>{/if}
-    {#if t.slot}<div class="slot">{t.slot}</div>{/if}
-    {#if t.stats}
-      {#each STAT_ORDER.filter((k) => primary.includes(k) && t.stats?.[k]) as k}<div class="white">+{num(t.stats[k])} {STAT_NAMES[k]}</div>{/each}
-      {#each STAT_ORDER.filter((k) => secondary.includes(k) && t.stats?.[k]) as k}<div class="green">+{num(t.stats[k])} {STAT_NAMES[k]}</div>{/each}
+    {#if tip.itemLevel}<div class="ilvl">{t('Gegenstandsstufe {n}', { n: Math.round(tip.itemLevel) })}</div>{/if}
+    {#if tip.slot}<div class="slot">{tip.slot}</div>{/if}
+    {#if tip.stats}
+      {#each STAT_ORDER.filter((k) => primary.includes(k) && tip.stats?.[k]) as k}<div class="white">+{num(tip.stats[k])} {statLabel(k)}</div>{/each}
+      {#each STAT_ORDER.filter((k) => secondary.includes(k) && tip.stats?.[k]) as k}<div class="green">+{num(tip.stats[k])} {statLabel(k)}</div>{/each}
     {/if}
-    {#if t.count && t.count > 1}<div class="white">Anzahl: {num(t.count)}</div>{/if}
-    {#each t.lines ?? [] as l}<div style="color:{l.color ?? '#ffd100'}">{l.text}</div>{/each}
-    {#if t.hint}<div class="hint">{t.hint}</div>{/if}
+    {#if tip.count && tip.count > 1}<div class="white">{t('Anzahl: {n}', { n: num(tip.count) })}</div>{/if}
+    {#each tip.lines ?? [] as l}<div style="color:{l.color ?? '#ffd100'}">{l.text}</div>{/each}
+    {#if tip.hint}<div class="hint">{tip.hint}</div>{/if}
   </div>
 {/if}
 
