@@ -1,0 +1,21 @@
+# Swift (alte Mac-App)
+.build/
+.swiftpm/
+*.xcodeproj/xcuserdata/
+DerivedData/
+
+# Rust
+target/
+
+# Tauri / Node
+app/node_modules/
+app/build/
+app/.svelte-kit/
+app/src-tauri/gen/schemas/
+
+# Sicherungen und Systemdateien
+.archiv-v1.tgz
+.DS_Store
+
+# lokale Claude-Einstellungen
+.claude/settings.local.json

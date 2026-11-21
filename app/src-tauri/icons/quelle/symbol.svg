@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!-- Eigenes Symbol des Azeroth-Tagebuchs: aufgeschlagenes Buch auf dunklem Leder mit Goldrahmen -->
+  <defs>
+    <linearGradient id="leder" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a2817"/>
+      <stop offset="1" stop-color="#140d08"/>
+    </linearGradient>
+    <radialGradient id="glanz" cx="0.3" cy="0.2" r="0.9">
+      <stop offset="0" stop-color="#c79438" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#c79438" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffe08a"/>
+      <stop offset="0.5" stop-color="#d9a441"/>
+      <stop offset="1" stop-color="#8a5f22"/>
+    </linearGradient>
+    <linearGradient id="seite" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbf0d2"/>
+      <stop offset="1" stop-color="#dcc38f"/>
+    </linearGradient>
+    <linearGradient id="seiteR" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0" stop-color="#f6e7c1"/>
+      <stop offset="1" stop-color="#d4b97f"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Grundfläche im Stil eines macOS-Symbols -->
+  <rect x="64" y="64" width="896" height="896" rx="200" fill="url(#leder)"/>
+  <rect x="64" y="64" width="896" height="896" rx="200" fill="url(#glanz)"/>
+  <rect x="92" y="92" width="840" height="840" rx="176" fill="none" stroke="url(#gold)" stroke-width="18"/>
+  <rect x="122" y="122" width="780" height="780" rx="152" fill="none" stroke="#d9a441" stroke-opacity="0.35" stroke-width="4"/>
+
+  <!-- Buchrücken-Schatten -->
+  <ellipse cx="512" cy="742" rx="300" ry="34" fill="#000" opacity="0.45"/>
+
+  <!-- linke Seite -->
+  <path d="M512 330 C 430 280, 300 270, 212 300 L 212 700 C 300 672, 430 680, 512 730 Z" fill="url(#seite)" stroke="#7a5420" stroke-width="8" stroke-linejoin="round"/>
+  <!-- rechte Seite -->
+  <path d="M512 330 C 594 280, 724 270, 812 300 L 812 700 C 724 672, 594 680, 512 730 Z" fill="url(#seiteR)" stroke="#7a5420" stroke-width="8" stroke-linejoin="round"/>
+  <!-- Mittelfalz -->
+  <path d="M512 330 L 512 730" stroke="#8a6a3a" stroke-width="6"/>
+
+  <!-- Schriftzeilen links -->
+  <g fill="none" stroke="#8a6a3a" stroke-width="10" stroke-linecap="round" opacity="0.55">
+    <path d="M262 372 C 320 356, 400 358, 462 380"/>
+    <path d="M262 432 C 320 416, 400 418, 462 440"/>
+    <path d="M262 492 C 320 476, 400 478, 462 500"/>
+    <path d="M262 552 C 320 536, 380 538, 430 556"/>
+  </g>
+
+  <!-- Karte mit Route auf der rechten Seite -->
+  <path d="M570 600 C 610 560, 640 600, 680 540 S 740 470, 760 400" fill="none" stroke="#b5481f" stroke-width="12" stroke-linecap="round" stroke-dasharray="2 26"/>
+  <circle cx="570" cy="600" r="16" fill="#3c8f3c" stroke="#2a1a0a" stroke-width="5"/>
+  <!-- Ziel: Kreuz -->
+  <g stroke="#b5481f" stroke-width="14" stroke-linecap="round">
+    <path d="M742 382 L 778 418"/><path d="M778 382 L 742 418"/>
+  </g>
+
+  <!-- Lesezeichen in Gold -->
+  <path d="M600 296 L 600 390 L 628 368 L 656 390 L 656 286" fill="url(#gold)" stroke="#6b4615" stroke-width="5" stroke-linejoin="round"/>
+
+  <!-- Raute oben als Zierde -->
+  <path d="M512 168 L 548 214 L 512 260 L 476 214 Z" fill="url(#gold)" stroke="#6b4615" stroke-width="5"/>
+  <path d="M410 214 L 470 214 M 554 214 L 614 214" stroke="url(#gold)" stroke-width="8" stroke-linecap="round"/>
+</svg>

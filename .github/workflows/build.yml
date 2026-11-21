@@ -1,0 +1,115 @@
+# Baut die App für Windows und macOS (Universal: Apple-Chip + Intel) und packt das Addon als ZIP.
+# Bei jedem Push auf main und manuell; ein Tag "v…" veröffentlicht zusätzlich ein Release mit allen Dateien.
+name: Build
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write   # für das Anlegen des Releases
+
+jobs:
+  kern-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: kern
+      - name: Tests des Kerns
+        run: cargo test
+        working-directory: kern
+
+  addon:
+    name: Addon-ZIP
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Addon packen (Ordner AzerothTagebuch im ZIP, wie CurseForge es erwartet)
+        run: |
+          VERSION=$(grep '^## Version:' Addon/AzerothTagebuch/AzerothTagebuch.toc | awk '{print $3}')
+          echo "ADDON_VERSION=$VERSION" >> "$GITHUB_ENV"
+          mkdir -p dist
+          (cd Addon && zip -r "../dist/AzerothTagebuch-Addon-$VERSION.zip" AzerothTagebuch -x '*.DS_Store')
+          unzip -l "dist/AzerothTagebuch-Addon-$VERSION.zip"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: AzerothTagebuch-Addon
+          path: dist/*.zip
+          if-no-files-found: error
+      - name: Ins Release (nur bei Tag v…)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Azeroth-Tagebuch ${{ github.ref_name }}
+          body_path: .github/release-notes.md
+          prerelease: true
+          files: dist/*.zip
+
+  app:
+    needs: kern-tests
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Windows
+            os: windows-latest
+            args: ''
+            rust-targets: ''
+          - name: macOS (Universal)
+            os: macos-latest
+            args: '--target universal-apple-darwin'
+            rust-targets: 'aarch64-apple-darwin,x86_64-apple-darwin'
+    name: App ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.rust-targets }}
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: app/src-tauri
+
+      - name: Abhängigkeiten
+        run: npm ci
+        working-directory: app
+
+      - name: App bauen
+        run: npm run tauri build -- ${{ matrix.args }}
+        working-directory: app
+
+      - name: Installationsdateien hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: Azeroth-Tagebuch-${{ runner.os }}
+          path: |
+            app/src-tauri/target/**/release/bundle/msi/*.msi
+            app/src-tauri/target/**/release/bundle/nsis/*.exe
+            app/src-tauri/target/**/release/bundle/dmg/*.dmg
+          if-no-files-found: error
+
+      - name: Ins Release (nur bei Tag v…)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Azeroth-Tagebuch ${{ github.ref_name }}
+          body_path: .github/release-notes.md
+          prerelease: true
+          files: |
+            app/src-tauri/target/**/release/bundle/msi/*.msi
+            app/src-tauri/target/**/release/bundle/nsis/*.exe
+            app/src-tauri/target/**/release/bundle/dmg/*.dmg
