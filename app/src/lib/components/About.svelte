@@ -26,6 +26,7 @@
       <ExtLink href={ISSUES_URL}><span class="lk"><Icon name="circle-alert" size={14} /> Fehler melden</span></ExtLink>
     </div>
 
+    <p class="dim small">Von dirkkredinger, entwickelt mit Unterstützung von Claude (Anthropic).</p>
     <p class="dim small">Lizenz: GNU GPL v3.0. Inoffizielles Fan-Projekt, nicht mit Blizzard Entertainment verbunden.
       World of Warcraft ist eine Marke von Blizzard Entertainment, Inc. Karten und Symbole stammen aus deiner eigenen Spielinstallation und werden nicht mitgeliefert.</p>
     <button class="btn" onclick={onclose}>Schließen</button>

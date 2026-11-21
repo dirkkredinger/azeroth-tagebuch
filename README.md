@@ -13,8 +13,8 @@
   <a href="https://github.com/dirkkredinger/azeroth-tagebuch/releases/latest"><b>⬇ Herunterladen</b></a> ·
   <a href="#installation">Installation</a> ·
   <a href="#häufige-fragen">Fragen</a> ·
-  <a href="https://github.com/dirkkredinger/azeroth-tagebuch/issues">Fehler melden</a>
-  <!-- KO-FI: Sobald es einen Ko-fi-Link gibt, hier ergänzen: · <a href="https://ko-fi.com/…">☕ Unterstützen</a> -->
+  <a href="https://github.com/dirkkredinger/azeroth-tagebuch/issues">Fehler melden</a> ·
+  <a href="https://ko-fi.com/mbmf17/">☕ Unterstützen</a>
 </p>
 
 ![Account-Übersicht](docs/bilder/1-uebersicht.png)
@@ -76,9 +76,11 @@ Sie entsteht aus dem Kampflog, das das Addon beim Einloggen einschaltet. Kämpfe
 
 ## Unterstützen
 
-Das Azeroth-Tagebuch ist kostenlos und quelloffen. Wenn es dir gefällt, hilft schon ein Stern ⭐ hier auf GitHub,
-eine Fehlermeldung oder eine Idee unter [Issues](https://github.com/dirkkredinger/azeroth-tagebuch/issues).
-<!-- KO-FI: Hier den Ko-fi-Knopf ergänzen, sobald es den Link gibt. -->
+Das Azeroth-Tagebuch ist kostenlos und quelloffen. Wenn es dir gefällt, freue ich mich über einen Kaffee:
+
+<p align="center"><a href="https://ko-fi.com/mbmf17/"><img src="https://img.shields.io/badge/Ko--fi-Unterst%C3%BCtzen-FF5E5B?logo=ko-fi&logoColor=white&style=for-the-badge" alt="Auf Ko-fi unterstützen"></a></p>
+
+Genauso hilft ein Stern ⭐ hier auf GitHub, eine Fehlermeldung oder eine Idee unter [Issues](https://github.com/dirkkredinger/azeroth-tagebuch/issues).
 
 ## Für Entwickler
 
@@ -108,3 +110,5 @@ ein Tag `v…` veröffentlicht ein Release mit App und Addon.
 
 *World of Warcraft ist eine Marke von Blizzard Entertainment, Inc. Dies ist ein inoffizielles Fan-Projekt
 und steht in keiner Verbindung zu Blizzard Entertainment.*
+
+<sub>Entwickelt von dirkkredinger – mit Unterstützung von Claude (Anthropic).</sub>
