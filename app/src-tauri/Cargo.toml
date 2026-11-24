@@ -1,6 +1,6 @@
 [package]
 name = "azeroth-tagebuch"
-version = "0.3.0"
+version = "0.4.0"
 description = "Azeroth-Tagebuch: Tagebuch und Statistiken für World of Warcraft"
 authors = ["dirkkredinger"]
 license = "GPL-3.0-or-later"

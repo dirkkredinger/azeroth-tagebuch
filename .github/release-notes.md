@@ -1,16 +1,12 @@
-**App 0.3.0** und **Addon 1.4.0** · 🇬🇧 English below
+**App 0.4.0** und **Addon 1.5.0** · 🇬🇧 English below
 
-## Neu in 0.3.0
-- **Dungeons, Tiefen & Schlachtzüge:** neuer Reiter „Instanzen“ – wie oft betreten und abgeschlossen, welche Bosse besiegt (und woran gescheitert), Tiefenstufe bzw. Mythisch+-Schlüssel mit Zeit, Beute je Instanz. Braucht Addon 1.4.0.
-- **Englische Oberfläche:** die App folgt der Systemsprache, umschaltbar oben rechts (DE/EN) oder im „Über“-Fenster.
-- **Ko-fi-Knopf** in der Seitenleiste und im „Über“-Fenster.
-- Beispieldaten mit selbst gezeichneten Karten, auch auf Englisch.
+## Neu in 0.4.0
+- **Bosskämpfe:** neuer Reiter, der beim Betreten eines Dungeons oder Schlachtzugs von selbst aufgeht (erkannt live im Kampflog). Je Boss: Hinweise aus dem Dungeonkompendium für deine Rolle (Tank, Heiler, Schaden – umschaltbar), tödliche und wichtige Fähigkeiten, was deine Spezialisierung unterbrechen oder entfernen kann, und deine eigene Bilanz (Siege, Wipes, schnellster Kill, beste DPS/HPS). Der laufende bzw. nächste Boss ist hervorgehoben.
+- Das Addon 1.5.0 liest dafür beim Einloggen das Dungeonkompendium der aktuellen Erweiterung aus (und beim Betreten anderer Instanzen deren Bosse). Nach dem ersten Einloggen einmal `/reload` eingeben.
 
-### New in 0.3.0 (English)
-- **Dungeons, delves & raids:** new “Dungeons” tab – runs entered and completed, bosses defeated (and wipes), delve tier or Mythic+ key level with timer, loot per instance. Requires addon 1.4.0.
-- **English UI:** the app follows your system language; switch at the top right (DE/EN) or in the About window.
-- **Ko-fi button** in the sidebar and the About window.
-- Sample data with hand-drawn maps, in English too.
+### New in 0.4.0 (English)
+- **Boss fights:** new tab that opens by itself when you enter a dungeon or raid (detected live from the combat log). Per boss: notes from the Adventure Guide for your role (tank, healer, damage – switchable), deadly and important abilities, what your spec can interrupt or remove, and your own record (kills, wipes, fastest kill, best DPS/HPS). The current or next boss is highlighted.
+- Addon 1.5.0 reads the Adventure Guide of the current expansion when you log in (and the bosses of any other instance you enter). Type `/reload` once after your first login.
 
 ## Was du brauchst
 
@@ -36,6 +32,7 @@ Ohne WoW lässt sich die App mit „Beispieldaten anzeigen“ ausprobieren.
 - Pro Charakter: Übersicht, Quests, **Karte mit Route** (Kartenbild aus der eigenen WoW-Installation), Zeitleiste, Statistik
 - **Kampf und Heilung** aus dem offiziellen Kampflog – live während des Spielens, DPS/HPS nach Stufe und Gegenstandsstufe
 - **Ausrüstung** als Charakterbogen, **Beute mit Dropraten**, **Lager** (Taschen, Bank, Kriegsmeute, Gildenbank)
+- **Bosskämpfe** mit Hinweisen für Rolle und Spezialisierung, öffnen sich beim Betreten einer Instanz
 - Klasse mit Wowhead-Links, globale Suche („Wo liegt …?“), Item-Tooltips im WoW-Stil
 
 ## Gut zu wissen
