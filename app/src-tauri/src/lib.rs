@@ -26,6 +26,7 @@ struct Inner {
     mtimes: HashMap<PathBuf, SystemTime>,
     log_reader: kern::LogReader,
     live: Option<Fight>,
+    location: Option<kern::combatlog::LiveLocation>,
     status: String,
     last_check: Option<SystemTime>,
     last_save: Instant,
@@ -74,6 +75,8 @@ impl Inner {
         if up.bytes_read > 0 { self.dirty = true; }
         let live = up.live.map(|mut f| { f.char = kern::ingest::resolve_char_key(&f.char, &self.archive); f });
         if live != self.live { self.live = live; }
+        let location = up.location.map(|mut l| { l.char = l.char.map(|c| kern::ingest::resolve_char_key(&c, &self.archive)); l });
+        if location != self.location { self.location = location; }
 
         if changed { self.dirty = true; }
         if !errors.is_empty() {
@@ -111,6 +114,7 @@ struct Snapshot<'a> {
     found_files: usize,
     last_check: Option<u64>,
     live: Option<&'a Fight>,
+    location: Option<&'a kern::combatlog::LiveLocation>,
 }
 
 #[derive(Serialize)]
@@ -121,6 +125,7 @@ struct ArchiveView<'a> {
     fights: &'a std::collections::BTreeMap<String, Vec<Fight>>,
     warbands: &'a std::collections::BTreeMap<String, kern::Storage>,
     guilds: &'a std::collections::BTreeMap<String, kern::Storage>,
+    journal: &'a std::collections::BTreeMap<String, kern::JournalInstance>,
 }
 
 #[derive(Serialize)]
@@ -177,7 +182,7 @@ fn snapshot_json(inner: &Inner) -> serde_json::Value {
         .collect();
     let folder = inner.wow_folder();
     serde_json::to_value(Snapshot {
-        archive: ArchiveView { characters, maps: &a.maps, fights: &a.fights, warbands: &a.warbands, guilds: &a.guilds },
+        archive: ArchiveView { characters, maps: &a.maps, fights: &a.fights, warbands: &a.warbands, guilds: &a.guilds, journal: &a.journal },
         status: &inner.status,
         demo: inner.demo,
         wow_folder: folder.display().to_string(),
@@ -185,6 +190,7 @@ fn snapshot_json(inner: &Inner) -> serde_json::Value {
         found_files: inner.found_files,
         last_check: inner.last_check.and_then(|t| t.duration_since(SystemTime::UNIX_EPOCH).ok()).map(|d| d.as_secs()),
         live: inner.live.as_ref(),
+        location: inner.location.as_ref(),
     })
     .unwrap_or_default()
 }
@@ -223,6 +229,7 @@ fn beispieldaten(state: State<Shared>, sprache: Option<String>) -> serde_json::V
     inner.demo = true;
     inner.archive = kern::demo_archive_lang(sprache.as_deref().unwrap_or("de"));
     inner.live = None;
+    inner.location = None;
     inner.status = "Beispieldaten – echte Daten mit „Neu einlesen“".into();
     snapshot_json(&inner)
 }
@@ -278,6 +285,7 @@ pub fn run() {
                 mtimes: HashMap::new(),
                 log_reader: kern::LogReader::new(),
                 live: None,
+                location: None,
                 status: "Lese Daten …".into(),
                 last_check: None,
                 last_save: Instant::now(),
@@ -293,17 +301,23 @@ pub fn run() {
             std::thread::spawn(move || {
                 let mut first = true;
                 let mut last_live: Option<Fight> = None;
+                let mut last_location: Option<kern::combatlog::LiveLocation> = None;
                 loop {
-                    let (changed, live) = {
+                    let (changed, live, location) = {
                         let mut inner = shared.lock().unwrap();
                         let changed = inner.refresh(first);
-                        (changed || first, inner.live.clone())
+                        (changed || first, inner.live.clone(), inner.location.clone())
                     };
                     first = false;
                     if changed { let _ = handle.emit("tagebuch-aktualisiert", ()); }
                     if live != last_live {
                         let _ = handle.emit("live-kampf", &live);
                         last_live = live;
+                    }
+                    // Ortswechsel (Instanz betreten/verlassen, Boss gepullt) – die Oberfläche holt den Boss-Reiter nach vorn
+                    if location != last_location {
+                        let _ = handle.emit("live-ort", &location);
+                        last_location = location;
                     }
                     std::thread::sleep(Duration::from_secs(2));
                 }

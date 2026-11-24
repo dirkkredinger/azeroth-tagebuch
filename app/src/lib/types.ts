@@ -56,6 +56,24 @@ export interface ArchiveView {
   fights: Record<string, Fight[]>;
   warbands: Record<string, Storage>;
   guilds: Record<string, Storage>;
+  journal?: Record<string, JournalInstance>;
+}
+
+/** Dungeonkompendium (vom Addon im Spiel ausgelesen) */
+export interface JournalSection {
+  id: number; depth: number; title: string; description?: string; headerType?: number;
+  icon?: number; spellId?: number; flags: number[]; filtered: boolean;
+}
+export interface JournalEncounter { id: number; encounterId?: number; name: string; description?: string; sections: JournalSection[] }
+export interface JournalInstance {
+  id: number; name: string; description?: string; raid: boolean; mapId?: number; areaMapId?: number;
+  difficultyId?: number; locale?: string; t: number; encounters: JournalEncounter[];
+}
+
+/** Ort laut Kampflog (ZONE_CHANGE / ENCOUNTER_START) */
+export interface LiveLocation {
+  char?: string; instanceId: number; name: string; difficultyId: number; t: number;
+  encounter?: { id: number; name: string; difficultyId: number; t: number } | null;
 }
 
 export interface Snapshot {
@@ -67,4 +85,5 @@ export interface Snapshot {
   foundFiles: number;
   lastCheck?: number;
   live?: Fight | null;
+  location?: LiveLocation | null;
 }

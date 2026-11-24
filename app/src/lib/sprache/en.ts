@@ -208,4 +208,22 @@ export const en: Record<string, string> = {
   'Archiv konnte nicht gespeichert werden: {msg}': 'Could not save the archive: {msg}',
   'Noch keine Tagebuch-Daten gefunden': 'No journal data found yet', 'Alles aktuell': 'Up to date',
   'Beispieldaten – echte Daten mit „Neu einlesen“': 'Sample data – load your own data with “Re-read”', 'Lese Daten …': 'Reading data …',
+
+  // Bosskämpfe
+  'Noch keine Bossdaten': 'No boss data yet',
+  'Ab Addon-Version 1.5 liest das Tagebuch beim Einloggen die Bosse und Fähigkeiten der aktuellen Saison aus dem Dungeonkompendium (und beim Betreten jeder anderen Instanz deren Bosse). WoW speichert sie beim Ausloggen oder nach /reload – danach erscheinen sie hier.':
+    'From addon version 1.5 on, the journal reads the bosses and abilities of the current season from the Adventure Guide when you log in (and those of any other instance when you enter it). WoW saves them on logout or after /reload – after that they show up here.',
+  'Du bist gerade in {name}.': 'You are in {name} right now.', 'Du bist hier': 'You are here',
+  'Kampf läuft: {name}': 'Fighting: {name}', 'Kampf läuft': 'In combat', 'als Nächstes': 'up next',
+  'Du kannst unterbrechen': 'You can interrupt', 'Kein Unterbrechen': 'No interrupt', 'Du entfernst: {list}': 'You remove: {list}',
+  'Grundfähigkeiten der Spezialisierung, Talente nicht berücksichtigt': 'baseline spec abilities, talents not considered',
+  'Ansicht als {role}': 'Viewing as {role}', 'beste {n} DPS': 'best {n} DPS', 'beste {n} HPS': 'best {n} HPS',
+  'zuletzt {d}': 'last {d}', 'Noch nie gekämpft': 'Never fought',
+  'Tödlich / Wichtig': 'Deadly / important', 'Unterbrechen': 'Interrupt', 'Entfernen': 'Remove', 'Kannst du entfernen': 'You can remove',
+  'Für dich als {role}': 'For you as {role}', 'Das Kompendium hat für diese Rolle keine eigenen Hinweise.': 'The Adventure Guide has no specific notes for this role.',
+  'Keine besonders markierten Fähigkeiten.': 'No specially marked abilities.', 'Alle Fähigkeiten': 'All abilities',
+  'Texte aus dem Dungeonkompendium deines WoW-Clients, ausgelesen vom Addon.': "Texts from your WoW client's Adventure Guide, read by the addon.",
+  'Heroisch': 'Heroic', 'Mythisch': 'Mythic', 'Mythisch+': 'Mythic+', 'LFR': 'LFR', 'Zeitwanderung': 'Timewalking',
+  'Tödlich': 'Deadly', 'Unterbrechbar': 'Interruptible', 'Magie': 'Magic', 'Fluch': 'Curse', 'Gift': 'Poison',
+  'Krankheit': 'Disease', 'effekt|Wut': 'Enrage', 'Blutung': 'Bleed',
 };

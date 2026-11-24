@@ -31,6 +31,7 @@ reads it automatically and shows it as a journal and dashboard – even live whi
 - **Combat and healing** from the official combat log: DPS/HPS per fight, by level and by item level
 - **Gear** as a character sheet with stats and change history
 - **Dungeons, delves and raids**: how often entered and completed, which bosses fell, delve tier or keystone level, and the loot per instance
+- **Boss fights**: opens by itself when you enter a dungeon or raid – boss notes from the in-game Adventure Guide for your role, what your spec can interrupt or remove, and your own record against each boss
 - **Loot with drop rates**: which enemy drops what and how often
 - **Storage**: bags, bank, warband bank and guild bank – plus “**Where is …?**” search
 - **Class & specialization** with links to guides and your talent build

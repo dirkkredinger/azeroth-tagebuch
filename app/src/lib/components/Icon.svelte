@@ -5,6 +5,7 @@
     NotebookPen, ShieldCheck, Sparkles, Shirt, Backpack, Circle, Users, Clock, Coins, Flame, BookOpen,
     RefreshCw, FolderOpen, Search, ChevronLeft, Crown, Hourglass, PawPrint, HeartPulse, Swords, ScrollText,
     Radio, WandSparkles, House, ChartColumn, Archive, UserRound, Castle, Skull, Pickaxe, Timer,
+    ChevronDown, ChevronRight, TriangleAlert, Zap, Droplet, MapPin,
   } from '@lucide/svelte';
 
   const icons: Record<string, any> = {
@@ -17,6 +18,8 @@
     'heart-pulse': HeartPulse, swords: Swords, 'scroll-text': ScrollText, radio: Radio,
     'wand-sparkles': WandSparkles, house: House, chart: ChartColumn, archive: Archive, user: UserRound,
     castle: Castle, skull: Skull, pickaxe: Pickaxe, timer: Timer,
+    'chevron-down': ChevronDown, 'chevron-right': ChevronRight, 'triangle-alert': TriangleAlert, zap: Zap,
+    droplet: Droplet, 'map-pin': MapPin,
   };
 
   let { name, size = 16, color = 'currentColor', strokeWidth = 2 }: { name: string; size?: number; color?: string; strokeWidth?: number } = $props();

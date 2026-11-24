@@ -352,6 +352,110 @@ pub struct Archive {
     pub warbands: BTreeMap<String, Storage>,
     /// Gildenbanken ("Gilde-Realm")
     pub guilds: BTreeMap<String, Storage>,
+    /// Bosse und Fähigkeiten aus dem Dungeonkompendium, je Journal-Instanz-ID
+    pub journal: BTreeMap<String, JournalInstance>,
+}
+
+// ---------- Dungeonkompendium ----------
+
+/// Eine Instanz aus dem Dungeonkompendium (vom Addon im Spiel ausgelesen)
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
+#[serde(default, rename_all = "camelCase")]
+pub struct JournalInstance {
+    pub id: i64,
+    pub name: String,
+    pub description: Option<String>,
+    pub raid: bool,
+    /// Instanz-Karten-ID (wie im Kampflog bei ZONE_CHANGE)
+    pub map_id: Option<i64>,
+    /// uiMapID der Instanzkarte
+    pub area_map_id: Option<i64>,
+    /// Schwierigkeit, mit der das Kompendium gelesen wurde
+    pub difficulty_id: Option<i64>,
+    pub locale: Option<String>,
+    pub t: i64,
+    pub encounters: Vec<JournalEncounter>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
+#[serde(default, rename_all = "camelCase")]
+pub struct JournalEncounter {
+    pub id: i64,
+    /// DungeonEncounterID (wie bei ENCOUNTER_START und im Ereignis "boss")
+    pub encounter_id: Option<i64>,
+    pub name: String,
+    pub description: Option<String>,
+    pub sections: Vec<JournalSection>,
+}
+
+/// Abschnitt (Überblick, Rollenhinweis, Phase, Fähigkeit). `flags`: Symbole des Kompendiums
+/// (0 Tank, 1 Schaden, 2 Heilung, 3 Heroisch, 4 Tödlich, 5 Wichtig, 6 Unterbrechbar, 7 Magie,
+/// 8 Fluch, 9 Gift, 10 Krankheit, 11 Wut, 12 Mythisch, 13 Blutung)
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
+#[serde(default, rename_all = "camelCase")]
+pub struct JournalSection {
+    pub id: i64,
+    pub depth: i64,
+    pub title: String,
+    pub description: Option<String>,
+    pub header_type: Option<i64>,
+    pub icon: Option<i64>,
+    pub spell_id: Option<i64>,
+    pub flags: Vec<i64>,
+    /// in der gelesenen Schwierigkeit ausgeblendet
+    pub filtered: bool,
+}
+
+impl JournalInstance {
+    pub fn from_lua(id: &str, v: &Lua, locale: Option<&str>) -> Option<JournalInstance> {
+        v.table()?;
+        let ints = |t: Option<&Lua>| -> Vec<i64> { t.and_then(Lua::table).map(|t| t.items().into_iter().filter_map(Lua::int).collect()).unwrap_or_default() };
+        let encounters = v
+            .get("enc").and_then(Lua::table)
+            .map(|t| t.items())
+            .unwrap_or_default()
+            .into_iter()
+            .filter_map(|e| {
+                Some(JournalEncounter {
+                    id: lua::i(e, "id").unwrap_or(0),
+                    encounter_id: lua::i(e, "deid"),
+                    name: lua::s(e, "n")?,
+                    description: lua::s(e, "d"),
+                    sections: e
+                        .get("s").and_then(Lua::table)
+                        .map(|t| t.items())
+                        .unwrap_or_default()
+                        .into_iter()
+                        .filter_map(|s| {
+                            Some(JournalSection {
+                                id: lua::i(s, "id").unwrap_or(0),
+                                depth: lua::i(s, "lv").unwrap_or(0),
+                                title: lua::s(s, "t")?,
+                                description: lua::s(s, "d").filter(|d| !d.is_empty()),
+                                header_type: lua::i(s, "ht"),
+                                icon: lua::i(s, "ic"),
+                                spell_id: lua::i(s, "sp"),
+                                flags: ints(s.get("fl")),
+                                filtered: lua::i(s, "fd").unwrap_or(0) != 0,
+                            })
+                        })
+                        .collect(),
+                })
+            })
+            .collect();
+        Some(JournalInstance {
+            id: id.parse().ok().or_else(|| lua::i(v, "id")).unwrap_or(0),
+            name: lua::s(v, "n")?,
+            description: lua::s(v, "d"),
+            raid: lua::i(v, "raid").unwrap_or(0) != 0,
+            map_id: lua::i(v, "map"),
+            area_map_id: lua::i(v, "area"),
+            difficulty_id: lua::i(v, "did"),
+            locale: locale.map(str::to_string),
+            t: lua::i(v, "t").unwrap_or(0),
+            encounters,
+        })
+    }
 }
 
 pub const ARCHIVE_FORMAT: u32 = 1;

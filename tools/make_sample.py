@@ -1,5 +1,6 @@
 """Erzeugt Beispiel-SavedVariables im WoW-Format für die App."""
 import math, random, sys, zlib
+import demo_journal
 
 random.seed(7)
 T0 = 1763625600 + 18 * 3600  # 20.11.2025 abends (nur Demo)
@@ -392,6 +393,7 @@ db = {
     },
 }
 
+db["journal"] = demo_journal.journal(T0)
 db["chars"]["Lyraen-Antonidas"].update(bags=p_bags, bank=p_bank)
 db["chars"]["Brakk-Antonidas"].update(bags=k_bags)
 

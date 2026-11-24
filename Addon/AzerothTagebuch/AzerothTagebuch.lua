@@ -11,7 +11,7 @@ local f = CreateFrame("Frame")
 local char, charKey, session
 local lastPos = { map = nil, x = nil, y = nil, mode = nil }
 local wasOnTaxi = false
-local checkInstance   -- weiter unten definiert
+local checkInstance, journalForCurrentInstance   -- weiter unten definiert
 
 ------------------------------------------------------------
 -- Hilfsfunktionen
@@ -483,6 +483,7 @@ checkInstance = function()
     local d = instanceData()
     log("inst_an", d)
     char.curInst = { iid = d.iid, did = d.did, inst = d.inst, t = time() }
+    later("journal_inst", 4, journalForCurrentInstance)
   elseif cur then
     log("inst_ab", { iid = cur.iid, inst = cur.inst, dauer = time() - (cur.t or time()) })
     char.curInst = nil
@@ -496,6 +497,121 @@ local function instanceDone(kind, extra)
   for k, v in pairs(extra or {}) do d[k] = v end
   log("inst_fertig", d)
   char.curInst.fertig = true
+end
+
+------------------------------------------------------------
+-- Dungeonkompendium: Bosse und Fähigkeiten der aktuellen Saison
+-- (für den Boss-Reiter der App; nur Lesen der Journal-Texte, außerhalb des Kampfes)
+------------------------------------------------------------
+local JOURNAL_VERSION = 1
+local journalJob          -- laufender Export (Coroutine)
+
+local function sectionFlags(sectionID)
+  local flags = C_EncounterJournal and C_EncounterJournal.GetSectionIconFlags and safe(C_EncounterJournal.GetSectionIconFlags, sectionID)
+  if type(flags) ~= "table" or #flags == 0 then return nil end
+  local out = {}
+  for _, v in ipairs(flags) do out[#out + 1] = v end
+  return out
+end
+
+-- Abschnitte eines Bosses als flache Liste mit Tiefe (lv); Überblick und Fähigkeiten in Journal-Reihenfolge
+local function encounterSections(rootID)
+  local out, stack, guard = {}, {}, 0
+  local function push(id, depth) if id and id > 0 then stack[#stack + 1] = { id, depth } end end
+  -- Geschwister rückwärts auf den Stapel, damit sie in der richtigen Reihenfolge herauskommen
+  local function pushChain(firstID, depth)
+    local chain, id = {}, firstID
+    while id and id > 0 and #chain < 200 do
+      chain[#chain + 1] = id
+      local info = safe(C_EncounterJournal.GetSectionInfo, id)
+      id = info and info.siblingSectionID
+    end
+    for i = #chain, 1, -1 do push(chain[i], depth) end
+  end
+  pushChain(rootID, 0)
+  while #stack > 0 and guard < 600 do
+    guard = guard + 1
+    local top = table.remove(stack)
+    local info = safe(C_EncounterJournal.GetSectionInfo, top[1])
+    if info then
+      out[#out + 1] = {
+        id = top[1], lv = top[2], t = info.title, d = info.description, ht = info.headerType,
+        ic = (info.abilityIcon and info.abilityIcon > 0) and info.abilityIcon or nil,
+        sp = (info.spellID and info.spellID > 0) and info.spellID or nil,
+        fl = sectionFlags(top[1]), fd = info.filteredByDifficulty and 1 or nil,
+      }
+      if info.firstChildSectionID and info.firstChildSectionID > 0 then pushChain(info.firstChildSectionID, top[2] + 1) end
+    end
+  end
+  return out
+end
+
+local function exportInstance(db, jiid, isRaid)
+  safe(EJ_SelectInstance, jiid)
+  -- höchste Schwierigkeit: zeigt alle Fähigkeiten, Heroisch/Mythisch-Markierungen stehen in den Flags
+  local diff = isRaid and 16 or 23
+  if EJ_IsValidInstanceDifficulty and not safe(EJ_IsValidInstanceDifficulty, diff) then diff = isRaid and 15 or 2 end
+  safe(EJ_SetDifficulty, diff)
+  local name, desc, _, _, _, _, areaMap, _, _, mapID = safe(EJ_GetInstanceInfo, jiid)
+  local inst = { n = name, d = desc, raid = isRaid and 1 or nil, area = areaMap, map = mapID, did = diff, t = time(), enc = {} }
+  for i = 1, 30 do
+    safe(EJ_SelectInstance, jiid)   -- falls zwischen zwei Schritten etwas anderes ausgewählt wurde
+    safe(EJ_SetDifficulty, diff)
+    local ename, edesc, jeid, rootID, _, _, deid = safe(EJ_GetEncounterInfoByIndex, i, jiid)
+    if not ename then break end
+    inst.enc[#inst.enc + 1] = { id = jeid, deid = deid, n = ename, d = edesc, s = encounterSections(rootID) }
+    coroutine.yield()
+  end
+  db.journal.inst[jiid] = inst
+end
+
+local function journalWork(onlyJiid)
+  local db = AzerothTagebuchDB
+  local build = select(4, GetBuildInfo())
+  if not db.journal or db.journal.v ~= JOURNAL_VERSION or db.journal.loc ~= GetLocale() or db.journal.build ~= build then
+    db.journal = { v = JOURNAL_VERSION, loc = GetLocale(), build = build, inst = {} }
+  end
+  local todo = {}
+  if onlyJiid then
+    todo[1] = { onlyJiid, select(2, IsInInstance()) == "raid" }
+  else
+    -- aktuelle Erweiterung: Dungeons und Schlachtzüge
+    safe(EJ_SelectTier, safe(EJ_GetNumTiers) or 1)
+    for _, raid in ipairs({ false, true }) do
+      for i = 1, 40 do
+        local jiid = safe(EJ_GetInstanceByIndex, i, raid)
+        if not jiid then break end
+        todo[#todo + 1] = { jiid, raid }
+      end
+    end
+  end
+  for _, job in ipairs(todo) do
+    if not db.journal.inst[job[1]] then exportInstance(db, job[1], job[2]) end
+  end
+end
+
+local function runJournal(onlyJiid)
+  if journalJob or not EJ_GetEncounterInfoByIndex or not C_EncounterJournal then return end
+  journalJob = coroutine.create(journalWork)
+  local first, ticker = true, nil
+  ticker = C_Timer.NewTicker(0.2, function()
+    -- nicht im Kampf und nicht, während der Spieler selbst im Kompendium blättert
+    if InCombatLockdown() or (EncounterJournal and EncounterJournal:IsShown()) then return end
+    local ok = coroutine.resume(journalJob, first and onlyJiid or nil)
+    first = false
+    if not ok or coroutine.status(journalJob) == "dead" then
+      ticker:Cancel()
+      journalJob = nil
+    end
+  end)
+end
+
+journalForCurrentInstance = function()
+  if not IsInInstance() or not EJ_GetInstanceForMap then return end
+  local mapID = currentLocation()
+  local jiid = mapID and safe(EJ_GetInstanceForMap, mapID)
+  local db = AzerothTagebuchDB
+  if jiid and jiid > 0 and not (db.journal and db.journal.inst and db.journal.inst[jiid]) then runJournal(jiid) end
 end
 
 ------------------------------------------------------------
@@ -525,6 +641,7 @@ function handlers.PLAYER_LOGIN()
   later("talente", 5, checkTalents)
   later("gear", 6, snapshotGear)
   later("taschen", 8, snapshotBags)
+  later("journal", 15, function() runJournal() end)
 end
 
 function handlers.PLAYER_ENTERING_WORLD(isLogin, isReload)
@@ -533,6 +650,7 @@ function handlers.PLAYER_ENTERING_WORLD(isLogin, isReload)
   end
   handlers.ZONE_CHANGED_NEW_AREA()
   later("kampflog", 3, ensureCombatLog)
+  later("journal_inst", 6, journalForCurrentInstance)
 end
 
 function handlers.ZONE_CHANGED_NEW_AREA()

@@ -8924,4 +8924,573 @@ AzerothTagebuchDB = {
 			},
 		},
 	},
+	["journal"] = {
+		["v"] = 1,
+		["loc"] = "deDE",
+		["build"] = 120105,
+		["inst"] = {
+			[1101] = {
+				["n"] = "Amanikammer",
+				["map"] = 9101,
+				["did"] = 23,
+				["t"] = 1763690400,
+				["enc"] = {
+					{
+						["id"] = 5101,
+						["deid"] = 3101,
+						["n"] = "Hexer Zul'jin-Ra",
+						["d"] = "Ein Hexendoktor, der die Geister der Amani-Ahnen an sich bindet.",
+						["s"] = {
+							{
+								["id"] = 40001,
+								["lv"] = 0,
+								["t"] = "Überblick",
+								["d"] = "Zul'jin-Ra beschwört Ahnengeister und verflucht seine Gegner. Bei 50 % Gesundheit zieht er sich in einen Geisterkreis zurück.",
+								["ht"] = 3,
+							}, -- [1]
+							{
+								["id"] = 40002,
+								["lv"] = 1,
+								["t"] = "Tanks",
+								["ht"] = 3,
+								["fl"] = {
+									0, -- [1]
+								},
+							}, -- [2]
+							{
+								["id"] = 40003,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Dreht den Boss von der Gruppe weg, damit die Geisterklaue nur euch trifft.",
+								["ht"] = 3,
+							}, -- [3]
+							{
+								["id"] = 40004,
+								["lv"] = 1,
+								["t"] = "Heiler",
+								["ht"] = 3,
+								["fl"] = {
+									2, -- [1]
+								},
+							}, -- [4]
+							{
+								["id"] = 40005,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Entfernt den Fluch der Ahnen schnell – er verringert die erhaltene Heilung stark.",
+								["ht"] = 3,
+							}, -- [5]
+							{
+								["id"] = 40006,
+								["lv"] = 1,
+								["t"] = "Schadensverursacher",
+								["ht"] = 3,
+								["fl"] = {
+									1, -- [1]
+								},
+							}, -- [6]
+							{
+								["id"] = 40007,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Tötet die Ahnengeister schnell, bevor sie den Boss erreichen.",
+								["ht"] = 3,
+							}, -- [7]
+							{
+								["id"] = 40008,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Unterbrecht Geisterruf, sooft es geht.",
+								["ht"] = 3,
+							}, -- [8]
+							{
+								["id"] = 40009,
+								["lv"] = 0,
+								["t"] = "Geisterklaue",
+								["d"] = "Fügt dem aktuellen Ziel hohen körperlichen Schaden zu und verursacht eine Blutung.",
+								["ht"] = 0,
+								["fl"] = {
+									0, -- [1]
+									13, -- [2]
+								},
+							}, -- [9]
+							{
+								["id"] = 40010,
+								["lv"] = 0,
+								["t"] = "Geisterruf",
+								["d"] = "Ruft zwei Ahnengeister herbei, die zum Boss laufen und ihn heilen.",
+								["ht"] = 0,
+								["fl"] = {
+									6, -- [1]
+									5, -- [2]
+								},
+							}, -- [10]
+							{
+								["id"] = 40011,
+								["lv"] = 1,
+								["t"] = "Ahnengeist",
+								["d"] = "Erreicht ein Geist den Boss, heilt er ihn um 5 % seiner Gesundheit.",
+								["ht"] = 0,
+								["fl"] = {
+									1, -- [1]
+								},
+							}, -- [11]
+							{
+								["id"] = 40012,
+								["lv"] = 0,
+								["t"] = "Fluch der Ahnen",
+								["d"] = "Verflucht einen Spieler und verringert die erhaltene Heilung um 50 % für 12 Sek.",
+								["ht"] = 0,
+								["fl"] = {
+									8, -- [1]
+									2, -- [2]
+								},
+							}, -- [12]
+							{
+								["id"] = 40013,
+								["lv"] = 0,
+								["t"] = "Geisterkreis",
+								["d"] = "Bei 50 % Gesundheit: Der Boss wird unverwundbar, bis alle Totems zerstört sind.",
+								["ht"] = 0,
+								["fl"] = {
+									5, -- [1]
+								},
+							}, -- [13]
+							{
+								["id"] = 40014,
+								["lv"] = 0,
+								["t"] = "Seelensog",
+								["d"] = "Mythisch: Zieht alle Spieler zum Boss und fügt ihnen Schattenschaden zu.",
+								["ht"] = 0,
+								["fl"] = {
+									12, -- [1]
+									4, -- [2]
+								},
+							}, -- [14]
+						},
+					}, -- [1]
+					{
+						["id"] = 5102,
+						["deid"] = 3102,
+						["n"] = "Akilzons Brut",
+						["d"] = "Drei junge Sturmadler, die ihr Nest gemeinsam verteidigen.",
+						["s"] = {
+							{
+								["id"] = 40015,
+								["lv"] = 0,
+								["t"] = "Überblick",
+								["d"] = "Die drei Adler teilen sich ihre Gesundheit. Immer wieder lädt einer von ihnen einen Spieler mit Blitzen auf.",
+								["ht"] = 3,
+							}, -- [1]
+							{
+								["id"] = 40016,
+								["lv"] = 1,
+								["t"] = "Tanks",
+								["ht"] = 3,
+								["fl"] = {
+									0, -- [1]
+								},
+							}, -- [2]
+							{
+								["id"] = 40017,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Haltet alle drei Adler nah beieinander, damit der Flächenschaden alle trifft.",
+								["ht"] = 3,
+							}, -- [3]
+							{
+								["id"] = 40018,
+								["lv"] = 1,
+								["t"] = "Heiler",
+								["ht"] = 3,
+								["fl"] = {
+									2, -- [1]
+								},
+							}, -- [4]
+							{
+								["id"] = 40019,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Vor dem Sturmschrei die ganze Gruppe auffüllen.",
+								["ht"] = 3,
+							}, -- [5]
+							{
+								["id"] = 40020,
+								["lv"] = 1,
+								["t"] = "Schadensverursacher",
+								["ht"] = 3,
+								["fl"] = {
+									1, -- [1]
+								},
+							}, -- [6]
+							{
+								["id"] = 40021,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Bleibt verteilt, damit die Gewitterladung niemanden zusätzlich trifft.",
+								["ht"] = 3,
+							}, -- [7]
+							{
+								["id"] = 40022,
+								["lv"] = 0,
+								["t"] = "Gewitterladung",
+								["d"] = "Lädt einen Spieler auf. Nach 6 Sek. springt der Blitz auf alle Spieler in 8 Metern über.",
+								["ht"] = 0,
+								["fl"] = {
+									4, -- [1]
+									7, -- [2]
+								},
+							}, -- [8]
+							{
+								["id"] = 40023,
+								["lv"] = 0,
+								["t"] = "Sturmschrei",
+								["d"] = "Fügt allen Spielern Naturschaden zu.",
+								["ht"] = 0,
+								["fl"] = {
+									2, -- [1]
+								},
+							}, -- [9]
+							{
+								["id"] = 40024,
+								["lv"] = 0,
+								["t"] = "Schnabelhieb",
+								["d"] = "Ein schneller Hieb auf das aktuelle Ziel.",
+								["ht"] = 0,
+								["fl"] = {
+									0, -- [1]
+								},
+							}, -- [10]
+							{
+								["id"] = 40025,
+								["lv"] = 0,
+								["t"] = "Federsturm",
+								["d"] = "Heroisch: Wirbelnde Federn bewegen sich durch den Raum.",
+								["ht"] = 0,
+								["fl"] = {
+									3, -- [1]
+								},
+							}, -- [11]
+						},
+					}, -- [2]
+					{
+						["id"] = 5103,
+						["deid"] = 3103,
+						["n"] = "Häuptling Mok'tar",
+						["d"] = "Der Anführer der Amanikammer und ein gefürchteter Krieger.",
+						["s"] = {
+							{
+								["id"] = 40026,
+								["lv"] = 0,
+								["t"] = "Überblick",
+								["d"] = "Mok'tar gerät mit sinkender Gesundheit immer mehr in Raserei. Sein Kriegsstampfen betäubt alle Spieler in der Nähe.",
+								["ht"] = 3,
+							}, -- [1]
+							{
+								["id"] = 40027,
+								["lv"] = 1,
+								["t"] = "Tanks",
+								["ht"] = 3,
+								["fl"] = {
+									0, -- [1]
+								},
+							}, -- [2]
+							{
+								["id"] = 40028,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Spart eine Verteidigungsfähigkeit für den Kriegsrausch auf.",
+								["ht"] = 3,
+							}, -- [3]
+							{
+								["id"] = 40029,
+								["lv"] = 1,
+								["t"] = "Heiler",
+								["ht"] = 3,
+								["fl"] = {
+									2, -- [1]
+								},
+							}, -- [4]
+							{
+								["id"] = 40030,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Während des Kriegsrausches steigt der Schaden am Tank stark an.",
+								["ht"] = 3,
+							}, -- [5]
+							{
+								["id"] = 40031,
+								["lv"] = 1,
+								["t"] = "Schadensverursacher",
+								["ht"] = 3,
+								["fl"] = {
+									1, -- [1]
+								},
+							}, -- [6]
+							{
+								["id"] = 40032,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Bleibt beim Kriegsstampfen auf Abstand.",
+								["ht"] = 3,
+							}, -- [7]
+							{
+								["id"] = 40033,
+								["lv"] = 0,
+								["t"] = "Kriegsrausch",
+								["d"] = "Mok'tar gerät in Wut und verursacht 30 % mehr Schaden.",
+								["ht"] = 0,
+								["fl"] = {
+									11, -- [1]
+									0, -- [2]
+								},
+							}, -- [8]
+							{
+								["id"] = 40034,
+								["lv"] = 0,
+								["t"] = "Kriegsstampfen",
+								["d"] = "Betäubt alle Spieler in 10 Metern für 3 Sek.",
+								["ht"] = 0,
+								["fl"] = {
+									5, -- [1]
+								},
+							}, -- [9]
+							{
+								["id"] = 40035,
+								["lv"] = 0,
+								["t"] = "Giftspeer",
+								["d"] = "Schleudert einen Speer, der ein Gift hinterlässt.",
+								["ht"] = 0,
+								["fl"] = {
+									9, -- [1]
+								},
+							}, -- [10]
+							{
+								["id"] = 40036,
+								["lv"] = 0,
+								["t"] = "Kampfruf",
+								["d"] = "Ruft zwei Amani-Krieger zu Hilfe.",
+								["ht"] = 0,
+								["fl"] = {
+									6, -- [1]
+									1, -- [2]
+								},
+							}, -- [11]
+						},
+					}, -- [3]
+				},
+			},
+			[1102] = {
+				["n"] = "Sonnenhof-Krypta",
+				["map"] = 9102,
+				["did"] = 23,
+				["t"] = 1763690400,
+				["enc"] = {
+					{
+						["id"] = 5111,
+						["deid"] = 3111,
+						["n"] = "Wächterin Aelira",
+						["d"] = "Eine gefallene Hüterin, die die Krypta noch immer bewacht.",
+						["s"] = {
+							{
+								["id"] = 40037,
+								["lv"] = 0,
+								["t"] = "Überblick",
+								["d"] = "Aelira wechselt zwischen Licht- und Schattenphasen. In der Schattenphase hinterlässt sie Leerenzonen.",
+								["ht"] = 3,
+							}, -- [1]
+							{
+								["id"] = 40038,
+								["lv"] = 1,
+								["t"] = "Tanks",
+								["ht"] = 3,
+								["fl"] = {
+									0, -- [1]
+								},
+							}, -- [2]
+							{
+								["id"] = 40039,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Zieht die Wächterin aus den Leerenzonen heraus.",
+								["ht"] = 3,
+							}, -- [3]
+							{
+								["id"] = 40040,
+								["lv"] = 1,
+								["t"] = "Heiler",
+								["ht"] = 3,
+								["fl"] = {
+									2, -- [1]
+								},
+							}, -- [4]
+							{
+								["id"] = 40041,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Die Seuche der Krypta muss schnell gereinigt werden.",
+								["ht"] = 3,
+							}, -- [5]
+							{
+								["id"] = 40042,
+								["lv"] = 1,
+								["t"] = "Schadensverursacher",
+								["ht"] = 3,
+								["fl"] = {
+									1, -- [1]
+								},
+							}, -- [6]
+							{
+								["id"] = 40043,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Unterbrecht die Lichtwelle, sonst trifft sie die ganze Gruppe.",
+								["ht"] = 3,
+							}, -- [7]
+							{
+								["id"] = 40044,
+								["lv"] = 0,
+								["t"] = "Lichtwelle",
+								["d"] = "Eine Welle heiligen Lichts, die allen Spielern Schaden zufügt.",
+								["ht"] = 0,
+								["fl"] = {
+									6, -- [1]
+									4, -- [2]
+								},
+							}, -- [8]
+							{
+								["id"] = 40045,
+								["lv"] = 0,
+								["t"] = "Leerenzone",
+								["d"] = "Hinterlässt eine Zone, die Schattenschaden verursacht.",
+								["ht"] = 0,
+								["fl"] = {
+									5, -- [1]
+								},
+							}, -- [9]
+							{
+								["id"] = 40046,
+								["lv"] = 0,
+								["t"] = "Seuche der Krypta",
+								["d"] = "Eine Krankheit, die jede Sekunde Schaden verursacht.",
+								["ht"] = 0,
+								["fl"] = {
+									10, -- [1]
+									2, -- [2]
+								},
+							}, -- [10]
+						},
+					}, -- [1]
+					{
+						["id"] = 5112,
+						["deid"] = 3112,
+						["n"] = "Der Bleiche Prinz",
+						["d"] = "Ein untoter Prinz, der die tiefsten Gewölbe der Krypta beherrscht.",
+						["s"] = {
+							{
+								["id"] = 40047,
+								["lv"] = 0,
+								["t"] = "Überblick",
+								["d"] = "Der Prinz saugt seinen Gegnern das Leben aus und belegt sie mit Magie.",
+								["ht"] = 3,
+							}, -- [1]
+							{
+								["id"] = 40048,
+								["lv"] = 1,
+								["t"] = "Tanks",
+								["ht"] = 3,
+								["fl"] = {
+									0, -- [1]
+								},
+							}, -- [2]
+							{
+								["id"] = 40049,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Der Lebensentzug heilt den Prinzen – setzt Verteidigungsfähigkeiten früh ein.",
+								["ht"] = 3,
+							}, -- [3]
+							{
+								["id"] = 40050,
+								["lv"] = 1,
+								["t"] = "Heiler",
+								["ht"] = 3,
+								["fl"] = {
+									2, -- [1]
+								},
+							}, -- [4]
+							{
+								["id"] = 40051,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Bannt den Blutbann sofort.",
+								["ht"] = 3,
+							}, -- [5]
+							{
+								["id"] = 40052,
+								["lv"] = 1,
+								["t"] = "Schadensverursacher",
+								["ht"] = 3,
+								["fl"] = {
+									1, -- [1]
+								},
+							}, -- [6]
+							{
+								["id"] = 40053,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Bannt den Schattenschild vom Prinzen.",
+								["ht"] = 3,
+							}, -- [7]
+							{
+								["id"] = 40054,
+								["lv"] = 0,
+								["t"] = "Lebensentzug",
+								["d"] = "Entzieht dem Tank Leben und heilt den Prinzen.",
+								["ht"] = 0,
+								["fl"] = {
+									0, -- [1]
+									5, -- [2]
+								},
+							}, -- [8]
+							{
+								["id"] = 40055,
+								["lv"] = 0,
+								["t"] = "Blutbann",
+								["d"] = "Magie: Ein Spieler erleidet 8 Sek. lang Schattenschaden.",
+								["ht"] = 0,
+								["fl"] = {
+									7, -- [1]
+									2, -- [2]
+								},
+							}, -- [9]
+							{
+								["id"] = 40056,
+								["lv"] = 0,
+								["t"] = "Schattenschild",
+								["d"] = "Ein magischer Schild, der 50 % des Schadens absorbiert.",
+								["ht"] = 0,
+								["fl"] = {
+									7, -- [1]
+									1, -- [2]
+								},
+							}, -- [10]
+							{
+								["id"] = 40057,
+								["lv"] = 0,
+								["t"] = "Bleicher Schrei",
+								["d"] = "Mythisch: Furcht auf alle Spieler.",
+								["ht"] = 0,
+								["fl"] = {
+									12, -- [1]
+									4, -- [2]
+									6, -- [3]
+								},
+							}, -- [11]
+						},
+					}, -- [2]
+				},
+			},
+		},
+	},
 }

@@ -64,6 +64,10 @@ EN = {
     "Wutschlag": "Raging Blow", "Raserei": "Rampage", "Vollstrecken": "Execute", "Siegesrausch": "Victory Rush",
     "Unbekannt": "Unknown", "deDE": "enUS",
 }
+import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import demo_journal
+EN = {**demo_journal.EN, **EN}
 KEYS = sorted(EN, key=len, reverse=True)
 
 def tr(s: str) -> str:

@@ -31,6 +31,7 @@ liest das automatisch ein und zeigt es als Tagebuch und Dashboard – während d
 - **Kampf und Heilung** aus dem offiziellen Kampflog: DPS/HPS je Kampf, nach Stufe und nach Gegenstandsstufe
 - **Ausrüstung** als Charakterbogen mit Werten und Wechselverlauf
 - **Dungeons, Tiefen und Schlachtzüge**: wie oft betreten und abgeschlossen, welche Bosse gefallen sind, Tiefenstufe bzw. Schlüsselstein und die Beute je Instanz
+- **Bosskämpfe**: geht beim Betreten eines Dungeons oder Schlachtzugs von selbst auf – Hinweise aus dem Dungeonkompendium für deine Rolle, was deine Spezialisierung unterbrechen oder entfernen kann, und deine eigene Bilanz je Boss
 - **Beute mit Dropraten**: welcher Gegner was wie oft fallen lässt
 - **Lager**: Taschen, Bank, Kriegsmeutenbank und Gildenbank – und die Suche „**Wo liegt …?**“
 - **Klasse & Spezialisierung** mit Links zu Guides und deinem Talent-Build

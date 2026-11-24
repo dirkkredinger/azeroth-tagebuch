@@ -89,8 +89,13 @@ pub struct LogReader {
 pub struct LogUpdate {
     pub fights: Vec<Fight>,
     pub live: Option<Fight>,
+    /// aktueller Ort laut neuester Logdatei (nur, wenn sie kürzlich geschrieben wurde)
+    pub location: Option<combatlog::LiveLocation>,
     pub bytes_read: u64,
 }
+
+/// Wie lange ein Kampflog ohne neue Zeilen noch als „WoW läuft“ gilt
+const LOCATION_FRESH: std::time::Duration = std::time::Duration::from_secs(30 * 60);
 
 impl LogReader {
     pub fn new() -> Self { Self::default() }
@@ -118,10 +123,13 @@ impl LogReader {
             let size = fs::metadata(path).map(|m| m.len()).unwrap_or(0);
             let mut offset = *offsets.get(&name).unwrap_or(&0);
             if size < offset { offset = 0; } // Datei neu angelegt
-            if size <= offset { continue; }
+            let fresh_parser = !self.parsers.contains_key(&name);
+            if size <= offset && !fresh_parser { continue; }
             let Ok(mut file) = File::open(path) else { continue };
-            if file.seek(SeekFrom::Start(offset)).is_err() { continue; }
             let parser = self.parsers.entry(name.clone()).or_insert_with(combatlog::CombatLogParser::new);
+            if fresh_parser && offset > 0 { seed_location(&mut file, offset, parser); }
+            if size <= offset { continue; }
+            if file.seek(SeekFrom::Start(offset)).is_err() { continue; }
             // in Stücken lesen, damit auch große Dateien den Speicher nicht sprengen
             let mut buf = vec![0u8; 8 * 1024 * 1024];
             let mut carry: Vec<u8> = Vec::new();
@@ -141,13 +149,41 @@ impl LogReader {
         // Offene Kämpfe schließen, wenn nichts mehr passiert; live ist nur die neueste Datei
         let newest = files.last().map(|p| p.file_name().unwrap().to_string_lossy().into_owned());
         let mut live = None;
+        let mut location = None;
+        let recent = files.last().and_then(|p| modified(p)).and_then(|m| m.elapsed().ok()).map(|d| d < LOCATION_FRESH).unwrap_or(false);
         for (name, p) in self.parsers.iter_mut() {
             p.close_if_idle(now);
-            if Some(name) == newest.as_ref() { live = p.current.clone(); }
+            if Some(name) == newest.as_ref() {
+                live = p.current.clone();
+                if recent { location = p.location.clone(); }
+            }
             fights.extend(p.take_finished());
         }
-        LogUpdate { fights, live, bytes_read: read_total }
+        LogUpdate { fights, live, location, bytes_read: read_total }
     }
+}
+
+/// Beim Start mitten in einer Logdatei: den letzten Ortswechsel vor `offset` nachholen,
+/// damit die App auch nach einem Neustart weiß, in welcher Instanz der Charakter steht.
+fn seed_location(file: &mut File, offset: u64, parser: &mut combatlog::CombatLogParser) {
+    const WINDOW: u64 = 8 * 1024 * 1024;
+    let start = offset.saturating_sub(WINDOW);
+    if file.seek(SeekFrom::Start(start)).is_err() { return; }
+    let mut buf = vec![0u8; (offset - start) as usize];
+    if file.read_exact(&mut buf).is_err() { return; }
+    let text = String::from_utf8_lossy(&buf);
+    let mut lines: Vec<&str> = Vec::new();
+    for line in text.lines() {
+        if line.contains("  ZONE_CHANGE,") {
+            lines.clear();
+            lines.push(line);
+        } else if line.contains("  ENCOUNTER_START,") || line.contains("  ENCOUNTER_END,") {
+            lines.push(line);
+        }
+    }
+    for line in lines { parser.parse_line(line); }
+    let _ = parser.take_finished();
+    parser.current = None;
 }
 
 // ---------- Beispieldaten ----------
@@ -185,6 +221,9 @@ mod tests {
         assert!(ly.bank.is_some());
         assert!(a.fights["Lyraen-Antonidas"].len() > 10);
         assert!(!a.warbands.is_empty() && !a.guilds.is_empty());
+        let j = &a.journal["1101"];
+        assert_eq!((j.map_id, j.encounters.len()), (Some(9101), 3));
+        assert!(j.encounters[0].sections.iter().any(|s| s.flags == vec![0] && s.depth == 1));
         // Zusammenführen ist idempotent
         let mut b = a.clone();
         let added = ingest::ingest_saved_variables(include_bytes!("../beispiel/Beispiel.lua"), Some("DEMO"), &mut b).unwrap();

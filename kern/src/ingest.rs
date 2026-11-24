@@ -33,6 +33,21 @@ pub fn ingest_saved_variables(data: &[u8], account: Option<&str>, target: &mut A
         }
     }
 
+    if let Some(j) = db.get("journal") {
+        let locale = lua::s(j, "loc");
+        if let Some(inst) = j.get("inst").and_then(Lua::table) {
+            let mut entries: Vec<(String, &Lua)> = inst.dict.iter().map(|(k, v)| (k.clone(), v)).collect();
+            entries.extend(inst.array.iter().enumerate().map(|(i, v)| ((i + 1).to_string(), v)));
+            for (key, v) in entries {
+                if let Some(ji) = JournalInstance::from_lua(&key, v, locale.as_deref()) {
+                    if ji.encounters.is_empty() { continue; }
+                    let newer = target.journal.get(&key).map(|old| ji.t >= old.t || old.locale != ji.locale).unwrap_or(true);
+                    if newer { target.journal.insert(key, ji); }
+                }
+            }
+        }
+    }
+
     let mut added = 0;
     let Some(chars) = db.get("chars").and_then(Lua::table) else { return Ok(0) };
     for (key, cv) in &chars.dict {

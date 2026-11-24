@@ -13,8 +13,33 @@ pub const PARSER_VERSION: u32 = 3;
 /// Pause ohne Kampfgeschehen, nach der ein Kampf als beendet gilt (Sekunden)
 pub const GAP: f64 = 6.0;
 
+/// Wo sich der eigene Charakter laut Kampflog gerade befindet (ZONE_CHANGE, ENCOUNTER_START)
+#[derive(Debug, Clone, Default, PartialEq, serde::Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct LiveLocation {
+    /// Charakter-Schlüssel "Name-Realm", sobald im Log erkennbar
+    pub char: Option<String>,
+    /// Instanz-Karten-ID (bei Instanzen wie JournalInstance.map_id)
+    pub instance_id: i64,
+    pub name: String,
+    /// 0 = offene Welt
+    pub difficulty_id: i64,
+    pub t: f64,
+    pub encounter: Option<LiveEncounter>,
+}
+
+#[derive(Debug, Clone, Default, PartialEq, serde::Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct LiveEncounter {
+    pub id: i64,
+    pub name: String,
+    pub difficulty_id: i64,
+    pub t: f64,
+}
+
 #[derive(Default)]
 pub struct CombatLogParser {
+    pub location: Option<LiveLocation>,
     finished: Vec<Fight>,
     pub current: Option<Fight>,
     advanced: bool,
@@ -67,6 +92,17 @@ impl CombatLogParser {
             "ZONE_CHANGE" => {
                 let f = fields(body);
                 if f.len() > 2 { self.zone = Some(f[2].clone()); }
+                // ZONE_CHANGE,instanceID,"Name",difficultyID
+                if let Some(id) = f.get(1).and_then(|x| x.parse().ok()) {
+                    self.location = Some(LiveLocation {
+                        char: self.my_key.clone(),
+                        instance_id: id,
+                        name: f.get(2).cloned().unwrap_or_default(),
+                        difficulty_id: f.get(3).and_then(|x| x.parse().ok()).unwrap_or(0),
+                        t: time,
+                        encounter: None,
+                    });
+                }
             }
             "MAP_CHANGE" => {
                 let f = fields(body);
@@ -76,6 +112,24 @@ impl CombatLogParser {
                 let f = fields(body);
                 self.close_fight();
                 self.encounter = f.get(2).cloned();
+                // ENCOUNTER_START,encounterID,"Name",difficultyID,groupSize,instanceID
+                let enc = LiveEncounter {
+                    id: f.get(1).and_then(|x| x.parse().ok()).unwrap_or(0),
+                    name: f.get(2).cloned().unwrap_or_default(),
+                    difficulty_id: f.get(3).and_then(|x| x.parse().ok()).unwrap_or(0),
+                    t: time,
+                };
+                let inst: Option<i64> = f.get(5).and_then(|x| x.parse().ok());
+                let key = self.my_key.clone();
+                match self.location.as_mut() {
+                    Some(loc) if inst.is_none() || inst == Some(loc.instance_id) => loc.encounter = Some(enc),
+                    _ => {
+                        self.location = Some(LiveLocation {
+                            char: key, instance_id: inst.unwrap_or(0), name: self.zone.clone().unwrap_or_default(),
+                            difficulty_id: enc.difficulty_id, t: time, encounter: Some(enc),
+                        })
+                    }
+                }
             }
             "ENCOUNTER_END" => {
                 let f = fields(body);
@@ -86,6 +140,7 @@ impl CombatLogParser {
                     self.close_fight();
                 }
                 self.encounter = None;
+                if let Some(loc) = self.location.as_mut() { loc.encounter = None; }
             }
             "SWING_DAMAGE" | "RANGE_DAMAGE" | "SPELL_DAMAGE" | "SPELL_PERIODIC_DAMAGE" | "SPELL_BUILDING_DAMAGE"
             | "DAMAGE_SHIELD" | "DAMAGE_SPLIT" | "ENVIRONMENTAL_DAMAGE" => self.handle_damage(event, &fields(body), time),
@@ -202,13 +257,20 @@ impl CombatLogParser {
         if is_my_player(&f[3]) && f[1].starts_with("Player-") && self.my_guid.as_deref() != Some(&f[1]) {
             self.my_guid = Some(f[1].clone());
             self.my_key = Some(default_key(&f[2]));
+            self.location_char();
         }
+    }
+
+    fn location_char(&mut self) {
+        let key = self.my_key.clone();
+        if let Some(loc) = self.location.as_mut() { if loc.char.is_none() { loc.char = key; } }
     }
 
     fn note_me_as_target(&mut self, f: &[String]) {
         if f[5].starts_with("Player-") && self.my_guid.as_deref() != Some(&f[5]) {
             self.my_guid = Some(f[5].clone());
             self.my_key = Some(default_key(&f[6]));
+            self.location_char();
         }
     }
 
@@ -356,5 +418,19 @@ mod tests {
         assert_eq!(f.map_id, Some(100));
         assert_eq!(f.kills.len(), 1);
         assert_eq!(f.kills[0].npc_id, Some(16879));
+    }
+
+    #[test]
+    fn ort_und_boss_live() {
+        let mut p = CombatLogParser::new();
+        p.parse_line("11/21/2026 20:00:00.0000  ZONE_CHANGE,2652,\"Das Steingewölbe\",23\r\n");
+        let loc = p.location.clone().unwrap();
+        assert_eq!((loc.instance_id, loc.difficulty_id, loc.name.as_str()), (2652, 23, "Das Steingewölbe"));
+        p.parse_line("11/21/2026 20:03:00.0000  ENCOUNTER_START,2854,\"E.D.N.A.\",23,5,2652\r\n");
+        assert_eq!(p.location.as_ref().unwrap().encounter.as_ref().map(|e| e.id), Some(2854));
+        p.parse_line("11/21/2026 20:05:00.0000  ENCOUNTER_END,2854,\"E.D.N.A.\",23,5,1,120000\r\n");
+        assert!(p.location.as_ref().unwrap().encounter.is_none());
+        p.parse_line("11/21/2026 20:30:00.0000  ZONE_CHANGE,2552,\"Khaz Algar\",0\r\n");
+        assert_eq!(p.location.as_ref().unwrap().difficulty_id, 0);
     }
 }

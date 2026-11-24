@@ -5,11 +5,16 @@ import { invoke } from '@tauri-apps/api/core';
 import { i18n, t } from './i18n.svelte';
 import { listen } from '@tauri-apps/api/event';
 import { open } from '@tauri-apps/plugin-dialog';
-import type { Character, Fight, Snapshot, WowEvent } from './types';
+import type { Character, Fight, JournalInstance, LiveLocation, Snapshot, WowEvent } from './types';
+import { lastSeen } from './analyse';
 
 class TagebuchStore {
   snapshot = $state<Snapshot | null>(null);
   live = $state<Fight | null>(null);
+  /** Ort laut Kampflog (Instanz, laufender Bosskampf) */
+  location = $state<LiveLocation | null>(null);
+  /** Reiter, den die Charakterseite öffnen soll (Boss-Reiter beim Betreten einer Instanz) */
+  tabRequest = $state<string | null>(null);
   /** null = Account-Übersicht */
   selection = $state<string | null>(null);
   search = $state('');
@@ -20,6 +25,13 @@ class TagebuchStore {
   );
   selected = $derived(this.characters.find((c) => c.key === this.selection) ?? null);
   fights = $derived(this.snapshot?.archive.fights ?? {});
+  journal = $derived<JournalInstance[]>(Object.values(this.snapshot?.archive.journal ?? {}));
+
+  /** Kompendium-Eintrag zu einer Instanz (Karten-ID wie im Kampflog bzw. im Ereignis inst_an, sonst Name) */
+  journalFor(mapId?: number | null, name?: string | null): JournalInstance | undefined {
+    const n = name?.trim().toLowerCase();
+    return this.journal.find((j) => mapId && j.mapId === mapId) ?? (n ? this.journal.find((j) => j.name.toLowerCase() === n) : undefined);
+  }
 
   private started = false;
   /** nur Browser-Vorschau: Positionsproben je Charakter */
@@ -42,6 +54,7 @@ class TagebuchStore {
     await this.reload();
     await listen('tagebuch-aktualisiert', () => this.reload());
     await listen<Fight | null>('live-kampf', (e) => (this.live = e.payload));
+    await listen<LiveLocation | null>('live-ort', (e) => this.onLocation(e.payload));
   }
 
   private async loadBrowserDemo() {
@@ -53,7 +66,7 @@ class TagebuchStore {
         return { ...c, events: c.events.filter((e) => e.e !== 'pos'), positionCount: pos.length };
       });
       this.apply({
-        archive: { characters, maps: a.maps, fights: a.fights, warbands: a.warbands, guilds: a.guilds },
+        archive: { characters, maps: a.maps, fights: a.fights, warbands: a.warbands, guilds: a.guilds, journal: a.journal },
         status: 'Browser-Vorschau mit Beispieldaten',
         demo: true, wowFolder: '', wowFolderExists: false, foundFiles: 0,
       });
@@ -76,6 +89,27 @@ class TagebuchStore {
     this.snapshot = s;
     this.live = s.live ?? null;
     if (this.selection && !s.archive.characters.some((c) => c.key === this.selection)) this.selection = null;
+    this.onLocation(s.location ?? null);
+  }
+
+  /** Instanz betreten oder Boss gepullt → Charakter wählen und Boss-Reiter nach vorn holen */
+  private onLocation(l: LiveLocation | null) {
+    const prev = this.location;
+    this.location = l;
+    if (!l || l.difficultyId <= 0) return;
+    const entered = !prev || prev.instanceId !== l.instanceId || prev.difficultyId !== l.difficultyId;
+    const pulled = !!l.encounter && l.encounter.id !== prev?.encounter?.id;
+    if (!entered && !pulled) return;
+    const chars = this.characters;
+    const key =
+      (l.char && chars.some((c) => c.key === l.char) ? l.char : null) ??
+      this.selection ??
+      chars.slice().sort((a, b) => (lastSeen(b) ?? 0) - (lastSeen(a) ?? 0))[0]?.key ??
+      null;
+    if (!key) return;
+    this.search = '';
+    this.selection = key;
+    this.tabRequest = 'bosse';
   }
 
   async rescan() { if (this.inApp) this.apply(await invoke<Snapshot>('neu_einlesen')); }

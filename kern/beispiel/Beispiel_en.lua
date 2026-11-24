@@ -8924,4 +8924,573 @@ AzerothTagebuchDB = {
 			},
 		},
 	},
+	["journal"] = {
+		["v"] = 1,
+		["loc"] = "enUS",
+		["build"] = 120105,
+		["inst"] = {
+			[1101] = {
+				["n"] = "Amani Vault",
+				["map"] = 9101,
+				["did"] = 23,
+				["t"] = 1763690400,
+				["enc"] = {
+					{
+						["id"] = 5101,
+						["deid"] = 3101,
+						["n"] = "Hexer Zul'jin-Ra",
+						["d"] = "A witch doctor who binds the spirits of the Amani ancestors.",
+						["s"] = {
+							{
+								["id"] = 40001,
+								["lv"] = 0,
+								["t"] = "Overview",
+								["d"] = "Zul'jin-Ra summons ancestral spirits and curses his foes. At 50% health he retreats into a spirit circle.",
+								["ht"] = 3,
+							}, -- [1]
+							{
+								["id"] = 40002,
+								["lv"] = 1,
+								["t"] = "Tanks",
+								["ht"] = 3,
+								["fl"] = {
+									0, -- [1]
+								},
+							}, -- [2]
+							{
+								["id"] = 40003,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Face the boss away from the group so Spirit Claw only hits you.",
+								["ht"] = 3,
+							}, -- [3]
+							{
+								["id"] = 40004,
+								["lv"] = 1,
+								["t"] = "Healers",
+								["ht"] = 3,
+								["fl"] = {
+									2, -- [1]
+								},
+							}, -- [4]
+							{
+								["id"] = 40005,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Remove Curse of the Ancestors quickly – it greatly reduces healing received.",
+								["ht"] = 3,
+							}, -- [5]
+							{
+								["id"] = 40006,
+								["lv"] = 1,
+								["t"] = "Damage Dealers",
+								["ht"] = 3,
+								["fl"] = {
+									1, -- [1]
+								},
+							}, -- [6]
+							{
+								["id"] = 40007,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Kill the ancestral spirits quickly before they reach the boss.",
+								["ht"] = 3,
+							}, -- [7]
+							{
+								["id"] = 40008,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Interrupt Spirit Call whenever you can.",
+								["ht"] = 3,
+							}, -- [8]
+							{
+								["id"] = 40009,
+								["lv"] = 0,
+								["t"] = "Spirit Claw",
+								["d"] = "Deals heavy physical damage to the current target and causes a bleed.",
+								["ht"] = 0,
+								["fl"] = {
+									0, -- [1]
+									13, -- [2]
+								},
+							}, -- [9]
+							{
+								["id"] = 40010,
+								["lv"] = 0,
+								["t"] = "Spirit Call",
+								["d"] = "Summons two ancestral spirits that walk to the boss and heal him.",
+								["ht"] = 0,
+								["fl"] = {
+									6, -- [1]
+									5, -- [2]
+								},
+							}, -- [10]
+							{
+								["id"] = 40011,
+								["lv"] = 1,
+								["t"] = "Ancestral Spirit",
+								["d"] = "If a spirit reaches the boss, it heals him for 5% of his health.",
+								["ht"] = 0,
+								["fl"] = {
+									1, -- [1]
+								},
+							}, -- [11]
+							{
+								["id"] = 40012,
+								["lv"] = 0,
+								["t"] = "Curse of the Ancestors",
+								["d"] = "Curses a player, reducing healing received by 50% for 12 sec.",
+								["ht"] = 0,
+								["fl"] = {
+									8, -- [1]
+									2, -- [2]
+								},
+							}, -- [12]
+							{
+								["id"] = 40013,
+								["lv"] = 0,
+								["t"] = "Spirit Circle",
+								["d"] = "At 50% health the boss becomes immune until all totems are destroyed.",
+								["ht"] = 0,
+								["fl"] = {
+									5, -- [1]
+								},
+							}, -- [13]
+							{
+								["id"] = 40014,
+								["lv"] = 0,
+								["t"] = "Soul Pull",
+								["d"] = "Mythic: Pulls all players to the boss and deals Shadow damage.",
+								["ht"] = 0,
+								["fl"] = {
+									12, -- [1]
+									4, -- [2]
+								},
+							}, -- [14]
+						},
+					}, -- [1]
+					{
+						["id"] = 5102,
+						["deid"] = 3102,
+						["n"] = "Brood of Akilzon",
+						["d"] = "Three young storm eagles defending their nest together.",
+						["s"] = {
+							{
+								["id"] = 40015,
+								["lv"] = 0,
+								["t"] = "Overview",
+								["d"] = "The three eagles share their health. Again and again one of them charges a player with lightning.",
+								["ht"] = 3,
+							}, -- [1]
+							{
+								["id"] = 40016,
+								["lv"] = 1,
+								["t"] = "Tanks",
+								["ht"] = 3,
+								["fl"] = {
+									0, -- [1]
+								},
+							}, -- [2]
+							{
+								["id"] = 40017,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Keep all three eagles close together so area damage hits them all.",
+								["ht"] = 3,
+							}, -- [3]
+							{
+								["id"] = 40018,
+								["lv"] = 1,
+								["t"] = "Healers",
+								["ht"] = 3,
+								["fl"] = {
+									2, -- [1]
+								},
+							}, -- [4]
+							{
+								["id"] = 40019,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Top off the whole group before Storm Screech.",
+								["ht"] = 3,
+							}, -- [5]
+							{
+								["id"] = 40020,
+								["lv"] = 1,
+								["t"] = "Damage Dealers",
+								["ht"] = 3,
+								["fl"] = {
+									1, -- [1]
+								},
+							}, -- [6]
+							{
+								["id"] = 40021,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Stay spread so Thunder Charge doesn't hit anyone else.",
+								["ht"] = 3,
+							}, -- [7]
+							{
+								["id"] = 40022,
+								["lv"] = 0,
+								["t"] = "Thunder Charge",
+								["d"] = "Charges a player. After 6 sec the lightning jumps to all players within 8 yards.",
+								["ht"] = 0,
+								["fl"] = {
+									4, -- [1]
+									7, -- [2]
+								},
+							}, -- [8]
+							{
+								["id"] = 40023,
+								["lv"] = 0,
+								["t"] = "Storm Screech",
+								["d"] = "Deals Nature damage to all players.",
+								["ht"] = 0,
+								["fl"] = {
+									2, -- [1]
+								},
+							}, -- [9]
+							{
+								["id"] = 40024,
+								["lv"] = 0,
+								["t"] = "Beak Strike",
+								["d"] = "A quick strike at the current target.",
+								["ht"] = 0,
+								["fl"] = {
+									0, -- [1]
+								},
+							}, -- [10]
+							{
+								["id"] = 40025,
+								["lv"] = 0,
+								["t"] = "Feather Storm",
+								["d"] = "Heroic: Whirling feathers move through the room.",
+								["ht"] = 0,
+								["fl"] = {
+									3, -- [1]
+								},
+							}, -- [11]
+						},
+					}, -- [2]
+					{
+						["id"] = 5103,
+						["deid"] = 3103,
+						["n"] = "Chieftain Mok'tar",
+						["d"] = "The leader of the Amani Vault and a feared warrior.",
+						["s"] = {
+							{
+								["id"] = 40026,
+								["lv"] = 0,
+								["t"] = "Overview",
+								["d"] = "Mok'tar becomes more and more frenzied as his health drops. His War Stomp stuns all nearby players.",
+								["ht"] = 3,
+							}, -- [1]
+							{
+								["id"] = 40027,
+								["lv"] = 1,
+								["t"] = "Tanks",
+								["ht"] = 3,
+								["fl"] = {
+									0, -- [1]
+								},
+							}, -- [2]
+							{
+								["id"] = 40028,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Save a defensive cooldown for Frenzy.",
+								["ht"] = 3,
+							}, -- [3]
+							{
+								["id"] = 40029,
+								["lv"] = 1,
+								["t"] = "Healers",
+								["ht"] = 3,
+								["fl"] = {
+									2, -- [1]
+								},
+							}, -- [4]
+							{
+								["id"] = 40030,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Damage on the tank rises sharply during Frenzy.",
+								["ht"] = 3,
+							}, -- [5]
+							{
+								["id"] = 40031,
+								["lv"] = 1,
+								["t"] = "Damage Dealers",
+								["ht"] = 3,
+								["fl"] = {
+									1, -- [1]
+								},
+							}, -- [6]
+							{
+								["id"] = 40032,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Keep your distance during War Stomp.",
+								["ht"] = 3,
+							}, -- [7]
+							{
+								["id"] = 40033,
+								["lv"] = 0,
+								["t"] = "War Frenzy",
+								["d"] = "Mok'tar becomes enraged and deals 30% more damage.",
+								["ht"] = 0,
+								["fl"] = {
+									11, -- [1]
+									0, -- [2]
+								},
+							}, -- [8]
+							{
+								["id"] = 40034,
+								["lv"] = 0,
+								["t"] = "War Stomp",
+								["d"] = "Stuns all players within 10 yards for 3 sec.",
+								["ht"] = 0,
+								["fl"] = {
+									5, -- [1]
+								},
+							}, -- [9]
+							{
+								["id"] = 40035,
+								["lv"] = 0,
+								["t"] = "Poison Spear",
+								["d"] = "Hurls a spear that leaves a poison behind.",
+								["ht"] = 0,
+								["fl"] = {
+									9, -- [1]
+								},
+							}, -- [10]
+							{
+								["id"] = 40036,
+								["lv"] = 0,
+								["t"] = "Battle Cry",
+								["d"] = "Calls two Amani warriors for help.",
+								["ht"] = 0,
+								["fl"] = {
+									6, -- [1]
+									1, -- [2]
+								},
+							}, -- [11]
+						},
+					}, -- [3]
+				},
+			},
+			[1102] = {
+				["n"] = "Sunhall Crypt",
+				["map"] = 9102,
+				["did"] = 23,
+				["t"] = 1763690400,
+				["enc"] = {
+					{
+						["id"] = 5111,
+						["deid"] = 3111,
+						["n"] = "Warden Aelira",
+						["d"] = "A fallen warden who still guards the crypt.",
+						["s"] = {
+							{
+								["id"] = 40037,
+								["lv"] = 0,
+								["t"] = "Overview",
+								["d"] = "Aelira alternates between light and shadow phases. In the shadow phase she leaves void zones behind.",
+								["ht"] = 3,
+							}, -- [1]
+							{
+								["id"] = 40038,
+								["lv"] = 1,
+								["t"] = "Tanks",
+								["ht"] = 3,
+								["fl"] = {
+									0, -- [1]
+								},
+							}, -- [2]
+							{
+								["id"] = 40039,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Pull the warden out of the void zones.",
+								["ht"] = 3,
+							}, -- [3]
+							{
+								["id"] = 40040,
+								["lv"] = 1,
+								["t"] = "Healers",
+								["ht"] = 3,
+								["fl"] = {
+									2, -- [1]
+								},
+							}, -- [4]
+							{
+								["id"] = 40041,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Crypt Plague must be cleansed quickly.",
+								["ht"] = 3,
+							}, -- [5]
+							{
+								["id"] = 40042,
+								["lv"] = 1,
+								["t"] = "Damage Dealers",
+								["ht"] = 3,
+								["fl"] = {
+									1, -- [1]
+								},
+							}, -- [6]
+							{
+								["id"] = 40043,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Interrupt Wave of Light, or it hits the whole group.",
+								["ht"] = 3,
+							}, -- [7]
+							{
+								["id"] = 40044,
+								["lv"] = 0,
+								["t"] = "Wave of Light",
+								["d"] = "A wave of holy light that damages all players.",
+								["ht"] = 0,
+								["fl"] = {
+									6, -- [1]
+									4, -- [2]
+								},
+							}, -- [8]
+							{
+								["id"] = 40045,
+								["lv"] = 0,
+								["t"] = "Void Zone",
+								["d"] = "Leaves a zone that deals Shadow damage.",
+								["ht"] = 0,
+								["fl"] = {
+									5, -- [1]
+								},
+							}, -- [9]
+							{
+								["id"] = 40046,
+								["lv"] = 0,
+								["t"] = "Crypt Plague",
+								["d"] = "A disease that deals damage every second.",
+								["ht"] = 0,
+								["fl"] = {
+									10, -- [1]
+									2, -- [2]
+								},
+							}, -- [10]
+						},
+					}, -- [1]
+					{
+						["id"] = 5112,
+						["deid"] = 3112,
+						["n"] = "The Pale Prince",
+						["d"] = "An undead prince who rules the deepest vaults of the crypt.",
+						["s"] = {
+							{
+								["id"] = 40047,
+								["lv"] = 0,
+								["t"] = "Overview",
+								["d"] = "The prince drains the life of his foes and afflicts them with magic.",
+								["ht"] = 3,
+							}, -- [1]
+							{
+								["id"] = 40048,
+								["lv"] = 1,
+								["t"] = "Tanks",
+								["ht"] = 3,
+								["fl"] = {
+									0, -- [1]
+								},
+							}, -- [2]
+							{
+								["id"] = 40049,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Life Drain heals the prince – use defensive cooldowns early.",
+								["ht"] = 3,
+							}, -- [3]
+							{
+								["id"] = 40050,
+								["lv"] = 1,
+								["t"] = "Healers",
+								["ht"] = 3,
+								["fl"] = {
+									2, -- [1]
+								},
+							}, -- [4]
+							{
+								["id"] = 40051,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Dispel Blood Curse immediately.",
+								["ht"] = 3,
+							}, -- [5]
+							{
+								["id"] = 40052,
+								["lv"] = 1,
+								["t"] = "Damage Dealers",
+								["ht"] = 3,
+								["fl"] = {
+									1, -- [1]
+								},
+							}, -- [6]
+							{
+								["id"] = 40053,
+								["lv"] = 2,
+								["t"] = "",
+								["d"] = "Dispel Shadow Shield from the prince.",
+								["ht"] = 3,
+							}, -- [7]
+							{
+								["id"] = 40054,
+								["lv"] = 0,
+								["t"] = "Life Drain",
+								["d"] = "Drains life from the tank and heals the prince.",
+								["ht"] = 0,
+								["fl"] = {
+									0, -- [1]
+									5, -- [2]
+								},
+							}, -- [8]
+							{
+								["id"] = 40055,
+								["lv"] = 0,
+								["t"] = "Blood Curse",
+								["d"] = "Magic: A player takes Shadow damage for 8 sec.",
+								["ht"] = 0,
+								["fl"] = {
+									7, -- [1]
+									2, -- [2]
+								},
+							}, -- [9]
+							{
+								["id"] = 40056,
+								["lv"] = 0,
+								["t"] = "Shadow Shield",
+								["d"] = "A magic shield that absorbs 50% of damage taken.",
+								["ht"] = 0,
+								["fl"] = {
+									7, -- [1]
+									1, -- [2]
+								},
+							}, -- [10]
+							{
+								["id"] = 40057,
+								["lv"] = 0,
+								["t"] = "Pale Scream",
+								["d"] = "Mythic: Fears all players.",
+								["ht"] = 0,
+								["fl"] = {
+									12, -- [1]
+									4, -- [2]
+									6, -- [3]
+								},
+							}, -- [11]
+						},
+					}, -- [2]
+				},
+			},
+		},
+	},
 }

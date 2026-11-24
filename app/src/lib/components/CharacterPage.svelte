@@ -18,6 +18,7 @@
   import Lager from '$lib/tabs/Lager.svelte';
   import Klasse from '$lib/tabs/Klasse.svelte';
   import Instanzen from '$lib/tabs/Instanzen.svelte';
+  import Bosse from '$lib/tabs/Bosse.svelte';
 
   let { c }: { c: Character } = $props();
 
@@ -31,11 +32,17 @@
     { id: 'heilung', label: 'Heilung', icon: 'heart-pulse' },
     { id: 'ausruestung', label: 'Ausrüstung', icon: 'shirt' },
     { id: 'instanzen', label: 'Instanzen', icon: 'castle' },
+    { id: 'bosse', label: 'Bosskämpfe', icon: 'skull' },
     { id: 'beute', label: 'Beute', icon: 'backpack' },
     { id: 'lager', label: 'Lager', icon: 'archive' },
     { id: 'klasse', label: 'Klasse', icon: 'user' },
   ];
   let tab = $state('uebersicht');
+  // Beim Betreten einer Instanz holt der Store den Boss-Reiter nach vorn
+  $effect(() => {
+    const r = store.tabRequest;
+    if (r) { tab = r; store.tabRequest = null; }
+  });
 
   const fights = $derived(store.fights[c.key] ?? []);
   const names = $derived(A.questNames(c));
@@ -97,6 +104,7 @@
   {:else if tab === 'heilung'}<Kampf {c} mode="healing" />
   {:else if tab === 'ausruestung'}<Ausruestung {c} />
   {:else if tab === 'instanzen'}<Instanzen {c} />
+  {:else if tab === 'bosse'}<Bosse {c} />
   {:else if tab === 'beute'}<Beute {c} />
   {:else if tab === 'lager'}<Lager {c} />
   {:else if tab === 'klasse'}<Klasse {c} />
