@@ -5,6 +5,7 @@
   import Icon from '$lib/components/Icon.svelte';
   import Segmented from '$lib/components/Segmented.svelte';
   import ExtLink from '$lib/components/ExtLink.svelte';
+  import ItemIcon from '$lib/components/ItemIcon.svelte';
   import { store } from '$lib/store.svelte';
   import * as A from '$lib/analyse';
   import * as B from '$lib/boss';
@@ -160,6 +161,14 @@
       {#if open.has(e.id)}
         <div class="body">
           {#if e.description}<p class="lore dim">{B.cleanText(e.description)}</p>{/if}
+          {#if h.loot.length}
+            <div class="loot">
+              <span class="dim sm">{t('Deine Beute')}</span>
+              {#each h.loot as l (l.itemId ?? l.name)}
+                <ItemIcon icon={l.icon} quality={l.quality} size={26} title={l.times > 1 ? `${l.name} (${l.times}×)` : l.name} />
+              {/each}
+            </div>
+          {/if}
           <div class="cols">
             <div class="col">
               <h4><Icon name="user" size={13} /> {t('Für dich als {role}', { role: roleName(role) })}</h4>
@@ -247,4 +256,6 @@
   .all { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
   .src { margin: 4px 2px 0; }
   @media (max-width: 800px) { .body { padding-left: 0; } }
+  .loot { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 10px; }
+  .loot span { margin-right: 4px; }
 </style>

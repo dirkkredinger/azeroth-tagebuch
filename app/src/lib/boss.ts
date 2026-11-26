@@ -149,6 +149,8 @@ export function guide(enc: JournalEncounter, role: string | undefined, kit: Spec
 export interface BossHistory {
   kills: number; wipes: number; fastest?: number; last?: number;
   bestDps?: number; bestHps?: number; deaths: number; pulls: number;
+  /** eigene Beute von diesem Boss (Gegenstände, ohne Gold), neueste zuerst, gleiche zusammengefasst */
+  loot: { itemId?: number; name: string; quality?: number; icon?: number; times: number }[];
 }
 
 /** Eigene Erfahrung mit einem Boss: Ereignisse "boss" vom Addon und Kämpfe aus dem Kampflog */
@@ -157,6 +159,15 @@ export function history(c: Character, fights: Fight[], enc: JournalEncounter): B
   const match = (e: WowEvent) => e.e === 'boss' && ((enc.encounterId && e.eid === enc.encounterId) || e.n?.toLowerCase() === name);
   const ev = c.events.filter(match);
   const fs = fights.filter((f) => f.encounter?.toLowerCase() === name);
+  const loot = new Map<string, BossHistory['loot'][number]>();
+  const lootEv = c.events.filter((e) => e.e === 'beute' && ((enc.encounterId && e.eid === enc.encounterId) || e.sn?.toLowerCase() === name));
+  for (const e of [...lootEv].reverse()) for (const it of e.items ?? []) {
+    if (it.gold || it.currency) continue;
+    const k = it.itemId ? `i${it.itemId}` : `n${it.name}`;
+    const l = loot.get(k);
+    if (l) l.times++;
+    else loot.set(k, { itemId: it.itemId, name: it.name ?? '?', quality: it.quality, icon: it.icon, times: 1 });
+  }
   const kills = ev.filter((e) => e.ok === 1);
   const fastest = kills.map((e) => e.dauer ?? 0).filter((d) => d > 0);
   return {
@@ -168,5 +179,6 @@ export function history(c: Character, fights: Fight[], enc: JournalEncounter): B
     bestHps: fs.length ? Math.max(...fs.map(hps)) : undefined,
     deaths: fs.reduce((s, f) => s + f.deaths, 0),
     pulls: Math.max(ev.length, fs.length),
+    loot: [...loot.values()],
   };
 }

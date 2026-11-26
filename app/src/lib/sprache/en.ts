@@ -218,7 +218,7 @@ export const en: Record<string, string> = {
   'Du kannst unterbrechen': 'You can interrupt', 'Kein Unterbrechen': 'No interrupt', 'Du entfernst: {list}': 'You remove: {list}',
   'Grundfähigkeiten der Spezialisierung, Talente nicht berücksichtigt': 'baseline spec abilities, talents not considered',
   'Ansicht als {role}': 'Viewing as {role}', 'beste {n} DPS': 'best {n} DPS', 'beste {n} HPS': 'best {n} HPS',
-  'zuletzt {d}': 'last {d}', 'Noch nie gekämpft': 'Never fought',
+  'zuletzt {d}': 'last {d}', 'Noch nie gekämpft': 'Never fought', 'Deine Beute': 'Your loot',
   'Tödlich / Wichtig': 'Deadly / important', 'Unterbrechen': 'Interrupt', 'Entfernen': 'Remove', 'Kannst du entfernen': 'You can remove',
   'Für dich als {role}': 'For you as {role}', 'Das Kompendium hat für diese Rolle keine eigenen Hinweise.': 'The Adventure Guide has no specific notes for this role.',
   'Keine besonders markierten Fähigkeiten.': 'No specially marked abilities.', 'Alle Fähigkeiten': 'All abilities',

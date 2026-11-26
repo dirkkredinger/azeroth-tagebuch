@@ -50,6 +50,8 @@ export function lootStats(chars: Character[], fights: Record<string, Fight[]>): 
   const byKey = new Map<string, LootSource>();
   const nameForGuid = new Map<string, string>();
   const nameForNpc = new Map<number, string>();
+  /** Boss-Beute (direkt in die Taschen) kennt nur den Bossnamen – darüber zum Gegner aus dem Kampflog */
+  const npcForName = new Map<string, number>();
   const source = (key: string, init: () => LootSource) => {
     let s = byKey.get(key);
     if (!s) { s = init(); byKey.set(key, s); }
@@ -60,7 +62,7 @@ export function lootStats(chars: Character[], fights: Record<string, Fight[]>): 
     for (const f of fights[c.key] ?? []) {
       for (const k of f.kills ?? []) {
         nameForGuid.set(k.guid, k.name);
-        if (k.npcId) nameForNpc.set(k.npcId, k.name);
+        if (k.npcId) { nameForNpc.set(k.npcId, k.name); npcForName.set(k.name.toLowerCase(), k.npcId); }
         const key = k.npcId ? `npc${k.npcId}` : `name${k.name}`;
         const s = source(key, () => ({ key, npcId: k.npcId, name: k.name, isObject: false, kills: 0, looted: 0, lastSeen: 0, zones: new Set(), items: new Map() }));
         s.kills++;
@@ -75,8 +77,9 @@ export function lootStats(chars: Character[], fights: Record<string, Fight[]>): 
       const isObject = ev.art === 'GameObject';
       const name: string = ev.sn ?? (ev.src ? nameForGuid.get(ev.src) : undefined) ?? (ev.npc ? nameForNpc.get(ev.npc) : undefined)
         ?? (ev.npc ? (isObject ? t('Vorkommen #{n}', { n: ev.npc }) : t('Gegner #{n}', { n: ev.npc })) : t('Unbekannte Quelle'));
-      const key = ev.npc ? `${isObject ? 'obj' : 'npc'}${ev.npc}` : `name${name}`;
-      const s = source(key, () => ({ key, npcId: ev.npc, name, isObject, kills: 0, looted: 0, lastSeen: 0, zones: new Set(), items: new Map() }));
+      const npc = ev.npc ?? npcForName.get(name.toLowerCase());
+      const key = npc ? `${isObject ? 'obj' : 'npc'}${npc}` : `name${name}`;
+      const s = source(key, () => ({ key, npcId: npc, name, isObject, kills: 0, looted: 0, lastSeen: 0, zones: new Set(), items: new Map() }));
       if (/^(Gegner|Vorkommen) #/.test(s.name)) s.name = name;
       s.looted++;
       s.lastSeen = Math.max(s.lastSeen, ev.t);

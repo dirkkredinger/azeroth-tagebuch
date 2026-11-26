@@ -811,13 +811,44 @@ function handlers.ENCOUNTER_START(encounterID)
   encounterStart[encounterID] = time()
 end
 
+local encounterNames = {}
+
 function handlers.ENCOUNTER_END(encounterID, encounterName, difficultyID, groupSize, success)
+  encounterNames[encounterID] = encounterName
   local started = encounterStart[encounterID]
   encounterStart[encounterID] = nil
   log("boss", { eid = encounterID, n = encounterName, did = difficultyID, grp = groupSize,
                 ok = (success == 1 or success == true) and 1 or 0,
                 dauer = started and (time() - started) or nil,
                 iid = char and char.curInst and char.curInst.iid, inst = char and char.curInst and char.curInst.inst })
+end
+
+-- Persönliche Beute von Bossen landet direkt in den Taschen (kein Beutefenster).
+-- Alles, was kurz nacheinander für denselben Boss kommt, wird zu einem Beute-Eintrag gebündelt.
+local encounterLoot = {}
+
+function handlers.ENCOUNTER_LOOT_RECEIVED(encounterID, itemID, itemLink, quantity, playerName)
+  if not char or not encounterID then return end
+  local me = safe(UnitName, "player")
+  if playerName and me and Ambiguate(playerName, "short") ~= me then return end
+  local id = itemID or (itemLink and tonumber(itemLink:match("item:(%d+)")))
+  local _, _, _, _, icon = safe(C_Item.GetItemInfoInstant, id or itemLink)
+  local entry = encounterLoot[encounterID]
+  if not entry then
+    entry = { t = time(), items = {} }
+    encounterLoot[encounterID] = entry
+  end
+  entry.items[#entry.items + 1] = {
+    id = id, n = linkName(itemLink), c = quantity or 1, ic = icon,
+    q = id and safe(C_Item.GetItemQualityByID, id),
+  }
+  later("bossbeute" .. encounterID, 3, function()
+    local e = encounterLoot[encounterID]
+    encounterLoot[encounterID] = nil
+    if not e or #e.items == 0 then return end
+    log("beute", { src = "Encounter-" .. encounterID .. "-" .. e.t, art = "Boss", eid = encounterID,
+                   sn = encounterNames[encounterID], items = e.items, z = GetZoneText() })
+  end)
 end
 
 function handlers.SCENARIO_COMPLETED()
