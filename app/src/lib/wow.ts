@@ -1,5 +1,6 @@
 // Farben, Bezeichnungen und Texte rund um WoW-Daten
 
+import type { GuideSite } from './einstellungen.svelte';
 import type { Character, WowEvent } from './types';
 import { duration, gold, num, num1 } from './format';
 import { i18n, t, tn } from './i18n.svelte';
@@ -173,8 +174,8 @@ export const roleName = (r?: string) => { const d = ({ TANK: 'Tank', HEALER: 'He
 export const statName = (s?: number) => { const d = ({ 1: 'Stärke', 2: 'Beweglichkeit', 4: 'Intellekt' } as Record<number, string>)[s ?? 0]; return d ? t(d) : undefined; };
 
 /** Links zu den Wowhead-Guides (nur verlinkt, nicht übernommen) */
-export function guideLinks(specId?: number, role?: string, classToken?: string, talentCode?: string) {
-  const base = wowheadBase();
+export function guideLinks(specId?: number, role?: string, classToken?: string, talentCode?: string, site: GuideSite = 'wowhead-en') {
+  const base = site === 'wowhead-de' ? 'https://www.wowhead.com/de' : 'https://www.wowhead.com';
   const out: { title: string; icon: string; url: string }[] = [];
   const spec = specId ? SPECS[specId] : undefined;
   if (spec) {

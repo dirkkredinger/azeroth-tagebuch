@@ -2,6 +2,8 @@
 //! hält das Archiv und gibt es an die Oberfläche (Svelte) weiter.
 
 mod bilder;
+#[cfg(target_os = "macos")]
+mod autostart;
 
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
@@ -254,6 +256,26 @@ fn setze_wow_ordner(state: State<Shared>, pfad: String) -> serde_json::Value {
     snapshot_json(&inner)
 }
 
+/// Ob das Tagebuch mit WoW startet – `null`, wenn es das auf diesem System (noch) nicht gibt
+#[tauri::command]
+fn wow_autostart() -> Option<bool> {
+    #[cfg(target_os = "macos")]
+    { Some(autostart::enabled()) }
+    #[cfg(not(target_os = "macos"))]
+    { None }
+}
+
+#[tauri::command]
+fn setze_wow_autostart(app: AppHandle, an: bool) -> Result<bool, String> {
+    #[cfg(target_os = "macos")]
+    {
+        let dir = app.path().app_data_dir().map_err(|e| e.to_string())?;
+        autostart::set(an, &dir)
+    }
+    #[cfg(not(target_os = "macos"))]
+    { let _ = (app, an); Err("Nur unter macOS verfügbar".into()) }
+}
+
 // ---------- Start ----------
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
@@ -332,7 +354,7 @@ pub fn run() {
                 }
             }
         })
-        .invoke_handler(tauri::generate_handler![lade_daten, positionen, neu_einlesen, beispieldaten, setze_wow_ordner])
+        .invoke_handler(tauri::generate_handler![lade_daten, positionen, neu_einlesen, beispieldaten, setze_wow_ordner, wow_autostart, setze_wow_autostart])
         .run(tauri::generate_context!())
         .expect("Fehler beim Starten der App");
 }

@@ -5,7 +5,18 @@
   import { GITHUB_URL, ISSUES_URL, KOFI_URL, RELEASES_URL } from '$lib/links';
   import { i18n, setLang, t } from '$lib/i18n.svelte';
   import pkg from '../../../package.json';
+  import { invoke } from '@tauri-apps/api/core';
   let { onclose }: { onclose: () => void } = $props();
+
+  // „Mit WoW starten“ gibt es nur in der Desktop-App (vorerst macOS)
+  let autostart = $state<boolean | null>(null);
+  let autostartError = $state('');
+  if ('__TAURI_INTERNALS__' in window) invoke<boolean | null>('wow_autostart').then((v) => (autostart = v)).catch(() => {});
+  async function toggleAutostart() {
+    autostartError = '';
+    try { autostart = await invoke<boolean>('setze_wow_autostart', { an: !autostart }); }
+    catch (e) { autostartError = String(e); }
+  }
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
@@ -32,6 +43,11 @@
       <button class="btn" class:primary={i18n.lang === 'en'} onclick={() => setLang('en')}>English</button>
     </div>
 
+    {#if autostart !== null}
+      <label class="auto"><input type="checkbox" checked={autostart} onchange={toggleAutostart} /> {t('Mit World of Warcraft starten')}</label>
+      <p class="dim small">{autostartError || t('Öffnet das Tagebuch im Hintergrund, sobald WoW startet – falls es nicht schon läuft.')}</p>
+    {/if}
+
     <p class="dim small">{t('Von dirkkredinger, entwickelt mit Unterstützung von Claude (Anthropic).')}</p>
     <p class="dim small">{t('Lizenz: GNU GPL v3.0. Inoffizielles Fan-Projekt, nicht mit Blizzard Entertainment verbunden. World of Warcraft ist eine Marke von Blizzard Entertainment, Inc. Karten und Symbole stammen aus deiner eigenen Spielinstallation und werden nicht mitgeliefert.')}</p>
     <button class="btn" onclick={onclose}>{t('Schließen')}</button>
@@ -39,6 +55,7 @@
 </div>
 
 <style>
+  .auto { display: inline-flex; gap: 8px; align-items: center; margin-top: 12px; cursor: pointer; }
   .lang { display: flex; gap: 8px; align-items: center; justify-content: center; margin: 4px 0 2px; }
   .backdrop { position: fixed; inset: 0; z-index: 900; background: rgba(0, 0, 0, 0.6); display: grid; place-items: center; }
   .card { width: 460px; padding: 24px; text-align: center; }

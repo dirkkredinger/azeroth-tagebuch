@@ -4,6 +4,8 @@
   import Icon from '$lib/components/Icon.svelte';
   import ExtLink from '$lib/components/ExtLink.svelte';
   import EventRow from '$lib/components/EventRow.svelte';
+  import Segmented from '$lib/components/Segmented.svelte';
+  import { settings, setGuideSite, type GuideSite } from '$lib/einstellungen.svelte';
   import { num1 } from '$lib/format';
   import { CLASSES, SPECS, classColor, guideLinks, roleName, statName } from '$lib/wow';
   import type { Character } from '$lib/types';
@@ -11,7 +13,7 @@
   let { c }: { c: Character } = $props();
   const info = $derived(CLASSES[c.classToken ?? '']);
   const role = $derived(c.role ?? (c.specId ? SPECS[c.specId]?.role : undefined));
-  const links = $derived(guideLinks(c.specId, role, c.classToken, c.talentCode));
+  const links = $derived(guideLinks(c.specId, role, c.classToken, c.talentCode, settings.guides));
   const history = $derived(c.events.filter((e) => e.e === 'talente' || e.e === 'ausr').sort((a, b) => b.t - a.t).slice(0, 30));
   let copied = $state(false);
   async function copy() { if (c.talentCode) { await navigator.clipboard.writeText(c.talentCode); copied = true; } }
@@ -33,11 +35,17 @@
 </div>
 
 <Box title={t('Guides & Talent-Builds (Wowhead)')}>
+  {#snippet right()}
+    <span class="sp"></span>
+    <Segmented bind:value={() => settings.guides, (v) => setGuideSite(v as GuideSite)}
+      options={[{ id: 'wowhead-en', label: t('Englisch') }, { id: 'wowhead-de', label: t('Deutsch') }]} />
+  {/snippet}
   {#if links.length}
     <div class="links">
       {#each links as l}<ExtLink href={l.url}><div class="lk"><Icon name={l.icon} size={15} /> {l.title} <span class="sp"></span>↗</div></ExtLink>{/each}
     </div>
-    <p class="dim sm">{t('Die empfohlenen Builds stammen von Wowhead und öffnen sich im Browser. Den Build übernimmst du im Spiel über „Laden/Teilen → Importieren“.')}</p>
+    <p class="dim sm">{t('Die empfohlenen Builds stammen von Wowhead und öffnen sich im Browser. Den Build übernimmst du im Spiel über „Laden/Teilen → Importieren“.')}
+      {#if settings.guides === 'wowhead-de'}{t('Die deutschen Guides leiten teils zu 4Fansites weiter.')}{/if}</p>
   {:else}<p class="dim">{t('Noch keine Spezialisierung bekannt.')}</p>{/if}
 </Box>
 
