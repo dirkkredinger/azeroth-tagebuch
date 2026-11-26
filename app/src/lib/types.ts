@@ -32,6 +32,8 @@ export interface Character {
   classToken?: string; className?: string; race?: string; faction?: string;
   level?: number; spec?: string; money?: number; account?: string;
   specId?: number; role?: string; specDesc?: string; primaryStat?: number; talentCode?: string;
+  /** Gesamtspielzeit laut /played (Sekunden), auf der aktuellen Stufe, Zeitpunkt der Messung */
+  played?: number; playedLevel?: number; playedT?: number;
   itemLevel?: number; guild?: string;
   gear: Record<string, GearItem>;
   bags?: Storage; bank?: Storage;

@@ -266,6 +266,10 @@ pub struct Character {
     pub talent_code: Option<String>,
     pub item_level: Option<f64>,
     pub guild: Option<String>,
+    /// Gesamtspielzeit laut /played in Sekunden, Spielzeit auf der aktuellen Stufe, Zeitpunkt der Messung
+    #[serde(skip_serializing_if = "Option::is_none")] pub played: Option<i64>,
+    #[serde(skip_serializing_if = "Option::is_none")] pub played_level: Option<i64>,
+    #[serde(skip_serializing_if = "Option::is_none")] pub played_t: Option<i64>,
     /// Angelegte Ausrüstung je Platz ("1" = Kopf … "19" = Wappenrock)
     pub gear: BTreeMap<String, GearItem>,
     pub bags: Option<Storage>,

@@ -8,7 +8,10 @@ export const deaths = (c: Character) => c.events.filter((e) => e.e === 'tod').le
 export const achievements = (c: Character) => c.events.filter((e) => e.e === 'erfolg');
 export const levelUps = (c: Character) => c.events.filter((e) => e.e === 'level').length;
 export const notes = (c: Character) => c.events.filter((e) => e.e === 'notiz');
-export const playSeconds = (c: Character) => c.events.reduce((s, e) => s + (e.e === 'logout' ? e.dauer ?? 0 : 0), 0);
+/** Vom Addon mitgeschriebene Sitzungen (Sekunden) */
+export const loggedSeconds = (c: Character) => c.events.reduce((s, e) => s + (e.e === 'logout' ? e.dauer ?? 0 : 0), 0);
+/** Gesamtspielzeit: /played (ab Addon 1.6), sonst die mitgeschriebenen Sitzungen */
+export const playSeconds = (c: Character) => Math.max(c.played ?? 0, loggedSeconds(c));
 export const lastSeen = (c: Character) => (c.events.length ? c.events[c.events.length - 1].t : undefined);
 export const lootEvents = (c: Character) => c.events.filter((e) => e.e === 'beute');
 

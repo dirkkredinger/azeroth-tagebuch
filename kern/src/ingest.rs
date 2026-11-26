@@ -73,6 +73,14 @@ pub fn ingest_saved_variables(data: &[u8], account: Option<&str>, target: &mut A
         if let Some(v) = lua::s(cv, "talentCode") { ch.talent_code = Some(v); }
         if let Some(v) = lua::f(cv, "ilvl") { ch.item_level = Some(v); }
         if let Some(v) = lua::s(cv, "guild") { ch.guild = Some(v); }
+        // /played nur übernehmen, wenn es neuer ist als der gespeicherte Stand
+        if let (Some(p), Some(pt)) = (lua::i(cv, "played"), lua::i(cv, "playedT")) {
+            if pt >= ch.played_t.unwrap_or(0) {
+                ch.played = Some(p);
+                ch.played_t = Some(pt);
+                ch.played_level = lua::i(cv, "playedLevel");
+            }
+        }
         if let Some(a) = account { ch.account = Some(a.to_string()); }
         if let Some(b) = Storage::from_lua(cv.get("bags")) {
             if b.t >= ch.bags.as_ref().map(|s| s.t).unwrap_or(0) { ch.bags = Some(b); }

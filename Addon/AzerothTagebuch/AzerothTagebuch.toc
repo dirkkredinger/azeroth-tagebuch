@@ -4,7 +4,7 @@
 ## Author: dirkkredinger
 ## X-License: GPL-3.0
 ## X-Website: https://github.com/dirkkredinger/azeroth-tagebuch
-## Version: 1.5.2
+## Version: 1.6.0
 ## SavedVariables: AzerothTagebuchDB
 ## IconTexture: Interface\Icons\INV_Misc_Book_09
 

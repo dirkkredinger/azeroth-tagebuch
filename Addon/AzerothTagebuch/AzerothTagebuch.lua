@@ -681,6 +681,42 @@ function handlers.ADDON_LOADED(name)
   db.locale = GetLocale()
 end
 
+------------------------------------------------------------
+-- Gesamtspielzeit (/played): beim Einloggen still abfragen, ohne Ausgabe im Chat
+------------------------------------------------------------
+local playedQuiet = {}   -- Chatfenster, denen wir die Meldung kurz entzogen haben
+
+local function requestPlayed()
+  if not RequestTimePlayed then return end
+  for i = 1, (NUM_CHAT_WINDOWS or 10) do
+    local cf = _G["ChatFrame" .. i]
+    if cf and cf.IsEventRegistered and cf:IsEventRegistered("TIME_PLAYED_MSG") then
+      cf:UnregisterEvent("TIME_PLAYED_MSG")
+      playedQuiet[#playedQuiet + 1] = cf
+    end
+  end
+  pcall(RequestTimePlayed)
+  -- falls keine Antwort kommt: Chatfenster spätestens nach 10 s wieder anmelden
+  C_Timer.After(10, function()
+    for _, cf in ipairs(playedQuiet) do pcall(cf.RegisterEvent, cf, "TIME_PLAYED_MSG") end
+    playedQuiet = {}
+  end)
+end
+
+function handlers.TIME_PLAYED_MSG(total, thisLevel)
+  if char and total then
+    char.played = total
+    char.playedLevel = thisLevel
+    char.playedT = time()
+  end
+  if #playedQuiet > 0 then
+    C_Timer.After(0.5, function()
+      for _, cf in ipairs(playedQuiet) do pcall(cf.RegisterEvent, cf, "TIME_PLAYED_MSG") end
+      playedQuiet = {}
+    end)
+  end
+end
+
 function handlers.PLAYER_LOGIN()
   charKey = UnitName("player") .. "-" .. GetRealmName()
   local db = AzerothTagebuchDB
@@ -694,6 +730,7 @@ function handlers.PLAYER_LOGIN()
   later("gear", 6, snapshotGear)
   later("taschen", 8, snapshotBags)
   later("journal", 15, function() runJournal() end)
+  later("played", 4, requestPlayed)
 end
 
 function handlers.PLAYER_ENTERING_WORLD(isLogin, isReload)
@@ -886,6 +923,13 @@ end
 
 function handlers.PLAYER_LOGOUT()
   if not char then return end
+  -- Spielzeit bis zum Ausloggen fortschreiben
+  if char.played and char.playedT then
+    local now = time()
+    char.played = char.played + (now - char.playedT)
+    if char.playedLevel then char.playedLevel = char.playedLevel + (now - char.playedT) end
+    char.playedT = now
+  end
   updateCharInfo()
   pcall(snapshotGear)
   pcall(snapshotBags)
