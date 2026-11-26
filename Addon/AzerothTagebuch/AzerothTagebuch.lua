@@ -484,6 +484,7 @@ checkInstance = function()
     log("inst_an", d)
     char.curInst = { iid = d.iid, did = d.did, inst = d.inst, t = time() }
     later("journal_inst", 4, journalForCurrentInstance)
+    later("journal_inst2", 25, journalForCurrentInstance)
   elseif cur then
     log("inst_ab", { iid = cur.iid, inst = cur.inst, dauer = time() - (cur.t or time()) })
     char.curInst = nil
@@ -546,23 +547,61 @@ local function encounterSections(rootID)
   return out
 end
 
+-- Das Kompendium liefert die Bosse einer Instanz nur, wenn ihre Erweiterung ausgewählt ist
+local function selectTierFor(jiid)
+  local n = safe(EJ_GetNumTiers) or 0
+  for tier = n, 1, -1 do
+    safe(EJ_SelectTier, tier)
+    for _, raid in ipairs({ false, true }) do
+      for i = 1, 80 do
+        local id = safe(EJ_GetInstanceByIndex, i, raid)
+        if not id then break end
+        if id == jiid then return tier, raid end
+      end
+    end
+  end
+end
+
+-- höchste gültige Schwierigkeit: zeigt alle Fähigkeiten, Heroisch/Mythisch-Markierungen stehen in den Flags
+-- (alte Schlachtzüge kennen nur 40 Spieler / 10 / 25, alte Dungeons nur Normal/Heroisch)
+local RAID_DIFFS = { 16, 15, 14, 9, 6, 5, 4, 3, 17 }
+local DUNGEON_DIFFS = { 23, 2, 1, 8, 24 }
+
+local function bestDifficulty(isRaid)
+  local list = isRaid and RAID_DIFFS or DUNGEON_DIFFS
+  if not EJ_IsValidInstanceDifficulty then return list[1] end
+  for _, d in ipairs(list) do
+    if safe(EJ_IsValidInstanceDifficulty, d) then return d end
+  end
+  return list[1]
+end
+
 local function exportInstance(db, jiid, isRaid)
+  local tier, raid = selectTierFor(jiid)
+  if raid ~= nil then isRaid = raid end
   safe(EJ_SelectInstance, jiid)
-  -- höchste Schwierigkeit: zeigt alle Fähigkeiten, Heroisch/Mythisch-Markierungen stehen in den Flags
-  local diff = isRaid and 16 or 23
-  if EJ_IsValidInstanceDifficulty and not safe(EJ_IsValidInstanceDifficulty, diff) then diff = isRaid and 15 or 2 end
+  local diff = bestDifficulty(isRaid)
   safe(EJ_SetDifficulty, diff)
   local name, desc, _, _, _, _, areaMap, _, _, mapID = safe(EJ_GetInstanceInfo, jiid)
   local inst = { n = name, d = desc, raid = isRaid and 1 or nil, area = areaMap, map = mapID, did = diff, t = time(), enc = {} }
   for i = 1, 30 do
-    safe(EJ_SelectInstance, jiid)   -- falls zwischen zwei Schritten etwas anderes ausgewählt wurde
+    -- falls zwischen zwei Schritten etwas anderes ausgewählt wurde
+    if tier then safe(EJ_SelectTier, tier) end
+    safe(EJ_SelectInstance, jiid)
     safe(EJ_SetDifficulty, diff)
     local ename, edesc, jeid, rootID, _, _, deid = safe(EJ_GetEncounterInfoByIndex, i, jiid)
     if not ename then break end
     inst.enc[#inst.enc + 1] = { id = jeid, deid = deid, n = ename, d = edesc, s = encounterSections(rootID) }
     coroutine.yield()
   end
-  db.journal.inst[jiid] = inst
+  -- ohne Bosse nichts speichern, damit es beim nächsten Betreten erneut versucht wird
+  if #inst.enc > 0 then db.journal.inst[jiid] = inst else db.journal.inst[jiid] = nil end
+end
+
+local function haveJournal(jiid)
+  local db = AzerothTagebuchDB
+  local e = db.journal and db.journal.inst and db.journal.inst[jiid]
+  return e and e.enc and #e.enc > 0
 end
 
 local function journalWork(onlyJiid)
@@ -586,12 +625,18 @@ local function journalWork(onlyJiid)
     end
   end
   for _, job in ipairs(todo) do
-    if not db.journal.inst[job[1]] then exportInstance(db, job[1], job[2]) end
+    if not haveJournal(job[1]) then exportInstance(db, job[1], job[2]) end
   end
 end
 
+local pendingJiid      -- Instanz, die nach dem laufenden Export noch dran ist
+
 local function runJournal(onlyJiid)
-  if journalJob or not EJ_GetEncounterInfoByIndex or not C_EncounterJournal then return end
+  if not EJ_GetEncounterInfoByIndex or not C_EncounterJournal then return end
+  if journalJob then
+    if onlyJiid then pendingJiid = onlyJiid end
+    return
+  end
   journalJob = coroutine.create(journalWork)
   local first, ticker = true, nil
   ticker = C_Timer.NewTicker(0.2, function()
@@ -602,16 +647,23 @@ local function runJournal(onlyJiid)
     if not ok or coroutine.status(journalJob) == "dead" then
       ticker:Cancel()
       journalJob = nil
+      if pendingJiid then
+        local nextJiid = pendingJiid
+        pendingJiid = nil
+        if not haveJournal(nextJiid) then runJournal(nextJiid) end
+      end
     end
   end)
 end
 
-journalForCurrentInstance = function()
+journalForCurrentInstance = function(force)
   if not IsInInstance() or not EJ_GetInstanceForMap then return end
   local mapID = currentLocation()
   local jiid = mapID and safe(EJ_GetInstanceForMap, mapID)
-  local db = AzerothTagebuchDB
-  if jiid and jiid > 0 and not (db.journal and db.journal.inst and db.journal.inst[jiid]) then runJournal(jiid) end
+  if not jiid or jiid <= 0 then return end
+  if force and AzerothTagebuchDB.journal and AzerothTagebuchDB.journal.inst then AzerothTagebuchDB.journal.inst[jiid] = nil end
+  if not haveJournal(jiid) then runJournal(jiid) end
+  return jiid
 end
 
 ------------------------------------------------------------
@@ -829,6 +881,14 @@ SlashCmdList.AZEROTHTAGEBUCH = function(msg)
     AzerothTagebuchDB.kampflog = on
     if on then ensureCombatLog() else safe(LoggingCombat, false) end
     print("|cffd4a017Tagebuch:|r Kampflog " .. (on and "eingeschaltet" or "ausgeschaltet") .. ".")
+  elseif cmd == "bosse" then
+    if not IsInInstance() then
+      print("|cffd4a017Tagebuch:|r Betritt zuerst eine Instanz – dann liest /tb bosse ihre Bosse aus dem Dungeonkompendium.")
+    elseif journalForCurrentInstance(true) then
+      print("|cffd4a017Tagebuch:|r Bosse werden ausgelesen. Danach /reload, damit die App sie sieht.")
+    else
+      print("|cffd4a017Tagebuch:|r Für diese Instanz gibt es keinen Eintrag im Dungeonkompendium.")
+    end
   elseif cmd == "notiz" and rest ~= "" then
     log("notiz", { txt = rest, z = GetZoneText() })
     print("|cffd4a017Tagebuch:|r Notiz gespeichert.")
@@ -840,7 +900,8 @@ SlashCmdList.AZEROTHTAGEBUCH = function(msg)
     print(("|cffd4a017Tagebuch|r %s: %d Quests abgegeben, %d Level-ups, %d Einträge."):format(charKey, q, lv, #char.events))
     print("  /tb notiz <Text>  – eigene Notiz fürs Tagebuch")
     print("  /tb kampflog an|aus  – Kampflog für die Kampfstatistik der App")
+    print("  /tb bosse  – Bosse der aktuellen Instanz für die App auslesen")
   else
-    print("|cffd4a017Tagebuch:|r /tb, /tb stats, /tb notiz <Text>, /tb kampflog an|aus")
+    print("|cffd4a017Tagebuch:|r /tb, /tb stats, /tb notiz <Text>, /tb kampflog an|aus, /tb bosse")
   end
 end
