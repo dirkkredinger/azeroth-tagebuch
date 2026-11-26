@@ -43,6 +43,7 @@ reads it automatically and shows it as a journal and dashboard – even live whi
 | ![Combat statistics](docs/bilder/en/2-kampf.png) | ![Route map](docs/bilder/en/3-karte.png) |
 | ![Loot with drop rates](docs/bilder/en/4-beute.png) | ![Gear with tooltip](docs/bilder/en/5-ausruestung.png) |
 | ![Dungeons and delves](docs/bilder/en/7-instanzen.png) | ![“Where is …?” search](docs/bilder/en/6-suche.png) |
+| ![Boss guide with drop rates](docs/bilder/en/8-bosse.png) | |
 
 <sub>The pictures show sample data and hand-drawn maps. In the app you see the real zone maps from your own WoW installation.</sub>
 

@@ -43,6 +43,7 @@ liest das automatisch ein und zeigt es als Tagebuch und Dashboard – während d
 | ![Kampfstatistik](docs/bilder/2-kampf.png) | ![Routenkarte](docs/bilder/3-karte.png) |
 | ![Beute mit Dropraten](docs/bilder/4-beute.png) | ![Ausrüstung mit Tooltip](docs/bilder/5-ausruestung.png) |
 | ![Dungeons und Tiefen](docs/bilder/7-instanzen.png) | ![Suche „Wo liegt …?“](docs/bilder/6-suche.png) |
+| ![Boss-Guide mit Dropraten](docs/bilder/8-bosse.png) | |
 
 <sub>Die Bilder zeigen Beispieldaten und selbst gezeichnete Karten. In der App siehst du die echten Zonenkarten aus deiner eigenen WoW-Installation.</sub>
 
