@@ -1,6 +1,6 @@
 // Auswertungen über das Archiv (laufen in der Oberfläche, damit Handy und Web sie genauso nutzen)
 
-import type { Character, Fight, WowEvent } from './types';
+import type { Character, Fight, FightKill, WowEvent } from './types';
 import { t } from './i18n.svelte';
 
 export const turnIns = (c: Character) => c.events.filter((e) => e.e === 'quest_ab');
@@ -73,7 +73,19 @@ export function lootStats(chars: Character[], fights: Record<string, Fight[]>): 
     for (const ev of lootEvents(c)) if (ev.npc && ev.sn) nameForNpc.set(ev.npc, ev.sn);
   }
   for (const c of chars) {
-    for (const ev of lootEvents(c)) {
+    // Persönliche Beute ohne Boss (Encounter 0) kennt keine Quelle: dem zuletzt getöteten Gegner zuordnen
+    const kills = (fights[c.key] ?? []).flatMap((f) => f.kills ?? []).sort((a, b) => a.t - b.t);
+    const killBefore = (t: number) => {
+      let best: FightKill | undefined;
+      for (const k of kills) { if (k.t > t + 1) break; best = k; }
+      return best && t - best.t <= 30 ? best : undefined;
+    };
+    for (const raw of lootEvents(c)) {
+      let ev = raw;
+      if (ev.src?.startsWith('Encounter-0-')) {
+        const k = killBefore(ev.t);
+        ev = k ? { ...ev, src: k.guid, npc: k.npcId, sn: k.name, art: 'Creature' } : { ...ev, sn: ev.sn ?? t('Persönliche Beute') };
+      }
       const isObject = ev.art === 'GameObject';
       const name: string = ev.sn ?? (ev.src ? nameForGuid.get(ev.src) : undefined) ?? (ev.npc ? nameForNpc.get(ev.npc) : undefined)
         ?? (ev.npc ? (isObject ? t('Vorkommen #{n}', { n: ev.npc }) : t('Gegner #{n}', { n: ev.npc })) : t('Unbekannte Quelle'));

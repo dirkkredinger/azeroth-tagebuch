@@ -34,8 +34,8 @@ export const en: Record<string, string> = {
   'Gegner oder Gegenstand suchen': 'Search enemy or item', '{n}× geplündert': 'looted {n}×', '{a} von {b}': '{a} of {b}',
   'Keine Gegenstände.': 'No items.', 'Nie geplündert – kein Beutefenster erfasst.': 'Never looted – no loot window recorded.',
   'Noch keine Vorkommen geplündert': 'No nodes looted yet', 'Noch keine Beute erfasst': 'No loot recorded yet',
-  'Besiegte Gegner kommen aus dem Kampflog, die Beute schreibt das Addon (ab Version 1.2) mit, sobald ein Beutefenster aufgeht – auch mit automatischem Plündern. Droprate = wie oft ein Gegenstand dabei war ÷ geplünderte Leichen dieses Gegners.':
-    'Kills come from the combat log; the addon (version 1.2 and later) records loot whenever a loot window opens – auto loot included. Drop rate = how often an item dropped ÷ looted corpses of that enemy.',
+  'Besiegte Gegner kommen aus dem Kampflog, die Beute schreibt das Addon (ab Version 1.2) mit, sobald ein Beutefenster aufgeht – auch mit automatischem Plündern. Droprate = wie oft ein Gegenstand dabei war ÷ geplünderte Leichen dieses Gegners, immer über alle Charaktere.':
+    'Kills come from the combat log; the addon (version 1.2 and later) records loot whenever a loot window opens – auto loot included. Drop rate = how often an item dropped ÷ looted corpses of that enemy, always across all characters.',
   'Seltene Funde': 'Notable finds', 'Unbekannt': 'Unknown',
 
   // Statistik
@@ -218,7 +218,7 @@ export const en: Record<string, string> = {
   'Du kannst unterbrechen': 'You can interrupt', 'Kein Unterbrechen': 'No interrupt', 'Du entfernst: {list}': 'You remove: {list}',
   'Grundfähigkeiten der Spezialisierung, Talente nicht berücksichtigt': 'baseline spec abilities, talents not considered',
   'Ansicht als {role}': 'Viewing as {role}', 'beste {n} DPS': 'best {n} DPS', 'beste {n} HPS': 'best {n} HPS',
-  'zuletzt {d}': 'last {d}', 'Noch nie gekämpft': 'Never fought', 'Mit World of Warcraft starten': 'Start with World of Warcraft', 'Öffnet das Tagebuch im Hintergrund, sobald WoW startet – falls es nicht schon läuft.': 'Opens the diary in the background as soon as WoW starts – unless it is already running.', 'Englisch': 'English', 'Deutsch': 'German', 'Die deutschen Guides leiten teils zu 4Fansites weiter.': 'The German guides sometimes redirect to 4Fansites.', 'Deine Beute': 'Your loot',
+  'zuletzt {d}': 'last {d}', 'Noch nie gekämpft': 'Never fought', 'Persönliche Beute': 'Personal loot', 'Droprate (alle Charaktere): {p} % ({a} von {b})': 'Drop rate (all characters): {p} % ({a} of {b})', 'Mit World of Warcraft starten': 'Start with World of Warcraft', 'Öffnet das Tagebuch im Hintergrund, sobald WoW startet – falls es nicht schon läuft.': 'Opens the diary in the background as soon as WoW starts – unless it is already running.', 'Englisch': 'English', 'Deutsch': 'German', 'Die deutschen Guides leiten teils zu 4Fansites weiter.': 'The German guides sometimes redirect to 4Fansites.', 'Deine Beute': 'Your loot',
   'Tödlich / Wichtig': 'Deadly / important', 'Unterbrechen': 'Interrupt', 'Entfernen': 'Remove', 'Kannst du entfernen': 'You can remove',
   'Für dich als {role}': 'For you as {role}', 'Das Kompendium hat für diese Rolle keine eigenen Hinweise.': 'The Adventure Guide has no specific notes for this role.',
   'Keine besonders markierten Fähigkeiten.': 'No specially marked abilities.', 'Alle Fähigkeiten': 'All abilities',

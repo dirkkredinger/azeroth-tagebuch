@@ -18,10 +18,17 @@
   let sort = $state('kills');
   let search = $state('');
   let open = $state<string | null>(null);
+  // Dropraten immer über alle Charaktere – je mehr Leichen, desto genauer
+  const global = $derived(new Map(A.lootStats(store.characters, store.fights).map((g) => [g.key, g])));
+  function rate(s: A.LootSource, i: A.ItemDrop) {
+    const g = global.get(s.key) ?? s;
+    const gi = g.items.get(i.key) ?? i;
+    return { r: A.dropRate(g, gi), a: gi.times, b: g.looted };
+  }
   const tip = (s: A.LootSource, i: A.ItemDrop) => ({
     name: i.name, quality: i.quality, icon: i.icon,
     lines: [
-      { text: t('Droprate: {p} % ({a} von {b})', { p: Math.round(A.dropRate(s, i) * 100), a: i.times, b: s.looted }) },
+      { text: t('Droprate (alle Charaktere): {p} % ({a} von {b})', { p: Math.round(rate(s, i).r * 100), a: rate(s, i).a, b: rate(s, i).b }) },
       { text: t('von {name}', { name: s.name }), color: '#bfb091' },
       ...(i.total > i.times ? [{ text: t('insgesamt {n} Stück erbeutet', { n: i.total }), color: '#bfb091' }] : []),
     ],
@@ -75,13 +82,14 @@
     {#if open === s.key}
       <div class="drops">
         {#each items(s) as i (i.key)}
-          {@const r = A.dropRate(s, i)}
+          {@const rr = rate(s, i)}
+          {@const r = rr.r}
           <div class="drop">
             <ItemIcon icon={i.icon} quality={i.quality} size={28} tip={tip(s, i)} />
             <ExtLink href={wowheadItem(i.itemId)}><span class="iname" style="color:{qualityColor(i.quality)}">{i.name}</span></ExtLink>
             <span class="track"><i style="width:{Math.max(1, r * 100)}%; background:{qualityColor(i.quality)}"></i></span>
             <b class="gold pct">{Math.round(r * 100)} %</b>
-            <span class="dim sm of">{t('{a} von {b}', { a: i.times, b: s.looted })}{i.total > i.times ? ' · ' + t('{n} Stück', { n: i.total }) : ''}</span>
+            <span class="dim sm of">{t('{a} von {b}', { a: rr.a, b: rr.b })}{i.total > i.times ? ' · ' + t('{n} Stück', { n: i.total }) : ''}</span>
           </div>
         {:else}<div class="dim sm">{s.looted ? t('Keine Gegenstände.') : t('Nie geplündert – kein Beutefenster erfasst.')}</div>{/each}
       </div>
@@ -89,14 +97,14 @@
   </div>
 {:else}
   <div class="panel box"><h3>{kind === 'objects' ? t('Noch keine Vorkommen geplündert') : t('Noch keine Beute erfasst')}</h3>
-    <p class="dim">{t('Besiegte Gegner kommen aus dem Kampflog, die Beute schreibt das Addon (ab Version 1.2) mit, sobald ein Beutefenster aufgeht – auch mit automatischem Plündern. Droprate = wie oft ein Gegenstand dabei war ÷ geplünderte Leichen dieses Gegners.')}</p></div>
+    <p class="dim">{t('Besiegte Gegner kommen aus dem Kampflog, die Beute schreibt das Addon (ab Version 1.2) mit, sobald ein Beutefenster aufgeht – auch mit automatischem Plündern. Droprate = wie oft ein Gegenstand dabei war ÷ geplünderte Leichen dieses Gegners, immer über alle Charaktere.')}</p></div>
 {/each}
 
 {#if finds.length}
   <Box title={t('Seltene Funde')}>
     <div class="finds">
       {#each finds as { s, i } (s.key + i.key)}
-        <div class="find"><ItemIcon icon={i.icon} quality={i.quality} size={30} tip={tip(s, i)} /><div><div class="b" style="color:{qualityColor(i.quality)}">{i.name}</div><div class="dim sm">{t('von {name}', { name: s.name })} · {Math.round(A.dropRate(s, i) * 100)} %</div></div></div>
+        <div class="find"><ItemIcon icon={i.icon} quality={i.quality} size={30} tip={tip(s, i)} /><div><div class="b" style="color:{qualityColor(i.quality)}">{i.name}</div><div class="dim sm">{t('von {name}', { name: s.name })} · {Math.round(rate(s, i).r * 100)} %</div></div></div>
       {/each}
     </div>
   </Box>

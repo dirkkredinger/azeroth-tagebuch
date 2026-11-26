@@ -160,7 +160,10 @@ export function history(c: Character, fights: Fight[], enc: JournalEncounter): B
   const ev = c.events.filter(match);
   const fs = fights.filter((f) => f.encounter?.toLowerCase() === name);
   const loot = new Map<string, BossHistory['loot'][number]>();
-  const lootEv = c.events.filter((e) => e.e === 'beute' && ((enc.encounterId && e.eid === enc.encounterId) || e.sn?.toLowerCase() === name));
+  // Boss-Beute: persönliche (eid/Bossname) oder aus der Leiche geplündert (GUID des Bosses aus dem Kampflog)
+  const bossGuids = new Set(fights.flatMap((f) => (f.kills ?? []).filter((k) => k.name.toLowerCase() === name).map((k) => k.guid)));
+  const lootEv = c.events.filter((e) => e.e === 'beute' && (
+    (enc.encounterId && e.eid === enc.encounterId) || e.sn?.toLowerCase() === name || (e.src && bossGuids.has(e.src))));
   for (const e of [...lootEv].reverse()) for (const it of e.items ?? []) {
     if (it.gold || it.currency) continue;
     const k = it.itemId ? `i${it.itemId}` : `n${it.name}`;

@@ -846,8 +846,10 @@ function handlers.ENCOUNTER_LOOT_RECEIVED(encounterID, itemID, itemLink, quantit
     local e = encounterLoot[encounterID]
     encounterLoot[encounterID] = nil
     if not e or #e.items == 0 then return end
-    log("beute", { src = "Encounter-" .. encounterID .. "-" .. e.t, art = "Boss", eid = encounterID,
-                   sn = encounterNames[encounterID], items = e.items, z = GetZoneText() })
+    -- Encounter 0 = persönliche Beute eines normalen Gegners (die App ordnet sie dem letzten Kill zu)
+    local boss = encounterID ~= 0
+    log("beute", { src = "Encounter-" .. encounterID .. "-" .. e.t, art = boss and "Boss" or nil, eid = boss and encounterID or nil,
+                   sn = boss and encounterNames[encounterID] or nil, items = e.items, z = GetZoneText() })
   end)
 end
 

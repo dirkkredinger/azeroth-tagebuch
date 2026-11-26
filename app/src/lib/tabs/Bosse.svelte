@@ -151,6 +151,12 @@
             {:else}{t('Noch nie gekämpft')}{/if}
           </div>
         </div>
+        {#if h.loot.length && !open.has(e.id)}
+          <div class="hloot" title={t('Deine Beute')}>
+            {#each h.loot.slice(0, 5) as l (l.itemId ?? l.name)}<ItemIcon icon={l.icon} quality={l.quality} size={22} title={l.name} />{/each}
+            {#if h.loot.length > 5}<span class="dim sm">+{h.loot.length - 5}</span>{/if}
+          </div>
+        {/if}
         <div class="cnts">
           {#if g.deadly.length}<span class="cnt" style="color:#ff4d4d" title={t('Tödlich / Wichtig')}><Icon name="triangle-alert" size={12} /> {g.deadly.length}</span>{/if}
           {#if g.interrupts.length}<span class="cnt" style="color:#4fd6e8" title={t('Unterbrechen')}><Icon name="zap" size={12} /> {g.interrupts.length}</span>{/if}
@@ -256,6 +262,7 @@
   .all { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
   .src { margin: 4px 2px 0; }
   @media (max-width: 800px) { .body { padding-left: 0; } }
+  .hloot { display: flex; align-items: center; gap: 4px; }
   .loot { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 10px; }
   .loot span { margin-right: 4px; }
 </style>
