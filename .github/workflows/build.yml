@@ -28,6 +28,10 @@ jobs:
   addon:
     name: Addon-ZIP
     runs-on: ubuntu-latest
+    env:
+      # Für den CurseForge-Upload: Secret CF_API_TOKEN und Variable CF_PROJECT_ID in den Repo-Einstellungen
+      CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+      CF_PROJECT_ID: ${{ vars.CF_PROJECT_ID }}
     steps:
       - uses: actions/checkout@v4
       - name: Addon packen (Ordner AzerothTagebuch im ZIP, wie CurseForge es erwartet)
@@ -50,6 +54,25 @@ jobs:
           body_path: .github/release-notes.md
           prerelease: false
           files: dist/*.zip
+      - name: Auf CurseForge hochladen (nur bei Tag v…, wenn eingerichtet)
+        if: startsWith(github.ref, 'refs/tags/v') && env.CF_API_TOKEN != '' && env.CF_PROJECT_ID != ''
+        run: |
+          set -euo pipefail
+          TOC=Addon/AzerothTagebuch/AzerothTagebuch.toc
+          # Interface 120105 -> Spielversion "12.1.5"
+          NAMES=$(grep '^## Interface:' "$TOC" | sed 's/^## Interface://' | tr ',' '\n' | tr -d ' \r' | \
+            awk 'NF { printf "%d.%d.%d\n", int($1/10000), int($1/100)%100, $1%100 }' | jq -R . | jq -sc .)
+          curl -sSf -H "X-Api-Token: $CF_API_TOKEN" https://wow.curseforge.com/api/game/versions > versions.json
+          IDS=$(jq -c --argjson names "$NAMES" '[.[] | select(.name as $n | $names | index($n)) | .id] | unique' versions.json)
+          echo "Spielversionen $NAMES -> CurseForge-IDs $IDS"
+          if [ "$IDS" = "[]" ]; then echo "Keine passende Spielversion auf CurseForge gefunden"; exit 1; fi
+          # Änderungen: der Abschnitt der Release-Notes bis „Was du brauchst“
+          sed '/^## Was du brauchst/,$d' .github/release-notes.md > changelog.md
+          jq -n --rawfile cl changelog.md --argjson gv "$IDS" --arg dn "Azeroth-Tagebuch $ADDON_VERSION" \
+            '{changelog: $cl, changelogType: "markdown", displayName: $dn, gameVersions: $gv, releaseType: "release"}' > metadata.json
+          curl -sS --fail-with-body -H "X-Api-Token: $CF_API_TOKEN" \
+            -F "metadata=<metadata.json" -F "file=@dist/AzerothTagebuch-Addon-$ADDON_VERSION.zip" \
+            "https://wow.curseforge.com/api/projects/$CF_PROJECT_ID/upload-file"
 
   app:
     needs: kern-tests

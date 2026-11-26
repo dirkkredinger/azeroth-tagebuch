@@ -1,12 +1,20 @@
-**App 0.4.0** und **Addon 1.5.0** · 🇬🇧 English below
+**App 0.5.0** und **Addon 1.6.0** · 🇬🇧 English below
 
-## Neu in 0.4.0
-- **Bosskämpfe:** neuer Reiter, der beim Betreten eines Dungeons oder Schlachtzugs von selbst aufgeht (erkannt live im Kampflog). Je Boss: Hinweise aus dem Dungeonkompendium für deine Rolle (Tank, Heiler, Schaden – umschaltbar), tödliche und wichtige Fähigkeiten, was deine Spezialisierung unterbrechen oder entfernen kann, und deine eigene Bilanz (Siege, Wipes, schnellster Kill, beste DPS/HPS). Der laufende bzw. nächste Boss ist hervorgehoben.
-- Das Addon 1.5.0 liest dafür beim Einloggen das Dungeonkompendium der aktuellen Erweiterung aus (und beim Betreten anderer Instanzen deren Bosse). Nach dem ersten Einloggen einmal `/reload` eingeben.
+## Neu in 0.5.0
+- **Bosse alter Instanzen:** Der Reiter Bosskämpfe kennt jetzt auch klassische Schlachtzüge und Dungeons wie Geschmolzener Kern oder Pechschwingenhort. Mit `/tb bosse` liest das Addon die Bosse der aktuellen Instanz sofort neu aus.
+- **Boss-Beute und Dropraten:** Persönliche Beute, die direkt in den Taschen landet, wird jetzt erfasst. Im Reiter Bosskämpfe siehst du je Boss, was er fallen lässt, mit Dropraten über alle Charaktere und deiner eigenen Ausbeute.
+- **Dropraten immer über alle Charaktere,** auch im Reiter Beute. Beute normaler Gegner ohne Beutefenster wird dem zuletzt getöteten Gegner zugeordnet.
+- **Echte Gesamtspielzeit:** Das Addon liest `/played` beim Einloggen still aus. „Spielzeit gesamt“ zählt alle Charaktere zusammen und zeigt große Zeiten in Tagen und Jahren.
+- **Guides:** Im Reiter Klasse wählst du zwischen englischen und deutschen Wowhead-Guides (die deutschen leiten teils zu 4Fansites weiter).
+- **Mit WoW starten (macOS):** Schalter im „Über“-Fenster. Das Tagebuch öffnet sich, sobald WoW startet.
 
-### New in 0.4.0 (English)
-- **Boss fights:** new tab that opens by itself when you enter a dungeon or raid (detected live from the combat log). Per boss: notes from the Adventure Guide for your role (tank, healer, damage – switchable), deadly and important abilities, what your spec can interrupt or remove, and your own record (kills, wipes, fastest kill, best DPS/HPS). The current or next boss is highlighted.
-- Addon 1.5.0 reads the Adventure Guide of the current expansion when you log in (and the bosses of any other instance you enter). Type `/reload` once after your first login.
+### New in 0.5.0 (English)
+- **Bosses of older instances:** the boss tab now also knows classic raids and dungeons such as Molten Core or Blackwing Lair. `/tb bosse` re-reads the bosses of your current instance.
+- **Boss loot and drop rates:** personal loot that goes straight to your bags is now recorded. The boss tab shows what each boss drops, with drop rates across all characters and your own haul.
+- **Drop rates always across all characters,** in the loot tab too. Loot from regular enemies without a loot window is matched to the enemy you just killed.
+- **Real total playtime:** the addon quietly reads `/played` on login. "Total playtime" adds up all characters and shows long times in days and years.
+- **Guides:** choose between English and German Wowhead guides in the class tab.
+- **Start with WoW (macOS):** switch in the About window. The diary opens as soon as WoW starts.
 
 ## Was du brauchst
 
@@ -32,8 +40,8 @@ Ohne WoW lässt sich die App mit „Beispieldaten anzeigen“ ausprobieren.
 - Pro Charakter: Übersicht, Quests, **Karte mit Route** (Kartenbild aus der eigenen WoW-Installation), Zeitleiste, Statistik
 - **Kampf und Heilung** aus dem offiziellen Kampflog – live während des Spielens, DPS/HPS nach Stufe und Gegenstandsstufe
 - **Ausrüstung** als Charakterbogen, **Beute mit Dropraten**, **Lager** (Taschen, Bank, Kriegsmeute, Gildenbank)
-- **Bosskämpfe** mit Hinweisen für Rolle und Spezialisierung, öffnen sich beim Betreten einer Instanz
-- Klasse mit Wowhead-Links, globale Suche („Wo liegt …?“), Item-Tooltips im WoW-Stil
+- **Bosskämpfe** mit Hinweisen für Rolle und Spezialisierung, Beute und Dropraten, öffnen sich beim Betreten einer Instanz
+- Klasse mit Wowhead-Links (englisch oder deutsch), globale Suche („Wo liegt …?“), Item-Tooltips im WoW-Stil
 
 ## Gut zu wissen
 
