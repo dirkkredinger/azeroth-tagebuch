@@ -32,10 +32,16 @@ export function gold(copper: number): string {
 }
 
 /** Sekunden → "2 Std. 5 Min." bzw. "2 h 5 min" */
+/** Dauer lesbar: Minuten, Stunden, ab einem Tag Tage, ab einem Jahr Jahre (jeweils die zwei größten Einheiten) */
 export function duration(seconds: number): string {
-  const h = Math.floor(seconds / 3600);
+  const en = i18n.lang === 'en';
+  const y = Math.floor(seconds / (365 * 86400));
+  const d = Math.floor((seconds % (365 * 86400)) / 86400);
+  const h = Math.floor((seconds % 86400) / 3600);
   const m = Math.floor((seconds % 3600) / 60);
-  if (i18n.lang === 'en') return h > 0 ? `${h} h ${m} min` : `${m} min`;
+  if (y > 0) return en ? `${y} ${y === 1 ? 'year' : 'years'} ${d} ${d === 1 ? 'day' : 'days'}` : `${y} ${y === 1 ? 'Jahr' : 'Jahre'} ${d} ${d === 1 ? 'Tag' : 'Tage'}`;
+  if (d > 0) return en ? `${d} ${d === 1 ? 'day' : 'days'} ${h} h` : `${d} ${d === 1 ? 'Tag' : 'Tage'} ${h} Std.`;
+  if (en) return h > 0 ? `${h} h ${m} min` : `${m} min`;
   return h > 0 ? `${h} Std. ${m} Min.` : `${m} Min.`;
 }
 
