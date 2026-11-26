@@ -153,6 +153,49 @@ export interface BossHistory {
   loot: { itemId?: number; name: string; quality?: number; icon?: number; times: number }[];
 }
 
+/** Beute-Ereignisse eines Charakters von diesem Boss: persönliche (eid/Bossname) oder aus der Leiche (GUID aus dem Kampflog) */
+function bossLoot(c: Character, fights: Fight[], enc: JournalEncounter): WowEvent[] {
+  const name = enc.name.toLowerCase();
+  const bossGuids = new Set(fights.flatMap((f) => (f.kills ?? []).filter((k) => k.name.toLowerCase() === name).map((k) => k.guid)));
+  return c.events.filter((e) => e.e === 'beute' && (
+    (enc.encounterId && e.eid === enc.encounterId) || e.sn?.toLowerCase() === name || (e.src && bossGuids.has(e.src))));
+}
+
+export interface BossDrop { key: string; itemId?: number; name: string; quality?: number; icon?: number; times: number; rate: number }
+export interface BossDrops { kills: number; items: BossDrop[] }
+
+/**
+ * Dropraten eines Bosses über alle Charaktere: wie oft kam ein Gegenstand ÷ Kills.
+ * Gezählt werden nur Kills, bei denen das Addon Boss-Beute erfassen konnte: ab der ersten persönlichen
+ * Beute dieses Charakters (Addon 1.5.2) – und jeder Kill, zu dem es Beute gibt.
+ */
+export function bossDrops(chars: Character[], fights: Record<string, Fight[]>, enc: JournalEncounter): BossDrops {
+  const name = enc.name.toLowerCase();
+  const items = new Map<string, BossDrop>();
+  let kills = 0;
+  for (const c of chars) {
+    const loot = bossLoot(c, fights[c.key] ?? [], enc);
+    const firstCap = Math.min(...c.events.filter((e) => e.e === 'beute' && e.src?.startsWith('Encounter-')).map((e) => e.t));
+    const killEv = c.events.filter((e) => e.e === 'boss' && e.ok === 1 && ((enc.encounterId && e.eid === enc.encounterId) || e.n?.toLowerCase() === name));
+    // Kills ab Erfassungsbeginn (kurz davor: der Kill selbst liegt vor seiner Beute)
+    kills += Math.max(killEv.filter((e) => e.t >= firstCap - 300).length, loot.length);
+    for (const e of loot) {
+      const seen = new Set<string>();
+      for (const it of e.items ?? []) {
+        if (it.gold || it.currency) continue;
+        const k = it.itemId ? `i${it.itemId}` : `n${it.name}`;
+        if (seen.has(k)) continue;
+        seen.add(k);
+        const d = items.get(k) ?? { key: k, itemId: it.itemId, name: it.name ?? '?', quality: it.quality, icon: it.icon, times: 0, rate: 0 };
+        d.times++;
+        items.set(k, d);
+      }
+    }
+  }
+  for (const d of items.values()) d.rate = kills ? d.times / kills : 0;
+  return { kills, items: [...items.values()].sort((a, b) => b.rate - a.rate || (b.quality ?? 0) - (a.quality ?? 0)) };
+}
+
 /** Eigene Erfahrung mit einem Boss: Ereignisse "boss" vom Addon und Kämpfe aus dem Kampflog */
 export function history(c: Character, fights: Fight[], enc: JournalEncounter): BossHistory {
   const name = enc.name.toLowerCase();
@@ -160,11 +203,7 @@ export function history(c: Character, fights: Fight[], enc: JournalEncounter): B
   const ev = c.events.filter(match);
   const fs = fights.filter((f) => f.encounter?.toLowerCase() === name);
   const loot = new Map<string, BossHistory['loot'][number]>();
-  // Boss-Beute: persönliche (eid/Bossname) oder aus der Leiche geplündert (GUID des Bosses aus dem Kampflog)
-  const bossGuids = new Set(fights.flatMap((f) => (f.kills ?? []).filter((k) => k.name.toLowerCase() === name).map((k) => k.guid)));
-  const lootEv = c.events.filter((e) => e.e === 'beute' && (
-    (enc.encounterId && e.eid === enc.encounterId) || e.sn?.toLowerCase() === name || (e.src && bossGuids.has(e.src))));
-  for (const e of [...lootEv].reverse()) for (const it of e.items ?? []) {
+  for (const e of [...bossLoot(c, fights, enc)].reverse()) for (const it of e.items ?? []) {
     if (it.gold || it.currency) continue;
     const k = it.itemId ? `i${it.itemId}` : `n${it.name}`;
     const l = loot.get(k);

@@ -11,7 +11,7 @@
   import * as B from '$lib/boss';
   import { symbolBild } from '$lib/bild';
   import { big, date } from '$lib/format';
-  import { roleName, wowheadBase } from '$lib/wow';
+  import { qualityColor, roleName, wowheadBase, wowheadItem } from '$lib/wow';
   import type { Character, JournalEncounter, JournalInstance, JournalSection } from '$lib/types';
 
   let { c }: { c: Character } = $props();
@@ -135,6 +135,7 @@
   {#each inst.encounters as e, i (e.id)}
     {@const g = B.guide(e, role, kit)}
     {@const h = B.history(c, fights, e)}
+    {@const drops = B.bossDrops(store.characters, store.fights, e)}
     {@const dead = killedNow.has(e.name.toLowerCase())}
     {@const live = isLiveBoss(e)}
     <div class="panel boss" class:live class:next={!live && nextBoss?.id === e.id} class:dead>
@@ -153,7 +154,7 @@
         </div>
         {#if h.loot.length && !open.has(e.id)}
           <div class="hloot" title={t('Deine Beute')}>
-            {#each h.loot.slice(0, 5) as l (l.itemId ?? l.name)}<ItemIcon icon={l.icon} quality={l.quality} size={22} title={l.name} />{/each}
+            {#each h.loot.slice(0, 5) as l (l.itemId ?? l.name)}<ItemIcon icon={l.icon} quality={l.quality} size={22} title={`${l.name} – ${Math.round((drops.items.find((d) => (d.itemId ?? d.name) === (l.itemId ?? l.name))?.rate ?? 0) * 100)} %`} />{/each}
             {#if h.loot.length > 5}<span class="dim sm">+{h.loot.length - 5}</span>{/if}
           </div>
         {/if}
@@ -167,11 +168,18 @@
       {#if open.has(e.id)}
         <div class="body">
           {#if e.description}<p class="lore dim">{B.cleanText(e.description)}</p>{/if}
-          {#if h.loot.length}
-            <div class="loot">
-              <span class="dim sm">{t('Deine Beute')}</span>
-              {#each h.loot as l (l.itemId ?? l.name)}
-                <ItemIcon icon={l.icon} quality={l.quality} size={26} title={l.times > 1 ? `${l.name} (${l.times}×)` : l.name} />
+          {#if drops.items.length}
+            <h4><Icon name="backpack" size={13} /> {t('Beute & Dropraten (alle Charaktere, {n} Kills)', { n: drops.kills })}</h4>
+            <div class="drops">
+              {#each drops.items as d (d.key)}
+                {@const mine = h.loot.find((l) => (l.itemId ?? l.name) === (d.itemId ?? d.name))}
+                <div class="drop">
+                  <ItemIcon icon={d.icon} quality={d.quality} size={24} title={d.name} />
+                  <ExtLink href={wowheadItem(d.itemId)}><span class="iname" style="color:{qualityColor(d.quality)}">{d.name}</span></ExtLink>
+                  <span class="track"><i style="width:{Math.max(1, d.rate * 100)}%; background:{qualityColor(d.quality)}"></i></span>
+                  <b class="gold pct">{Math.round(d.rate * 100)} %</b>
+                  <span class="dim sm of">{t('{a} von {b}', { a: d.times, b: drops.kills })}{mine ? ' · ' + t('du: {n}×', { n: mine.times }) : ''}</span>
+                </div>
               {/each}
             </div>
           {/if}
@@ -263,6 +271,11 @@
   .src { margin: 4px 2px 0; }
   @media (max-width: 800px) { .body { padding-left: 0; } }
   .hloot { display: flex; align-items: center; gap: 4px; }
-  .loot { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 10px; }
-  .loot span { margin-right: 4px; }
+  .drops { display: flex; flex-direction: column; gap: 5px; margin: 0 0 12px; }
+  .drop { display: flex; align-items: center; gap: 10px; }
+  .iname { display: inline-block; width: 230px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .track { flex: 1; height: 9px; background: rgba(0, 0, 0, 0.35); border-radius: 3px; overflow: hidden; }
+  .track i { display: block; height: 100%; opacity: 0.8; }
+  .pct { width: 50px; text-align: right; font-variant-numeric: tabular-nums; }
+  .of { width: 150px; text-align: right; }
 </style>
