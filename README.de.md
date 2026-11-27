@@ -11,6 +11,7 @@
 
 <p align="center">
   <a href="https://github.com/dirkkredinger/azeroth-tagebuch/releases/latest"><b>⬇ Herunterladen</b></a> ·
+  <a href="https://www.curseforge.com/wow/addons/azeroth-tagebuch">CurseForge</a> ·
   <a href="#installation">Installation</a> ·
   <a href="#häufige-fragen">Fragen</a> ·
   <a href="https://github.com/dirkkredinger/azeroth-tagebuch/issues">Fehler melden</a> ·
@@ -53,7 +54,7 @@ liest das automatisch ein und zeigt es als Tagebuch und Dashboard – während d
    - `AzerothTagebuch-Addon-….zip` – das Addon (für alle)
    - **Mac:** `Azeroth-Tagebuch_…_universal.dmg` (Apple-Chip und Intel) – oder per Homebrew: `brew install --cask dirkkredinger/tap/azeroth-tagebuch`
    - **Windows:** `Azeroth-Tagebuch_…_x64-setup.exe`
-2. **Addon:** ZIP entpacken, den Ordner `AzerothTagebuch` nach `World of Warcraft/_retail_/Interface/AddOns/` kopieren und im Spiel aktivieren.
+2. **Addon:** am einfachsten über [CurseForge](https://www.curseforge.com/wow/addons/azeroth-tagebuch) (CurseForge-App oder Download dort). Oder von Hand: ZIP entpacken, den Ordner `AzerothTagebuch` nach `World of Warcraft/_retail_/Interface/AddOns/` kopieren und im Spiel aktivieren.
 3. **App installieren.** Sie ist (noch) nicht signiert:
    - **Mac:** in „Programme“ ziehen, beim ersten Start **Rechtsklick → Öffnen**.
    - **Windows:** bei der SmartScreen-Warnung **„Weitere Informationen“ → „Trotzdem ausführen“**.
